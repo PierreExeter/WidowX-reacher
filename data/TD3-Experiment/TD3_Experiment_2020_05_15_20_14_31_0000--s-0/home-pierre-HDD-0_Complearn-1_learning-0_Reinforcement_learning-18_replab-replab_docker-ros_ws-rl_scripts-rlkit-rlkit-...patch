@@ -1,0 +1,162 @@
+diff --git a/examples/ddpg.py b/examples/ddpg.py
+index 89986b9..9b81b93 100644
+--- a/examples/ddpg.py
++++ b/examples/ddpg.py
+@@ -20,6 +20,8 @@ import rlkit.torch.pytorch_util as ptu
+ 
+ def experiment(variant):
+     env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
++    #SIM
++    #env = gym.make('replab-v0')._start_sim(goal_oriented=False, render=False)
+     env = NormalizedBoxEnv(env)
+     es = GaussianStrategy(action_space=env.action_space)
+     obs_dim = env.observation_space.low.size
+diff --git a/examples/her_td3_gym_fetch_reach.py b/examples/her_td3_gym_fetch_reach.py
+index e242088..3cb85c1 100644
+--- a/examples/her_td3_gym_fetch_reach.py
++++ b/examples/her_td3_gym_fetch_reach.py
+@@ -22,7 +22,10 @@ from rlkit.torch.networks import FlattenMlp, TanhMlpPolicy
+ 
+ 
+ def experiment(variant):
+-    env = NormalizedBoxEnv(gym.make('replab-v0')._start_rospy(goal_oriented=True))
++    env = gym.make('replab-v0')._start_rospy(goal_oriented=True)
++    #SIM
++    #env = gym.make('replab-v0')._start_sim(goal_oriented=True, render=False)
++    env = NormalizedBoxEnv(env)
+     es = GaussianAndEpislonStrategy(
+         action_space=env.action_space,
+         max_sigma=.2,
+diff --git a/examples/sac.py b/examples/sac.py
+deleted file mode 100644
+index 60f283c..0000000
+--- a/examples/sac.py
++++ /dev/null
+@@ -1,80 +0,0 @@
+-"""
+-This is an example training script with the SAC algorithm for fixed goal reaching.
+-By default, the gym environment will randomly sample a goal to use for the rest of training.
+-
+-All modifiable parameters are in this script, including the sizes of the Q-networks, number
+-of epochs, discount factor, etc. 
+-"""
+-import numpy as np
+-from rlkit.exploration_strategies.base import \
+-    PolicyWrappedWithExplorationStrategy
+-import gym
+-import gym_replab
+-import rlkit.torch.pytorch_util as ptu
+-from rlkit.envs.wrappers import NormalizedBoxEnv
+-from rlkit.launchers.launcher_util import setup_logger
+-from rlkit.torch.sac.policies import TanhGaussianPolicy
+-from rlkit.torch.sac.sac import SoftActorCritic
+-from rlkit.exploration_strategies.gaussian_strategy import GaussianStrategy
+-from rlkit.torch.networks import FlattenMlp
+-
+-
+-def experiment(variant):
+-    env = NormalizedBoxEnv(gym.make('replab-v0')._start_rospy(goal_oriented=False))    
+-    # Or for a specific version:
+-    # import gym
+-    # env = NormalizedBoxEnv(gym.make('HalfCheetah-v1'))
+-
+-    obs_dim = int(np.prod(env.observation_space.shape))
+-    action_dim = int(np.prod(env.action_space.shape))
+-
+-    net_size = variant['net_size']
+-
+-    qf = FlattenMlp(
+-        hidden_sizes=[net_size, net_size],
+-        input_size=obs_dim + action_dim,
+-        output_size=1,
+-    )
+-    vf = FlattenMlp(
+-        hidden_sizes=[net_size, net_size],
+-        input_size=obs_dim,
+-        output_size=1,
+-    )
+-    policy = TanhGaussianPolicy(
+-        hidden_sizes=[net_size, net_size],
+-        obs_dim=obs_dim,
+-        action_dim=action_dim,
+-    )
+-    algorithm = SoftActorCritic(
+-        env=env,
+-        policy=policy,
+-        qf=qf,
+-        vf=vf,
+-        **variant['algo_params']
+-    )
+-    algorithm.to(ptu.device)
+-    algorithm.train()
+-
+-
+-if __name__ == "__main__":
+-    # noinspection PyTypeChecker
+-    variant = dict(
+-        algo_params=dict(
+-            num_epochs=50,
+-            num_steps_per_epoch=5000,
+-            num_steps_per_eval=1000,
+-            batch_size=100,
+-            max_path_length=999,
+-            discount=0.99,
+-            reward_scale=1,
+-
+-            soft_target_tau=0.001,
+-            policy_lr=3E-4,
+-            qf_lr=3E-4,
+-            vf_lr=3E-4,
+-        ),
+-        net_size=300,
+-    )
+-    setup_logger('SAC_Experiment', variant=variant)
+-    ptu.set_gpu_mode(True)  # optionally set the GPU (default=False)
+-    experiment(variant)
+diff --git a/examples/td3.py b/examples/td3.py
+index a9e7420..7987368 100644
+--- a/examples/td3.py
++++ b/examples/td3.py
+@@ -18,8 +18,10 @@ from rlkit.torch.td3.td3 import TD3
+ 
+ 
+ def experiment(variant):
+-    
+-    env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
++    #Robot 
++    # env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
++    #SIM
++    env = gym.make('replab-v0')._start_sim(goal_oriented=False, render=True)
+     env.action_space.low *= 10
+     env.action_space.high *= 10
+     env = NormalizedBoxEnv(env)
+@@ -64,7 +66,7 @@ def experiment(variant):
+ if __name__ == "__main__":
+     variant = dict(
+         algo_kwargs=dict(
+-            num_epochs=50,
++            num_epochs=2, #50,
+             num_steps_per_epoch=5000,
+             num_steps_per_eval=1000,
+             max_path_length=1000,
+@@ -73,6 +75,6 @@ if __name__ == "__main__":
+             replay_buffer_size=int(1E6),
+         ),
+     )
+-    ptu.set_gpu_mode(True)  # optionally set the GPU (default=False)
++    ptu.set_gpu_mode(False)  # optionally set the GPU (default=False)
+     setup_logger('TD3_Experiment', variant=variant)
+     experiment(variant)
+diff --git a/scripts/sim_policy.py b/scripts/sim_policy.py
+index 89baf6f..c35c790 100644
+--- a/scripts/sim_policy.py
++++ b/scripts/sim_policy.py
+@@ -24,7 +24,7 @@ def simulate_policy(args):
+             env,
+             policy,
+             max_path_length=args.H,
+-            animated=True,
++            animated=False,
+         )
+         if hasattr(env, "log_diagnostics"):
+             env.log_diagnostics([path])

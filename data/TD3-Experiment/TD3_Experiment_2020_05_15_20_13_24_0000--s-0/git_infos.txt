@@ -1,0 +1,4 @@
+directory: /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/replab_docker/ros_ws/rl_scripts/rlkit/rlkit/..
+git hash: d8710e1a45e0bebd227cd54f8763c5d3ae5dab54
+git branch name: master
+

@@ -1,0 +1,4 @@
+directory: /root/ros_ws/rl_scripts/rlkit/rlkit/..
+git hash: d8710e1a45e0bebd227cd54f8763c5d3ae5dab54
+git branch name: master
+
