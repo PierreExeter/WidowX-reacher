@@ -23,6 +23,10 @@ class ProxyEnv(Serializable, Env):
         return self._wrapped_env.step(action)
 
     def render(self, *args, **kwargs):
+        print("11111111111111111111", *args)
+        print("22222222222222222222", **kwargs)
+        print("self._wrapped_env", self._wrapped_env)
+        print("self._wrapped_env.render(*args, **kwargs)", self._wrapped_env.render())
         return self._wrapped_env.render(*args, **kwargs)
 
     def log_diagnostics(self, paths, *args, **kwargs):

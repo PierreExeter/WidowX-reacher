@@ -21,7 +21,7 @@ def experiment(variant):
     #Robot 
     # env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
     #SIM
-    env = gym.make('replab-v0')._start_sim(goal_oriented=False, render=True)
+    env = gym.make('replab-v0')._start_sim(goal_oriented=False, render=False)
     env.action_space.low *= 10
     env.action_space.high *= 10
     env = NormalizedBoxEnv(env)

@@ -49,6 +49,7 @@ class ReplabEnv(gym.Env):
         self.current_pos = None
         #self.goal = np.array([-.14, -.13, 0.26])
         self.set_goal(self.sample_goal_for_rollout())
+        print("********goal is : ***********", self.goal)
 
     #shared functions between both sim and robot mode   
     
@@ -120,6 +121,7 @@ class ReplabEnv(gym.Env):
 
         info = {}
         info['total_distance'] = total_distance_from_goal
+        info['goal position'] = self.goal  # added by Pierre
 
         if reward > -0.0001:
             episode_over = True
@@ -137,6 +139,7 @@ class ReplabEnv(gym.Env):
                 "/replab/action/observation", numpy_msg(Floats)).data)
         elif self.mode == "sim":
             p.resetBasePositionAndOrientation(self.arm, [0, 0, 0], p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))
+            p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
             self._force_joint_positions(RESET_VALUES)
             self.current_pos = self._get_current_state()
         if self.goal_oriented:
@@ -326,6 +329,7 @@ class ReplabEnv(gym.Env):
         #p.setTimeStep(0.01)
         path = os.path.abspath(os.path.dirname(__file__))
         self.arm = p.loadURDF(os.path.join(path, "URDFs/widowx/widowx.urdf"), useFixedBase=True)
+        self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"), useFixedBase=True)      # added by Pierre
         self.reset()
         return self
 

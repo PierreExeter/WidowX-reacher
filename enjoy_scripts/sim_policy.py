@@ -24,8 +24,9 @@ def simulate_policy(args):
             env,
             policy,
             max_path_length=args.H,
-            animated=False,
+            animated=True,
         )
+        # print(path)  # added by Pierre
         if hasattr(env, "log_diagnostics"):
             env.log_diagnostics([path])
         logger.dump_tabular()
