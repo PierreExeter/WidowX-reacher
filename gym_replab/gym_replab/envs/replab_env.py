@@ -308,13 +308,13 @@ class ReplabEnv(gym.Env):
                 self._get_current_joint_positions()],
                 axis = 0)
 
-    def _start_sim(self, goal_oriented=False, render=False):
+    def _start_sim(self, goal_oriented=False, render_bool=False):
         self.mode = 'sim'
-        if render:
+        if render_bool:
             self.physics_client = p.connect(p.GUI)
         else:
             self.physics_client = p.connect(p.DIRECT)
-        self.render = render
+        self.render_bool = render_bool
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         self.goal_oriented = goal_oriented
         if self.goal_oriented:
@@ -360,8 +360,8 @@ class ReplabEnv(gym.Env):
             self.__dict__.update(state)
         elif state['mode'] == 'sim':
             self.__dict__.update(state)
-            if state['render']:
-                self._start_sim(goal_oriented=state['goal_oriented'], render=False)
+            if state['render_bool']:
+                self._start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
             else:
-                self._start_sim(goal_oriented=state['goal_oriented'], render=state['render'])
+                self._start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
         self.reset()

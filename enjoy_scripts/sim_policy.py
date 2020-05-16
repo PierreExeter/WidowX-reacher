@@ -6,13 +6,25 @@ import joblib
 import uuid
 from rlkit.core import logger
 
+# pierre
+import gym
+import gym_replab
+from rlkit.envs.wrappers import NormalizedBoxEnv
+
 filename = str(uuid.uuid4())
 
 
 def simulate_policy(args):
     data = joblib.load(args.file)
     policy = data['policy']
+
+    # pierre
     env = data['env']
+    # env = gym.make('replab-v0')._start_sim(goal_oriented=False, render_bool=True)
+    # env.action_space.low *= 10
+    # env.action_space.high *= 10
+    # env = NormalizedBoxEnv(env)
+
     print("Policy loaded")
     if args.gpu:
         set_gpu_mode(True)
@@ -24,12 +36,13 @@ def simulate_policy(args):
             env,
             policy,
             max_path_length=args.H,
-            animated=True,
+            animated=False,
         )
-        # print(path)  # added by Pierre
         if hasattr(env, "log_diagnostics"):
             env.log_diagnostics([path])
+        print("dump to logger: don't work")
         logger.dump_tabular()
+        print("mean reward: ", path['rewards'].mean())
 
 
 if __name__ == "__main__":

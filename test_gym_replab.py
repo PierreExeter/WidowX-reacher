@@ -2,7 +2,7 @@ import gym
 import time
 import gym_replab
 
-env = gym.make('replab-v0')._start_sim(goal_oriented=False, render=True)
+env = gym.make('replab-v0')._start_sim(goal_oriented=False, render_bool=True)
 
 print("Action space: ", env.action_space)
 print(env.action_space.high)
@@ -28,7 +28,7 @@ for episode in range(3):
         print("timestep: ", t)
 
         rewards.append(reward)
-        # time.sleep(1./30.) 
+        time.sleep(1./30.) 
 
     cumulative_reward = sum(rewards)
     print("episode {} | cumulative reward : {}".format(episode, cumulative_reward))  
