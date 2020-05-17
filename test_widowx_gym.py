@@ -1,8 +1,8 @@
 import gym
 import time
-import gym_replab
+import widowx_original
 
-env = gym.make('replab-v0')._start_sim(goal_oriented=False, render_bool=True)
+env = gym.make('widowx_reach-v0')._start_sim(goal_oriented=False, render_bool=True)
 
 print("Action space: ", env.action_space)
 print(env.action_space.high)
