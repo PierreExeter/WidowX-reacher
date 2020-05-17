@@ -92,7 +92,9 @@ class WidowxEnv(gym.Env):
 
         info = {}
         info['total_distance'] = total_distance_from_goal
-        info['goal position'] = self.goal  # added by Pierre
+        info['goal position'] = self.goal              # added by Pierre
+        info['tip position'] = self.current_pos[:3]    # added by Pierre
+        info['joint position'] = self.current_pos[3:]  # added by Pierre
 
         if reward > -0.0001:
             episode_over = True
