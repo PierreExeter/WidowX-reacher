@@ -1,0 +1,11 @@
+{
+  "algo_kwargs": {
+    "batch_size": 100,
+    "discount": 0.99,
+    "max_path_length": 1000,
+    "num_epochs": 2,
+    "num_steps_per_epoch": 5000,
+    "num_steps_per_eval": 1000,
+    "replay_buffer_size": 1000000
+  }
+}

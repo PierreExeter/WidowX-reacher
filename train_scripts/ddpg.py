@@ -6,7 +6,7 @@ All modifiable parameters are in this script, including the sizes of the Q-netwo
 of epochs, discount factor, etc. 
 """
 import gym
-import gym_replab
+import widowx_pybullet
 from rlkit.envs.wrappers import NormalizedBoxEnv
 from rlkit.exploration_strategies.base import (
     PolicyWrappedWithExplorationStrategy
@@ -19,9 +19,10 @@ import rlkit.torch.pytorch_util as ptu
 
 
 def experiment(variant):
-    env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
+    # env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
     #SIM
     #env = gym.make('replab-v0')._start_sim(goal_oriented=False, render=False)
+    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=False)
     env = NormalizedBoxEnv(env)
     es = GaussianStrategy(action_space=env.action_space)
     obs_dim = env.observation_space.low.size
@@ -55,7 +56,7 @@ if __name__ == "__main__":
     # noinspection PyTypeChecker
     variant = dict(
         algo_params=dict(
-            num_epochs=50,
+            num_epochs=3000, #50,
             num_steps_per_epoch=5000,
             num_steps_per_eval=1000,
             use_soft_update=True,
@@ -67,6 +68,6 @@ if __name__ == "__main__":
             policy_learning_rate=1e-4,
         ),
     )
-    ptu.set_gpu_mode(True)  # optionally set the GPU (default=False)
+    ptu.set_gpu_mode(False)  # optionally set the GPU (default=False)
     setup_logger('DDPG_Experiment', variant=variant)
     experiment(variant)

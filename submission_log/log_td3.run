@@ -1,0 +1,168 @@
+doodad not detected
+Not a valid git repo: /ichec/home/users/pierre/pierreExeter_github/rlkit/rlkit/..
+2020-05-17 22:12:25.022980 IST | Variant:
+2020-05-17 22:12:25.023526 IST | {
+  "algo_kwargs": {
+    "num_steps_per_eval": 1000,
+    "replay_buffer_size": 1000000,
+    "batch_size": 100,
+    "num_epochs": 2,
+    "discount": 0.99,
+    "num_steps_per_epoch": 5000,
+    "max_path_length": 1000
+  }
+}
+pybullet build time: May 16 2020 18:16:17
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_link********goal is : *********** [ 0.0605025   0.08831581  0.2676654 ]
+[33mWARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.[0m
+[33mWARN: gym.spaces.Box autodetected dtype as <class 'numpy.float32'>. Please provide explicit dtype.[0m
+2020-05-17 22:12:29.745302 IST | [TD3_Experiment_2020_05_17_22_12_25_0000--s-0] Iteration #0 | Collecting samples for evaluation
+---------------------------  --------------
+QF1 Loss                        0.00138966
+QF2 Loss                        0.00142578
+Policy Loss                     0.0554289
+Q1 Predictions Mean            -0.0031571
+Q1 Predictions Std              0.000831995
+Q1 Predictions Max             -0.00046462
+Q1 Predictions Min             -0.00460708
+Q2 Predictions Mean            -0.00248397
+Q2 Predictions Std              0.00044827
+Q2 Predictions Max             -0.00126252
+Q2 Predictions Min             -0.00362843
+Q Targets Mean                 -0.0373325
+Q Targets Std                   0.014691
+Q Targets Max                  -0.00993609
+Q Targets Min                  -0.067922
+Bellman Errors 1 Mean           0.00138966
+Bellman Errors 1 Std            0.00104877
+Bellman Errors 1 Max            0.00430961
+Bellman Errors 1 Min            4.93324e-05
+Bellman Errors 2 Mean           0.00142578
+Bellman Errors 2 Std            0.00104371
+Bellman Errors 2 Max            0.00423056
+Bellman Errors 2 Min            7.0698e-05
+Policy Action Mean             -0.000997289
+Policy Action Std               0.00516149
+Policy Action Max               0.0115091
+Policy Action Min              -0.00792158
+Test Rewards Mean              -0.00739437
+Test Rewards Std                0.00126346
+Test Rewards Max               -0.00246041
+Test Rewards Min               -0.019507
+Test Returns Mean              -7.39437
+Test Returns Std                0
+Test Returns Max               -7.39437
+Test Returns Min               -7.39437
+Test Actions Mean               0.0099402
+Test Actions Std                0.0286975
+Test Actions Max                0.0350515
+Test Actions Min               -0.0383941
+Num Paths                       5
+Exploration Rewards Mean       -0.0346125
+Exploration Rewards Std         0.0137583
+Exploration Rewards Max        -0.00620251
+Exploration Rewards Min        -0.0676603
+Exploration Returns Mean      -34.6125
+Exploration Returns Std         7.61896
+Exploration Returns Max       -24.1585
+Exploration Returns Min       -45.0152
+Exploration Actions Mean       -0.00106688
+Exploration Actions Std         0.1005
+Exploration Actions Max         0.371192
+Exploration Actions Min        -0.459098
+Final total_distance Mean       0.0859713
+Final total_distance Std        0
+Final total_distance Max        0.0859713
+Final total_distance Min        0.0859713
+AverageReturn                  -7.39437
+Number of train steps total     1
+Number of env steps total    5000
+Number of rollouts total        5
+Train Time (s)                  0.223772
+(Previous) Eval Time (s)        0
+Sample Time (s)                 3.61364
+Epoch Time (s)                  3.83742
+Total Train Time (s)            5.21615
+Epoch                           0
+---------------------------  --------------
+2020-05-17 22:12:30.561097 IST | [TD3_Experiment_2020_05_17_22_12_25_0000--s-0] Iteration #0 | Epoch Duration: 5.280574083328247
+2020-05-17 22:12:30.561454 IST | [TD3_Experiment_2020_05_17_22_12_25_0000--s-0] Iteration #0 | Started Training: True
+2020-05-17 22:22:11.117280 IST | [TD3_Experiment_2020_05_17_22_12_25_0000--s-0] Iteration #1 | Collecting samples for evaluation
+---------------------------  ---------------
+QF1 Loss                         0.000508375
+QF2 Loss                         0.000525638
+Policy Loss                      0.0612151
+Q1 Predictions Mean             -0.0556283
+Q1 Predictions Std               0.00141619
+Q1 Predictions Max              -0.0512843
+Q1 Predictions Min              -0.0579371
+Q2 Predictions Mean             -0.056226
+Q2 Predictions Std               0.000614298
+Q2 Predictions Max              -0.0550354
+Q2 Predictions Min              -0.0580992
+Q Targets Mean                  -0.0379116
+Q Targets Std                    0.0137113
+Q Targets Max                   -0.0127701
+Q Targets Min                   -0.069144
+Bellman Errors 1 Mean            0.000508375
+Bellman Errors 1 Std             0.000525063
+Bellman Errors 1 Max             0.00189334
+Bellman Errors 1 Min             1.88317e-08
+Bellman Errors 2 Mean            0.000525638
+Bellman Errors 2 Std             0.000536221
+Bellman Errors 2 Max             0.00205473
+Bellman Errors 2 Min             3.08101e-11
+Policy Action Mean               0.0105108
+Policy Action Std                0.0296032
+Policy Action Max                0.0399123
+Policy Action Min               -0.0395976
+Test Rewards Mean               -0.00253338
+Test Rewards Std                 0.00018438
+Test Rewards Max                -0.00108747
+Test Rewards Min                -0.00768798
+Test Returns Mean               -2.53338
+Test Returns Std                 0
+Test Returns Max                -2.53338
+Test Returns Min                -2.53338
+Test Actions Mean               -0.0553105
+Test Actions Std                 0.418198
+Test Actions Max                 0.999807
+Test Actions Min                -0.68676
+Num Paths                        5
+Exploration Rewards Mean        -0.00671882
+Exploration Rewards Std          0.0077501
+Exploration Rewards Max         -0.000357195
+Exploration Rewards Min         -0.0516221
+Exploration Returns Mean        -6.71882
+Exploration Returns Std          5.09288
+Exploration Returns Max         -2.17646
+Exploration Returns Min        -15.2975
+Exploration Actions Mean         0.00039842
+Exploration Actions Std          0.561567
+Exploration Actions Max          1
+Exploration Actions Min         -1
+Final total_distance Mean        0.0503823
+Final total_distance Std         0
+Final total_distance Max         0.0503823
+Final total_distance Min         0.0503823
+AverageReturn                   -2.53338
+Number of train steps total   5001
+Number of env steps total    10000
+Number of rollouts total        10
+Train Time (s)                 576.667
+(Previous) Eval Time (s)         1.38448
+Sample Time (s)                  3.74048
+Epoch Time (s)                 581.792
+Total Train Time (s)           586.439
+Epoch                            1
+---------------------------  ---------------
+2020-05-17 22:22:11.927647 IST | [TD3_Experiment_2020_05_17_22_12_25_0000--s-0] Iteration #1 | Epoch Duration: 581.3658559322357
+2020-05-17 22:22:11.927998 IST | [TD3_Experiment_2020_05_17_22_12_25_0000--s-0] Iteration #1 | Started Training: True

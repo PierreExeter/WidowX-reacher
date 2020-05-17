@@ -6,7 +6,7 @@ All modifiable parameters are in this script, including the sizes of the Q-netwo
 of epochs, discount factor, etc. 
 """
 import gym
-import gym_replab
+import widowx_pybullet
 from rlkit.envs.wrappers import NormalizedBoxEnv
 import rlkit.torch.pytorch_util as ptu
 from rlkit.data_management.obs_dict_replay_buffer import ObsDictRelabelingBuffer
@@ -22,9 +22,10 @@ from rlkit.torch.networks import FlattenMlp, TanhMlpPolicy
 
 
 def experiment(variant):
-    env = gym.make('replab-v0')._start_rospy(goal_oriented=True)
+    # env = gym.make('replab-v0')._start_rospy(goal_oriented=True)
     #SIM
-    #env = gym.make('replab-v0')._start_sim(goal_oriented=True, render=False)
+    # env = gym.make('replab-v0')._start_sim(goal_oriented=True, render=False)
+    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=True, render_bool=False)
     env = NormalizedBoxEnv(env)
     es = GaussianAndEpislonStrategy(
         action_space=env.action_space,
@@ -80,7 +81,7 @@ def experiment(variant):
 if __name__ == "__main__":
     variant = dict(
         algo_kwargs=dict(
-            num_epochs=100,
+            num_epochs=3000, #100,
             num_steps_per_epoch=1000,
             num_steps_per_eval=1000,
             max_path_length=50,
@@ -93,6 +94,6 @@ if __name__ == "__main__":
             fraction_goals_env_goals=0.25,
         ),
     )
-    ptu.set_gpu_mode(True)
+    ptu.set_gpu_mode(False)
     setup_logger('Her_TD3_Fetch_Experiment', variant=variant)
     experiment(variant)

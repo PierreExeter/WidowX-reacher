@@ -6,7 +6,7 @@ All modifiable parameters are in this script, including the sizes of the Q-netwo
 of epochs, discount factor, etc. 
 """
 import gym
-import gym_replab
+import widowx_pybullet
 import rlkit.torch.pytorch_util as ptu
 from rlkit.envs.wrappers import NormalizedBoxEnv
 from rlkit.exploration_strategies.base import \
@@ -21,7 +21,7 @@ def experiment(variant):
     #Robot 
     # env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
     #SIM
-    env = gym.make('replab-v0')._start_sim(goal_oriented=False, render_bool=False)
+    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=False)
     env.action_space.low *= 10
     env.action_space.high *= 10
     env = NormalizedBoxEnv(env)
@@ -66,7 +66,7 @@ def experiment(variant):
 if __name__ == "__main__":
     variant = dict(
         algo_kwargs=dict(
-            num_epochs=10, #50,
+            num_epochs=3000, #50,
             num_steps_per_epoch=5000,
             num_steps_per_eval=1000,
             max_path_length=1000,

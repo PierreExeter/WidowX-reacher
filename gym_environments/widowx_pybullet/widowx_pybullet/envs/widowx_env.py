@@ -332,10 +332,9 @@ class WidowxEnv(gym.Env):
         return state
 
     def __setstate__(self, state):
-        if state['mode'] == 'sim':
-            self.__dict__.update(state)
-            if state['render_bool']:
-                self._start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
-            else:
-                self._start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
+        self.__dict__.update(state)
+        if state['render_bool']:
+            self._start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
+        else:
+            self._start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
         self.reset()
