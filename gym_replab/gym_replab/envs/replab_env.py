@@ -330,6 +330,7 @@ class ReplabEnv(gym.Env):
         path = os.path.abspath(os.path.dirname(__file__))
         self.arm = p.loadURDF(os.path.join(path, "URDFs/widowx/widowx.urdf"), useFixedBase=True)
         self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"), useFixedBase=True)      # added by Pierre
+        self.plane = p.loadURDF('plane.urdf')   # added by Pierre
         self.reset()
         return self
 
