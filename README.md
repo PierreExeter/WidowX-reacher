@@ -19,17 +19,16 @@ conda activate rlkit
 
 3. Install the custom Gym environments
 
-- widowx_reach-v0   # environment for both the physical arm and the Pybullet simulation
-- widowx_reach-v1   # environment for the Pybullet simulation only 
-- widowx_reach-v2   # environment for the physical arm only 
-
 ```bash
+# install widowx_reach-v0 (environment for both the physical arm and the Pybullet simulation)
 cd gym_environments/widowx_original/
 pip install -e .
 cd ..
+# install widowx_reach-v1 (environment for the Pybullet simulation only. ROS install not required) 
 cd gym_environments/widowx_pybullet/
 pip install -e .
 cd ..
+# install widowx_reach-v2 (environment for the physical arm only)
 cd gym_environments/widowx_physical/
 pip install -e .
 cd ..
