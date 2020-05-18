@@ -82,6 +82,14 @@ python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020
 python enjoy_scripts/simple_sim_policy.py
 ```
 
+To log each timestep stats and plot the goal and tip position
+```bash
+python tests/3_test_episode_plotter_logger.py
+```
+
+![Alt text](/docs/images/widowx_plot2d.gif?raw=true "plot 2D")
+![Alt text](/docs/images/widowx_plot3d.gif?raw=true "plot 3D")
+
 # Tested on
 
 - ROS Melodic
