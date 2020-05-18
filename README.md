@@ -2,9 +2,7 @@
 Training the WidowX robotic arm to reach a target position with reinforcement learning.
 The Gym environments are adapted from [Replab](https://github.com/bhyang/replab).
 
-
 ![Alt text](/docs/images/widowx_pybullet.gif?raw=true "The Widowx Gym environment in Pybullet")
-
 
 ## Installation
 
