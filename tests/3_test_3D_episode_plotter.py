@@ -21,17 +21,20 @@ print(env.observation_space.low)
 d = {}
 output = pd.DataFrame()
 
+count = 0
+
 for episode in range(3):
     obs = env.reset()             
     rewards = []
     
-    for t in range(20):
+    for t in range(2000):
         action = env.action_space.sample()  
         obs, reward, done, info = env.step(action) 
 
         # d = info['']
         d['goal position'] = np.array(info['goal position'])
         d['joint position'] = np.array(info['joint position'])
+        d['tip position'] = np.array(info['tip position'])
         d['total_distance'] = np.array(info['total_distance'])
         d['action'] = np.array(action)
         d['obs'] = np.array(obs)
@@ -43,9 +46,12 @@ for episode in range(3):
         # print("obs type", d['obs'].dtype)
         # print("obs", obs)
 
+
         output = output.append(d, ignore_index=True)
-        output.to_csv("res_episode_"+str(episode)+".csv", index=False)
+        # output.to_csv("res_episode_"+str(episode)+".csv", index=False)
         output.to_pickle("res_episode_"+str(episode)+".pkl")
+        print(count)
+        count += 1
 
         rewards.append(reward)
         # time.sleep(1./30.) 
