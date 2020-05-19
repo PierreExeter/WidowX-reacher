@@ -1,0 +1,252 @@
+MountainCarContinuous-v0:
+  n_timesteps: 300000
+  policy: 'MlpPolicy'
+  noise_type: 'ornstein-uhlenbeck'
+  noise_std: 0.5
+
+Pendulum-v0:
+  n_timesteps: 100000
+  policy: 'MlpPolicy'
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 1000
+
+LunarLanderContinuous-v2:
+  n_timesteps: !!float 3e5
+  policy: 'MlpPolicy'
+  batch_size: 256
+  learning_starts: 1000
+  noise_type: 'ornstein-uhlenbeck'
+  noise_std: 0.1
+
+HalfCheetah-v2:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+HalfCheetahBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+BipedalWalker-v3:
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+# To be tuned
+BipedalWalkerHardcore-v3:
+  n_timesteps: !!float 5e7
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.2
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+AntBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.2
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+HopperBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.2
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+Walker2DBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  noise_std_final: 0.05
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+HumanoidBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 2e7
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+  
+ReacherBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+InvertedDoublePendulumBulletEnv-v0:
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+InvertedPendulumSwingupBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+MinitaurBulletEnv-v0:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+
+# ReachingJaco-v1:
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+#   n_timesteps: !!float 1e6
+#   policy: 'MlpPolicy'
+#   gamma: 0.99
+#   buffer_size: 1000000
+#   noise_type: 'normal'
+#   noise_std: 0.1
+#   learning_starts: 10000
+#   batch_size: 100
+#   learning_rate: !!float 1e-3
+#   train_freq: 1000
+#   gradient_steps: 1000
+#   policy_kwargs: "dict(layers=[400, 300])"
+
+
+# tuned with 0.1M steps and 10 trials
+ReachingJaco-v1:
+  batch_size: 32
+  buffer_size: 1000000
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  gamma: 0.99
+  gradient_steps: 2000
+  learning_rate: 0.0006584970818505349
+  learning_starts: 10000
+  n_timesteps: 1000000.0
+  noise_std: 0.9883738380592262
+  noise_type: normal
+  policy: MlpPolicy
+  policy_kwargs: dict(layers=[400, 300])
+  train_freq: 2000
+
+
+widowx_reach-v3:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
+
+
+

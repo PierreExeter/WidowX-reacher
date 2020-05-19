@@ -1,0 +1,2 @@
+mean reward,std reward (seed),std reward (eval),mean train walltime (s),std train walltime (s),mean success ratio,std success ratio,mean reach time,std reach time
+-0.6744603688130155,0.04156483790535941,0.0,24.703731060028076,0.6408310304905582,0.0,0.0,,
