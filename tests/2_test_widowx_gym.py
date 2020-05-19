@@ -4,12 +4,15 @@ import widowx_original
 import widowx_pybullet
 import widowx_physical
 import widowx_pybullet_no_start_sim
+import widowx_pybullet_no_start_sim_goal_oriented
 
 # env = gym.make('widowx_reach-v0')._start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reach-v2')._start_rospy(goal_oriented=False)   # requires a roscore to be running
 env = gym.make('widowx_reach-v3')   
+# env = gym.make('widowx_reach-v4')   
 
+# comment this when using widowx_reach-v4 (observation is a dict)
 print("Action space: ", env.action_space)
 print(env.action_space.high)
 print(env.action_space.low)
@@ -22,7 +25,7 @@ for episode in range(3):
     obs = env.reset()             
     rewards = []
     
-    for t in range(2000):
+    for t in range(102):
         action = env.action_space.sample()  
         obs, reward, done, info = env.step(action) 
 

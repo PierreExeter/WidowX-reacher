@@ -81,8 +81,8 @@ class WidowxEnv(gym.Env):
 
     # def _start_sim(self, goal_oriented=False, render_bool=False):
         # REPLACE START_SIM: added by Pierre
-        self.goal_oriented = False
-        self.render_bool = True
+        self.goal_oriented = True
+        self.render_bool = False
 
         if self.render_bool:
             self.physics_client = p.connect(p.GUI)
@@ -99,8 +99,8 @@ class WidowxEnv(gym.Env):
                     :3], high=self.obs_space_high[:3], dtype=np.float32),
                 observation=self.observation_space
             ))
-        # p.resetSimulation()
-        # p.setTimeStep(0.01)
+        #p.resetSimulation()
+        #p.setTimeStep(0.01)
         path = os.path.abspath(os.path.dirname(__file__))
         self.arm = p.loadURDF(os.path.join(path, "URDFs/widowx/widowx.urdf"), useFixedBase=True)
         self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"), useFixedBase=True)      # added by Pierre

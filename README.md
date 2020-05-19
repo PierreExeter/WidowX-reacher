@@ -32,6 +32,14 @@ cd ..
 cd gym_environments/widowx_physical/
 pip install -e .
 cd ..
+# install widowx_reach-v3 (environment for the Pybullet simulation + no start_sim required)
+cd gym_environments/widowx_pybullet_no_start_sim/
+pip install -e .
+cd ..
+# install widowx_reach-v4 (environment for the Pybullet simulation + no start_sim required + goal_oriented = True)
+cd gym_environments/widowx_pybullet_no_start_sim_goal_oriented/
+pip install -e .
+cd ..
 ```
 
 4. Install the local [Rlkit](https://github.com/vitchyr/rlkit) repository
