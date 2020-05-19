@@ -3,10 +3,12 @@ import time
 import widowx_original
 import widowx_pybullet
 import widowx_physical
+import widowx_pybullet_no_start_sim
 
 # env = gym.make('widowx_reach-v0')._start_sim(goal_oriented=False, render_bool=True)
-env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
+# env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reach-v2')._start_rospy(goal_oriented=False)   # requires a roscore to be running
+env = gym.make('widowx_reach-v3')   
 
 print("Action space: ", env.action_space)
 print(env.action_space.high)
