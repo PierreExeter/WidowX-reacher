@@ -2,7 +2,7 @@ import pickle
 import joblib
 
 
-path = 'rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_15_29_53_0000--s-0/'
+path = 'rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_18_17_23_56_0000--s-0/'
 
 input_file = path+'params.pkl'
 output_file = path+'cleaned_params.pkl'

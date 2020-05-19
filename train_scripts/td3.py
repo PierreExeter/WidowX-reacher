@@ -66,7 +66,7 @@ def experiment(variant):
 if __name__ == "__main__":
     variant = dict(
         algo_kwargs=dict(
-            num_epochs=3000, #50,
+            num_epochs=10, #50,
             num_steps_per_epoch=5000,
             num_steps_per_eval=1000,
             max_path_length=1000,
@@ -75,6 +75,6 @@ if __name__ == "__main__":
             replay_buffer_size=int(1E6),
         ),
     )
-    ptu.set_gpu_mode(False)  # optionally set the GPU (default=False)
+    ptu.set_gpu_mode(True)  # optionally set the GPU (default=False)
     setup_logger('TD3_Experiment', variant=variant)
     experiment(variant)

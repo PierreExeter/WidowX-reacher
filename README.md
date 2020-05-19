@@ -67,21 +67,28 @@ python train_scripts/td3.py
 python viskit/viskit/frontend.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_10_35_20000--s-0/
 ```
 
+python viskit/viskit/frontend.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_17_22_42_12_0000--s-0/
+
+
 ## Evaluate a trained policy
 
 ```bash
 python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_10_35_26_0000--s-0/params.pkl
 ```
 
+python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_17_01_07_10_0000--s-0/params.pkl
+
+
+
 ## Visualise a trained policy
 
 ```bash
-python enjoy_scripts/save_clean_pickle.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_10_35_26_0000--s-0/params.pkl
+python enjoy_scripts/save_clean_pickle.py 
 python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_15_29_53_0000--s-0/cleaned_params.pkl
 python enjoy_scripts/simple_sim_policy.py
 ```
 
-To log each timestep stats and plot the goal and tip position
+To log each timestep stats and plot the goal and tip position while evaluating the policy (slow):
 ```bash
 python tests/3_test_episode_plotter_logger.py
 ```

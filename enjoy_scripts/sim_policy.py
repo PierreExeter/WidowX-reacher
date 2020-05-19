@@ -1,6 +1,7 @@
 from rlkit.samplers.util import rollout
 from rlkit.torch.core import PyTorchModule
 from rlkit.torch.pytorch_util import set_gpu_mode
+from rlkit.core.eval_util import get_generic_path_information     # added by Pierre
 import argparse
 import joblib
 import uuid
@@ -8,7 +9,7 @@ from rlkit.core import logger
 
 # pierre
 import gym
-import gym_replab
+import widowx_pybullet
 from rlkit.envs.wrappers import NormalizedBoxEnv
 
 filename = str(uuid.uuid4())
@@ -19,11 +20,11 @@ def simulate_policy(args):
     policy = data['policy']
 
     # pierre
-    env = data['env']
-    # env = gym.make('replab-v0')._start_sim(goal_oriented=False, render_bool=True)
-    # env.action_space.low *= 10
-    # env.action_space.high *= 10
-    # env = NormalizedBoxEnv(env)
+    # env = data['env']
+    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
+    env.action_space.low *= 10
+    env.action_space.high *= 10
+    env = NormalizedBoxEnv(env)
 
     print("Policy loaded")
     if args.gpu:
@@ -41,6 +42,10 @@ def simulate_policy(args):
         if hasattr(env, "log_diagnostics"):
             env.log_diagnostics([path])
         print("dump to logger: don't work")
+        
+        for k, v in get_generic_path_information("log_eval").items():
+            logger.record_tabular(k, v)
+
         logger.dump_tabular()
         print("mean reward: ", path['rewards'].mean())
 
