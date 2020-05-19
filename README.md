@@ -13,7 +13,14 @@ This is only required if training the physical arm.
 2. Install and activate the Conda environment
 
 ```bash
-conda env create -f environment.yml
+# train with Rlkit
+conda env create -f environment_rlkit.yml
+conda activate rlkit
+```
+OR
+```bash
+# train with Stable Baselines
+conda env create -f environment_sb.yml
 conda activate rlkit
 ```
 
