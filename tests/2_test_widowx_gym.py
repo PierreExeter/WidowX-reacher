@@ -1,10 +1,10 @@
 import gym
 import time
-import widowx_original
-import widowx_pybullet
-import widowx_physical
+# import widowx_original
+# import widowx_pybullet
+# import widowx_physical
 import widowx_pybullet_no_start_sim
-import widowx_pybullet_no_start_sim_goal_oriented
+# import widowx_pybullet_no_start_sim_goal_oriented
 
 # env = gym.make('widowx_reach-v0')._start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)

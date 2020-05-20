@@ -12,7 +12,7 @@ from collections import OrderedDict
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
 warnings.filterwarnings("ignore", category=UserWarning, module='gym')
 
-import gym, widowx_pybullet_no_start_sim, widowx_pybullet_no_start_sim_goal_oriented
+import gym, widowx_pybullet_no_start_sim
 import numpy as np
 import yaml
 # Optional dependencies

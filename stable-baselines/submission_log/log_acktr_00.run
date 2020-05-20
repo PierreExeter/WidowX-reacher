@@ -1,0 +1,1209 @@
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n359
+  Local device: hfi1_0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+Warning: Open MPI has detected that you are running in an environment with CUDA
+devices present and that you are using Intel(r) Ompi-Path networking. However,
+the environment variable PSM2_CUDA was not set, meaning that the PSM2 Omni-Path
+networking library was not told how to handle CUDA support.
+
+If your application uses CUDA buffers, you should set the environment variable
+PSM2_CUDA to 1; otherwise, set it to 0. Setting the variable to the wrong value
+can have performance implications on your application, or even cause it to
+crash.
+
+Since it was not set, Open MPI has defaulted to setting the PSM2_CUDA
+environment variable to 1.
+
+Local hostname: n359
+--------------------------------------------------------------------------
+/ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:541: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:542: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:543: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:544: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:545: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorboard/compat/tensorflow_stub/dtypes.py:550: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+pybullet build time: May 18 2020 02:46:26
+b3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+gripper_aux_linkb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+No inertial data for link, using mass=1, localinertiadiagonal = 1,1,1, identity local inertial frameb3Warning[examples/Importers/ImportURDFDemo/BulletUrdfImporter.cpp,126]:
+base_linkWARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/policies.py:116: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/policies.py:561: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:Entity <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x7f999637acc0>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x7f999637acc0>>: AttributeError: module 'gast' has no attribute 'Num'
+WARNING:tensorflow:Entity <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x7f99941c29e8>> could not be transformed and will be executed as-is. Please report this to the AutgoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: converting <bound method Flatten.call of <tensorflow.python.layers.core.Flatten object at 0x7f99941c29e8>>: AttributeError: module 'gast' has no attribute 'Num'
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/acktr/acktr.py:182: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/math_grad.py:1205: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/acktr/acktr.py:224: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/acktr/kfac.py:973: The name tf.train.MomentumOptimizer is deprecated. Please use tf.compat.v1.train.MomentumOptimizer instead.
+
+========== widowx_reach-v3 ==========
+Seed: 0
+OrderedDict([('ent_coef', 0.0),
+             ('gamma', 0.99),
+             ('learning_rate', 0.06),
+             ('lr_schedule', 'constant'),
+             ('n_envs', 8),
+             ('n_steps', 16),
+             ('n_timesteps', 2000000.0),
+             ('normalize', True),
+             ('policy', 'MlpPolicy')])
+Using 8 environments
+Overwriting n_timesteps with n=1000000
+********goal is : *********** [0.01366778 0.05594924 0.33835924]
+********goal is : *********** [-0.02323384  0.05728437  0.26001487]
+********goal is : *********** [-0.01792143 -0.12325918  0.33145612]
+********goal is : *********** [0.01422341 0.05411843 0.29781762]
+********goal is : *********** [0.13076835 0.01228038 0.38644897]
+********goal is : *********** [-0.07784191  0.0963904   0.28687349]
+********goal is : *********** [ 0.11000084 -0.04368525  0.36675979]
+********goal is : *********** [-0.11863368  0.07277889  0.3169932 ]
+Normalizing input and reward
+TRAINING ENV TYPE 000:  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f99963700f0>
+Creating test environment
+TRAINING ENV TYPE 111:  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f99963700f0>
+********goal is : *********** [0.01366778 0.05594924 0.33835924]
+Normalization activated: {'norm_reward': False}
+PIERRE - CREATE ENV FROM EVALCALLBACK: <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f999637a208>
+********goal is : *********** [0.01366778 0.05594924 0.33835924]
+Normalization activated: {'norm_reward': False}
+TRAINING ENV TYPE 444:  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f99963700f0>
+Log path: logs/train_1M_widowx_reach-v3/acktr/widowx_reach-v3_1
+---------------------------------
+| explained_variance | 0.0223   |
+| fps                | 110      |
+| nupdates           | 1        |
+| policy_entropy     | 8.51     |
+| policy_loss        | -0.167   |
+| total_timesteps    | 128      |
+| value_loss         | 10.7     |
+---------------------------------
+Eval num_timesteps=10000, episode_reward=-0.77 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -2.02    |
+| explained_variance | -0.752   |
+| fps                | 2327     |
+| nupdates           | 100      |
+| policy_entropy     | 8.45     |
+| policy_loss        | -0.0553  |
+| total_timesteps    | 12800    |
+| value_loss         | 0.547    |
+---------------------------------
+Eval num_timesteps=20000, episode_reward=-0.66 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.58    |
+| explained_variance | 0.0745   |
+| fps                | 2611     |
+| nupdates           | 200      |
+| policy_entropy     | 8.47     |
+| policy_loss        | 0.0315   |
+| total_timesteps    | 25600    |
+| value_loss         | 0.252    |
+---------------------------------
+Eval num_timesteps=30000, episode_reward=-0.74 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.86    |
+| explained_variance | -6.11    |
+| fps                | 2672     |
+| nupdates           | 300      |
+| policy_entropy     | 8.48     |
+| policy_loss        | 0.0967   |
+| total_timesteps    | 38400    |
+| value_loss         | 0.726    |
+---------------------------------
+Eval num_timesteps=40000, episode_reward=-0.76 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=50000, episode_reward=-0.69 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.53    |
+| explained_variance | -0.237   |
+| fps                | 2684     |
+| nupdates           | 400      |
+| policy_entropy     | 8.47     |
+| policy_loss        | 0.345    |
+| total_timesteps    | 51200    |
+| value_loss         | 0.102    |
+---------------------------------
+Eval num_timesteps=60000, episode_reward=-0.95 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.55    |
+| explained_variance | -0.895   |
+| fps                | 2740     |
+| nupdates           | 500      |
+| policy_entropy     | 8.49     |
+| policy_loss        | -0.0615  |
+| total_timesteps    | 64000    |
+| value_loss         | 0.42     |
+---------------------------------
+Eval num_timesteps=70000, episode_reward=-0.49 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.47    |
+| explained_variance | 0.0173   |
+| fps                | 2777     |
+| nupdates           | 600      |
+| policy_entropy     | 8.49     |
+| policy_loss        | -0.0358  |
+| total_timesteps    | 76800    |
+| value_loss         | 0.226    |
+---------------------------------
+Eval num_timesteps=80000, episode_reward=-0.49 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.5     |
+| explained_variance | -0.489   |
+| fps                | 2805     |
+| nupdates           | 700      |
+| policy_entropy     | 8.46     |
+| policy_loss        | 0.0504   |
+| total_timesteps    | 89600    |
+| value_loss         | 0.291    |
+---------------------------------
+Eval num_timesteps=90000, episode_reward=-0.49 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=100000, episode_reward=-0.92 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.5     |
+| explained_variance | -0.125   |
+| fps                | 2795     |
+| nupdates           | 800      |
+| policy_entropy     | 8.45     |
+| policy_loss        | -0.122   |
+| total_timesteps    | 102400   |
+| value_loss         | 0.238    |
+---------------------------------
+Eval num_timesteps=110000, episode_reward=-0.74 +/- 0.19
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.57    |
+| explained_variance | -0.194   |
+| fps                | 2815     |
+| nupdates           | 900      |
+| policy_entropy     | 8.45     |
+| policy_loss        | 0.147    |
+| total_timesteps    | 115200   |
+| value_loss         | 0.26     |
+---------------------------------
+Eval num_timesteps=120000, episode_reward=-0.95 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.47    |
+| explained_variance | 0.288    |
+| fps                | 2832     |
+| nupdates           | 1000     |
+| policy_entropy     | 8.47     |
+| policy_loss        | -0.0245  |
+| total_timesteps    | 128000   |
+| value_loss         | 0.264    |
+---------------------------------
+Eval num_timesteps=130000, episode_reward=-0.49 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=140000, episode_reward=-0.60 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.45    |
+| explained_variance | 0.121    |
+| fps                | 2823     |
+| nupdates           | 1100     |
+| policy_entropy     | 8.5      |
+| policy_loss        | 0.0188   |
+| total_timesteps    | 140800   |
+| value_loss         | 0.241    |
+---------------------------------
+Eval num_timesteps=150000, episode_reward=-1.14 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.45    |
+| explained_variance | 0.301    |
+| fps                | 2836     |
+| nupdates           | 1200     |
+| policy_entropy     | 8.5      |
+| policy_loss        | -0.218   |
+| total_timesteps    | 153600   |
+| value_loss         | 0.288    |
+---------------------------------
+Eval num_timesteps=160000, episode_reward=-0.65 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.48    |
+| explained_variance | -0.213   |
+| fps                | 2847     |
+| nupdates           | 1300     |
+| policy_entropy     | 8.51     |
+| policy_loss        | -0.28    |
+| total_timesteps    | 166400   |
+| value_loss         | 0.182    |
+---------------------------------
+Eval num_timesteps=170000, episode_reward=-0.87 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.55    |
+| explained_variance | -0.298   |
+| fps                | 2856     |
+| nupdates           | 1400     |
+| policy_entropy     | 8.52     |
+| policy_loss        | 0.163    |
+| total_timesteps    | 179200   |
+| value_loss         | 0.239    |
+---------------------------------
+Eval num_timesteps=180000, episode_reward=-3.98 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=190000, episode_reward=-0.75 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.82    |
+| explained_variance | -0.368   |
+| fps                | 2847     |
+| nupdates           | 1500     |
+| policy_entropy     | 8.54     |
+| policy_loss        | 0.0813   |
+| total_timesteps    | 192000   |
+| value_loss         | 0.469    |
+---------------------------------
+Eval num_timesteps=200000, episode_reward=-1.06 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.61    |
+| explained_variance | -0.297   |
+| fps                | 2846     |
+| nupdates           | 1600     |
+| policy_entropy     | 8.53     |
+| policy_loss        | 0.0862   |
+| total_timesteps    | 204800   |
+| value_loss         | 0.236    |
+---------------------------------
+Eval num_timesteps=210000, episode_reward=-1.09 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.7     |
+| explained_variance | -0.451   |
+| fps                | 2846     |
+| nupdates           | 1700     |
+| policy_entropy     | 8.5      |
+| policy_loss        | 0.0453   |
+| total_timesteps    | 217600   |
+| value_loss         | 0.47     |
+---------------------------------
+Eval num_timesteps=220000, episode_reward=-1.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=230000, episode_reward=-1.09 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.6     |
+| explained_variance | -0.175   |
+| fps                | 2837     |
+| nupdates           | 1800     |
+| policy_entropy     | 8.49     |
+| policy_loss        | -0.252   |
+| total_timesteps    | 230400   |
+| value_loss         | 0.226    |
+---------------------------------
+Eval num_timesteps=240000, episode_reward=-1.10 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.75    |
+| explained_variance | -1.3     |
+| fps                | 2843     |
+| nupdates           | 1900     |
+| policy_entropy     | 8.46     |
+| policy_loss        | -0.0456  |
+| total_timesteps    | 243200   |
+| value_loss         | 0.486    |
+---------------------------------
+Eval num_timesteps=250000, episode_reward=-1.52 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.72    |
+| explained_variance | -0.125   |
+| fps                | 2848     |
+| nupdates           | 2000     |
+| policy_entropy     | 8.44     |
+| policy_loss        | -0.00554 |
+| total_timesteps    | 256000   |
+| value_loss         | 0.25     |
+---------------------------------
+Eval num_timesteps=260000, episode_reward=-1.27 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.6     |
+| explained_variance | 0.232    |
+| fps                | 2853     |
+| nupdates           | 2100     |
+| policy_entropy     | 8.41     |
+| policy_loss        | -0.221   |
+| total_timesteps    | 268800   |
+| value_loss         | 0.25     |
+---------------------------------
+Eval num_timesteps=270000, episode_reward=-0.44 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=280000, episode_reward=-0.48 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.7     |
+| ep_reward_mean     | -1.53    |
+| explained_variance | 0.744    |
+| fps                | 2845     |
+| nupdates           | 2200     |
+| policy_entropy     | 8.4      |
+| policy_loss        | 0.189    |
+| total_timesteps    | 281600   |
+| value_loss         | 0.0853   |
+---------------------------------
+Eval num_timesteps=290000, episode_reward=-0.50 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.49    |
+| explained_variance | 0.887    |
+| fps                | 2849     |
+| nupdates           | 2300     |
+| policy_entropy     | 8.39     |
+| policy_loss        | 0.285    |
+| total_timesteps    | 294400   |
+| value_loss         | 0.0574   |
+---------------------------------
+Eval num_timesteps=300000, episode_reward=-0.59 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.75    |
+| explained_variance | 0.829    |
+| fps                | 2853     |
+| nupdates           | 2400     |
+| policy_entropy     | 8.37     |
+| policy_loss        | 0.229    |
+| total_timesteps    | 307200   |
+| value_loss         | 0.191    |
+---------------------------------
+Eval num_timesteps=310000, episode_reward=-0.52 +/- 0.01
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=320000, episode_reward=-0.45 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.46    |
+| explained_variance | 0.789    |
+| fps                | 2846     |
+| nupdates           | 2500     |
+| policy_entropy     | 8.37     |
+| policy_loss        | 0.149    |
+| total_timesteps    | 320000   |
+| value_loss         | 0.0507   |
+---------------------------------
+Eval num_timesteps=330000, episode_reward=-0.47 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.52    |
+| explained_variance | 0.83     |
+| fps                | 2850     |
+| nupdates           | 2600     |
+| policy_entropy     | 8.36     |
+| policy_loss        | -0.00634 |
+| total_timesteps    | 332800   |
+| value_loss         | 0.0461   |
+---------------------------------
+Eval num_timesteps=340000, episode_reward=-0.44 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.62    |
+| explained_variance | 0.728    |
+| fps                | 2854     |
+| nupdates           | 2700     |
+| policy_entropy     | 8.4      |
+| policy_loss        | 0.283    |
+| total_timesteps    | 345600   |
+| value_loss         | 0.0898   |
+---------------------------------
+Eval num_timesteps=350000, episode_reward=-0.49 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.57    |
+| explained_variance | 0.462    |
+| fps                | 2858     |
+| nupdates           | 2800     |
+| policy_entropy     | 8.4      |
+| policy_loss        | 0.00465  |
+| total_timesteps    | 358400   |
+| value_loss         | 0.153    |
+---------------------------------
+Eval num_timesteps=360000, episode_reward=-0.46 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=370000, episode_reward=-0.47 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.54    |
+| explained_variance | 0.852    |
+| fps                | 2852     |
+| nupdates           | 2900     |
+| policy_entropy     | 8.4      |
+| policy_loss        | 0.116    |
+| total_timesteps    | 371200   |
+| value_loss         | 0.0473   |
+---------------------------------
+Eval num_timesteps=380000, episode_reward=-0.54 +/- 0.02
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.59    |
+| explained_variance | 0.668    |
+| fps                | 2855     |
+| nupdates           | 3000     |
+| policy_entropy     | 8.38     |
+| policy_loss        | 0.217    |
+| total_timesteps    | 384000   |
+| value_loss         | 0.113    |
+---------------------------------
+Eval num_timesteps=390000, episode_reward=-0.49 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.61    |
+| explained_variance | -0.209   |
+| fps                | 2858     |
+| nupdates           | 3100     |
+| policy_entropy     | 8.36     |
+| policy_loss        | 0.141    |
+| total_timesteps    | 396800   |
+| value_loss         | 0.421    |
+---------------------------------
+Eval num_timesteps=400000, episode_reward=-0.45 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.5     |
+| ep_reward_mean     | -2.07    |
+| explained_variance | 0.0464   |
+| fps                | 2861     |
+| nupdates           | 3200     |
+| policy_entropy     | 8.36     |
+| policy_loss        | 0.099    |
+| total_timesteps    | 409600   |
+| value_loss         | 1.1      |
+---------------------------------
+Eval num_timesteps=410000, episode_reward=-0.43 +/- 0.01
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=420000, episode_reward=-0.43 +/- 0.01
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 99.2     |
+| ep_reward_mean     | -1.96    |
+| explained_variance | 0.135    |
+| fps                | 2855     |
+| nupdates           | 3300     |
+| policy_entropy     | 8.33     |
+| policy_loss        | 0.186    |
+| total_timesteps    | 422400   |
+| value_loss         | 0.617    |
+---------------------------------
+Eval num_timesteps=430000, episode_reward=-1.84 +/- 0.10
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -2.48    |
+| explained_variance | 0.237    |
+| fps                | 2858     |
+| nupdates           | 3400     |
+| policy_entropy     | 8.34     |
+| policy_loss        | -0.118   |
+| total_timesteps    | 435200   |
+| value_loss         | 2.25     |
+---------------------------------
+Eval num_timesteps=440000, episode_reward=-1.31 +/- 0.02
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.5     |
+| ep_reward_mean     | -2.13    |
+| explained_variance | 0.408    |
+| fps                | 2861     |
+| nupdates           | 3500     |
+| policy_entropy     | 8.32     |
+| policy_loss        | -0.292   |
+| total_timesteps    | 448000   |
+| value_loss         | 0.69     |
+---------------------------------
+Eval num_timesteps=450000, episode_reward=-0.44 +/- 0.02
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=460000, episode_reward=-0.59 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -2.09    |
+| explained_variance | 0.204    |
+| fps                | 2855     |
+| nupdates           | 3600     |
+| policy_entropy     | 8.3      |
+| policy_loss        | 0.0565   |
+| total_timesteps    | 460800   |
+| value_loss         | 0.591    |
+---------------------------------
+Eval num_timesteps=470000, episode_reward=-0.69 +/- 0.02
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.2     |
+| ep_reward_mean     | -1.96    |
+| explained_variance | 0.577    |
+| fps                | 2857     |
+| nupdates           | 3700     |
+| policy_entropy     | 8.3      |
+| policy_loss        | 0.0382   |
+| total_timesteps    | 473600   |
+| value_loss         | 0.621    |
+---------------------------------
+Eval num_timesteps=480000, episode_reward=-0.52 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.8     |
+| explained_variance | 0.517    |
+| fps                | 2859     |
+| nupdates           | 3800     |
+| policy_entropy     | 8.29     |
+| policy_loss        | 0.0398   |
+| total_timesteps    | 486400   |
+| value_loss         | 0.413    |
+---------------------------------
+Eval num_timesteps=490000, episode_reward=-0.38 +/- 0.01
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.63    |
+| explained_variance | 0.721    |
+| fps                | 2862     |
+| nupdates           | 3900     |
+| policy_entropy     | 8.28     |
+| policy_loss        | -0.233   |
+| total_timesteps    | 499200   |
+| value_loss         | 0.183    |
+---------------------------------
+Eval num_timesteps=500000, episode_reward=-0.40 +/- 0.01
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=510000, episode_reward=-0.47 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.9     |
+| ep_reward_mean     | -1.71    |
+| explained_variance | 0.747    |
+| fps                | 2858     |
+| nupdates           | 4000     |
+| policy_entropy     | 8.27     |
+| policy_loss        | -0.147   |
+| total_timesteps    | 512000   |
+| value_loss         | 0.183    |
+---------------------------------
+Eval num_timesteps=520000, episode_reward=-0.40 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.7     |
+| ep_reward_mean     | -1.76    |
+| explained_variance | 0.795    |
+| fps                | 2860     |
+| nupdates           | 4100     |
+| policy_entropy     | 8.27     |
+| policy_loss        | 0.0304   |
+| total_timesteps    | 524800   |
+| value_loss         | 0.1      |
+---------------------------------
+Eval num_timesteps=530000, episode_reward=-0.42 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.6     |
+| explained_variance | 0.737    |
+| fps                | 2863     |
+| nupdates           | 4200     |
+| policy_entropy     | 8.23     |
+| policy_loss        | -0.255   |
+| total_timesteps    | 537600   |
+| value_loss         | 0.15     |
+---------------------------------
+Eval num_timesteps=540000, episode_reward=-0.38 +/- 0.01
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=550000, episode_reward=-0.37 +/- 0.01
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 99.6     |
+| ep_reward_mean     | -1.54    |
+| explained_variance | 0.737    |
+| fps                | 2859     |
+| nupdates           | 4300     |
+| policy_entropy     | 8.23     |
+| policy_loss        | -0.18    |
+| total_timesteps    | 550400   |
+| value_loss         | 0.116    |
+---------------------------------
+Eval num_timesteps=560000, episode_reward=-0.43 +/- 0.05
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.7     |
+| ep_reward_mean     | -1.53    |
+| explained_variance | 0.669    |
+| fps                | 2861     |
+| nupdates           | 4400     |
+| policy_entropy     | 8.24     |
+| policy_loss        | -0.00459 |
+| total_timesteps    | 563200   |
+| value_loss         | 0.115    |
+---------------------------------
+Eval num_timesteps=570000, episode_reward=-0.37 +/- 0.01
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 99.3     |
+| ep_reward_mean     | -1.7     |
+| explained_variance | 0.484    |
+| fps                | 2864     |
+| nupdates           | 4500     |
+| policy_entropy     | 8.25     |
+| policy_loss        | 0.0453   |
+| total_timesteps    | 576000   |
+| value_loss         | 0.23     |
+---------------------------------
+Eval num_timesteps=580000, episode_reward=-0.42 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.3     |
+| ep_reward_mean     | -1.58    |
+| explained_variance | 0.609    |
+| fps                | 2866     |
+| nupdates           | 4600     |
+| policy_entropy     | 8.27     |
+| policy_loss        | 0.11     |
+| total_timesteps    | 588800   |
+| value_loss         | 0.167    |
+---------------------------------
+Eval num_timesteps=590000, episode_reward=-0.42 +/- 0.01
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=600000, episode_reward=-0.38 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.6     |
+| ep_reward_mean     | -1.54    |
+| explained_variance | 0.774    |
+| fps                | 2863     |
+| nupdates           | 4700     |
+| policy_entropy     | 8.29     |
+| policy_loss        | 0.138    |
+| total_timesteps    | 601600   |
+| value_loss         | 0.106    |
+---------------------------------
+Eval num_timesteps=610000, episode_reward=-0.39 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.57    |
+| explained_variance | 0.54     |
+| fps                | 2865     |
+| nupdates           | 4800     |
+| policy_entropy     | 8.3      |
+| policy_loss        | 0.0364   |
+| total_timesteps    | 614400   |
+| value_loss         | 0.233    |
+---------------------------------
+Eval num_timesteps=620000, episode_reward=-0.39 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.6     |
+| explained_variance | 0.819    |
+| fps                | 2867     |
+| nupdates           | 4900     |
+| policy_entropy     | 8.28     |
+| policy_loss        | 0.163    |
+| total_timesteps    | 627200   |
+| value_loss         | 0.0642   |
+---------------------------------
+Eval num_timesteps=630000, episode_reward=-0.62 +/- 0.16
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=640000, episode_reward=-2.23 +/- 0.02
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -2.39    |
+| explained_variance | 0.123    |
+| fps                | 2864     |
+| nupdates           | 5000     |
+| policy_entropy     | 8.3      |
+| policy_loss        | -0.216   |
+| total_timesteps    | 640000   |
+| value_loss         | 1.05     |
+---------------------------------
+Eval num_timesteps=650000, episode_reward=-1.94 +/- 0.03
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -2.35    |
+| explained_variance | 0.517    |
+| fps                | 2865     |
+| nupdates           | 5100     |
+| policy_entropy     | 8.29     |
+| policy_loss        | 0.0772   |
+| total_timesteps    | 652800   |
+| value_loss         | 0.669    |
+---------------------------------
+Eval num_timesteps=660000, episode_reward=-0.33 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.56    |
+| explained_variance | 0.869    |
+| fps                | 2867     |
+| nupdates           | 5200     |
+| policy_entropy     | 8.3      |
+| policy_loss        | 0.00845  |
+| total_timesteps    | 665600   |
+| value_loss         | 0.0813   |
+---------------------------------
+Eval num_timesteps=670000, episode_reward=-0.40 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.49    |
+| explained_variance | 0.781    |
+| fps                | 2868     |
+| nupdates           | 5300     |
+| policy_entropy     | 8.3      |
+| policy_loss        | 0.0278   |
+| total_timesteps    | 678400   |
+| value_loss         | 0.0999   |
+---------------------------------
+Eval num_timesteps=680000, episode_reward=-0.91 +/- 0.02
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=690000, episode_reward=-0.92 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.96    |
+| explained_variance | 0.61     |
+| fps                | 2865     |
+| nupdates           | 5400     |
+| policy_entropy     | 8.31     |
+| policy_loss        | 0.225    |
+| total_timesteps    | 691200   |
+| value_loss         | 0.246    |
+---------------------------------
+Eval num_timesteps=700000, episode_reward=-2.11 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.76    |
+| explained_variance | 0.781    |
+| fps                | 2867     |
+| nupdates           | 5500     |
+| policy_entropy     | 8.29     |
+| policy_loss        | -0.202   |
+| total_timesteps    | 704000   |
+| value_loss         | 0.121    |
+---------------------------------
+Eval num_timesteps=710000, episode_reward=-0.55 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.7     |
+| ep_reward_mean     | -1.84    |
+| explained_variance | 0.333    |
+| fps                | 2869     |
+| nupdates           | 5600     |
+| policy_entropy     | 8.31     |
+| policy_loss        | 0.0505   |
+| total_timesteps    | 716800   |
+| value_loss         | 0.267    |
+---------------------------------
+Eval num_timesteps=720000, episode_reward=-0.54 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.66    |
+| explained_variance | 0.713    |
+| fps                | 2872     |
+| nupdates           | 5700     |
+| policy_entropy     | 8.3      |
+| policy_loss        | -0.0853  |
+| total_timesteps    | 729600   |
+| value_loss         | 0.164    |
+---------------------------------
+Eval num_timesteps=730000, episode_reward=-0.52 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=740000, episode_reward=-0.52 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.49    |
+| explained_variance | 0.935    |
+| fps                | 2870     |
+| nupdates           | 5800     |
+| policy_entropy     | 8.29     |
+| policy_loss        | -0.132   |
+| total_timesteps    | 742400   |
+| value_loss         | 0.0297   |
+---------------------------------
+Eval num_timesteps=750000, episode_reward=-0.53 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.56    |
+| explained_variance | 0.789    |
+| fps                | 2872     |
+| nupdates           | 5900     |
+| policy_entropy     | 8.3      |
+| policy_loss        | -0.0196  |
+| total_timesteps    | 755200   |
+| value_loss         | 0.0947   |
+---------------------------------
+Eval num_timesteps=760000, episode_reward=-0.53 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.52    |
+| explained_variance | 0.8      |
+| fps                | 2875     |
+| nupdates           | 6000     |
+| policy_entropy     | 8.33     |
+| policy_loss        | 0.0264   |
+| total_timesteps    | 768000   |
+| value_loss         | 0.0868   |
+---------------------------------
+Eval num_timesteps=770000, episode_reward=-0.46 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=780000, episode_reward=-0.45 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.52    |
+| explained_variance | 0.918    |
+| fps                | 2873     |
+| nupdates           | 6100     |
+| policy_entropy     | 8.33     |
+| policy_loss        | -0.0389  |
+| total_timesteps    | 780800   |
+| value_loss         | 0.0354   |
+---------------------------------
+Eval num_timesteps=790000, episode_reward=-0.46 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.49    |
+| explained_variance | 0.932    |
+| fps                | 2875     |
+| nupdates           | 6200     |
+| policy_entropy     | 8.33     |
+| policy_loss        | 0.0679   |
+| total_timesteps    | 793600   |
+| value_loss         | 0.0295   |
+---------------------------------
+Eval num_timesteps=800000, episode_reward=-2.40 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.48    |
+| explained_variance | 0.945    |
+| fps                | 2877     |
+| nupdates           | 6300     |
+| policy_entropy     | 8.31     |
+| policy_loss        | -0.0707  |
+| total_timesteps    | 806400   |
+| value_loss         | 0.0236   |
+---------------------------------
+Eval num_timesteps=810000, episode_reward=-0.48 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.48    |
+| explained_variance | 0.909    |
+| fps                | 2880     |
+| nupdates           | 6400     |
+| policy_entropy     | 8.27     |
+| policy_loss        | 0.0946   |
+| total_timesteps    | 819200   |
+| value_loss         | 0.0375   |
+---------------------------------
+Eval num_timesteps=820000, episode_reward=-0.47 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=830000, episode_reward=-0.52 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.48    |
+| explained_variance | 0.96     |
+| fps                | 2878     |
+| nupdates           | 6500     |
+| policy_entropy     | 8.25     |
+| policy_loss        | -0.103   |
+| total_timesteps    | 832000   |
+| value_loss         | 0.0157   |
+---------------------------------
+Eval num_timesteps=840000, episode_reward=-0.56 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.49    |
+| explained_variance | 0.932    |
+| fps                | 2880     |
+| nupdates           | 6600     |
+| policy_entropy     | 8.24     |
+| policy_loss        | -0.0566  |
+| total_timesteps    | 844800   |
+| value_loss         | 0.0282   |
+---------------------------------
+Eval num_timesteps=850000, episode_reward=-0.52 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.52    |
+| explained_variance | 0.939    |
+| fps                | 2882     |
+| nupdates           | 6700     |
+| policy_entropy     | 8.24     |
+| policy_loss        | -0.112   |
+| total_timesteps    | 857600   |
+| value_loss         | 0.026    |
+---------------------------------
+Eval num_timesteps=860000, episode_reward=-0.63 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=870000, episode_reward=-0.50 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.52    |
+| explained_variance | 0.948    |
+| fps                | 2880     |
+| nupdates           | 6800     |
+| policy_entropy     | 8.26     |
+| policy_loss        | -0.131   |
+| total_timesteps    | 870400   |
+| value_loss         | 0.0207   |
+---------------------------------
+Eval num_timesteps=880000, episode_reward=-0.50 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.8     |
+| ep_reward_mean     | -1.55    |
+| explained_variance | 0.919    |
+| fps                | 2882     |
+| nupdates           | 6900     |
+| policy_entropy     | 8.26     |
+| policy_loss        | -0.223   |
+| total_timesteps    | 883200   |
+| value_loss         | 0.0421   |
+---------------------------------
+Eval num_timesteps=890000, episode_reward=-0.55 +/- 0.02
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.8     |
+| ep_reward_mean     | -1.53    |
+| explained_variance | 0.945    |
+| fps                | 2884     |
+| nupdates           | 7000     |
+| policy_entropy     | 8.22     |
+| policy_loss        | 0.0857   |
+| total_timesteps    | 896000   |
+| value_loss         | 0.0229   |
+---------------------------------
+Eval num_timesteps=900000, episode_reward=-0.53 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.7     |
+| ep_reward_mean     | -1.53    |
+| explained_variance | 0.879    |
+| fps                | 2886     |
+| nupdates           | 7100     |
+| policy_entropy     | 8.21     |
+| policy_loss        | -0.145   |
+| total_timesteps    | 908800   |
+| value_loss         | 0.0469   |
+---------------------------------
+Eval num_timesteps=910000, episode_reward=-0.63 +/- 0.02
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=920000, episode_reward=-0.53 +/- 0.02
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.49    |
+| explained_variance | 0.945    |
+| fps                | 2884     |
+| nupdates           | 7200     |
+| policy_entropy     | 8.2      |
+| policy_loss        | 0.176    |
+| total_timesteps    | 921600   |
+| value_loss         | 0.0209   |
+---------------------------------
+Eval num_timesteps=930000, episode_reward=-0.82 +/- 0.03
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.8     |
+| ep_reward_mean     | -1.53    |
+| explained_variance | 0.914    |
+| fps                | 2886     |
+| nupdates           | 7300     |
+| policy_entropy     | 8.22     |
+| policy_loss        | 0.157    |
+| total_timesteps    | 934400   |
+| value_loss         | 0.0397   |
+---------------------------------
+Eval num_timesteps=940000, episode_reward=-0.48 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.56    |
+| explained_variance | 0.973    |
+| fps                | 2888     |
+| nupdates           | 7400     |
+| policy_entropy     | 8.21     |
+| policy_loss        | -0.167   |
+| total_timesteps    | 947200   |
+| value_loss         | 0.0239   |
+---------------------------------
+Eval num_timesteps=950000, episode_reward=-0.50 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=960000, episode_reward=-0.50 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.54    |
+| explained_variance | 0.943    |
+| fps                | 2886     |
+| nupdates           | 7500     |
+| policy_entropy     | 8.2      |
+| policy_loss        | -0.0566  |
+| total_timesteps    | 960000   |
+| value_loss         | 0.0473   |
+---------------------------------
+Eval num_timesteps=970000, episode_reward=-0.64 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -1.56    |
+| explained_variance | 0.931    |
+| fps                | 2888     |
+| nupdates           | 7600     |
+| policy_entropy     | 8.21     |
+| policy_loss        | -0.0677  |
+| total_timesteps    | 972800   |
+| value_loss         | 0.0365   |
+---------------------------------
+Eval num_timesteps=980000, episode_reward=-0.62 +/- 0.00
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.9     |
+| ep_reward_mean     | -1.56    |
+| explained_variance | 0.964    |
+| fps                | 2889     |
+| nupdates           | 7700     |
+| policy_entropy     | 8.2      |
+| policy_loss        | -0.0885  |
+| total_timesteps    | 985600   |
+| value_loss         | 0.023    |
+---------------------------------
+Eval num_timesteps=990000, episode_reward=-0.44 +/- 0.01
+Episode length: 100.00 +/- 0.00
+---------------------------------
+| ep_len_mean        | 99.8     |
+| ep_reward_mean     | -1.53    |
+| explained_variance | 0.882    |
+| fps                | 2891     |
+| nupdates           | 7800     |
+| policy_entropy     | 8.18     |
+| policy_loss        | 0.0461   |
+| total_timesteps    | 998400   |
+| value_loss         | 0.0464   |
+---------------------------------
+Saving to logs/train_1M_widowx_reach-v3/acktr/widowx_reach-v3_1

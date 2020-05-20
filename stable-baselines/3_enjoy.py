@@ -11,7 +11,7 @@ import time
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
 warnings.filterwarnings("ignore", category=UserWarning, module='gym')
 
-import gym, widowx_pybullet_no_start_sim, widowx_pybullet_no_start_sim_goal_oriented
+import gym, widowx_pybullet_no_start_sim
 import utils.import_envs  # pytype: disable=import-error
 import numpy as np
 import stable_baselines

@@ -3,7 +3,7 @@ from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import PPO2
 from stable_baselines.bench import Monitor
 import gym
-import widowx_pybullet
+# import widowx_pybullet
 import widowx_pybullet_no_start_sim
 import os
 
