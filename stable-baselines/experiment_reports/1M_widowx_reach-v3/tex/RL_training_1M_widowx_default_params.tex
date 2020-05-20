@@ -47,7 +47,7 @@ The performance metrics are defined as follows:
 \begin{itemize}
   \item Train time (min) : Wall time to train.
   \item Success ratio : number of successful episodes / number of reachable episodes \\ 
-An episode is successful if the distance between the finger tip and the target is less than or equal to 0.03. \\ 
+An episode is successful if the distance between the finger tip and the target is less than or equal to a threshold of 10mm, 2mm, 1mm or 0.5mm. \\ 
   \item Average reaching time : sum (number of time steps of all successful episodes) /  number of successful episodes \\ 
 An episode has a maximum of 100 time steps.
   \item Efficiency: mean reward / mean training walltime. 
@@ -140,31 +140,88 @@ An episode has a maximum of 100 time steps.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{../reward_by_exp_type.pdf}
-\caption{Reward vs algorithms.}
+    \includegraphics[width=0.7\textwidth]{../mean_reward.pdf}
+\caption{Mean reward vs algorithms.}
 \end{figure}
 
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{../success_by_exp_type.pdf}
-\caption{Success ratio vs algorithms.}
+    \includegraphics[width=0.7\textwidth]{../mean_walltime.pdf}
+\caption{Mean walltime vs algorithms.}
 \end{figure}
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{../reachtime_by_exp_type.pdf}
-\caption{Reach time vs algorithms.}
+    \includegraphics[width=0.7\textwidth]{../efficiency.pdf}
+\caption{Efficiency vs algorithms.}
 \end{figure}
 
 
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\textwidth]{../walltime_by_exp_type.pdf}
-\caption{Train walltime vs algorithms.}
+\centering
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../success_10mm.pdf}
+  \caption{Success ratios} 
+\end{subfigure}
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../reachtime_10mm.pdf} 
+  \caption{Reach time}
+\end{subfigure}
+\caption{Success threshold: 10mm.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../success_2mm.pdf}
+  \caption{Success ratios} 
+\end{subfigure}
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../reachtime_2mm.pdf} 
+  \caption{Reach time}
+\end{subfigure}
+\caption{Success threshold: 2mm.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../success_1mm.pdf}
+  \caption{Success ratios} 
+\end{subfigure}
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../reachtime_1mm.pdf} 
+  \caption{Reach time}
+\end{subfigure}
+\caption{Success threshold: 1mm.}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../success_0.5mm.pdf}
+  \caption{Success ratios} 
+\end{subfigure}
+\begin{subfigure}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{../reachtime_0.5mm.pdf} 
+  \caption{Reach time}
+\end{subfigure}
+\caption{Success threshold: 0.5mm.}
 \end{figure}
 
 

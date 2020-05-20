@@ -110,12 +110,19 @@ def main():
     episode_reward = 0.0
     episode_rewards, episode_lengths = [], []
     ep_len = 0
-    episode_david_success_list, reach_time_list = [], []
+
+    success_threshold_001 = 0.01
+    success_list_001, reachtime_list_001, episode_success_list_001 = [], [], []
+    success_threshold_0002 = 0.002
+    success_list_0002, reachtime_list_0002, episode_success_list_0002 = [], [], []
+    success_threshold_0001 = 0.001
+    success_list_0001, reachtime_list_0001, episode_success_list_0001 = [], [], []
+    success_threshold_00005 = 0.0005
+    success_list_00005, reachtime_list_00005, episode_success_list_00005 = [], [], []
+
     # For HER, monitor success rate
     successes = []
     state = None
-
-    pierre_success_list = []
     
     for _ in range(args.n_timesteps):
         action, state = model.predict(obs, state=state, deterministic=deterministic)
@@ -127,11 +134,27 @@ def main():
         obs, reward, done, infos = env.step(action)
 
         # if env.render_bool:
-        time.sleep(1./30.) # added by Pierre (slower for render)
+        # time.sleep(1./30.) # added by Pierre (slower for render)
         
-        # print(infos)
-        pierre_success_list.append(0)  #infos[0]['task_success'])  # TO CHANGE LATER
-        # print(infos[0]['dist_ft_t']) 
+        if infos[0]['total_distance'] <= success_threshold_001:
+            episode_success_list_001.append(1)
+        else:
+            episode_success_list_001.append(0)
+
+        if infos[0]['total_distance'] <= success_threshold_0002:
+            episode_success_list_0002.append(1)
+        else:
+            episode_success_list_0002.append(0)
+
+        if infos[0]['total_distance'] <= success_threshold_0001:
+            episode_success_list_0001.append(1)
+        else:
+            episode_success_list_0001.append(0)
+
+        if infos[0]['total_distance'] <= success_threshold_00005:
+            episode_success_list_00005.append(1)
+        else:
+            episode_success_list_00005.append(0)
         
         # if not args.no_render:
         #     env.render('human')
@@ -156,24 +179,45 @@ def main():
                 state = None
                 episode_rewards.append(episode_reward)
                 episode_lengths.append(ep_len)
-                episode_david_success_list.append(pierre_success_list[-1])
 
-                # if the episode is successful and it start from an unsucessful step, calculate reach time
-                if pierre_success_list[-1] == True and pierre_success_list[0] == False:
+                # append the last element of the episode success list when episode is done
+                success_list_001.append(episode_success_list_001[-1]) 
+                success_list_0002.append(episode_success_list_0002[-1]) 
+                success_list_0001.append(episode_success_list_0001[-1]) 
+                success_list_00005.append(episode_success_list_00005[-1])  
+
+                # if the episode is successful and it starts from an unsucessful step, calculate reach time
+                if episode_success_list_001[-1] == True and episode_success_list_001[0] == False:
                     idx = 0
-                    while pierre_success_list[idx] == False:
+                    while episode_success_list_001[idx] == False:
                         idx += 1
+                    reachtime_list_001.append(idx)
 
-                    reach_time_list.append(idx)
-                    # print("first True index: ", idx)
-                    # print("first True: ", pierre_success_list[idx])
-                    # print("last false: ", pierre_success_list[idx-1])
-                    # print(len(pierre_success_list))
+                if episode_success_list_0002[-1] == True and episode_success_list_0002[0] == False:
+                    idx = 0
+                    while episode_success_list_0002[idx] == False:
+                        idx += 1
+                    reachtime_list_0002.append(idx)
+
+                if episode_success_list_0001[-1] == True and episode_success_list_0001[0] == False:
+                    idx = 0
+                    while episode_success_list_0001[idx] == False:
+                        idx += 1
+                    reachtime_list_0001.append(idx)
+
+                if episode_success_list_00005[-1] == True and episode_success_list_00005[0] == False:
+                    idx = 0
+                    while episode_success_list_00005[idx] == False:
+                        idx += 1
+                    reachtime_list_00005.append(idx)
 
                 # reset for new episode
                 episode_reward = 0.0
                 ep_len = 0
-                pierre_success_list = []  
+                episode_success_list_001 = []  
+                episode_success_list_0001 = []  
+                episode_success_list_0002 = []  
+                episode_success_list_00005 = []  
 
             # Reset also when the goal is achieved when using HER
             if done or infos[0].get('is_success', False):
@@ -191,16 +235,24 @@ def main():
 
     if args.verbose > 0 and len(episode_rewards) > 0:
         print("Mean reward: {:.2f} +/- {:.2f}".format(np.mean(episode_rewards), np.std(episode_rewards)))
-        print("success ratio:", np.mean(episode_david_success_list))
-        print("Average reach time:", np.mean(reach_time_list))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_001, np.mean(success_list_001), np.mean(reachtime_list_001)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_0002, np.mean(success_list_0002), np.mean(reachtime_list_0002)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_0001, np.mean(success_list_0001), np.mean(reachtime_list_0001)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_00005, np.mean(success_list_00005), np.mean(reachtime_list_00005)))
 
         # added by Pierre
         print("path:", log_path)
         d = {
             "Eval mean reward": np.mean(episode_rewards), 
             "Eval std": np.std(episode_rewards), 
-            "success ratio": np.mean(episode_david_success_list),
-            "Average reach time": np.mean(reach_time_list)
+            "success ratio 10mm": np.mean(success_list_001),
+            "Average reach time 10mm": np.mean(reachtime_list_001),
+            "success ratio 2mm": np.mean(success_list_0002),
+            "Average reach time 2mm": np.mean(reachtime_list_0002),
+            "success ratio 1mm": np.mean(success_list_0001),
+            "Average reach time 1mm": np.mean(reachtime_list_0001),
+            "success ratio 0.5mm": np.mean(success_list_00005),
+            "Average reach time 0.5mm": np.mean(reachtime_list_00005),
             }
         df = pd.DataFrame(d, index=[0])
         df.to_csv(log_path+"/stats.csv", index=False)

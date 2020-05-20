@@ -94,10 +94,22 @@ if __name__ == '__main__':
         'std reward (eval)': df['Eval std'].mean(),
         'mean train walltime (s)': df['Train walltime (s)'].mean(),
         'std train walltime (s)': df['Train walltime (s)'].std(),
-        'mean success ratio': df['success ratio'].mean(),
-        'std success ratio': df['success ratio'].std(),
-        'mean reach time': df['Average reach time'].mean(),
-        'std reach time': df['Average reach time'].std(),
+        'mean success ratio 10mm': df['success ratio 10mm'].mean(),
+        'std success ratio 10mm': df['success ratio 10mm'].std(),
+        'mean reach time 10mm': df['Average reach time 10mm'].mean(),
+        'std reach time 10mm': df['Average reach time 10mm'].std(),
+        'mean success ratio 2mm': df['success ratio 2mm'].mean(),
+        'std success ratio 2mm': df['success ratio 2mm'].std(),
+        'mean reach time 2mm': df['Average reach time 2mm'].mean(),
+        'std reach time 2mm': df['Average reach time 2mm'].std(),
+        'mean success ratio 1mm': df['success ratio 1mm'].mean(),
+        'std success ratio 1mm': df['success ratio 1mm'].std(),
+        'mean reach time 1mm': df['Average reach time 1mm'].mean(),
+        'std reach time 1mm': df['Average reach time 1mm'].std(),
+        'mean success ratio 0.5mm': df['success ratio 0.5mm'].mean(),
+        'std success ratio 0.5mm': df['success ratio 0.5mm'].std(),
+        'mean reach time 0.5mm': df['Average reach time 0.5mm'].mean(),
+        'std reach time 0.5mm': df['Average reach time 0.5mm'].std(),
     }
 
     df_res = pd.DataFrame(d, index=[0])
@@ -132,7 +144,6 @@ if __name__ == '__main__':
     #     plot_results(filename, 'walltime_hrs')
 
         count += 1
-
 
 
     all_rewards = pd.concat(df_list, axis=1)

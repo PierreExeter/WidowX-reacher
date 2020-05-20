@@ -67,8 +67,6 @@ ff['exp type'] = df_label
 
 
 
-
-
 ### PLOT LEARNING CURVES ###
 
 
@@ -144,45 +142,25 @@ ff_round.to_csv(save_dir+"res.csv", index=False)
 
 
 
-ax = ff.plot.bar(x='exp type', y='mean success ratio', yerr='std success ratio', rot=45)
-ax.set_xticklabels(df_label, ha='right')
-plt.ylabel("Mean success ratio")
-plt.tight_layout()
-plt.savefig(save_dir+"success_by_exp_type.pdf", dpi=100)
-# plt.show()
+def plot_col(y_col, yerr_col, title):
 
+    ax = ff.plot.bar(x='exp type', y=y_col, yerr=yerr_col, rot=45)
+    ax.set_xticklabels(df_label, ha='right')
+    plt.ylabel("Mean success ratio")
+    plt.tight_layout()
+    plt.savefig(save_dir+title, dpi=100)
+    # plt.show()
 
-ax = ff.plot.bar(x='exp type', y='mean reach time', yerr='std reach time', rot=45)
-ax.set_xticklabels(df_label, ha='right')
-plt.ylabel("Mean reach time (max: 150)")
-plt.tight_layout()
-plt.savefig(save_dir+"reachtime_by_exp_type.pdf", dpi=100)
-# plt.show()
-
-
-
-ax = ff.plot.bar(x='exp type', y='mean reward', yerr='std reward (seed)', rot=45)
-ax.set_xticklabels(df_label, ha='right')
-plt.ylabel("Mean reward")
-plt.tight_layout()
-plt.savefig(save_dir+"reward_by_exp_type.pdf", dpi=100)
-# plt.show()
-
-
-ax = ff.plot.bar(x='exp type', y='mean train walltime (s)', yerr='std train walltime (s)', rot=45)
-ax.set_xticklabels(df_label, ha='right')
-plt.ylabel("Mean train time (s)")
-plt.tight_layout()
-plt.savefig(save_dir+"/walltime_by_exp_type.pdf", dpi=100)
-# plt.show()
-
-
-ax = ff.plot.bar(x='exp type', y='efficiency (reward / s)', rot=45)
-ax.set_xticklabels(df_label, ha='right')
-plt.ylabel("Eficiency (reward / s)")
-plt.tight_layout()
-plt.savefig(save_dir+"/efficiency_by_exp_type.pdf", dpi=100)
-# plt.show()
-
+plot_col('mean success ratio 10mm', 'std success ratio 10mm', "success_10mm.pdf")
+plot_col('mean reach time 10mm', 'std reach time 10mm', "reachtime_10mm.pdf")
+plot_col('mean success ratio 2mm', 'std success ratio 2mm', "success_2mm.pdf")
+plot_col('mean reach time 2mm', 'std reach time 2mm', "reachtime_2mm.pdf")
+plot_col('mean success ratio 1mm', 'std success ratio 1mm', "success_1mm.pdf")
+plot_col('mean reach time 1mm', 'std reach time 1mm', "reachtime_1mm.pdf")
+plot_col('mean success ratio 0.5mm', 'std success ratio 0.5mm', "success_0.5mm.pdf")
+plot_col('mean reach time 0.5mm', 'std reach time 0.5mm', "reachtime_0.5mm.pdf")
+plot_col('mean reward', 'std reward (seed)', "mean_reward.pdf")
+plot_col('mean train walltime (min)', 'std train walltime (min)', "mean_walltime.pdf")
+plot_col('efficiency (reward / s)', None, "efficiency.pdf")
 
 
