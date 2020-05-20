@@ -79,4 +79,4 @@ echo "ENV: ${env}"
 
 # STEP 4: view trained agent
 
-# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps}
+python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True

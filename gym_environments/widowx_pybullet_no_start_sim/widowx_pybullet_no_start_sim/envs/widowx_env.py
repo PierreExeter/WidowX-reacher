@@ -82,7 +82,7 @@ class WidowxEnv(gym.Env):
     # def _start_sim(self, goal_oriented=False, render_bool=False):
         # REPLACE START_SIM: added by Pierre
         self.goal_oriented = False
-        self.render_bool = False
+        self.render_bool = True
 
         if self.render_bool:
             self.physics_client = p.connect(p.GUI)

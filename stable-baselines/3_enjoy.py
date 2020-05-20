@@ -6,6 +6,8 @@ import importlib
 import warnings
 import pandas as pd
 import time
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 # numpy warnings because of tensorflow
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
@@ -52,7 +54,22 @@ def main():
     parser.add_argument('--seed', help='Random generator seed', type=int, default=0)
     parser.add_argument('--reward-log', help='Where to log reward', default='', type=str)
     parser.add_argument('--gym-packages', type=str, nargs='+', default=[], help='Additional external Gym environemnt package modules to import (e.g. gym_minigrid)')
+    parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False)
     args = parser.parse_args()
+
+    plot_bool = True
+    plot_dim = 2
+    log_bool = True
+
+    if plot_bool:
+        if plot_dim == 2:
+            fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(10, 5))
+        elif plot_dim == 3:
+            fig = plt.figure()
+            ax = fig.gca(projection='3d')
+
+    if log_bool:
+        output_df = pd.DataFrame()
 
     # Going through custom gym packages to let them register in the global registory
     for env_module in args.gym_packages:
@@ -99,8 +116,8 @@ def main():
     load_env = None if algo == 'acer' else env
     model = ALGOS[algo].load(model_path, env=load_env)
 
-    if not args.no_render:
-        env.render(mode="human")  # added by Pierre (to work with ReachingJaco-v1)
+    # if not args.no_render:
+        # env.render(mode="human")  # added by Pierre (to work with ReachingJaco-v1)
     
     obs = env.reset()
 
@@ -110,6 +127,7 @@ def main():
     episode_reward = 0.0
     episode_rewards, episode_lengths = [], []
     ep_len = 0
+    episode = 0
 
     success_threshold_001 = 0.01
     success_list_001, reachtime_list_001, episode_success_list_001 = [], [], []
@@ -133,8 +151,8 @@ def main():
             action = np.clip(action, env.action_space.low, env.action_space.high)
         obs, reward, done, infos = env.step(action)
 
-        # if env.render_bool:
-        # time.sleep(1./30.) # added by Pierre (slower for render)
+        if args.render_pybullet:
+            time.sleep(1./30.)     # added by Pierre (slow down Pybullet for rendering)
         
         if infos[0]['total_distance'] <= success_threshold_001:
             episode_success_list_001.append(1)
@@ -156,6 +174,53 @@ def main():
         else:
             episode_success_list_00005.append(0)
         
+
+        if plot_bool:
+            goal = infos[0]['goal position']
+            tip = infos[0]['tip position']
+
+            if plot_dim == 2:
+                ax1.cla()
+                ax1.plot(goal[0], goal[2], marker='x', color='b')
+                ax1.plot(tip[0], tip[2], marker='o', color='r')
+                ax1.set_xlim([-0.2, 0.2])
+                ax1.set_ylim([0, 0.5])
+                ax1.set_xlabel("x")
+                ax1.set_ylabel("z")
+
+                ax2.cla()
+                ax2.plot(goal[1], goal[2], marker='x', color='b')
+                ax2.plot(tip[1], tip[2], marker='o', color='r')
+                ax2.set_xlim([-0.2, 0.2])
+                ax2.set_ylim([0, 0.5])
+                ax2.set_xlabel("y")
+
+            elif plot_dim == 3:
+                ax.cla()
+                ax.plot([tip[0]], [tip[1]], zs=[tip[2]], marker='o', color='b')
+                ax.plot([goal[0]], [goal[1]], zs=[goal[2]], marker='x', color='r', linestyle="None")
+                ax.set_xlim([-0.2, 0.2])
+                ax.set_ylim([-0.2, 0.2])
+                ax.set_zlim([0, 0.5])
+                ax.set_xlabel("x")
+                ax.set_ylabel("y")
+                ax.set_zlabel("z")
+
+            fig.suptitle("timestep "+str(ep_len))
+            plt.pause(0.01)
+            # plt.show()
+
+        if log_bool:
+            dict_log = infos[0]
+            dict_log['action'] = action[0]
+            dict_log['obs'] = obs[0]
+            dict_log['reward'] = reward[0]
+            dict_log['done'] = done[0]
+            dict_log['timestep'] = ep_len
+            dict_log['episode'] = episode
+            output_df = output_df.append(dict_log, ignore_index=True)
+
+
         # if not args.no_render:
         #     env.render('human')
 
@@ -211,6 +276,11 @@ def main():
                         idx += 1
                     reachtime_list_00005.append(idx)
 
+
+                if log_bool:
+                    # output_df.to_csv(log_path+"/res_episode_"+str(episode)+".csv", index=False)  # slow
+                    output_df.to_pickle(log_path+"/res_episode_"+str(episode)+".pkl")
+
                 # reset for new episode
                 episode_reward = 0.0
                 ep_len = 0
@@ -218,6 +288,7 @@ def main():
                 episode_success_list_0001 = []  
                 episode_success_list_0002 = []  
                 episode_success_list_00005 = []  
+                episode += 1 
 
             # Reset also when the goal is achieved when using HER
             if done or infos[0].get('is_success', False):
@@ -256,6 +327,7 @@ def main():
             }
         df = pd.DataFrame(d, index=[0])
         df.to_csv(log_path+"/stats.csv", index=False)
+
 
     if args.verbose > 0 and len(episode_lengths) > 0:
         print("Mean episode length: {:.2f} +/- {:.2f}".format(np.mean(episode_lengths), np.std(episode_lengths)))
