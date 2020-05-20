@@ -125,7 +125,9 @@ def main():
         if isinstance(env.action_space, gym.spaces.Box):
             action = np.clip(action, env.action_space.low, env.action_space.high)
         obs, reward, done, infos = env.step(action)
-        # time.sleep(1./30.) # added by Pierre (slower for render)
+
+        # if env.render_bool:
+        time.sleep(1./30.) # added by Pierre (slower for render)
         
         # print(infos)
         pierre_success_list.append(0)  #infos[0]['task_success'])  # TO CHANGE LATER

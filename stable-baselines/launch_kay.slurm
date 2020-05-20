@@ -11,7 +11,10 @@
 
 cd $SLURM_SUBMIT_DIR
 
-# Load software                                                                                                                                                                                                                
+# Cuda support for MPI
+OMPI_MCA_opal_cuda_support=true  
+
+# Load software           
 module load openmpi/gcc/4.0.2rc2-ucx-cuda
 module load cuda/10.0
 module load conda/2

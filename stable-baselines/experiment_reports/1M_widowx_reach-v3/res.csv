@@ -1,0 +1,8 @@
+mean reward,std reward (seed),std reward (eval),mean train walltime (s),std train walltime (s),mean success ratio,std success ratio,mean reach time,std reach time,exp type,efficiency (reward / s),mean train walltime (min),std train walltime (min)
+-0.41,0.08,0.11,296.64,8.41,0.0,0.0,,,A2C,-0.0,4.94,0.14
+-0.76,0.47,0.18,367.02,25.36,0.0,0.0,,,ACKTR,-0.0,6.12,0.42
+-1.11,0.88,0.0,2490.67,40.6,0.0,0.0,,,DDPG,-0.0,41.51,0.68
+-0.53,0.01,0.11,515.03,7.96,0.0,0.0,,,PPO2,-0.0,8.58,0.13
+-0.32,0.34,0.0,3586.29,17.87,0.0,0.0,,,SAC,-0.0,59.77,0.3
+-0.33,0.3,0.0,4330.09,115.27,0.0,0.0,,,TD3,-0.0,72.17,1.92
+-0.41,0.53,0.03,730.05,12.39,0.0,0.0,,,TRPO,-0.0,12.17,0.21

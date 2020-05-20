@@ -11,7 +11,7 @@
 
 nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=2
-log_dir="logs/train_0.01M_widowx_reach-v3/"
+log_dir="logs/train_1M_widowx_reach-v3/"
 env="widowx_reach-v3"
 echo "ENV: ${env}"
 
@@ -79,4 +79,4 @@ echo "ENV: ${env}"
 
 # STEP 4: view trained agent
 
-python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps}
+python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps}

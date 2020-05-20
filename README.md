@@ -14,14 +14,14 @@ This is only required if training the physical arm.
 
 ```bash
 # train with Rlkit
-conda env create -f environment_rlkit.yml
+conda env create -f conda_envs/environment_rlkit.yml
 conda activate rlkit
 ```
 OR
 ```bash
 # train with Stable Baselines
-conda env create -f environment_sb.yml
-conda activate rlkit
+conda env create -f conda_envs/environment_sb_light.yml   # or conda_envs/environment_sb_kay.yml
+conda activate SB_widowx
 ```
 
 3. Install the custom Gym environments

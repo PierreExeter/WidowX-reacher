@@ -9,9 +9,9 @@ from sklearn import preprocessing
 
 ### GET DATA ###
 
-path_base = "logs/train_0.01M_widowx_reach-v3/"
+path_base = "logs/train_1M_widowx_reach-v3/"
 
-save_dir = "experiment_reports/0.01M_widowx_reach-v3/"
+save_dir = "experiment_reports/1M_widowx_reach-v3/"
 os.makedirs(save_dir, exist_ok=True)
 
 df1 = pd.read_csv(path_base+"a2c/all_rewards.csv")
