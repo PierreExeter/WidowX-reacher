@@ -70,6 +70,32 @@ python tests/0_test_widowx_pybullet.py
 python tests/1_test_widowx_gym.py
 ```
 
+To log each timestep stats and plot the goal and tip position while evaluating the policy (slow):
+```bash
+python tests/3_test_episode_plotter_logger.py
+```
+
+![Alt text](/docs/images/widowx_plot2d.gif?raw=true "plot 2D")
+![Alt text](/docs/images/widowx_plot3d.gif?raw=true "plot 3D")
+
+# STABLE BASELINES
+
+
+## Train
+
+```bash
+cd stable-baselines
+./5_run_experiments.sh
+```
+
+## Evaluate policy and plot training stats
+
+```bash
+./6_get_results.sh
+```
+
+# RLKIT (deprecated)
+
 ## Train
 
 ```bash
@@ -82,18 +108,11 @@ python train_scripts/td3.py
 python viskit/viskit/frontend.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_10_35_20000--s-0/
 ```
 
-python viskit/viskit/frontend.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_17_22_42_12_0000--s-0/
-
-
 ## Evaluate a trained policy
 
 ```bash
 python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_16_10_35_26_0000--s-0/params.pkl
 ```
-
-python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020_05_17_01_07_10_0000--s-0/params.pkl
-
-
 
 ## Visualise a trained policy
 
@@ -103,17 +122,79 @@ python enjoy_scripts/sim_policy.py rlkit/data/TD3-Experiment/TD3_Experiment_2020
 python enjoy_scripts/simple_sim_policy.py
 ```
 
-To log each timestep stats and plot the goal and tip position while evaluating the policy (slow):
+# Control the physical arm
+
+Add Docker pull
+
+## Run Docker image
+
 ```bash
-python tests/3_test_episode_plotter_logger.py
+docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/testimage:version1 
 ```
 
-![Alt text](/docs/images/widowx_plot2d.gif?raw=true "plot 2D")
-![Alt text](/docs/images/widowx_plot3d.gif?raw=true "plot 3D")
+## Start roscore
+
+In terminal 1
+
+```bash
+roslaunch widowx_arm_bringup arm_moveit.launch sim:=false sr300:=false
+```
+
+## Activate the motors
+
+In terminal 2
+
+```bash
+docker container ls
+docker exec -it [container ID] bash
+rosrun replab_core controller.py
+widowx.move_to_neutral()
+# exit with CTRL+D
+```
+
+## Configure the servos torque (50% of their max power to prevent collision damage)
+
+In terminal 2
+
+```bash
+rosrun replab_core compute_control_noise.py
+```
+
+## Start environment subscriber
+
+In terminal 2
+
+```bash
+rosrun replab_rl replab_env_subscriber.py
+```
+
+## Test environment
+
+In terminal 3
+
+```bash
+docker container ls
+docker exec -it [container ID] bash
+source activate rlkit
+cd /root/ros_ws/rl_scripts/rlkit/
+python examples/test_physical_env.py
+python examples/test_episode_plotted.py  
+```
+## Train
+
+In terminal 3
+
+```bash
+docker container ls
+docker exec -it [container ID] bash
+source activate rlkit
+cd /root/ros_ws/rl_scripts/rlkit/
+python examples/td3.py 
+```
 
 # Tested on
 
 - ROS Melodic
 - Ubuntu 18.04
-- python 3.5.2
-- conda 4.8.0
+- Python 3.5.2
+- Conda 4.8.0
