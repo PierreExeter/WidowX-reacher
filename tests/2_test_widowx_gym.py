@@ -3,14 +3,16 @@ import time
 import widowx_original
 import widowx_pybullet
 import widowx_physical
+import widowx_physical_no_start_ros
 import widowx_pybullet_no_start_sim
 import widowx_pybullet_no_start_sim_goal_oriented
 
 # env = gym.make('widowx_reach-v0').start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reach-v1').start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reach-v2').start_rospy(goal_oriented=False)   # requires a roscore to be running
-env = gym.make('widowx_reach-v3')   
+# env = gym.make('widowx_reach-v3')   
 # env = gym.make('widowx_reach-v4')   
+env = gym.make('widowx_reach-v5')   
 
 print(env)
 # print(env._max_episode_steps)
