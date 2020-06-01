@@ -8,6 +8,15 @@ The Gym environments are adapted from [Replab](https://github.com/bhyang/replab)
 
 1. Install [ROS](http://wiki.ros.org/ROS/Installation) (optional)
 
+
+1.1. Install the ROS packages (optional)
+
+```bash
+mv widowx_ros_packages ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+```
+
 This is only required if training the physical arm.
 
 2. Install and activate the Conda environment
@@ -27,26 +36,8 @@ conda activate SB_widowx
 3. Install the custom Gym environments
 
 ```bash
-# install widowx_reach-v0 (environment for both the physical arm and the Pybullet simulation)
-cd gym_environments/widowx_original/
+cd gym_environments/
 pip install -e .
-cd ..
-# install widowx_reach-v1 (environment for the Pybullet simulation only. ROS install not required) 
-cd gym_environments/widowx_pybullet/
-pip install -e .
-cd ..
-# install widowx_reach-v2 (environment for the physical arm only)
-cd gym_environments/widowx_physical/
-pip install -e .
-cd ..
-# install widowx_reach-v3 (environment for the Pybullet simulation + no start_sim required)
-cd gym_environments/widowx_pybullet_no_start_sim/
-pip install -e .
-cd ..
-# install widowx_reach-v4 (environment for the Pybullet simulation + no start_sim required + goal_oriented = True)
-cd gym_environments/widowx_pybullet_no_start_sim_goal_oriented/
-pip install -e .
-cd ..
 ```
 
 4. Install the local [Rlkit](https://github.com/vitchyr/rlkit) repository
@@ -129,7 +120,7 @@ Add Docker pull
 ## Run Docker image
 
 ```bash
-docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/testimage:version1 
+docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/widowx_rl:version1 
 ```
 
 ## Start roscore
@@ -175,7 +166,7 @@ In terminal 3
 ```bash
 docker container ls
 docker exec -it [container ID] bash
-source activate rlkit
+source activate rlkit  # source activate SB_widowx
 cd /root/ros_ws/rl_scripts/rlkit/
 python examples/test_physical_env.py
 python examples/test_episode_plotted.py  
