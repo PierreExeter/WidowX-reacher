@@ -19,7 +19,7 @@ class WidowxEnv(gym.Env):
     def __init__(self):
         """
         How to initialize this environment:
-        env = gym.make('replab-v0')._start_rospy(goal_oriented=[GOAL_ORIENTED])
+        env = gym.make('replab-v0').start_rospy(goal_oriented=[GOAL_ORIENTED])
         If goal_oriented is true, then the environment's observations become a dict
         and the goal is randomly resampled upon every reset
 
@@ -203,7 +203,7 @@ class WidowxEnv(gym.Env):
         return statistics
 
     #Functions only for real robot mode
-    def _start_rospy(self, goal_oriented=False):
+    def start_rospy(self, goal_oriented=False):
         # ROS specific here
         self.mode = 'robot'
         self.rand_init = random.random()
@@ -249,7 +249,7 @@ class WidowxEnv(gym.Env):
         # ROS specific here
         if state['mode'] == 'robot':
             try:
-                self._start_rospy(goal_oriented=state['goal_oriented'])
+                self.start_rospy(goal_oriented=state['goal_oriented'])
             except rospy.ROSException:
                 print('ROS Node already started')
                 self.reset_publisher = rospy.Publisher(

@@ -9,16 +9,24 @@ import widowx_physical
 import widowx_pybullet_no_start_sim
 import widowx_pybullet_no_start_sim_goal_oriented
 
+from rlkit.envs.wrappers import NormalizedBoxEnv
+
 import matplotlib as mpl
 mpl.use('TkAgg')  # or whatever other backend that you want
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# env = gym.make('widowx_reach-v0')._start_sim(goal_oriented=False, render_bool=True)
-# env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
-# env = gym.make('widowx_reach-v2')._start_rospy(goal_oriented=False)   # requires a roscore to be running
-env = gym.make('widowx_reach-v3')   
+# env = gym.make('widowx_reach-v0').start_sim(goal_oriented=False, render_bool=True)
+env = gym.make('widowx_reach-v1').start_sim(goal_oriented=False, render_bool=True)
+# env = gym.make('widowx_reach-v2').start_rospy(goal_oriented=False)   # requires a roscore to be running
+# env = gym.make('widowx_reach-v3')   
 # env = gym.make('widowx_reach-v4')  
+
+
+
+# env.action_space.low *= 10
+# env.action_space.high *= 10
+env = NormalizedBoxEnv(env)
 
 print("Action space: ", env.action_space)
 print(env.action_space.high)
@@ -28,8 +36,9 @@ print(env.observation_space.high)
 print(env.observation_space.low)
 
 
+
 plot_bool = True
-plot_dim = 3
+plot_dim = 2
 log_bool = False
 
 if plot_bool:

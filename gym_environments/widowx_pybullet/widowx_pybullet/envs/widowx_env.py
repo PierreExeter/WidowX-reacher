@@ -51,7 +51,7 @@ class WidowxEnv(gym.Env):
     def __init__(self):
         """
         How to initialize this environment:
-        env = gym.make('replab-v0')._start_rospy(goal_oriented=[GOAL_ORIENTED])
+        env = gym.make('replab-v0').start_rospy(goal_oriented=[GOAL_ORIENTED])
         If goal_oriented is true, then the environment's observations become a dict
         and the goal is randomly resampled upon every reset
 
@@ -300,7 +300,7 @@ class WidowxEnv(gym.Env):
                 self._get_current_joint_positions()],
                 axis = 0)
 
-    def _start_sim(self, goal_oriented=False, render_bool=False):
+    def start_sim(self, goal_oriented=False, render_bool=False):
 
         if render_bool:
             self.physics_client = p.connect(p.GUI)
@@ -334,7 +334,7 @@ class WidowxEnv(gym.Env):
     def __setstate__(self, state):
         self.__dict__.update(state)
         if state['render_bool']:
-            self._start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
+            self.start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
         else:
-            self._start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
+            self.start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
         self.reset()

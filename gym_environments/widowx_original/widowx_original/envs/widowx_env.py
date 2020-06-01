@@ -342,7 +342,7 @@ class WidowxEnv(gym.Env):
                 self._get_current_joint_positions()],
                 axis = 0)
 
-    def _start_sim(self, goal_oriented=False, render_bool=False):
+    def start_sim(self, goal_oriented=False, render_bool=False):
         self.mode = 'sim'
         if render_bool:
             self.physics_client = p.connect(p.GUI)
@@ -396,7 +396,7 @@ class WidowxEnv(gym.Env):
         elif state['mode'] == 'sim':
             self.__dict__.update(state)
             if state['render_bool']:
-                self._start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
+                self.start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
             else:
-                self._start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
+                self.start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
         self.reset()
