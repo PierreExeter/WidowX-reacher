@@ -45,11 +45,10 @@ class WidowxEnv(gym.Env):
         self.set_goal(self.sample_goal_for_rollout())
         print("********goal is : ***********", self.goal)
 
-        # def start_rospy(self, goal_oriented=False):
-        # REPLACE START_ROS: added by Pierre
-        # ROS specific here
-        self.goal_oriented = True
+        self.start_rospy(goal_oriented=False)
 
+
+    def start_rospy(self, goal_oriented=False):
         self.mode = 'robot'
         self.rand_init = random.random()
         rospy.init_node("widowx_custom_controller_%0.5f" % self.rand_init)
@@ -62,7 +61,8 @@ class WidowxEnv(gym.Env):
         self.current_position_subscriber = rospy.Subscriber(
             "/replab/action/observation", numpy_msg(Floats), self.update_position)
         rospy.sleep(2)
-        # self.goal_oriented = goal_oriented
+
+        self.goal_oriented = goal_oriented
         if self.goal_oriented:
             self.observation_space = spaces.Dict(dict(
                 desired_goal=spaces.Box(low=np.array(
@@ -72,8 +72,7 @@ class WidowxEnv(gym.Env):
                 observation=self.observation_space
             ))
         self.reset()
-
-
+        return self
 
     #shared functions between both sim and robot mode   
     
@@ -232,37 +231,9 @@ class WidowxEnv(gym.Env):
                           s[-1] for s in stat], always_show_all_stats=True,))
         return statistics
 
-    #Functions only for real robot mode
-    # def start_rospy(self, goal_oriented=False):
-    #     # ROS specific here
-    #     self.mode = 'robot'
-    #     self.rand_init = random.random()
-    #     rospy.init_node("widowx_custom_controller_%0.5f" % self.rand_init)
-    #     self.reset_publisher = rospy.Publisher(
-    #         "/replab/reset", String, queue_size=1)
-    #     self.position_updated_publisher = rospy.Publisher(
-    #         "/replab/received/position", String, queue_size=1)
-    #     self.action_publisher = rospy.Publisher(
-    #         "/replab/action", numpy_msg(Floats), queue_size=1)
-    #     self.current_position_subscriber = rospy.Subscriber(
-    #         "/replab/action/observation", numpy_msg(Floats), self.update_position)
-    #     rospy.sleep(2)
-    #     self.goal_oriented = goal_oriented
-    #     if self.goal_oriented:
-    #         self.observation_space = spaces.Dict(dict(
-    #             desired_goal=spaces.Box(low=np.array(
-    #                 [-.16, -.15, 0.25]), high=np.array([.16, .15, 0.41]), dtype=np.float32),
-    #             achieved_goal=spaces.Box(low=self.obs_space_low[
-    #                 :3], high=self.obs_space_high[:3], dtype=np.float32),
-    #             observation=self.observation_space
-    #         ))
-    #     self.reset()
-    #     return self
-
     def update_position(self, x):
         self.current_pos = np.array(x.data)
         self.position_updated_publisher.publish('received')
-
 
     # Functions for pickling
     def __getstate__(self):

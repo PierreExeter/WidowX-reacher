@@ -8,8 +8,7 @@ import uuid
 from rlkit.core import logger
 
 # pierre
-import gym
-import widowx_pybullet
+import gym, widowx_env
 from rlkit.envs.wrappers import NormalizedBoxEnv
 
 filename = str(uuid.uuid4())
@@ -21,7 +20,8 @@ def simulate_policy(args):
 
     # pierre
     # env = data['env']
-    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
+    # env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
+    env = gym.make('widowx_reacher-v5')
     env.action_space.low *= 10
     env.action_space.high *= 10
     env = NormalizedBoxEnv(env)

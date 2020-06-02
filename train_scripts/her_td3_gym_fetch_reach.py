@@ -5,8 +5,7 @@ By default, the gym environment will randomly sample a goal upon each rollout.
 All modifiable parameters are in this script, including the sizes of the Q-networks, number
 of epochs, discount factor, etc. 
 """
-import gym
-import widowx_pybullet
+import gym, widowx_env
 from rlkit.envs.wrappers import NormalizedBoxEnv
 import rlkit.torch.pytorch_util as ptu
 from rlkit.data_management.obs_dict_replay_buffer import ObsDictRelabelingBuffer
@@ -25,7 +24,7 @@ def experiment(variant):
     # env = gym.make('replab-v0')._start_rospy(goal_oriented=True)
     #SIM
     # env = gym.make('replab-v0')._start_sim(goal_oriented=True, render=False)
-    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=True, render_bool=False)
+    env = gym.make('widowx_reacher-v6')
     env = NormalizedBoxEnv(env)
     es = GaussianAndEpislonStrategy(
         action_space=env.action_space,
@@ -81,7 +80,7 @@ def experiment(variant):
 if __name__ == "__main__":
     variant = dict(
         algo_kwargs=dict(
-            num_epochs=3000, #100,
+            num_epochs=10, #3000,
             num_steps_per_epoch=1000,
             num_steps_per_eval=1000,
             max_path_length=50,

@@ -12,7 +12,8 @@ from collections import OrderedDict
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
 warnings.filterwarnings("ignore", category=UserWarning, module='gym')
 
-import gym, widowx_pybullet_no_start_sim
+from rlkit.envs.wrappers import NormalizedBoxEnv
+import gym, widowx_env
 import numpy as np
 import yaml
 # Optional dependencies

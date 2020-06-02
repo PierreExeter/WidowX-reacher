@@ -77,19 +77,19 @@ class WidowxEnv(gym.Env):
         self.set_goal(self.sample_goal_for_rollout())
         print("********goal is : ***********", self.goal)
 
+        self.start_sim(goal_oriented=False, render_bool=True)
 
 
-    # def _start_sim(self, goal_oriented=False, render_bool=False):
-        # REPLACE START_SIM: added by Pierre
-        self.goal_oriented = False
-        self.render_bool = True
+    # re-added by Pierre
+    def start_sim(self, goal_oriented=False, render_bool=False):
+
+        self.render_bool = render_bool
+        self.goal_oriented = goal_oriented
 
         if self.render_bool:
             self.physics_client = p.connect(p.GUI)
         else:
             self.physics_client = p.connect(p.DIRECT)
-
-        p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
         if self.goal_oriented:
             self.observation_space = spaces.Dict(dict(
@@ -101,11 +101,13 @@ class WidowxEnv(gym.Env):
             ))
         # p.resetSimulation()
         # p.setTimeStep(0.01)
+        p.setAdditionalSearchPath(pybullet_data.getDataPath())
         path = os.path.abspath(os.path.dirname(__file__))
         self.arm = p.loadURDF(os.path.join(path, "URDFs/widowx/widowx.urdf"), useFixedBase=True)
         self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"), useFixedBase=True)      # added by Pierre
         self.plane = p.loadURDF('plane.urdf')   # added by Pierre
         self.reset()
+        return self
 
 
     #shared functions between both sim and robot mode   
@@ -330,8 +332,6 @@ class WidowxEnv(gym.Env):
                 [self._get_current_end_effector_position(),
                 self._get_current_joint_positions()],
                 axis = 0)
-
-
 
     # Functions for pickling
     def __getstate__(self):

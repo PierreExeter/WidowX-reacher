@@ -13,7 +13,8 @@ from mpl_toolkits.mplot3d import Axes3D
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
 warnings.filterwarnings("ignore", category=UserWarning, module='gym')
 
-import gym, widowx_pybullet_no_start_sim
+from rlkit.envs.wrappers import NormalizedBoxEnv
+import gym, widowx_env
 import utils.import_envs  # pytype: disable=import-error
 import numpy as np
 import stable_baselines

@@ -5,8 +5,7 @@ By default, the gym environment will randomly sample a goal to use for the rest 
 All modifiable parameters are in this script, including the sizes of the Q-networks, number
 of epochs, discount factor, etc. 
 """
-import gym
-import widowx_pybullet
+import gym, widowx_env
 import rlkit.torch.pytorch_util as ptu
 from rlkit.envs.wrappers import NormalizedBoxEnv
 from rlkit.exploration_strategies.base import \
@@ -21,7 +20,8 @@ def experiment(variant):
     #Robot 
     # env = gym.make('replab-v0')._start_rospy(goal_oriented=False)
     #SIM
-    env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=False)
+    # env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=False)
+    env = gym.make('widowx_reacher-v5')
     env.action_space.low *= 10
     env.action_space.high *= 10
     env = NormalizedBoxEnv(env)

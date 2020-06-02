@@ -6,13 +6,22 @@ from rlkit.samplers.rollout_functions import multitask_rollout
 from rlkit.torch import pytorch_util as ptu
 from rlkit.envs.vae_wrapper import VAEWrappedEnv
 
+# pierre
+import gym, widowx_env
+from rlkit.envs.wrappers import NormalizedBoxEnv
+
 
 def simulate_policy(args):
     if args.pause:
         import ipdb; ipdb.set_trace()
     data = pickle.load(open(args.file, "rb"))
     policy = data['policy']
-    env = data['env']
+
+    # pierre
+    # env = data['env']
+    env = gym.make('widowx_reacher-v6')
+    env = NormalizedBoxEnv(env)
+    
     print("Policy and environment loaded")
     if args.gpu:
         ptu.set_gpu_mode(True)

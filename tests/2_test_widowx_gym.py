@@ -8,8 +8,8 @@ from stable_baselines.common.vec_env import DummyVecEnv, VecNormalize
 # env = gym.make('widowx_reacher-v1').start_rospy(goal_oriented=False)               # requires a roscore to be running
 # env = gym.make('widowx_reacher-v2')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v3')                                              # requires a roscore to be running
-env = gym.make('widowx_reacher-v4').start_sim(goal_oriented=False, render_bool=True)
-# env = gym.make('widowx_reacher-v5')
+# env = gym.make('widowx_reacher-v4').start_sim(goal_oriented=False, render_bool=True)
+env = gym.make('widowx_reacher-v5')
 # env = gym.make('widowx_reacher-v6')  
 
 # normalise action space, observation space and reward
@@ -19,12 +19,12 @@ env = NormalizedBoxEnv(env)
 env = DummyVecEnv([lambda: env])
 env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10., clip_reward=10.)
 
-# save
-env.save("vec_normalize.pkl")
+# # save env
+# env.save("vec_normalize.pkl")
 
-# load
-env = DummyVecEnv([lambda: env])
-env = VecNormalize.load("vec_normalize.pkl", env)
+# # load env
+# env = DummyVecEnv([lambda: env])
+# env = VecNormalize.load("vec_normalize.pkl", env)
 
 print(env)
 
@@ -58,6 +58,6 @@ for episode in range(3):
     cumulative_reward = sum(rewards)
     print("episode {} | cumulative reward : {}".format(episode, cumulative_reward))  
     
-env.close()
+# env.close()
 
 
