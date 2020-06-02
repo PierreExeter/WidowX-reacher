@@ -1,7 +1,7 @@
 from rlkit.samplers.util import rollout
 from rlkit.torch.core import PyTorchModule
 from rlkit.torch.pytorch_util import set_gpu_mode
-from rlkit.core.eval_util import get_generic_path_information     # added by Pierre
+from rlkit.core.eval_util import get_generic_path_information_pierre     # added by Pierre
 import argparse
 import joblib
 import uuid
@@ -20,7 +20,7 @@ def simulate_policy(args):
 
     # pierre
     # env = data['env']
-    # env = gym.make('widowx_reach-v1')._start_sim(goal_oriented=False, render_bool=True)
+
     env = gym.make('widowx_reacher-v5')
     env.action_space.low *= 10
     env.action_space.high *= 10
@@ -41,9 +41,8 @@ def simulate_policy(args):
         )
         if hasattr(env, "log_diagnostics"):
             env.log_diagnostics([path])
-        print("dump to logger: don't work")
         
-        for k, v in get_generic_path_information("log_eval").items():
+        for k, v in get_generic_path_information_pierre(path).items():
             logger.record_tabular(k, v)
 
         logger.dump_tabular()

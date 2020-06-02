@@ -299,7 +299,6 @@ if __name__ == '__main__':
         save_vec_normalize = SaveVecNormalizeCallback(save_freq=1, save_path=params_path)
 
         print("TRAINING ENV TYPE 111: ", env)
-        print("PIERRE - CREATE ENV FROM EVALCALLBACK:", create_env(1, eval_env=True))
 
         eval_callback = EvalCallback(create_env(1, eval_env=True), callback_on_new_best=save_vec_normalize,
                                      best_model_save_path=save_path, n_eval_episodes=args.eval_episodes,

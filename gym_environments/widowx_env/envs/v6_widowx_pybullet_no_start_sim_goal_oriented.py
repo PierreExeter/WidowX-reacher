@@ -76,8 +76,8 @@ class WidowxEnv(gym.Env):
         #self.goal = np.array([-.14, -.13, 0.26])
         self.set_goal(self.sample_goal_for_rollout())
         print("********goal is : ***********", self.goal)
-        self.start_sim(goal_oriented=False, render_bool=True)
 
+        self.start_sim(goal_oriented=False, render_bool=False)
 
     # re-added by Pierre
     def start_sim(self, goal_oriented=False, render_bool=False):

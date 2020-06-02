@@ -43,7 +43,7 @@ def rollout(env, agent, max_path_length=np.inf, animated=False):
         agent_infos.append(agent_info)
         env_infos.append(env_info)
         path_length += 1
-        # time.sleep(1./30.)                   # pierre: uncomment to see simulated policy with acceptable speed : to move to if animated loop
+        time.sleep(1./30.)                   # pierre: uncomment to see simulated policy with acceptable speed : to move to if animated loop
         if d:
             break
         o = next_o

@@ -203,6 +203,11 @@ ReachingJaco-v1:
   train_freq: 1
 
 
-widowx_reach-v3:
+widowx_reacher-v2:
   n_timesteps: !!float 60000
-  policy: 'MlpPolicy'
+  policy: 'CustomSACPolicy'
+
+
+widowx_reacher-v5:
+  n_timesteps: !!float 60000
+  policy: 'CustomSACPolicy'

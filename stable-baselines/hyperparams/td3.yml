@@ -233,7 +233,7 @@ ReachingJaco-v1:
   train_freq: 2000
 
 
-widowx_reach-v3:
+widowx_reacher-v2:
   env_wrapper: utils.wrappers.TimeFeatureWrapper
   n_timesteps: !!float 1e6
   policy: 'MlpPolicy'
@@ -249,4 +249,19 @@ widowx_reach-v3:
   policy_kwargs: "dict(layers=[400, 300])"
 
 
+
+widowx_reacher-v5:
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  buffer_size: 1000000
+  noise_type: 'normal'
+  noise_std: 0.1
+  learning_starts: 10000
+  batch_size: 100
+  learning_rate: !!float 1e-3
+  train_freq: 1000
+  gradient_steps: 1000
+  policy_kwargs: "dict(layers=[400, 300])"
 

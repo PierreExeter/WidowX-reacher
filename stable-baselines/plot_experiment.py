@@ -1,6 +1,13 @@
 import pandas as pd
 from pathlib import Path
+# import matplotlib.pyplot as plt
+
+# added by Pierre
+import matplotlib as mpl
+mpl.use('TkAgg')  # or whatever other backend that you want
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
 import numpy as np
 import os
 import argparse
@@ -135,7 +142,8 @@ if __name__ == '__main__':
     count = 0
     for filename in res_file_list:
         # print(filename)
-
+        filename = str(filename) # convert from Posixpath to string
+        
         W = load_results(filename)
         df_list.append(W['r'])
 

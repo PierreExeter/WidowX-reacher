@@ -6,6 +6,10 @@ import importlib
 import warnings
 import pandas as pd
 import time
+
+# added by Pierre
+import matplotlib as mpl
+mpl.use('TkAgg')  # or whatever other backend that you want
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -58,9 +62,9 @@ def main():
     parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False)
     args = parser.parse_args()
 
-    plot_bool = True
+    plot_bool = False
     plot_dim = 2
-    log_bool = True
+    log_bool = False
 
     if plot_bool:
         if plot_dim == 2:

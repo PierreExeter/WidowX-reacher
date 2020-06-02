@@ -7,12 +7,40 @@ from numbers import Number
 
 import numpy as np
 
+# added by pierre
+def get_generic_path_information_pierre(path, stat_prefix=''):
+    """
+    Get an OrderedDict with a bunch of statistic names and values.
+    """
+    statistics = OrderedDict()
+    
+    returns = sum(path["rewards"])
+
+    rewards = np.vstack(path["rewards"])
+    statistics.update(create_stats_ordered_dict('Rewards', rewards,
+                                                stat_prefix=stat_prefix))
+    statistics.update(create_stats_ordered_dict('Returns', returns,
+                                                stat_prefix=stat_prefix))
+    actions = path["actions"]
+    if len(actions[0].shape) == 1:
+        actions = np.hstack(path["actions"])
+    else:
+        actions = np.vstack(path["actions"])
+    statistics.update(create_stats_ordered_dict(
+        'Actions', actions, stat_prefix=stat_prefix
+    ))
+    statistics['Num Paths'] = 1 #len(paths)
+
+    return statistics
+
+
 
 def get_generic_path_information(paths, stat_prefix=''):
     """
     Get an OrderedDict with a bunch of statistic names and values.
     """
     statistics = OrderedDict()
+    
     returns = [sum(path["rewards"]) for path in paths]
 
     rewards = np.vstack([path["rewards"] for path in paths])

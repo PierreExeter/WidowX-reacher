@@ -150,7 +150,7 @@ ReachingJaco-v1:
   learning_rate: 0.002
 
 
-widowx_reach-v3:
+widowx_reacher-v2:
   normalize: true
   n_envs: 8
   n_timesteps: !!float 1e6
@@ -161,3 +161,19 @@ widowx_reach-v3:
   lr_schedule: 'linear'
   gamma: 0.99
   learning_rate: 0.002
+
+
+widowx_reacher-v5:
+  normalize: true
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+  ent_coef: 0.001
+  n_steps: 32
+  vf_coef: 0.5
+  lr_schedule: 'linear'
+  gamma: 0.99
+  learning_rate: 0.002
+
+
+

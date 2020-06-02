@@ -1,7 +1,13 @@
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pandas as pd
 import argparse
+
+# added by Pierre
+import matplotlib as mpl
+mpl.use('TkAgg')  # or whatever other backend that you want
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 from stable_baselines import results_plotter
 from stable_baselines.results_plotter import load_results, ts2xy

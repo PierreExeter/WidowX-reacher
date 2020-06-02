@@ -18,9 +18,10 @@ def simulate_policy(args):
     policy = data['policy']
 
     # pierre
-    # env = data['env']
-    env = gym.make('widowx_reacher-v6')
-    env = NormalizedBoxEnv(env)
+    env = data['env']
+
+    # env = gym.make('widowx_reacher-v6')
+    # env = NormalizedBoxEnv(env)
     
     print("Policy and environment loaded")
     if args.gpu:

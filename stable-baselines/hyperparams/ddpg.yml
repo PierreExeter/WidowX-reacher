@@ -93,7 +93,15 @@ ReachingJaco-v1:
   noise_std: 0.1
   memory_limit: 50000
 
-widowx_reach-v3:
+widowx_reacher-v2:
+  n_timesteps: !!float 2e5
+  policy: 'MlpPolicy'
+  noise_type: 'ornstein-uhlenbeck'
+  noise_std: 0.1
+  memory_limit: 50000
+
+
+widowx_reacher-v5:
   n_timesteps: !!float 2e5
   policy: 'MlpPolicy'
   noise_type: 'ornstein-uhlenbeck'
