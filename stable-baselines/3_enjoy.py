@@ -62,7 +62,7 @@ def main():
     parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False)
     args = parser.parse_args()
 
-    plot_bool = False
+    plot_bool = True
     plot_dim = 2
     log_bool = False
 

@@ -77,7 +77,7 @@ class WidowxEnv(gym.Env):
         self.set_goal(self.sample_goal_for_rollout())
         print("********goal is : ***********", self.goal)
 
-        self.start_sim(goal_oriented=False, render_bool=False)
+        self.start_sim(goal_oriented=True, render_bool=False)
 
     # re-added by Pierre
     def start_sim(self, goal_oriented=False, render_bool=False):
@@ -331,8 +331,6 @@ class WidowxEnv(gym.Env):
                 [self._get_current_end_effector_position(),
                 self._get_current_joint_positions()],
                 axis = 0)
-
-
 
     # Functions for pickling
     def __getstate__(self):

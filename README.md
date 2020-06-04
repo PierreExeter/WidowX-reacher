@@ -123,6 +123,7 @@ Add Docker pull
 docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/widowx_rl:version1 
 ```
 
+
 ## Start roscore
 
 In terminal 1
@@ -171,6 +172,32 @@ cd /root/ros_ws/rl_scripts/rlkit/
 python examples/test_physical_env.py
 python examples/test_episode_plotted.py  
 ```
+
+In case of CV2 error:
+```bash
+ImportError: /opt/ros/kinetic/lib/python2.7/dist-packages/cv2.so: undefined symbol: PyCObject_Type
+```
+
+edit 
+
+```bash
+/miniconda/envs/rlkit/lib/python3.5/site-packages/stable_baselines/common/atari_wrappers.py
+```
+
+by adding this line:
+
+```python
+import sys
+ros_path = '/opt/ros/kinetic/lib/python2.7/dist-packages'
+if ros_path in sys.path:
+    sys.path.remove(ros_path)
+import cv2
+sys.path.append(ros_path)
+
+#import cv2  # pytype:disable=import-error
+cv2.ocl.setUseOpenCL(False)
+```
+
 ## Train
 
 In terminal 3
