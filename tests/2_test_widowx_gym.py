@@ -3,6 +3,9 @@ import time
 import widowx_env
 from rlkit.envs.wrappers import NormalizedBoxEnv
 from stable_baselines.common.vec_env import DummyVecEnv, VecNormalize
+from stable_baselines.common.env_checker import check_env
+
+
 
 # env = gym.make('widowx_reacher-v0').start_sim(goal_oriented=False, render_bool=True)   # or .start_rospy(goal_oriented=False)
 # env = gym.make('widowx_reacher-v1').start_rospy(goal_oriented=False)               # requires a roscore to be running
@@ -12,12 +15,17 @@ from stable_baselines.common.vec_env import DummyVecEnv, VecNormalize
 env = gym.make('widowx_reacher-v5')
 # env = gym.make('widowx_reacher-v6')  
 
+
+# It will check your custom environment and output additional warnings if needed
+print("any warnings?", check_env(env))
+
+
 # normalise action space, observation space and reward
 # env.action_space.low *= 10
 # env.action_space.high *= 10
 env = NormalizedBoxEnv(env)
-env = DummyVecEnv([lambda: env])
-env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10., clip_reward=10.)
+# env = DummyVecEnv([lambda: env])
+# env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10., clip_reward=10.)
 
 # # save env
 # env.save("vec_normalize.pkl")
@@ -58,6 +66,4 @@ for episode in range(3):
     cumulative_reward = sum(rewards)
     print("episode {} | cumulative reward : {}".format(episode, cumulative_reward))  
     
-# env.close()
-
-
+env.close()

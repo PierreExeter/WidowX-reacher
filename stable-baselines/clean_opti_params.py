@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import yaml
 import glob
-
+import argparse
 
 def convert_a2c_params(param):
 
@@ -116,70 +116,80 @@ def convert_trpo_params(param):
 
 
 
-# get final param.yml path
-filelist = []
-for path in Path('logs/opti10t_0.1M_ReachingJaco-v1/').rglob('*final_params.yml'):
-    filelist.append(str(path))   # convert Posix path to list
+if __name__ == '__main__':
 
-print(filelist)
 
-for filepath in filelist:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', '--folder', help='Log folder', type=str)
+    args = parser.parse_args()
+    log_dir = args.folder
+    print(log_dir)
 
-    print(filepath)
 
-    # load params
-    with open(filepath) as file:
-        final_params = yaml.load(file, Loader=yaml.FullLoader)
+    # get final param.yml path
+    filelist = []
+    for path in Path(log_dir).rglob('*final_params.yml'):
+        filelist.append(str(path))   # convert Posix path to list
 
-    print("dirty params: ", final_params)
+    print(filelist)
 
-    if 'a2c' in filepath:
-        print("A2C")
-        cleaned_params = convert_a2c_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
+    for filepath in filelist:
 
-    elif 'acktr' in filepath:
-        print("ACKTR")
-        cleaned_params = convert_acktr_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
+        print(filepath)
 
-    elif 'ddpg' in filepath:
-        print("DDPG")
-        cleaned_params = convert_ddpg_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
+        # load params
+        with open(filepath) as file:
+            final_params = yaml.load(file, Loader=yaml.FullLoader)
 
-    elif 'ppo2' in filepath:
-        print("PPO2")
-        cleaned_params = convert_ppo2_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
+        print("dirty params: ", final_params)
 
-    elif 'sac' in filepath:
-        print("SAC")
-        cleaned_params = convert_sac_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
-        
+        if 'a2c' in filepath:
+            print("A2C")
+            cleaned_params = convert_a2c_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
 
-    elif 'td3' in filepath:
-        print("TD3")
-        cleaned_params = convert_td3_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
+        elif 'acktr' in filepath:
+            print("ACKTR")
+            cleaned_params = convert_acktr_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
 
-    elif 'trpo' in filepath:
-        print("TRPO")
-        cleaned_params = convert_trpo_params(final_params)
-        print("cleaned params: ", cleaned_params)
-        with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
-            yaml.dump(cleaned_params, f, default_flow_style=False)
+        elif 'ddpg' in filepath:
+            print("DDPG")
+            cleaned_params = convert_ddpg_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
+
+        elif 'ppo2' in filepath:
+            print("PPO2")
+            cleaned_params = convert_ppo2_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
+
+        elif 'sac' in filepath:
+            print("SAC")
+            cleaned_params = convert_sac_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
+            
+
+        elif 'td3' in filepath:
+            print("TD3")
+            cleaned_params = convert_td3_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
+
+        elif 'trpo' in filepath:
+            print("TRPO")
+            cleaned_params = convert_trpo_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)
 

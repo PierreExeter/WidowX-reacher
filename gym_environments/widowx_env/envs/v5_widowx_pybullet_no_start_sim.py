@@ -70,8 +70,14 @@ class WidowxEnv(gym.Env):
         observation_space = spaces.Box(
             low=self.obs_space_low, high=self.obs_space_high, dtype=np.float32)
         self.observation_space = observation_space
+        
+        # added by Pierre, normalize action space, cf https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html
         self.action_space = spaces.Box(low=np.array([-0.5, -0.25, -0.25, -0.25, -0.5, -0.005]) / 10,
                                        high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 10, dtype=np.float32)
+        # PB: actions are too big and the robot moves too much
+        # self.action_space = spaces.Box(low=np.array([-1, -1, -1, -1, -1, -1]),
+        #                                high=np.array([1, 1, 1, 1, 1, 1]), dtype=np.float32)
+
         self.current_pos = None
         #self.goal = np.array([-.14, -.13, 0.26])
         self.set_goal(self.sample_goal_for_rollout())

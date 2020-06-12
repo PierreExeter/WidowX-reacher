@@ -1,0 +1,11 @@
+widowx_reacher-v5:
+  batch_size: 16
+  gamma: 0.9999
+  lr: 0.00024171093854726683
+  memory_limit: 10000
+  n_timesteps: 200000.0
+  noise_std: 0.9140268074088557
+  noise_type: ornstein-uhlenbeck
+  normalize_observations: false
+  normalize_returns: false
+  policy: MlpPolicy

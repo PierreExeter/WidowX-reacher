@@ -1,0 +1,14 @@
+widowx_reacher-v5:
+  batch_size: 128
+  buffer_size: 10000
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  gamma: 0.995
+  gradient_steps: 100
+  learning_rate: 0.49861196451944606
+  learning_starts: 10000
+  n_timesteps: 1000000.0
+  noise_std: 0.4280162462325965
+  noise_type: normal
+  policy: MlpPolicy
+  policy_kwargs: dict(layers=[400, 300])
+  train_freq: 100

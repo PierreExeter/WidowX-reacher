@@ -120,7 +120,7 @@ Add Docker pull
 ## Run Docker image
 
 ```bash
-docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/widowx_rl:version1 
+docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/widowx_rl:version2 
 ```
 
 
@@ -144,7 +144,9 @@ widowx.move_to_neutral()
 # exit with CTRL+D
 ```
 
-## Configure the servos torque (50% of their max power to prevent collision damage)
+## Configure the servos torque (
+
+Set the servos torque to 50% of their maximum value to prevent collision damage (to do only once, even after closing the container).
 
 In terminal 2
 
@@ -168,7 +170,7 @@ In terminal 3
 docker container ls
 docker exec -it [container ID] bash
 source activate rlkit  # source activate SB_widowx
-cd /root/ros_ws/rl_scripts/rlkit/
+cd /root/ros_ws/rl_scripts/WidowX-reacher/
 python examples/test_physical_env.py
 python examples/test_episode_plotted.py  
 ```
@@ -191,8 +193,8 @@ import sys
 ros_path = '/opt/ros/kinetic/lib/python2.7/dist-packages'
 if ros_path in sys.path:
     sys.path.remove(ros_path)
-import cv2
-sys.path.append(ros_path)
+    import cv2
+    sys.path.append(ros_path)
 
 #import cv2  # pytype:disable=import-error
 cv2.ocl.setUseOpenCL(False)
