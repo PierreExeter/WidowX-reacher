@@ -1,0 +1,14 @@
+widowx_reacher-v5:
+  cg_damping: 2.35e-05
+  cg_iters: 30
+  ent_coef: 2.300239849486517e-06
+  entcoeff: 0.01118
+  gamma: 0.95
+  lam: 0.9
+  lamdba: 0.98
+  max_kl: 0.10386580256500279
+  n_timesteps: 300000.0
+  policy: MlpPolicy
+  timesteps_per_batch: 512
+  vf_iters: 1
+  vf_stepsize: 0.0006937575128144786

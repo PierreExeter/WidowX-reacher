@@ -1,11 +1,11 @@
 #!/bin/bash
 
-ntrials=100                            
-nsteps=500000           
+ntrials=10                            
+nsteps=10000           
 njobs=-1                 
 sampler="tpe"
 pruner="median"
-log_dir="logs/opti100t_0.5M_widowx_reacher-v5/"
+log_dir="logs/opti10t_0.01M_widowx_reacher-v5/"
 env="widowx_reacher-v5"
 
 

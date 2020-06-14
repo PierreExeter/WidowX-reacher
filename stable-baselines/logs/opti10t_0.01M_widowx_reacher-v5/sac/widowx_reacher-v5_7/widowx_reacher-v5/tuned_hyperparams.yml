@@ -1,0 +1,8 @@
+batch_size: 32
+buffer_size: 10000
+ent_coef: 0.05
+gamma: 0.95
+learning_starts: 20000
+lr: 2.2655846366566637e-05
+net_arch: medium
+train_freq: 1

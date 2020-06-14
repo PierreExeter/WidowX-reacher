@@ -210,4 +210,5 @@ widowx_reacher-v2:
 
 widowx_reacher-v5:
   n_timesteps: !!float 60000
-  policy: 'CustomSACPolicy'
+  policy: MlpPolicy
+  policy_kwargs: dict(layers=[256, 256])

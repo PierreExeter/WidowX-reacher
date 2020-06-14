@@ -81,7 +81,7 @@ class WidowxEnv(gym.Env):
         self.current_pos = None
         #self.goal = np.array([-.14, -.13, 0.26])
         self.set_goal(self.sample_goal_for_rollout())
-        print("********goal is : ***********", self.goal)
+        # print("********goal is : ***********", self.goal)
 
     #shared functions between both sim and robot mode   
     

@@ -1,0 +1,101 @@
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/policies.py:116: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/policies.py:561: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/trpo_mpi/trpo_mpi.py:192: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/trpo_mpi/trpo_mpi.py:266: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f218c068358> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2186cd1b38>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:27:15,920][0m Finished trial#0 with value: 0.6127437353134155 with parameters: {'gamma': 0.995, 'timesteps_per_batch': 512, 'max_kl': 0.11630395714480306, 'ent_coef': 0.010130230408794483, 'lamdba': 0.9, 'cg_iters': 30, 'vf_stepsize': 0.01696174638729099, 'vf_iters': 20}. Best is trial#0 with value: 0.6127437353134155.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f2178237470> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2178478cf8>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:27:27,349][0m Finished trial#1 with value: 1.406807780265808 with parameters: {'gamma': 0.9999, 'timesteps_per_batch': 4096, 'max_kl': 0.6053082080079019, 'ent_coef': 4.831596208381844e-06, 'lamdba': 1.0, 'cg_iters': 30, 'vf_stepsize': 0.004410365667970984, 'vf_iters': 1}. Best is trial#0 with value: 0.6127437353134155.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f21642529b0> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2164180c88>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:27:37,762][0m Finished trial#2 with value: 0.4490317404270172 with parameters: {'gamma': 0.95, 'timesteps_per_batch': 512, 'max_kl': 0.10386580256500279, 'ent_coef': 2.300239849486517e-06, 'lamdba': 0.98, 'cg_iters': 30, 'vf_stepsize': 0.0006937575128144786, 'vf_iters': 1}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f2164252cc0> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2160163860>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:27:49,785][0m Finished trial#3 with value: 1.3403539657592773 with parameters: {'gamma': 0.98, 'timesteps_per_batch': 128, 'max_kl': 0.06236650188352654, 'ent_coef': 1.699634491174657e-05, 'lamdba': 0.95, 'cg_iters': 30, 'vf_stepsize': 3.902762553553292e-05, 'vf_iters': 1}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f2164252588> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f213007cb00>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:28:11,261][0m Finished trial#4 with value: 0.7576976418495178 with parameters: {'gamma': 0.95, 'timesteps_per_batch': 16, 'max_kl': 0.0013523525694052886, 'ent_coef': 7.99159708744152e-06, 'lamdba': 0.95, 'cg_iters': 20, 'vf_stepsize': 0.07433073841273528, 'vf_iters': 20}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f20e410fc18> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20e40ea9e8>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:28:29,336][0m Finished trial#5 with value: 0.5411239266395569 with parameters: {'gamma': 0.98, 'timesteps_per_batch': 16, 'max_kl': 1.296399344054502e-06, 'ent_coef': 0.00021059520545246572, 'lamdba': 1.0, 'cg_iters': 10, 'vf_stepsize': 0.012152621852509347, 'vf_iters': 20}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f20e410fbe0> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20cf5c7a90>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:28:41,565][0m Finished trial#6 with value: 0.5771335363388062 with parameters: {'gamma': 0.95, 'timesteps_per_batch': 4096, 'max_kl': 0.25947259726504646, 'ent_coef': 4.954073578738671e-08, 'lamdba': 0.9, 'cg_iters': 30, 'vf_stepsize': 0.01843742127649596, 'vf_iters': 10}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f20cdd75940> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20cdd77240>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:28:53,203][0m Finished trial#7 with value: 1.5815120935440063 with parameters: {'gamma': 0.9999, 'timesteps_per_batch': 64, 'max_kl': 5.936873372035253e-06, 'ent_coef': 1.6143528192274821e-06, 'lamdba': 0.99, 'cg_iters': 10, 'vf_stepsize': 0.007095513849771357, 'vf_iters': 20}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f20cb498518> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20cb869c88>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:29:05,378][0m Finished trial#8 with value: 0.4905502200126648 with parameters: {'gamma': 0.99, 'timesteps_per_batch': 256, 'max_kl': 0.5671469641942559, 'ent_coef': 0.0003711352619121185, 'lamdba': 0.98, 'cg_iters': 30, 'vf_stepsize': 0.9473224693917235, 'vf_iters': 20}. Best is trial#2 with value: 0.4490317404270172.[0m
+/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/stable_baselines/common/callbacks.py:279: UserWarning: Training and eval env are not of the same type<stable_baselines.common.base_class._UnvecWrapper object at 0x7f20c8b41a90> != <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20c7ad6588>
+  "{} != {}".format(self.training_env, self.eval_env))
+[32m[I 2020-06-14 13:29:15,755][0m Finished trial#9 with value: 0.552644670009613 with parameters: {'gamma': 0.9, 'timesteps_per_batch': 256, 'max_kl': 2.9278818805431125e-05, 'ent_coef': 1.2965434798948996e-07, 'lamdba': 0.99, 'cg_iters': 15, 'vf_stepsize': 0.019127047981511353, 'vf_iters': 3}. Best is trial#2 with value: 0.4490317404270172.[0m
+========== widowx_reacher-v5 ==========
+Seed: 0
+OrderedDict([('cg_damping', 2.35e-05),
+             ('entcoeff', 0.01118),
+             ('gamma', 0.99),
+             ('lam', 0.9),
+             ('max_kl', 0.000193),
+             ('n_timesteps', 300000.0),
+             ('policy', 'MlpPolicy'),
+             ('timesteps_per_batch', 1024),
+             ('vf_iters', 10),
+             ('vf_stepsize', 0.00428)])
+Using 1 environments
+Overwriting n_timesteps with n=10000
+Creating test environment
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f218c05a080>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f218c05fb38>
+Optimizing hyperparameters
+Sampler: tpe - Pruner: median
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2186cd1b38>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f218c068358>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2178478cf8>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f2178237470>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2164180c88>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f21642529b0>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f2160163860>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f2164252cc0>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f213007cb00>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f2164252588>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20e40ea9e8>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f20e410fc18>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20cf5c7a90>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f20e410fbe0>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20cdd77240>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f20cdd75940>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20cb869c88>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f20cb498518>
+EVAL ENV TYPE 333: <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7f20c7ad6588>
+TRAINING ENV TYPE:  <stable_baselines.common.base_class._UnvecWrapper object at 0x7f20c8b41a90>
+Number of finished trials:  10
+Best trial:
+Value:  0.4490317404270172
+Params: 
+    gamma: 0.95
+    timesteps_per_batch: 512
+    max_kl: 0.10386580256500279
+    ent_coef: 2.300239849486517e-06
+    lamdba: 0.98
+    cg_iters: 30
+    vf_stepsize: 0.0006937575128144786
+    vf_iters: 1
+best params:  {'gamma': 0.95, 'timesteps_per_batch': 512, 'max_kl': 0.10386580256500279, 'ent_coef': 2.300239849486517e-06, 'lamdba': 0.98, 'cg_iters': 30, 'vf_stepsize': 0.0006937575128144786, 'vf_iters': 1}
+Writing report to logs/opti10t_0.01M_widowx_reacher-v5/trpo/report_widowx_reacher-v5_10-trials-10000-tpe-median_1592134155.csv
+pybullet build time: May 18 2020 02:46:26

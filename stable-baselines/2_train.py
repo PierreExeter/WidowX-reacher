@@ -276,7 +276,6 @@ if __name__ == '__main__':
         return env
 
     env = create_env(n_envs)
-    print("TRAINING ENV TYPE 000: ", env)
 
     # Create test env if needed, do not normalize reward
     eval_env = None
@@ -298,13 +297,12 @@ if __name__ == '__main__':
 
         save_vec_normalize = SaveVecNormalizeCallback(save_freq=1, save_path=params_path)
 
-        print("TRAINING ENV TYPE 111: ", env)
+        print("TRAINING ENV TYPE : ", env)
 
         eval_callback = EvalCallback(create_env(1, eval_env=True), callback_on_new_best=save_vec_normalize,
                                      best_model_save_path=save_path, n_eval_episodes=args.eval_episodes,
                                      log_path=save_path, eval_freq=args.eval_freq)
         callbacks.append(eval_callback)
-        print("TRAINING ENV TYPE 444: ", env)
 
         # Restore original kwargs
         if old_kwargs is not None:
