@@ -54,6 +54,13 @@ pip install -e .
 cd ..
 ```
 
+6. Install the local Stable Baselines repository
+```bash
+cd stable-baselines
+pip install -e .
+cd ..
+```
+
 ## Test the Gym environment
 
 ```bash
