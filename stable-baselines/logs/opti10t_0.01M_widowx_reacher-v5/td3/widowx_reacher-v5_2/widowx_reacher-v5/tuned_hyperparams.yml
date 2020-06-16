@@ -1,7 +1,0 @@
-batch_size: 32
-buffer_size: 1000000
-gamma: 0.99
-lr: 0.0006584970818505349
-noise_std: 0.9883738380592262
-noise_type: normal
-train_freq: 2000

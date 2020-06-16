@@ -1,0 +1,100 @@
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/policies.py:124: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_layers.py:57: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:194: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/math_grad.py:1205: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:226: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:240: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+[32m[I 2020-06-16 22:45:45,278][0m Finished trial#3 with value: 4.232801914215088 with parameters: {'gamma': 0.95, 'lr': 0.00022379321350636863, 'batch_size': 16, 'buffer_size': 10000, 'train_freq': 1000, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.9902050407215511, 'random_exploration': 0.6970621917826139, 'n_sampled_goal': 1}. Best is trial#3 with value: 4.232801914215088.[0m
+[32m[I 2020-06-16 22:46:17,506][0m Finished trial#5 with value: 2.2267096042633057 with parameters: {'gamma': 0.9, 'lr': 0.0020364894020051456, 'batch_size': 16, 'buffer_size': 10000, 'train_freq': 2000, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.4115187588908167, 'random_exploration': 0.30811604983136764, 'n_sampled_goal': 6}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:46:27,552][0m Finished trial#0 with value: 4.170327663421631 with parameters: {'gamma': 0.95, 'lr': 3.8180612706054347e-05, 'batch_size': 16, 'buffer_size': 100000, 'train_freq': 2000, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.7589511901820541, 'random_exploration': 0.08445369740566033, 'n_sampled_goal': 8}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:46:43,946][0m Finished trial#7 with value: 2.2268295288085938 with parameters: {'gamma': 0.9, 'lr': 0.0022356362942781783, 'batch_size': 32, 'buffer_size': 100000, 'train_freq': 100, 'noise_type': 'normal', 'noise_std': 0.4201211474569745, 'random_exploration': 0.2930192139663278, 'n_sampled_goal': 6}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:47:25,582][0m Finished trial#6 with value: 5.314276218414307 with parameters: {'gamma': 0.9, 'lr': 0.017683974470082447, 'batch_size': 64, 'buffer_size': 10000, 'train_freq': 2000, 'noise_type': 'normal', 'noise_std': 0.2835858314061869, 'random_exploration': 0.3202218536553668, 'n_sampled_goal': 2}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:47:39,790][0m Finished trial#2 with value: 5.748767852783203 with parameters: {'gamma': 0.9, 'lr': 0.08308139792282208, 'batch_size': 64, 'buffer_size': 10000, 'train_freq': 2000, 'noise_type': 'normal', 'noise_std': 0.5780917936384566, 'random_exploration': 0.08612617109616039, 'n_sampled_goal': 8}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:48:10,674][0m Finished trial#8 with value: 6.971749305725098 with parameters: {'gamma': 0.95, 'lr': 0.6398601383519207, 'batch_size': 128, 'buffer_size': 100000, 'train_freq': 100, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.6085182462727367, 'random_exploration': 0.9091410470301822, 'n_sampled_goal': 4}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:48:14,717][0m Finished trial#9 with value: 2.226858377456665 with parameters: {'gamma': 0.9999, 'lr': 0.0013184508967098159, 'batch_size': 128, 'buffer_size': 100000, 'train_freq': 2000, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.8984334134052706, 'random_exploration': 0.47448899778662923, 'n_sampled_goal': 2}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:48:15,196][0m Finished trial#1 with value: 2.226858377456665 with parameters: {'gamma': 0.995, 'lr': 0.19462460654133082, 'batch_size': 128, 'buffer_size': 100000, 'train_freq': 1000, 'noise_type': 'normal', 'noise_std': 0.05919346549603355, 'random_exploration': 0.6186188297560928, 'n_sampled_goal': 4}. Best is trial#5 with value: 2.2267096042633057.[0m
+[32m[I 2020-06-16 22:48:45,056][0m Finished trial#4 with value: 2.4931018352508545 with parameters: {'gamma': 0.9, 'lr': 2.1129231286832253e-05, 'batch_size': 512, 'buffer_size': 1000000, 'train_freq': 1000, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.8996987673186788, 'random_exploration': 0.29183336798804393, 'n_sampled_goal': 6}. Best is trial#5 with value: 2.2267096042633057.[0m
+========== widowx_reacher-v6 ==========
+Seed: 0
+OrderedDict([('batch_size', 256),
+             ('buffer_size', 1000000),
+             ('gamma', 0.95),
+             ('goal_selection_strategy', 'future'),
+             ('learning_rate', 0.001),
+             ('learning_starts', 1000),
+             ('model_class', 'td3'),
+             ('n_sampled_goal', 4),
+             ('n_timesteps', 25000.0),
+             ('policy', 'MlpPolicy')])
+Using 1 environments
+Overwriting n_timesteps with n=10000
+Creating test environment
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7fa7854dc1d0>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa7854dfdd8>
+Optimizing hyperparameters
+Sampler: tpe - Pruner: median
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b0392668>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b0380c88>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b81d7588>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b0364320>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b033f5c0>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b02d4278>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b03502e8>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b03ceba8>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b039c0b8>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa6b0305518>
+Number of finished trials:  10
+Best trial:
+Value:  2.2267096042633057
+Params: 
+    gamma: 0.9
+    lr: 0.0020364894020051456
+    batch_size: 16
+    buffer_size: 10000
+    train_freq: 2000
+    noise_type: ornstein-uhlenbeck
+    noise_std: 0.4115187588908167
+    random_exploration: 0.30811604983136764
+    n_sampled_goal: 6
+best params:  {'gamma': 0.9, 'lr': 0.0020364894020051456, 'batch_size': 16, 'buffer_size': 10000, 'train_freq': 2000, 'noise_type': 'ornstein-uhlenbeck', 'noise_std': 0.4115187588908167, 'random_exploration': 0.30811604983136764, 'n_sampled_goal': 6}
+Writing report to logs/opti10t_0.01M_widowx_reacher-v6/her/report_widowx_reacher-v6_10-trials-10000-tpe-median_1592340525.csv
+pybullet build time: May 18 2020 02:46:26

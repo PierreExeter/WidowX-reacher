@@ -13,7 +13,7 @@ from rospy_tutorials.msg import Floats
 from std_msgs.msg import String
 
 
-class WidowxEnv(gym.Env):
+class WidowxEnv(gym.GoalEnv):   # added by Pierre
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
@@ -139,8 +139,9 @@ class WidowxEnv(gym.Env):
         self.reset_publisher.publish(String("RESET"))
         self.current_pos = np.array(rospy.wait_for_message("/replab/action/observation", numpy_msg(Floats)).data)
 
+        # commented by Pierre: don't re-sample new goal for goal oriented environment
         if self.goal_oriented:
-            self.set_goal(self.sample_goal_for_rollout())
+        #     self.set_goal(self.sample_goal_for_rollout())
             return self._get_obs()
         return self.current_pos
 

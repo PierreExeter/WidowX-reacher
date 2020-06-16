@@ -19,6 +19,7 @@ register(id='widowx_reacher-v2',
          max_episode_steps=100
          )
 
+# FOR SOME STRANGE REASON, I CAN'T SPECIFY max_episode_steps for GoalEnv
 # environment for the physical arm only + no start_rospy method + goal oriented
 register(id='widowx_reacher-v3',
          entry_point='widowx_env.envs.v3_widowx_physical_no_start_rospy_goal_oriented:WidowxEnv',
@@ -37,8 +38,15 @@ register(id='widowx_reacher-v5',
          max_episode_steps=100
          )
 
+# FOR SOME STRANGE REASON, I CAN'T SPECIFY max_episode_steps for GoalEnv
 # environment for the Pybullet simulation + no start_sim required + goal_oriented
 register(id='widowx_reacher-v6',
          entry_point='widowx_env.envs.v6_widowx_pybullet_no_start_sim_goal_oriented:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# test gym.GoalEnv
+register(id='my_goal_env-v0',
+         entry_point='widowx_env.envs.my_goal_env:MyGoalEnv',
          max_episode_steps=100
          )

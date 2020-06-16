@@ -1,0 +1,192 @@
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/policies.py:124: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_layers.py:57: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:194: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/math_grad.py:1205: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:226: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/td3/td3.py:240: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+[33m[W 2020-06-16 14:24:48,567][0m Setting status of trial#8 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:48,781][0m Setting status of trial#5 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:48,952][0m Setting status of trial#4 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:49,148][0m Setting status of trial#7 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:49,283][0m Setting status of trial#1 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:49,425][0m Setting status of trial#0 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:49,570][0m Setting status of trial#2 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:49,571][0m Setting status of trial#9 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+[33m[W 2020-06-16 14:24:49,722][0m Setting status of trial#6 as TrialState.FAIL because of the following error: AttributeError("'Box' object has no attribute 'spaces'",)
+Traceback (most recent call last):
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'[0m
+========== widowx_reacher-v6 ==========
+Seed: 0
+OrderedDict([('batch_size', 256),
+             ('buffer_size', 1000000),
+             ('gamma', 0.95),
+             ('goal_selection_strategy', 'future'),
+             ('learning_rate', 0.001),
+             ('learning_starts', 1000),
+             ('model_class', 'td3'),
+             ('n_sampled_goal', 4),
+             ('n_timesteps', 25000.0),
+             ('policy', 'MlpPolicy')])
+Using 1 environments
+Overwriting n_timesteps with n=10000
+Creating test environment
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7fafbd754668>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fafbd76f198>
+Optimizing hyperparameters
+1111111111111111
+Sampler: tpe - Pruner: median
+2222222222222222222
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee030f518>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee037e6a0>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee026b710>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee01152e8>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee015f240>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faec07f4470>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee0179d68>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee0115d68>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7faee0169cf8>
+pybullet build time: May 18 2020 02:46:26
+Traceback (most recent call last):
+  File "2_train.py", line 396, in <module>
+    verbose=args.verbose)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 134, in hyperparam_optimization
+    study.optimize(objective, n_trials=n_trials, n_jobs=n_jobs)
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 375, in optimize
+    for _ in _iter
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/joblib/parallel.py", line 1042, in __call__
+    self.retrieve()
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/joblib/parallel.py", line 921, in retrieve
+    self._output.extend(job.get(timeout=self.timeout))
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/multiprocessing/pool.py", line 644, in get
+    raise self._value
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/multiprocessing/pool.py", line 119, in worker
+    result = (True, func(*args, **kwds))
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/joblib/_parallel_backends.py", line 593, in __call__
+    return self.func(*args, **kwargs)
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/joblib/parallel.py", line 253, in __call__
+    for func, args, kwargs in self.items]
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/joblib/parallel.py", line 253, in <listcomp>
+    for func, args, kwargs in self.items]
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 617, in _reseed_and_optimize_sequential
+    func, n_trials, timeout, catch, callbacks, gc_after_trial, time_start
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 648, in _optimize_sequential
+    self._run_trial_and_callbacks(func, catch, callbacks, gc_after_trial)
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 678, in _run_trial_and_callbacks
+    trial = self._run_trial(func, catch, gc_after_trial)
+  File "/home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/optuna/study.py", line 699, in _run_trial
+    result = func(trial)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines_zoo/utils/hyperparams_opt.py", line 109, in objective
+    eval_env = HERGoalEnvWrapper(eval_env)
+  File "/home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/her/utils.py", line 25, in __init__
+    self.spaces = list(env.observation_space.spaces.values())
+AttributeError: 'Box' object has no attribute 'spaces'

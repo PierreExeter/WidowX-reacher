@@ -1,9 +1,0 @@
-batch_size: 32
-buffer_size: 100000
-ent_coef: auto
-gamma: 0.98
-learning_starts: 20000
-lr: 0.017545537951410374
-net_arch: small
-target_entropy: -10
-train_freq: 10

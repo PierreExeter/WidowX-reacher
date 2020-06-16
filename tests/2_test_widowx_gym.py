@@ -12,9 +12,11 @@ from stable_baselines.common.env_checker import check_env
 # env = gym.make('widowx_reacher-v2')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v3')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v4').start_sim(goal_oriented=False, render_bool=True)
-env = gym.make('widowx_reacher-v5')
-# env = gym.make('widowx_reacher-v6')  
+# env = gym.make('widowx_reacher-v5')
+env = gym.make('widowx_reacher-v6')  
 
+
+print("isinstance(env, gym.GoalEnv)", isinstance(env, gym.Env))
 
 # It will check your custom environment and output additional warnings if needed
 print("any warnings?", check_env(env))
@@ -23,7 +25,7 @@ print("any warnings?", check_env(env))
 # normalise action space, observation space and reward
 # env.action_space.low *= 10
 # env.action_space.high *= 10
-env = NormalizedBoxEnv(env)
+# env = NormalizedBoxEnv(env)
 # env = DummyVecEnv([lambda: env])
 # env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10., clip_reward=10.)
 
@@ -34,15 +36,15 @@ env = NormalizedBoxEnv(env)
 # env = DummyVecEnv([lambda: env])
 # env = VecNormalize.load("vec_normalize.pkl", env)
 
-print(env)
+# print(env)
 
-# comment this when using widowx_reacher-v3 and widowx_reacher-v6 (goal oriented env, observation is a dict)
-print("Action space: ", env.action_space)
-print(env.action_space.high)
-print(env.action_space.low)
-print("Observation space: ", env.observation_space)
-print(env.observation_space.high)
-print(env.observation_space.low)
+# # comment this when using widowx_reacher-v3 and widowx_reacher-v6 (goal oriented env, observation is a dict)
+# print("Action space: ", env.action_space)
+# print(env.action_space.high)
+# print(env.action_space.low)
+# print("Observation space: ", env.observation_space)
+# print(env.observation_space.high)
+# print(env.observation_space.low)
 
 
 for episode in range(3):
