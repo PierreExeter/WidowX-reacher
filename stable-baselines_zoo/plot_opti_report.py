@@ -5,7 +5,7 @@ import numpy as np
 import glob
 
 
-file_path = "logs/opti10t_0.5M_widowx_reacher-v5/a2c/"
+file_path = "logs/opti100t_0.5M_widowx_reacher-v5/ppo2/"
 #report_name = "report_ReachingJaco-v1_20-trials-10000-tpe-median_1588163765.csv"
 
 report_name = glob.glob(file_path+'*csv')[0]

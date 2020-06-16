@@ -1,0 +1,12 @@
+widowx_reacher-v5:
+  ent_coef: 9.992040999998771e-07
+  gamma: 0.9999
+  learning_rate: 0.06
+  lr: 0.00017306384976716665
+  lr_schedule: constant
+  n_envs: 8
+  n_steps: 256
+  n_timesteps: 2000000.0
+  normalize: true
+  policy: MlpPolicy
+  vf_coef: 0.9743187298547349
