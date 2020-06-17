@@ -1,13 +1,14 @@
 import numpy as np
+import itertools
 from gym import Env
 from gym.spaces import Box
+from gym.spaces import Discrete
 
-from rlkit.core.serializable import Serializable
+from collections import deque
 
 
-class ProxyEnv(Serializable, Env):
+class ProxyEnv(Env):
     def __init__(self, wrapped_env):
-        Serializable.quick_init(self, locals())
         self._wrapped_env = wrapped_env
         self.action_space = self._wrapped_env.action_space
         self.observation_space = self._wrapped_env.observation_space
@@ -25,10 +26,6 @@ class ProxyEnv(Serializable, Env):
     def render(self, *args, **kwargs):
         return self._wrapped_env.render(*args, **kwargs)
 
-    def log_diagnostics(self, paths, *args, **kwargs):
-        if hasattr(self._wrapped_env, 'log_diagnostics'):
-            self._wrapped_env.log_diagnostics(paths, *args, **kwargs)
-
     @property
     def horizon(self):
         return self._wrapped_env.horizon
@@ -37,13 +34,90 @@ class ProxyEnv(Serializable, Env):
         if hasattr(self.wrapped_env, "terminate"):
             self.wrapped_env.terminate()
 
+    def __getattr__(self, attr):
+        if attr == '_wrapped_env':
+            raise AttributeError()
+        return getattr(self._wrapped_env, attr)
 
-class NormalizedBoxEnv(ProxyEnv, Serializable):
+    def __getstate__(self):
+        """
+        This is useful to override in case the wrapped env has some funky
+        __getstate__ that doesn't play well with overriding __getattr__.
+
+        The main problematic case is/was gym's EzPickle serialization scheme.
+        :return:
+        """
+        return self.__dict__
+
+    def __setstate__(self, state):
+        self.__dict__.update(state)
+
+    def __str__(self):
+        return '{}({})'.format(type(self).__name__, self.wrapped_env)
+
+
+class HistoryEnv(ProxyEnv, Env):
+    def __init__(self, wrapped_env, history_len):
+        super().__init__(wrapped_env)
+        self.history_len = history_len
+
+        high = np.inf * np.ones(
+            self.history_len * self.observation_space.low.size)
+        low = -high
+        self.observation_space = Box(low=low,
+                                     high=high,
+                                     )
+        self.history = deque(maxlen=self.history_len)
+
+    def step(self, action):
+        state, reward, done, info = super().step(action)
+        self.history.append(state)
+        flattened_history = self._get_history().flatten()
+        return flattened_history, reward, done, info
+
+    def reset(self, **kwargs):
+        state = super().reset()
+        self.history = deque(maxlen=self.history_len)
+        self.history.append(state)
+        flattened_history = self._get_history().flatten()
+        return flattened_history
+
+    def _get_history(self):
+        observations = list(self.history)
+
+        obs_count = len(observations)
+        for _ in range(self.history_len - obs_count):
+            dummy = np.zeros(self._wrapped_env.observation_space.low.size)
+            observations.append(dummy)
+        return np.c_[observations]
+
+
+class DiscretizeEnv(ProxyEnv, Env):
+    def __init__(self, wrapped_env, num_bins):
+        super().__init__(wrapped_env)
+        low = self.wrapped_env.action_space.low
+        high = self.wrapped_env.action_space.high
+        action_ranges = [
+            np.linspace(low[i], high[i], num_bins)
+            for i in range(len(low))
+        ]
+        self.idx_to_continuous_action = [
+            np.array(x) for x in itertools.product(*action_ranges)
+        ]
+        self.action_space = Discrete(len(self.idx_to_continuous_action))
+
+    def step(self, action):
+        continuous_action = self.idx_to_continuous_action[action]
+        return super().step(continuous_action)
+
+
+class NormalizedBoxEnv(ProxyEnv):
     """
     Normalize action to in [-1, 1].
 
     Optionally normalize observations and scale reward.
     """
+
     def __init__(
             self,
             env,
@@ -51,16 +125,6 @@ class NormalizedBoxEnv(ProxyEnv, Serializable):
             obs_mean=None,
             obs_std=None,
     ):
-        # self._wrapped_env needs to be called first because
-        # Serializable.quick_init calls getattr, on this class. And the
-        # implementation of getattr (see below) calls self._wrapped_env.
-        # Without setting this first, the call to self._wrapped_env would call
-        # getattr again (since it's not set yet) and therefore loop forever.
-        self._wrapped_env = env
-        # Or else serialization gets delegated to the wrapped_env. Serialize
-        # this env separately from the wrapped_env.
-        self._serializable_initialized = False
-        Serializable.quick_init(self, locals())
         ProxyEnv.__init__(self, env)
         self._should_normalize = not (obs_mean is None and obs_std is None)
         if self._should_normalize:
@@ -88,20 +152,6 @@ class NormalizedBoxEnv(ProxyEnv, Serializable):
     def _apply_normalize_obs(self, obs):
         return (obs - self._obs_mean) / (self._obs_std + 1e-8)
 
-    def __getstate__(self):
-        d = Serializable.__getstate__(self)
-        # Add these explicitly in case they were modified
-        d["_obs_mean"] = self._obs_mean
-        d["_obs_std"] = self._obs_std
-        d["_reward_scale"] = self._reward_scale
-        return d
-
-    def __setstate__(self, d):
-        Serializable.__setstate__(self, d)
-        self._obs_mean = d["_obs_mean"]
-        self._obs_std = d["_obs_std"]
-        self._reward_scale = d["_reward_scale"]
-
     def step(self, action):
         lb = self._wrapped_env.action_space.low
         ub = self._wrapped_env.action_space.high
@@ -117,11 +167,3 @@ class NormalizedBoxEnv(ProxyEnv, Serializable):
     def __str__(self):
         return "Normalized: %s" % self._wrapped_env
 
-    def log_diagnostics(self, paths, **kwargs):
-        if hasattr(self._wrapped_env, "log_diagnostics"):
-            return self._wrapped_env.log_diagnostics(paths, **kwargs)
-        else:
-            return None
-
-    def __getattr__(self, attrname):
-        return getattr(self._wrapped_env, attrname)

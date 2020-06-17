@@ -1,7 +1,7 @@
 import numpy as np
-import time
 
-def rollout(env, agent, max_path_length=np.inf, animated=False):
+
+def rollout(env, agent, max_path_length=np.inf, render=False):
     """
     The following value for the following keys will be a 2D array, with the
     first dimension corresponding to the time dimension.
@@ -19,7 +19,7 @@ def rollout(env, agent, max_path_length=np.inf, animated=False):
     :param env:
     :param agent:
     :param max_path_length:
-    :param animated:
+    :param render:
     :return:
     """
     observations = []
@@ -31,7 +31,7 @@ def rollout(env, agent, max_path_length=np.inf, animated=False):
     o = env.reset()
     next_o = None
     path_length = 0
-    if animated:
+    if render:
         env.render()
     while path_length < max_path_length:
         a, agent_info = agent.get_action(o)
@@ -43,11 +43,10 @@ def rollout(env, agent, max_path_length=np.inf, animated=False):
         agent_infos.append(agent_info)
         env_infos.append(env_info)
         path_length += 1
-        time.sleep(1./30.)                   # pierre: uncomment to see simulated policy with acceptable speed : to move to if animated loop
         if d:
             break
         o = next_o
-        if animated:
+        if render:
             env.render()
 
     actions = np.array(actions)

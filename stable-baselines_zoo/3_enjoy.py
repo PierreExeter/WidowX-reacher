@@ -62,7 +62,7 @@ def main():
     parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False)
     args = parser.parse_args()
 
-    plot_bool = True
+    plot_bool = False
     plot_dim = 2
     log_bool = False
 
@@ -240,7 +240,7 @@ def main():
                 if episode_infos is not None:
                     print("Atari Episode Score: {:.2f}".format(episode_infos['r']))
                     print("Atari Episode Length", episode_infos['l'])
-
+            
             if done and not is_atari and args.verbose > 0:
                 # NOTE: for env using VecNormalize, the mean reward
                 # is a normalized reward when `--norm_reward` flag is passed

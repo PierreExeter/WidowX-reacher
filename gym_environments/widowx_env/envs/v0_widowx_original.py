@@ -157,7 +157,8 @@ class WidowxEnv(gym.Env):
         info['tip position'] = self.current_pos[:3]    # added by Pierre
         info['joint position'] = self.current_pos[3:]  # added by Pierre
 
-        if reward > -0.0001:
+        # if reward > -0.0001:
+        if total_distance_from_goal < 0.0005:  # added by Pierre
             episode_over = True
 
         if self.goal_oriented:

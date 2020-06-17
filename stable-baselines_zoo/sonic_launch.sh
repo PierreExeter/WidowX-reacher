@@ -17,7 +17,8 @@ cd $SLURM_SUBMIT_DIR
 # Load software
 module load anaconda/3.2020.2 
 module load cuda/10.0 
-source activate reacher
+module load openmpi/4.0.1
+source activate SB_widowx
 
 
 # Run code
