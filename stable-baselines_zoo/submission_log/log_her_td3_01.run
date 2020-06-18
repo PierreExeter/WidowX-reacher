@@ -1,0 +1,824 @@
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n371
+  Local device: hfi1_0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+Warning: Open MPI has detected that you are running in an environment with CUDA
+devices present and that you are using Intel(r) Ompi-Path networking. However,
+the environment variable PSM2_CUDA was not set, meaning that the PSM2 Omni-Path
+networking library was not told how to handle CUDA support.
+
+If your application uses CUDA buffers, you should set the environment variable
+PSM2_CUDA to 1; otherwise, set it to 0. Setting the variable to the wrong value
+can have performance implications on your application, or even cause it to
+crash.
+
+Since it was not set, Open MPI has defaulted to setting the PSM2_CUDA
+environment variable to 1.
+
+Local hostname: n371
+--------------------------------------------------------------------------
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/td3/td3.py:131: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/td3/policies.py:124: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/tf_layers.py:57: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/td3/td3.py:194: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/math_grad.py:1205: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/td3/td3.py:226: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/td3/td3.py:240: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+========== widowx_reacher-v6 ==========
+Seed: 1
+OrderedDict([('batch_size', 256),
+             ('buffer_size', 1000000),
+             ('gamma', 0.95),
+             ('goal_selection_strategy', 'future'),
+             ('learning_rate', 0.001),
+             ('learning_starts', 1000),
+             ('model_class', 'td3'),
+             ('n_sampled_goal', 4),
+             ('n_timesteps', 25000.0),
+             ('policy', 'MlpPolicy')])
+Using 1 environments
+Overwriting n_timesteps with n=500000
+Creating test environment
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7fa75a342668>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fa757cadcc0>
+Log path: logs/train_0.5M_widowx_reacher-v5_KAY/her/widowx_reacher-v6_2
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -1.35        |
+| episodes                | 100          |
+| eplenmean               | 100          |
+| fps                     | 284          |
+| mean 100 episode reward | -1.4         |
+| n_updates               | 9000         |
+| qf1_loss                | 9.542089e-05 |
+| qf2_loss                | 9.050697e-05 |
+| time_elapsed            | 34           |
+| total timesteps         | 9900         |
+------------------------------------------
+Eval num_timesteps=10000, episode_reward=-2.09 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -1.07         |
+| episodes                | 200           |
+| eplenmean               | 100           |
+| fps                     | 268           |
+| mean 100 episode reward | -1.1          |
+| n_updates               | 19000         |
+| qf1_loss                | 0.00014435484 |
+| qf2_loss                | 0.00014541493 |
+| time_elapsed            | 73            |
+| total timesteps         | 19900         |
+-------------------------------------------
+Eval num_timesteps=20000, episode_reward=-2.06 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.995        |
+| episodes                | 300           |
+| eplenmean               | 100           |
+| fps                     | 265           |
+| mean 100 episode reward | -1            |
+| n_updates               | 29000         |
+| qf1_loss                | 0.00010891534 |
+| qf2_loss                | 0.00010457546 |
+| time_elapsed            | 112           |
+| total timesteps         | 29900         |
+-------------------------------------------
+Eval num_timesteps=30000, episode_reward=-1.55 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.868        |
+| episodes                | 400           |
+| eplenmean               | 100           |
+| fps                     | 262           |
+| mean 100 episode reward | -0.9          |
+| n_updates               | 39000         |
+| qf1_loss                | 0.00010434824 |
+| qf2_loss                | 0.00010869821 |
+| time_elapsed            | 151           |
+| total timesteps         | 39900         |
+-------------------------------------------
+Eval num_timesteps=40000, episode_reward=-1.75 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.594       |
+| episodes                | 500          |
+| eplenmean               | 100          |
+| fps                     | 261          |
+| mean 100 episode reward | -0.6         |
+| n_updates               | 49000        |
+| qf1_loss                | 9.561883e-05 |
+| qf2_loss                | 9.525514e-05 |
+| time_elapsed            | 190          |
+| total timesteps         | 49900        |
+------------------------------------------
+Eval num_timesteps=50000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.406        |
+| episodes                | 600           |
+| eplenmean               | 100           |
+| fps                     | 260           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 59000         |
+| qf1_loss                | 4.5070552e-05 |
+| qf2_loss                | 4.016841e-05  |
+| time_elapsed            | 230           |
+| total timesteps         | 59900         |
+-------------------------------------------
+Eval num_timesteps=60000, episode_reward=-2.06 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.429        |
+| episodes                | 700           |
+| eplenmean               | 100           |
+| fps                     | 257           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 69000         |
+| qf1_loss                | 5.037181e-05  |
+| qf2_loss                | 4.6529003e-05 |
+| time_elapsed            | 270           |
+| total timesteps         | 69900         |
+-------------------------------------------
+Eval num_timesteps=70000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -1.15        |
+| episodes                | 800          |
+| eplenmean               | 100          |
+| fps                     | 256          |
+| mean 100 episode reward | -1.2         |
+| n_updates               | 79000        |
+| qf1_loss                | 7.088399e-05 |
+| qf2_loss                | 6.944268e-05 |
+| time_elapsed            | 312          |
+| total timesteps         | 79900        |
+------------------------------------------
+Eval num_timesteps=80000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.348        |
+| episodes                | 900           |
+| eplenmean               | 100           |
+| fps                     | 255           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 89000         |
+| qf1_loss                | 2.9786625e-05 |
+| qf2_loss                | 2.7348959e-05 |
+| time_elapsed            | 352           |
+| total timesteps         | 89900         |
+-------------------------------------------
+Eval num_timesteps=90000, episode_reward=-2.06 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.339       |
+| episodes                | 1000         |
+| eplenmean               | 100          |
+| fps                     | 255          |
+| mean 100 episode reward | -0.3         |
+| n_updates               | 99000        |
+| qf1_loss                | 3.802317e-05 |
+| qf2_loss                | 3.397247e-05 |
+| time_elapsed            | 391          |
+| total timesteps         | 99900        |
+------------------------------------------
+Eval num_timesteps=100000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.336        |
+| episodes                | 1100          |
+| eplenmean               | 100           |
+| fps                     | 255           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 109000        |
+| qf1_loss                | 4.0403713e-05 |
+| qf2_loss                | 3.6486228e-05 |
+| time_elapsed            | 430           |
+| total timesteps         | 109900        |
+-------------------------------------------
+Eval num_timesteps=110000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.367        |
+| episodes                | 1200          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 119000        |
+| qf1_loss                | 3.1266518e-05 |
+| qf2_loss                | 2.995534e-05  |
+| time_elapsed            | 470           |
+| total timesteps         | 119900        |
+-------------------------------------------
+Eval num_timesteps=120000, episode_reward=-2.02 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.4          |
+| episodes                | 1300          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 129000        |
+| qf1_loss                | 4.173077e-05  |
+| qf2_loss                | 4.0042658e-05 |
+| time_elapsed            | 510           |
+| total timesteps         | 129900        |
+-------------------------------------------
+Eval num_timesteps=130000, episode_reward=-1.83 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.355        |
+| episodes                | 1400          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 139000        |
+| qf1_loss                | 4.6341775e-05 |
+| qf2_loss                | 3.9286806e-05 |
+| time_elapsed            | 549           |
+| total timesteps         | 139900        |
+-------------------------------------------
+Eval num_timesteps=140000, episode_reward=-1.82 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.386        |
+| episodes                | 1500          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 149000        |
+| qf1_loss                | 2.4829202e-05 |
+| qf2_loss                | 2.301373e-05  |
+| time_elapsed            | 589           |
+| total timesteps         | 149900        |
+-------------------------------------------
+Eval num_timesteps=150000, episode_reward=-1.91 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.359        |
+| episodes                | 1600          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 159000        |
+| qf1_loss                | 3.2425065e-05 |
+| qf2_loss                | 3.0204053e-05 |
+| time_elapsed            | 629           |
+| total timesteps         | 159900        |
+-------------------------------------------
+Eval num_timesteps=160000, episode_reward=-1.65 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.405        |
+| episodes                | 1700          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 169000        |
+| qf1_loss                | 1.5504316e-05 |
+| qf2_loss                | 1.2425971e-05 |
+| time_elapsed            | 668           |
+| total timesteps         | 169900        |
+-------------------------------------------
+Eval num_timesteps=170000, episode_reward=-1.78 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.417        |
+| episodes                | 1800          |
+| eplenmean               | 100           |
+| fps                     | 254           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 179000        |
+| qf1_loss                | 3.9382237e-05 |
+| qf2_loss                | 3.8419555e-05 |
+| time_elapsed            | 708           |
+| total timesteps         | 179900        |
+-------------------------------------------
+Eval num_timesteps=180000, episode_reward=-2.06 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.425       |
+| episodes                | 1900         |
+| eplenmean               | 100          |
+| fps                     | 253          |
+| mean 100 episode reward | -0.4         |
+| n_updates               | 189000       |
+| qf1_loss                | 3.244222e-05 |
+| qf2_loss                | 3.087366e-05 |
+| time_elapsed            | 747          |
+| total timesteps         | 189900       |
+------------------------------------------
+Eval num_timesteps=190000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.373       |
+| episodes                | 2000         |
+| eplenmean               | 100          |
+| fps                     | 253          |
+| mean 100 episode reward | -0.4         |
+| n_updates               | 199000       |
+| qf1_loss                | 4.22955e-05  |
+| qf2_loss                | 4.033368e-05 |
+| time_elapsed            | 788          |
+| total timesteps         | 199900       |
+------------------------------------------
+Eval num_timesteps=200000, episode_reward=-2.06 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.358        |
+| episodes                | 2100          |
+| eplenmean               | 100           |
+| fps                     | 253           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 209000        |
+| qf1_loss                | 2.5843638e-05 |
+| qf2_loss                | 2.3958604e-05 |
+| time_elapsed            | 828           |
+| total timesteps         | 209900        |
+-------------------------------------------
+Eval num_timesteps=210000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.357        |
+| episodes                | 2200          |
+| eplenmean               | 100           |
+| fps                     | 253           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 219000        |
+| qf1_loss                | 2.4862285e-05 |
+| qf2_loss                | 2.1810769e-05 |
+| time_elapsed            | 868           |
+| total timesteps         | 219900        |
+-------------------------------------------
+Eval num_timesteps=220000, episode_reward=-1.76 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.39         |
+| episodes                | 2300          |
+| eplenmean               | 100           |
+| fps                     | 253           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 229000        |
+| qf1_loss                | 8.6990185e-06 |
+| qf2_loss                | 8.870863e-06  |
+| time_elapsed            | 908           |
+| total timesteps         | 229900        |
+-------------------------------------------
+Eval num_timesteps=230000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.376       |
+| episodes                | 2400         |
+| eplenmean               | 100          |
+| fps                     | 253          |
+| mean 100 episode reward | -0.4         |
+| n_updates               | 239000       |
+| qf1_loss                | 1.710422e-05 |
+| qf2_loss                | 1.601322e-05 |
+| time_elapsed            | 947          |
+| total timesteps         | 239900       |
+------------------------------------------
+Eval num_timesteps=240000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.352        |
+| episodes                | 2500          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 249000        |
+| qf1_loss                | 1.4456029e-05 |
+| qf2_loss                | 1.3608684e-05 |
+| time_elapsed            | 988           |
+| total timesteps         | 249900        |
+-------------------------------------------
+Eval num_timesteps=250000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+--------------------------------------------
+| current_lr              | 0.001          |
+| ep_rewmean              | -0.347         |
+| episodes                | 2600           |
+| eplenmean               | 100            |
+| fps                     | 252            |
+| mean 100 episode reward | -0.3           |
+| n_updates               | 259000         |
+| qf1_loss                | 1.0779409e-05  |
+| qf2_loss                | 1.05824365e-05 |
+| time_elapsed            | 1029           |
+| total timesteps         | 259900         |
+--------------------------------------------
+Eval num_timesteps=260000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.34         |
+| episodes                | 2700          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 269000        |
+| qf1_loss                | 5.9738904e-06 |
+| qf2_loss                | 5.759056e-06  |
+| time_elapsed            | 1070          |
+| total timesteps         | 269900        |
+-------------------------------------------
+Eval num_timesteps=270000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.339        |
+| episodes                | 2800          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 279000        |
+| qf1_loss                | 4.4467074e-06 |
+| qf2_loss                | 4.491553e-06  |
+| time_elapsed            | 1110          |
+| total timesteps         | 279900        |
+-------------------------------------------
+Eval num_timesteps=280000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.334        |
+| episodes                | 2900          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 289000        |
+| qf1_loss                | 4.0269674e-06 |
+| qf2_loss                | 3.8924395e-06 |
+| time_elapsed            | 1150          |
+| total timesteps         | 289900        |
+-------------------------------------------
+Eval num_timesteps=290000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.335        |
+| episodes                | 3000          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 299000        |
+| qf1_loss                | 3.8871453e-06 |
+| qf2_loss                | 3.6592744e-06 |
+| time_elapsed            | 1189          |
+| total timesteps         | 299900        |
+-------------------------------------------
+Eval num_timesteps=300000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.328       |
+| episodes                | 3100         |
+| eplenmean               | 100          |
+| fps                     | 252          |
+| mean 100 episode reward | -0.3         |
+| n_updates               | 309000       |
+| qf1_loss                | 4.867869e-06 |
+| qf2_loss                | 4.476125e-06 |
+| time_elapsed            | 1229         |
+| total timesteps         | 309900       |
+------------------------------------------
+Eval num_timesteps=310000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.341        |
+| episodes                | 3200          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 319000        |
+| qf1_loss                | 4.0212603e-06 |
+| qf2_loss                | 3.5525518e-06 |
+| time_elapsed            | 1269          |
+| total timesteps         | 319900        |
+-------------------------------------------
+Eval num_timesteps=320000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.343        |
+| episodes                | 3300          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 329000        |
+| qf1_loss                | 3.8341695e-06 |
+| qf2_loss                | 3.708438e-06  |
+| time_elapsed            | 1308          |
+| total timesteps         | 329900        |
+-------------------------------------------
+Eval num_timesteps=330000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.346        |
+| episodes                | 3400          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 339000        |
+| qf1_loss                | 4.3195487e-06 |
+| qf2_loss                | 4.4087797e-06 |
+| time_elapsed            | 1348          |
+| total timesteps         | 339900        |
+-------------------------------------------
+Eval num_timesteps=340000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.339        |
+| episodes                | 3500          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 349000        |
+| qf1_loss                | 4.1616922e-06 |
+| qf2_loss                | 4.1050957e-06 |
+| time_elapsed            | 1388          |
+| total timesteps         | 349900        |
+-------------------------------------------
+Eval num_timesteps=350000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.332        |
+| episodes                | 3600          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 359000        |
+| qf1_loss                | 3.7496825e-06 |
+| qf2_loss                | 3.59074e-06   |
+| time_elapsed            | 1428          |
+| total timesteps         | 359900        |
+-------------------------------------------
+Eval num_timesteps=360000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.335        |
+| episodes                | 3700          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 369000        |
+| qf1_loss                | 4.3332648e-06 |
+| qf2_loss                | 4.263698e-06  |
+| time_elapsed            | 1468          |
+| total timesteps         | 369900        |
+-------------------------------------------
+Eval num_timesteps=370000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.348       |
+| episodes                | 3800         |
+| eplenmean               | 100          |
+| fps                     | 252          |
+| mean 100 episode reward | -0.3         |
+| n_updates               | 379000       |
+| qf1_loss                | 4.851425e-06 |
+| qf2_loss                | 4.805842e-06 |
+| time_elapsed            | 1507         |
+| total timesteps         | 379900       |
+------------------------------------------
+Eval num_timesteps=380000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.349       |
+| episodes                | 3900         |
+| eplenmean               | 100          |
+| fps                     | 252          |
+| mean 100 episode reward | -0.3         |
+| n_updates               | 389000       |
+| qf1_loss                | 4.857594e-06 |
+| qf2_loss                | 4.810181e-06 |
+| time_elapsed            | 1547         |
+| total timesteps         | 389900       |
+------------------------------------------
+Eval num_timesteps=390000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+------------------------------------------
+| current_lr              | 0.001        |
+| ep_rewmean              | -0.341       |
+| episodes                | 4000         |
+| eplenmean               | 100          |
+| fps                     | 252          |
+| mean 100 episode reward | -0.3         |
+| n_updates               | 399000       |
+| qf1_loss                | 4.228482e-06 |
+| qf2_loss                | 4.2505e-06   |
+| time_elapsed            | 1586         |
+| total timesteps         | 399900       |
+------------------------------------------
+Eval num_timesteps=400000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.371        |
+| episodes                | 4100          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 409000        |
+| qf1_loss                | 4.837231e-06  |
+| qf2_loss                | 4.6284285e-06 |
+| time_elapsed            | 1626          |
+| total timesteps         | 409900        |
+-------------------------------------------
+Eval num_timesteps=410000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.337        |
+| episodes                | 4200          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.3          |
+| n_updates               | 419000        |
+| qf1_loss                | 4.590225e-06  |
+| qf2_loss                | 4.3267764e-06 |
+| time_elapsed            | 1666          |
+| total timesteps         | 419900        |
+-------------------------------------------
+Eval num_timesteps=420000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.479        |
+| episodes                | 4300          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.5          |
+| n_updates               | 429000        |
+| qf1_loss                | 5.582241e-06  |
+| qf2_loss                | 5.4151933e-06 |
+| time_elapsed            | 1705          |
+| total timesteps         | 429900        |
+-------------------------------------------
+Eval num_timesteps=430000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.409        |
+| episodes                | 4400          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 439000        |
+| qf1_loss                | 7.527805e-06  |
+| qf2_loss                | 7.3254378e-06 |
+| time_elapsed            | 1745          |
+| total timesteps         | 439900        |
+-------------------------------------------
+Eval num_timesteps=440000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.657        |
+| episodes                | 4500          |
+| eplenmean               | 100           |
+| fps                     | 252           |
+| mean 100 episode reward | -0.7          |
+| n_updates               | 449000        |
+| qf1_loss                | 1.7836479e-05 |
+| qf2_loss                | 1.6451075e-05 |
+| time_elapsed            | 1784          |
+| total timesteps         | 449900        |
+-------------------------------------------
+Eval num_timesteps=450000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.38         |
+| episodes                | 4600          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 459000        |
+| qf1_loss                | 1.0734648e-05 |
+| qf2_loss                | 9.662254e-06  |
+| time_elapsed            | 1826          |
+| total timesteps         | 459900        |
+-------------------------------------------
+Eval num_timesteps=460000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.432        |
+| episodes                | 4700          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 469000        |
+| qf1_loss                | 1.6727134e-05 |
+| qf2_loss                | 1.6105862e-05 |
+| time_elapsed            | 1866          |
+| total timesteps         | 469900        |
+-------------------------------------------
+Eval num_timesteps=470000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.437        |
+| episodes                | 4800          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 479000        |
+| qf1_loss                | 1.2933695e-05 |
+| qf2_loss                | 1.0864203e-05 |
+| time_elapsed            | 1907          |
+| total timesteps         | 479900        |
+-------------------------------------------
+Eval num_timesteps=480000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.44         |
+| episodes                | 4900          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.4          |
+| n_updates               | 489000        |
+| qf1_loss                | 1.1775165e-05 |
+| qf2_loss                | 8.439686e-06  |
+| time_elapsed            | 1947          |
+| total timesteps         | 489900        |
+-------------------------------------------
+Eval num_timesteps=490000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+-------------------------------------------
+| current_lr              | 0.001         |
+| ep_rewmean              | -0.552        |
+| episodes                | 5000          |
+| eplenmean               | 100           |
+| fps                     | 251           |
+| mean 100 episode reward | -0.6          |
+| n_updates               | 499000        |
+| qf1_loss                | 1.9273708e-05 |
+| qf2_loss                | 1.4967759e-05 |
+| time_elapsed            | 1987          |
+| total timesteps         | 499900        |
+-------------------------------------------
+Eval num_timesteps=500000, episode_reward=-2.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Saving to logs/train_0.5M_widowx_reacher-v5_KAY/her/widowx_reacher-v6_2
+pybullet build time: May 18 2020 02:46:26

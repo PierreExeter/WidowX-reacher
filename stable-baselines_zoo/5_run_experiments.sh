@@ -2,8 +2,8 @@
 
 # experiments over 10 initialisation seeds
 
-nsteps=10000 #500000    
-log_dir="logs/train_0.01M_widowx_reacher-v5_KAY"
+nsteps=500000    
+log_dir="logs/train_0.5M_widowx_reacher-v5_KAY"
 env="widowx_reacher-v5"
 
 

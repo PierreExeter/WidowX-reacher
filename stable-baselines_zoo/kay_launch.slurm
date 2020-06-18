@@ -1,8 +1,8 @@
 #!/bin/sh
 # Slurm flags
 #SBATCH -p GpuQ
-#SBATCH -N 8
-#SBATCH -t 30:00:00
+#SBATCH -N 1
+#SBATCH -t 24:00:00
 #SBATCH -A ucd01
 #SBATCH -o submission_log/output.txt
 # Mail me on job start & end
@@ -22,7 +22,7 @@ source activate SB_widowx
 
 # Run code
 date
-time ./4_optimise_hyperparameters.sh
-# time ./5_run_experiments.sh
+#time ./4_optimise_hyperparameters.sh
+time ./5_run_experiments.sh
 # time ./6_get_results.sh
 date
