@@ -212,3 +212,9 @@ widowx_reacher-v5:
   n_timesteps: !!float 60000
   policy: MlpPolicy
   policy_kwargs: dict(layers=[256, 256])
+
+
+widowx_reacher-v7:
+  n_timesteps: !!float 60000
+  policy: MlpPolicy
+  policy_kwargs: dict(layers=[256, 256])

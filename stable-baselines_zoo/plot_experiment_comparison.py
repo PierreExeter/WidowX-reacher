@@ -33,6 +33,7 @@ if __name__ == '__main__':
     df5 = pd.read_csv(path_base+"sac/all_rewards.csv")
     df6 = pd.read_csv(path_base+"td3/all_rewards.csv")
     df7 = pd.read_csv(path_base+"trpo/all_rewards.csv")
+    df8 = pd.read_csv(path_base+"her/all_rewards.csv")
 
     df_list = [
         df1, 
@@ -41,7 +42,8 @@ if __name__ == '__main__':
         df4,
         df5, 
         df6, 
-        df7
+        df7,
+        df8
     ]
 
     df_label = [
@@ -51,7 +53,8 @@ if __name__ == '__main__':
         "PPO2",
         "SAC",
         "TD3",
-        "TRPO"
+        "TRPO",
+        "HER"
     ]
 
     ff1 = pd.read_csv(path_base+"/a2c/results_seed_exp.csv")
@@ -61,6 +64,7 @@ if __name__ == '__main__':
     ff5 = pd.read_csv(path_base+"/sac/results_seed_exp.csv")
     ff6 = pd.read_csv(path_base+"/td3/results_seed_exp.csv")
     ff7 = pd.read_csv(path_base+"/trpo/results_seed_exp.csv")
+    ff8 = pd.read_csv(path_base+"/her/results_seed_exp.csv")
 
 
     ff_list = [
@@ -70,7 +74,8 @@ if __name__ == '__main__':
         ff4,
         ff5,
         ff6,
-        ff7
+        ff7,
+        ff8
     ]
 
 

@@ -3,8 +3,9 @@
 # experiments over 10 initialisation seeds
 
 nsteps=500000    
-log_dir="logs/train_0.5M_widowx_reacher-v5_KAY"
-env="widowx_reacher-v5"
+log_dir="logs/train_0.5M_widowx_reacher-v7_KAY"
+env="widowx_reacher-v7"
+env_her="widowx_reacher-v8"
 
 
 for ((i=0;i<2;i+=1))
@@ -31,6 +32,6 @@ do
     python3 2_train.py --algo trpo --env ${env} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_trpo_0$i.run
 
     echo "HER $i"
-    python3 2_train.py --algo her --env widowx_reacher-v6 -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_td3_0$i.run
+    python3 2_train.py --algo her --env ${env_her} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_sac_0$i.run
 done
 

@@ -212,3 +212,15 @@ widowx_reacher-v5:
   cg_damping: 2.35e-05
   vf_iters: 10
   vf_stepsize: 0.00428
+
+widowx_reacher-v7:
+  n_timesteps: !!float 3e5
+  policy: 'MlpPolicy'
+  max_kl: 0.000193
+  timesteps_per_batch: 1024
+  gamma: 0.99
+  lam: 0.9
+  entcoeff: 0.01118
+  cg_damping: 2.35e-05
+  vf_iters: 10
+  vf_stepsize: 0.00428

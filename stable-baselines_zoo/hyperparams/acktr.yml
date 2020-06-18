@@ -181,3 +181,14 @@ widowx_reacher-v5:
   n_steps: 16
   learning_rate: 0.06
   lr_schedule: 'constant'
+
+widowx_reacher-v7:
+  normalize: true
+  n_envs: 8
+  n_timesteps: !!float 2e6
+  policy: 'MlpPolicy'
+  ent_coef: 0.0
+  gamma: 0.99
+  n_steps: 16
+  learning_rate: 0.06
+  lr_schedule: 'constant'
