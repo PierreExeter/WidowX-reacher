@@ -134,14 +134,25 @@ def main():
     ep_len = 0
     episode = 0
 
-    success_threshold_001 = 0.01
+    # success_threshold_001 = 0.01
+    # success_list_001, reachtime_list_001, episode_success_list_001 = [], [], []
+    # success_threshold_0002 = 0.002
+    # success_list_0002, reachtime_list_0002, episode_success_list_0002 = [], [], []
+    # success_threshold_0001 = 0.001
+    # success_list_0001, reachtime_list_0001, episode_success_list_0001 = [], [], []
+    # success_threshold_00005 = 0.0005
+    # success_list_00005, reachtime_list_00005, episode_success_list_00005 = [], [], []
+
+    # changed for the paper
+    success_threshold_001 = 0.05
     success_list_001, reachtime_list_001, episode_success_list_001 = [], [], []
-    success_threshold_0002 = 0.002
+    success_threshold_0002 = 0.02
     success_list_0002, reachtime_list_0002, episode_success_list_0002 = [], [], []
-    success_threshold_0001 = 0.001
+    success_threshold_0001 = 0.01
     success_list_0001, reachtime_list_0001, episode_success_list_0001 = [], [], []
-    success_threshold_00005 = 0.0005
+    success_threshold_00005 = 0.005
     success_list_00005, reachtime_list_00005, episode_success_list_00005 = [], [], []
+
 
     # For HER, monitor success rate
     successes = []
@@ -211,7 +222,7 @@ def main():
                 ax.set_ylabel("y")
                 ax.set_zlabel("z")
 
-            fig.suptitle("timestep "+str(ep_len))
+            fig.suptitle("timestep "+str(ep_len)+" | dist to target: "+str(infos[0]['total_distance']))
             plt.pause(0.01)
             # plt.show()
 

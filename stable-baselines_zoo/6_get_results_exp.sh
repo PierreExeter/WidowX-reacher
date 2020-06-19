@@ -12,9 +12,12 @@
 nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=2
 log_dir="logs/train_0.5M_widowx_reacher-v5_KAY/"
+log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.5M_widowx_reacher-v5_KAY/"
+save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
 env="widowx_reacher-v5"
 env_her="widowx_reacher-v6"
+appendix="_env1"
 echo "ENV: ${env}"
 
 
@@ -76,8 +79,9 @@ echo "ENV: ${env}"
 
 # # STEP 3
 # # Plot learning curves and training stats
-python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir}
+# python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix}
 
+python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py
@@ -86,3 +90,4 @@ python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir}
 
 # STEP 4: view trained agent
 # python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True

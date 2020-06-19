@@ -197,11 +197,11 @@ class WidowxEnv(gym.GoalEnv):  # added by Pierre
     def reset(self):
 
         p.resetBasePositionAndOrientation(self.arm, [0, 0, 0], p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))
-        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
         self._force_joint_positions(RESET_VALUES)
         self.current_pos = self._get_current_state()
 
         self.set_goal(self.sample_goal_for_rollout())  # added by Pierre
+        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
 
         if self.goal_oriented:
             return self._get_obs()

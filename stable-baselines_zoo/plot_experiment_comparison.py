@@ -13,27 +13,26 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--logFolder', help='Log folder', type=str)
     parser.add_argument('-s', '--saveFolder', help='save folder', type=str)
+    parser.add_argument('-e', '--envPaper', help='envPaper', type=str)
     args = parser.parse_args()
 
-    # env_id = args.env
-    # log_dir = args.log-folder
-    # print(log_dir)
 
     path_base = args.logFolder  # "logs/train_1M_widowx_reach-v3/"
     save_dir = args.saveFolder   #"experiment_reports/1M_widowx_reach-v3/"
+    appendix = args.envPaper
     os.makedirs(save_dir, exist_ok=True)
 
     ### GET DATA ###
 
 
-    df1 = pd.read_csv(path_base+"a2c/all_rewards.csv")
-    df2 = pd.read_csv(path_base+"acktr/all_rewards.csv")
-    df3 = pd.read_csv(path_base+"ddpg/all_rewards.csv")
-    df4 = pd.read_csv(path_base+"ppo2/all_rewards.csv")
-    df5 = pd.read_csv(path_base+"sac/all_rewards.csv")
-    df6 = pd.read_csv(path_base+"td3/all_rewards.csv")
-    df7 = pd.read_csv(path_base+"trpo/all_rewards.csv")
-    df8 = pd.read_csv(path_base+"her/all_rewards.csv")
+    df1 = pd.read_csv(path_base+"a2c/all_rewards_smooth.csv")
+    df2 = pd.read_csv(path_base+"acktr/all_rewards_smooth.csv")
+    df3 = pd.read_csv(path_base+"ddpg/all_rewards_smooth.csv")
+    df4 = pd.read_csv(path_base+"ppo2/all_rewards_smooth.csv")
+    df5 = pd.read_csv(path_base+"sac/all_rewards_smooth.csv")
+    df6 = pd.read_csv(path_base+"td3/all_rewards_smooth.csv")
+    df7 = pd.read_csv(path_base+"trpo/all_rewards_smooth.csv")
+    df8 = pd.read_csv(path_base+"her/all_rewards_smooth.csv")
 
     df_list = [
         df1, 
@@ -87,20 +86,20 @@ if __name__ == '__main__':
     ### PLOT LEARNING CURVES ###
 
 
-    # apply curve smoothing by moving average
+    # # apply curve smoothing by moving average
 
-    def smooth_reward(df):
-        df['mean_reward'] = df['mean_reward'].rolling(window=50).mean()
-
-
-    def smooth_upper_lower(df):
-        df['upper'] = df['upper'].rolling(window=50).mean()
-        df['lower'] = df['lower'].rolling(window=50).mean()
+    # def smooth_reward(df):
+    #     df['mean_reward'] = df['mean_reward'].rolling(window=50).mean()
 
 
-    for df in df_list:
-        smooth_reward(df)
-        smooth_upper_lower(df)
+    # def smooth_upper_lower(df):
+    #     df['upper'] = df['upper'].rolling(window=50).mean()
+    #     df['lower'] = df['lower'].rolling(window=50).mean()
+
+
+    # for df in df_list:
+    #     smooth_reward(df)
+    #     smooth_upper_lower(df)
 
 
 
@@ -111,7 +110,7 @@ if __name__ == '__main__':
         df.plot(x='timesteps', y='mean_reward', ax=ax1, label=lab)
 
     plt.ylabel("Episode reward")
-    plt.savefig(save_dir+"learning_curves.pdf", dpi=100)
+    plt.savefig(save_dir+"learning_curves"+appendix+".pdf", dpi=100)
 
 
 
@@ -129,7 +128,7 @@ if __name__ == '__main__':
         plt.legend(loc="lower right")
         plt.ylabel("Mean reward")
         plt.xlabel("Timesteps")
-        plt.savefig(save_dir+lab+".pdf", dpi=100)
+        plt.savefig(save_dir+lab+appendix+".pdf", dpi=100)
 
 
     ### PLOT TRAINING STATS ###
@@ -159,25 +158,37 @@ if __name__ == '__main__':
 
 
 
-    def plot_col(y_col, yerr_col, title):
+    def plot_col(y_col, yerr_col, title, ylab):
 
         ax = ff.plot.bar(x='exp type', y=y_col, yerr=yerr_col, rot=45)
         ax.set_xticklabels(df_label, ha='right')
-        plt.ylabel("Mean success ratio")
+        plt.ylabel(ylab)
         plt.tight_layout()
-        plt.savefig(save_dir+title, dpi=100)
+        plt.savefig(save_dir+title+appendix+".pdf", dpi=100)
         # plt.show()
 
-    plot_col('mean success ratio 10mm', 'std success ratio 10mm', "success_10mm.pdf")
-    plot_col('mean reach time 10mm', 'std reach time 10mm', "reachtime_10mm.pdf")
-    plot_col('mean success ratio 2mm', 'std success ratio 2mm', "success_2mm.pdf")
-    plot_col('mean reach time 2mm', 'std reach time 2mm', "reachtime_2mm.pdf")
-    plot_col('mean success ratio 1mm', 'std success ratio 1mm', "success_1mm.pdf")
-    plot_col('mean reach time 1mm', 'std reach time 1mm', "reachtime_1mm.pdf")
-    plot_col('mean success ratio 0.5mm', 'std success ratio 0.5mm', "success_0.5mm.pdf")
-    plot_col('mean reach time 0.5mm', 'std reach time 0.5mm', "reachtime_0.5mm.pdf")
-    plot_col('mean reward', 'std reward (seed)', "mean_reward.pdf")
-    plot_col('mean train walltime (min)', 'std train walltime (min)', "mean_walltime.pdf")
-    plot_col('efficiency (reward / s)', None, "efficiency.pdf")
+    # plot_col('mean success ratio 10mm', 'std success ratio 10mm', "success_10mm.pdf")
+    # plot_col('mean reach time 10mm', 'std reach time 10mm', "reachtime_10mm.pdf")
+    # plot_col('mean success ratio 2mm', 'std success ratio 2mm', "success_2mm.pdf")
+    # plot_col('mean reach time 2mm', 'std reach time 2mm', "reachtime_2mm.pdf")
+    # plot_col('mean success ratio 1mm', 'std success ratio 1mm', "success_1mm.pdf")
+    # plot_col('mean reach time 1mm', 'std reach time 1mm', "reachtime_1mm.pdf")
+    # plot_col('mean success ratio 0.5mm', 'std success ratio 0.5mm', "success_0.5mm.pdf")
+    # plot_col('mean reach time 0.5mm', 'std reach time 0.5mm', "reachtime_0.5mm.pdf")
+
+    # changed for paper
+    plot_col('mean success ratio 10mm', 'std success ratio 10mm', "success_50mm", 'mean success ratio')
+    plot_col('mean reach time 10mm', 'std reach time 10mm', "reachtime_50mm", 'mean reach time')
+    plot_col('mean success ratio 2mm', 'std success ratio 2mm', "success_20mm", 'mean success ratio')
+    plot_col('mean reach time 2mm', 'std reach time 2mm', "reachtime_20mm", 'mean reach time')
+    plot_col('mean success ratio 1mm', 'std success ratio 1mm', "success_10mm", 'mean success ratio')
+    plot_col('mean reach time 1mm', 'std reach time 1mm', "reachtime_10mm", 'mean reach time')
+    plot_col('mean success ratio 0.5mm', 'std success ratio 0.5mm', "success_5mm", 'mean success ratio')
+    plot_col('mean reach time 0.5mm', 'std reach time 0.5mm', "reachtime_5mm", 'mean reach time')
+
+
+    plot_col('mean reward', 'std reward (seed)', "mean_reward", 'mean return')
+    plot_col('mean train walltime (min)', 'std train walltime (min)', "mean_walltime", 'mean train time (min)')
+    plot_col('efficiency (reward / s)', None, "efficiency", 'mean efficiency')
 
 

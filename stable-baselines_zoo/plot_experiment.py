@@ -42,9 +42,10 @@ def plot_results(log_folder, type_str, leg_label):
     x = x[len(x) - len(y):]
 
     # plt.figure()
-    plt.plot(x, y, label=leg_label)
-    plt.xlabel(type_str)
+    # plt.plot(x, y, label=leg_label)
+    # plt.xlabel(type_str)
     plt.ylabel('Rewards')
+    
 
 
 if __name__ == '__main__':
@@ -59,8 +60,9 @@ if __name__ == '__main__':
     log_dir = args.folder
     print(log_dir)
 
-    # log_dir = "./logs/a2c/Pendulum-v0_Env_1/a2c/"
-
+    ###############
+    # METRICS 
+    ###############
 
     # Get the mean of the reward and wall train time of all the seed runs in the experiment
 
@@ -122,7 +124,10 @@ if __name__ == '__main__':
     df_res = pd.DataFrame(d, index=[0])
     df_res.to_csv(log_dir+"results_seed_exp.csv", index=False)
 
-    ######
+    ###############
+    # LEARNING CURVES
+    ###############
+
     # Plot the learning curve of all the seed runs in the experiment
 
     res_file_list = []
@@ -134,37 +139,77 @@ if __name__ == '__main__':
     # print(res_file_list)
 
     df_list = []
+    col_list = []
+    count = 1
 
-    plt.figure(1, figsize=(10, 5))
-    ax = plt.axes()
-
-
-    count = 0
     for filename in res_file_list:
         # print(filename)
         filename = str(filename) # convert from Posixpath to string
         
         W = load_results(filename)
+        print(W['r'])
+
         df_list.append(W['r'])
-
-        plot_results(filename, 'timesteps', "seed nb "+str(count))
-    #     plot_results(filename, 'episodes')
-    #     plot_results(filename, 'walltime_hrs')
-
+        col_list.append("seed "+str(count))
         count += 1
+
+    #     plot_results(filename, 'timesteps', "seed nb "+str(count))
+    # #     plot_results(filename, 'episodes')
+    # #     plot_results(filename, 'walltime_hrs')
 
 
     all_rewards = pd.concat(df_list, axis=1)
+    all_rewards.columns = col_list
+    
     all_rewards_copy = all_rewards.copy()
     all_rewards["mean_reward"] = all_rewards_copy.mean(axis=1)
     all_rewards["std_reward"] = all_rewards_copy.std(axis=1)
     all_rewards["upper"] = all_rewards["mean_reward"] + all_rewards["std_reward"]
     all_rewards["lower"] = all_rewards["mean_reward"] - all_rewards["std_reward"]
     all_rewards['timesteps'] = W['l'].cumsum()
-
     all_rewards.to_csv(log_dir+"all_rewards.csv", index=False)
 
+    # plot
+    plt.figure(1, figsize=(10, 5))
+    ax = plt.axes()
+
+    for seed_col in col_list:
+        print(seed_col)
+        all_rewards.plot(x='timesteps', y=seed_col, ax=ax)
+
     all_rewards.plot(x='timesteps', y='mean_reward', ax=ax, color='k')
+
+    plt.xlabel('Time steps')
+    plt.ylabel('Rewards')
+
+    plt.legend()
+    plt.savefig(log_dir+"reward_vs_timesteps.png", dpi=100)
+    # plt.show()
+
+
+
+
+    # apply rolling window (except on timesteps)
+    for col in all_rewards.columns[:-1]:
+        print(col)
+        all_rewards[col] = all_rewards[col].rolling(window=50).mean()
+
+    all_rewards.to_csv(log_dir+"all_rewards_smooth.csv", index=False)
+    all_rewards.dropna(inplace=True)  # remove NaN due to rolling average
+    print(all_rewards)
+
+    # plot
+    plt.figure(2, figsize=(10, 5))
+    ax = plt.axes()
+
+    for seed_col in col_list:
+        print(seed_col)
+        all_rewards.plot(x='timesteps', y=seed_col, ax=ax)
+
+    all_rewards.plot(x='timesteps', y='mean_reward', ax=ax, color='k')
+
+    plt.xlabel('Time steps')
+    plt.ylabel('Rewards')
 
     plt.legend()
     plt.savefig(log_dir+"reward_vs_timesteps_smoothed.png", dpi=100)
