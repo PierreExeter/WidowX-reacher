@@ -1,4 +1,13 @@
-Wed Jun 17 21:48:06 IST 2020
+	 To load the default (base) conda environment, for python 2, use the following command. 
+		 source activate
+ 
+	 To list other available environments, use the following command
+		 conda info --envs
+ 
+	 To load a non-default environment, e.g. for python3,  use the following command
+		 source activate python3
+ 
+Fri Jun 19 02:07:58 IST 2020
 A2C 0
 ACKTR 0
 DDPG 0
@@ -16,7 +25,7 @@ TD3 1
 TRPO 1
 HER 1
 
-real	299m51.157s
-user	2111m42.518s
-sys	468m15.280s
-Thu Jun 18 02:47:57 IST 2020
+real	289m37.248s
+user	991m18.076s
+sys	184m29.508s
+Fri Jun 19 06:57:35 IST 2020

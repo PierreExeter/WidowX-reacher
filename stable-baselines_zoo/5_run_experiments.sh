@@ -32,6 +32,6 @@ do
     python3 2_train.py --algo trpo --env ${env} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_trpo_0$i.run
 
     echo "HER $i"
-    python3 2_train.py --algo her --env ${env_her} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_sac_0$i.run
+    python3 2_train.py --algo her --env ${env_her} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_td3_0$i.run
 done
 
