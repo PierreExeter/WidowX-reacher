@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package>
+  <name>widowx_arm_description</name>
+  <version>0.0.2</version>
+  <description>The widowx_arm_description package</description>
+
+  <maintainer email="jmrapado@robotnik.es">Jose Rapado García</maintainer>
+  <maintainer email="rnavarro@robotnik.es">Román Navarro</maintainer>
+  <maintainer email="cvillar@robotnik.es">Carlos Villar</maintainer>
+
+  <license>BSD</license>
+
+
+  <url type="website">http://ros.org/wiki/widowx_arm_description</url>
+  <url type="repository">https://github.com/RobotnikAutomation/widowx_arm.git</url>
+  <url type="bugtracker">https://github.com/RobotnikAutomation/widowx_arm/issues</url>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+
+
+
+  <export>
+
+
+  </export>
+</package>

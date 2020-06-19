@@ -1,0 +1,12 @@
+<launch>
+
+	<!-- Launch block manipulation demo -->
+	<node name="block_detection_action_server" pkg="widowx_block_manipulation" type="block_detection_action_server" output="screen">
+		<rosparam param="table_pose">[0.0, 0.0, -0.01]</rosparam> <!--from arm position-->
+	</node>
+
+	<node name="pick_and_place_action_server" pkg="widowx_block_manipulation" type="pick_and_place_action_server" output="screen"/>
+
+	<node name="interactive_manipulation_action_server" pkg="widowx_block_manipulation" type="interactive_manipulation_action_server" output="screen"/>
+
+</launch>

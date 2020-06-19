@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="simulation" default="false"/>
+  <arg name="sr300" default="false"/>
+
+  <param unless="$(arg sr300)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find widowx_arm_description)/robots/widowx_arm.urdf.xacro'"/>
+  <param if="$(arg sr300)" name="robot_description" command="$(find xacro)/xacro --inorder '$(find widowx_arm_description)/robots/widowx_arm_sr300.urdf.xacro'"/>
+
+  <node name="robot_state_pub" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+  <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen">
+    <rosparam file="$(find widowx_arm_bringup)/config/widowx_arm.yaml" command="load"/>
+    <param name="sim" value="$(arg simulation)"/>
+  </node>
+
+  <node name="gripper_controller" pkg="arbotix_controllers" type="gripper_controller" output="screen">
+    <rosparam file="$(find widowx_arm_bringup)/config/widowx_arm_gripper.yaml" command="load" />
+  </node>
+
+  <include if="$(arg sr300)" file="$(find widowx_arm_bringup)/launch/sr300.launch"/>
+</launch>

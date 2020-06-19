@@ -1,0 +1,5 @@
+*.pyc
+*.npy
+*.th
+*.pyi
+*.DS_STORE
