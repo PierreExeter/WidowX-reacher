@@ -21,6 +21,14 @@ This is only required if training the physical arm.
 
 2. Install and activate the Conda environment
 
+
+```bash
+# train with Stable Baselines
+conda env create -f conda_envs/environment_SB_G5.yml
+conda activate SB_widowx
+```
+
+<!-- 
 ```bash
 # train with Rlkit
 conda env create -f conda_envs/environment_rlkit.yml
@@ -31,7 +39,7 @@ OR
 # train with Stable Baselines
 conda env create -f conda_envs/environment_sb_light.yml   # or conda_envs/environment_sb_kay.yml
 conda activate SB_widowx
-```
+``` -->
 
 3. Install the custom Gym environments
 
@@ -40,7 +48,7 @@ cd gym_environments/
 pip install -e .
 ```
 
-4. Install the local [Rlkit](https://github.com/vitchyr/rlkit) repository
+<!-- 4. Install the local [Rlkit](https://github.com/vitchyr/rlkit) repository
 ```bash
 cd rlkit
 pip install -e .
@@ -52,7 +60,7 @@ cd ..
 cd viskit
 pip install -e .
 cd ..
-```
+``` -->
 
 6. Install the local Stable Baselines repository
 ```bash
@@ -78,17 +86,24 @@ python tests/3_test_episode_plotter_logger.py
 
 # STABLE BASELINES
 
+## Optimise hyperparameters
+
+```bash
+cd stable-baselines_zoo
+./_run_experiments.sh
+```
 
 ## Train
 
 ```bash
-cd stable-baselines
+cd stable-baselines_zoo
 ./5_run_experiments.sh
 ```
 
 ## Evaluate policy and plot training stats
 
 ```bash
+cd stable-baselines_zoo
 ./6_get_results.sh
 ```
 
@@ -151,7 +166,7 @@ widowx.move_to_neutral()
 # exit with CTRL+D
 ```
 
-## Configure the servos torque (
+## Configure the servos torque
 
 Set the servos torque to 50% of their maximum value to prevent collision damage (to do only once, even after closing the container).
 
@@ -223,5 +238,5 @@ python examples/td3.py
 
 - ROS Melodic
 - Ubuntu 18.04
-- Python 3.5.2
+- Python 3.6.10
 - Conda 4.8.0
