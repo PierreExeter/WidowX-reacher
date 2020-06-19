@@ -6,10 +6,7 @@ The Gym environments are adapted from [Replab](https://github.com/bhyang/replab)
 
 ## Installation
 
-1. Install [ROS](http://wiki.ros.org/ROS/Installation) (optional)
-
-
-1.1. Install the ROS packages (optional)
+1. Install [ROS](http://wiki.ros.org/ROS/Installation) and the ROS packages (optional)
 
 ```bash
 mv widowx_ros_packages ~/catkin_ws/src
@@ -17,13 +14,12 @@ cd ~/catkin_ws/
 catkin_make
 ```
 
-This is only required if training the physical arm.
+This is only required if training / evaluating a policy on the physical arm.
 
 2. Install and activate the Conda environment
 
 
 ```bash
-# train with Stable Baselines
 conda env create -f conda_envs/environment_SB_G5.yml
 conda activate SB_widowx
 ```
