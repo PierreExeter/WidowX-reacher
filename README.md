@@ -58,7 +58,7 @@ pip install -e .
 cd ..
 ``` -->
 
-6. Install the local Stable Baselines repository
+4. Install the local Stable Baselines repository
 ```bash
 cd stable-baselines
 pip install -e .[docs,tests,mpi]
