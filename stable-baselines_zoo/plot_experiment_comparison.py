@@ -14,12 +14,14 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--logFolder', help='Log folder', type=str)
     parser.add_argument('-s', '--saveFolder', help='save folder', type=str)
     parser.add_argument('-e', '--envPaper', help='envPaper', type=str)
+    parser.add_argument('-r', '--randomLogFolder', help='random log folder', type=str)
     args = parser.parse_args()
 
 
     path_base = args.logFolder  # "logs/train_1M_widowx_reach-v3/"
     save_dir = args.saveFolder   #"experiment_reports/1M_widowx_reach-v3/"
-    appendix = args.envPaper
+    random_dir = args.randomLogFolder   #"logs/random_policy/widowx_reacher-v5/""
+    appendix = args.envPaper 
     os.makedirs(save_dir, exist_ok=True)
 
     ### GET DATA ###
@@ -109,6 +111,10 @@ if __name__ == '__main__':
     for (df, lab) in zip(df_list, df_label):
         df.plot(x='timesteps', y='mean_reward', ax=ax1, label=lab)
 
+
+    random_df = pd.read_csv(random_dir+"all_rewards_smooth.csv")
+    random_df.plot(x='timesteps', y='mean_reward', ax=ax1, label="random")    ## add random
+
     plt.ylabel("Episode reward")
     plt.savefig(save_dir+"learning_curves"+appendix+".pdf", dpi=100)
 
@@ -130,6 +136,7 @@ if __name__ == '__main__':
         plt.xlabel("Timesteps")
         plt.savefig(save_dir+lab+appendix+".pdf", dpi=100)
 
+    
 
     ### PLOT TRAINING STATS ###
 

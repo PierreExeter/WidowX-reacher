@@ -18,6 +18,7 @@ save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
 env="widowx_reacher-v7"
 env_her="widowx_reacher-v6"
 appendix="_env1"
+random_log_folder="logs/random_policy/widowx_reacher-v5/"
 echo "ENV: ${env}"
 
 
@@ -59,8 +60,8 @@ echo "ENV: ${env}"
 # done
 
 # evaluate random policy
-python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
-
+# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
+# python clean_random_training.py
 
 # record video
 # python3 -m utils.record_video --algo td3 --env ${env} -n 400 -f ${log_dir}td3/${env}_1/
@@ -83,7 +84,7 @@ python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no
 
 # # STEP 3
 # # Plot learning curves and training stats
-# python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix}
+python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
 
 # python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 

@@ -15,41 +15,15 @@ log_path = "logs/random_policy/"+env_id
 os.makedirs(log_path, exist_ok=True)
 
 
-# print(env)
-
-# normalise action space, observation space and reward
-# env.action_space.low *= 10
-# env.action_space.high *= 10
-# env = NormalizedBoxEnv(env)
-# env = DummyVecEnv([lambda: env])
-# env = VecNormalize(env, norm_obs=True, norm_reward=True, clip_obs=10., clip_reward=10.)
-
-# # save env
-# env.save("vec_normalize.pkl")
-
-# # load env
-# env = DummyVecEnv([lambda: env])
-# env = VecNormalize.load("vec_normalize.pkl", env)
-
-
-
-# # comment this when using widowx_reacher-v3 and widowx_reacher-v6 (goal oriented env, observation is a dict)
-# print("Action space: ", env.action_space)
-# print(env.action_space.high)
-# print(env.action_space.low)
-# print("Observation space: ", env.observation_space)
-# print(env.observation_space.high)
-# print(env.observation_space.low)
-
-
-start_time = time.time()
-
 ## LEARNING CURVE
          
 nb_timesteps = 500000
 nb_seeds = 10
 walltime_seed = []
 all_rewards = []
+ep_reward = 0
+
+start_time = time.time()
 
 for seed in range(nb_seeds):
 
@@ -60,9 +34,13 @@ for seed in range(nb_seeds):
     for t in range(nb_timesteps):
         action = env.action_space.sample()  
         obs, reward, done, info = env.step(action) 
+        ep_reward += reward
 
-        rewards.append(reward)
-        timesteps.append(t)
+        if done:
+            rewards.append(ep_reward)
+            timesteps.append(t+1)
+            ep_reward = 0
+            obs = env.reset()
 
     # walltime
     end_time = time.time()
@@ -75,6 +53,8 @@ for seed in range(nb_seeds):
 
 
 env.close()
+
+
 
 ## walltime
 print(walltime_seed)
@@ -92,42 +72,9 @@ df_walltime.to_csv(log_path+"/walltime.csv", index=False)
 ## reward
 # print(all_rewards)
 all_rewards_df = pd.concat(all_rewards, axis=1)
-all_rewards_df.to_csv(log_path+"/all_rewards.csv", index=False)
+all_rewards_df['timesteps'] = pd.Series(timesteps)
 print(all_rewards_df)
 
-all_rewards_smooth_df = all_rewards_df
-all_rewards_smooth_df["mean_reward"] = all_rewards_df.mean(axis=1)
-all_rewards_smooth_df["std_reward"] = all_rewards_df.std(axis=1)
-all_rewards_smooth_df["upper"] = all_rewards_df["mean_reward"] + all_rewards_df["std_reward"]
-all_rewards_smooth_df["lower"] = all_rewards_df["mean_reward"] - all_rewards_df["std_reward"]
-
-all_rewards_smooth_df['timesteps'] = pd.Series(timesteps)
-print(all_rewards_smooth_df)
-
-# apply rolling window (except on timesteps)
-for col in all_rewards_smooth_df.columns[:-1]:
-    all_rewards_smooth_df[col] = all_rewards_smooth_df[col].rolling(window=50).mean()
-
-all_rewards_smooth_df.dropna(inplace=True)  # remove NaN due to rolling average
-all_rewards_smooth_df.to_csv(log_path+"/all_rewards_smooth.csv", index=False)
-print(all_rewards_smooth_df)
+all_rewards_df.to_csv(log_path+"/all_rewards.csv", index=False)
 
 
-
-
-# plot
-
-def plot_shaded(df, ax, lab):
-    ax.plot(df['timesteps'], df['mean_reward'], label=lab)
-    ax.fill_between(df['timesteps'], df['lower'], df['upper'], alpha=0.35)
-
-
-plt.figure(2, figsize=(10, 5))
-ax = plt.axes()
-plot_shaded(all_rewards_smooth_df, ax, "random policy")
-
-plt.legend(loc="lower right")
-plt.ylabel("Mean reward")
-plt.xlabel("Timesteps")
-plt.savefig(log_path+"/training_curve.pdf", dpi=100)
-# plt.show()
