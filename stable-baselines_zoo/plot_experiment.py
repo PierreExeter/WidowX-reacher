@@ -194,8 +194,8 @@ if __name__ == '__main__':
         print(col)
         all_rewards[col] = all_rewards[col].rolling(window=50).mean()
 
-    all_rewards.to_csv(log_dir+"all_rewards_smooth.csv", index=False)
     all_rewards.dropna(inplace=True)  # remove NaN due to rolling average
+    all_rewards.to_csv(log_dir+"all_rewards_smooth.csv", index=False)
     print(all_rewards)
 
     # plot

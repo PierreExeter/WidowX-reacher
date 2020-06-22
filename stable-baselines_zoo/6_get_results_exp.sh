@@ -58,6 +58,10 @@ echo "ENV: ${env}"
 
 # done
 
+# evaluate random policy
+python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
+
+
 # record video
 # python3 -m utils.record_video --algo td3 --env ${env} -n 400 -f ${log_dir}td3/${env}_1/
 
@@ -81,7 +85,7 @@ echo "ENV: ${env}"
 # # Plot learning curves and training stats
 # python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix}
 
-python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
+# python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py

@@ -59,7 +59,8 @@ def main():
     parser.add_argument('--seed', help='Random generator seed', type=int, default=0)
     parser.add_argument('--reward-log', help='Where to log reward', default='', type=str)
     parser.add_argument('--gym-packages', type=str, nargs='+', default=[], help='Additional external Gym environemnt package modules to import (e.g. gym_minigrid)')
-    parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False)
+    parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False) # added by Pierre
+    parser.add_argument('--random-pol', help='Random policy', default=False) # added by Pierre
     args = parser.parse_args()
 
     plot_bool = False
@@ -97,7 +98,8 @@ def main():
 
     assert os.path.isdir(log_path), "The {} folder was not found".format(log_path)
 
-    model_path = find_saved_model(algo, log_path, env_id, load_best=args.load_best)
+    if not args.random_pol:  # added by Pierre
+        model_path = find_saved_model(algo, log_path, env_id, load_best=args.load_best)
 
     if algo in ['dqn', 'ddpg', 'sac', 'td3']:
         args.n_envs = 1
@@ -119,7 +121,8 @@ def main():
     # ACER raises errors because the environment passed must have
     # the same number of environments as the model was trained on.
     load_env = None if algo == 'acer' else env
-    model = ALGOS[algo].load(model_path, env=load_env)
+    if not args.random_pol:  # added by Pierre
+        model = ALGOS[algo].load(model_path, env=load_env)
 
     # if not args.no_render:
         # env.render(mode="human")  # added by Pierre (to work with ReachingJaco-v1)
@@ -159,9 +162,12 @@ def main():
     state = None
     
     for _ in range(args.n_timesteps):
-        action, state = model.predict(obs, state=state, deterministic=deterministic)
-        # Random Agent
-        # action = [env.action_space.sample()]
+        if args.random_pol:
+            # Random Agent
+            action = [env.action_space.sample()]
+        else:
+            action, state = model.predict(obs, state=state, deterministic=deterministic)
+        
         # Clip Action to avoid out of bound errors
         if isinstance(env.action_space, gym.spaces.Box):
             action = np.clip(action, env.action_space.low, env.action_space.high)
@@ -342,7 +348,11 @@ def main():
             "Average reach time 0.5mm": np.mean(reachtime_list_00005),
             }
         df = pd.DataFrame(d, index=[0])
-        df.to_csv(log_path+"/stats.csv", index=False)
+
+        if args.random_pol:
+            df.to_csv("logs/random_policy/"+env_id+"/stats.csv", index=False)
+        else:
+            df.to_csv(log_path+"/stats.csv", index=False)
 
 
     if args.verbose > 0 and len(episode_lengths) > 0:
