@@ -9,13 +9,13 @@
 
 
 
-nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
+nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=2
 log_dir="logs/train_0.5M_widowx_reacher-v5_KAY/"
 log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.5M_widowx_reacher-v5_KAY/"
 save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
-env="widowx_reacher-v5"
+env="widowx_reacher-v7"
 env_her="widowx_reacher-v6"
 appendix="_env1"
 echo "ENV: ${env}"

@@ -80,6 +80,11 @@ env.close()
 print(walltime_seed)
 mean_walltime = np.mean(walltime_seed)
 std_walltime = np.std(walltime_seed)
+
+# convert to min
+mean_walltime /= 60
+std_walltime /= 60
+
 d_walltime = {"mean_walltime": mean_walltime, "std_walltime": std_walltime}
 df_walltime = pd.DataFrame(d_walltime, index=[0])
 df_walltime.to_csv(log_path+"/walltime.csv", index=False)
