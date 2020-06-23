@@ -15,19 +15,19 @@ log_dir="logs/train_0.5M_widowx_reacher-v5_KAY/"
 log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.5M_widowx_reacher-v5_KAY/"
 save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
-env="widowx_reacher-v7"
-env_her="widowx_reacher-v6"
+env="widowx_reacher-v2"
+env_her="widowx_reacher-v3"
 appendix="_env1"
 random_log_folder="logs/random_policy/widowx_reacher-v5/"
 echo "ENV: ${env}"
 
 
 
-# for ((i=1;i<${nb_seeds}+1;i+=1))
-# do
-#     echo "A2C $i"
-#     python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
-#     python3 plot_1seed.py -f ${log_dir}a2c/${env}_$i/
+#for ((i=1;i<${nb_seeds}+1;i+=1))
+#do
+     #echo "A2C $i"
+     #python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
+     #python3 plot_1seed.py -f ${log_dir}a2c/${env}_$i/
 
 #     echo "ACKTR $i"
 #     python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
@@ -57,10 +57,10 @@ echo "ENV: ${env}"
 #     python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
 #     python3 plot_1seed.py -f ${log_dir}her/${env_her}_$i/
 
-# done
+#done
 
 # evaluate random policy
-# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
+python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
 # python clean_random_training.py
 
 # record video
@@ -84,7 +84,7 @@ echo "ENV: ${env}"
 
 # # STEP 3
 # # Plot learning curves and training stats
-python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
+#python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
 
 # python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 

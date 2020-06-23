@@ -10,10 +10,10 @@ from stable_baselines.common.env_checker import check_env
 # env = gym.make('widowx_reacher-v0').start_sim(goal_oriented=False, render_bool=True)   # or .start_rospy(goal_oriented=False)
 # env = gym.make('widowx_reacher-v1').start_rospy(goal_oriented=False)               # requires a roscore to be running
 # env = gym.make('widowx_reacher-v2')                                              # requires a roscore to be running
-# env = gym.make('widowx_reacher-v3')                                              # requires a roscore to be running
+env = gym.make('widowx_reacher-v3')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v4').start_sim(goal_oriented=False, render_bool=True)
 # env = gym.make('widowx_reacher-v5')
-env = gym.make('widowx_reacher-v6')  
+# env = gym.make('widowx_reacher-v6')  
 
 
 print("isinstance(env, gym.GoalEnv)", isinstance(env, gym.Env))

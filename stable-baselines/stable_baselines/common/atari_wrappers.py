@@ -3,6 +3,15 @@ from collections import deque
 import numpy as np
 import gym
 from gym import spaces
+
+# added by Pierre
+import sys
+ros_path = '/opt/ros/kinetic/lib/python2.7/dist-packages'
+if ros_path in sys.path:
+    sys.path.remove(ros_path)
+    import cv2
+    sys.path.append(ros_path)
+
 import cv2  # pytype:disable=import-error
 cv2.ocl.setUseOpenCL(False)
 
