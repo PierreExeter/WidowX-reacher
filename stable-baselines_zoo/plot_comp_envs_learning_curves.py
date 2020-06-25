@@ -125,7 +125,6 @@ if __name__ == '__main__':
     ff2 = pd.concat(ff_list2, axis=0)
     ff2['exp type'] = df_label
 
-
     ### PLOT LEARNING CURVES ###
 
 
@@ -207,7 +206,7 @@ if __name__ == '__main__':
 
     ###
     plt.figure()
-    reward_df = pd.concat([ff['mean success ratio 10mm'], ff2['mean success ratio 10mm'], ff['std success ratio 10mm'], ff2['std success ratio 10mm']], axis=1)
+    reward_df = pd.concat([ff['mean success ratio 50mm'], ff2['mean success ratio 50mm'], ff['std success ratio 50mm'], ff2['std success ratio 50mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean success ratio 50mm")
@@ -216,8 +215,11 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(save_dir+"success_50_comp.pdf", dpi=100)
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean reach time 10mm'], ff2['mean reach time 10mm'], ff['std reach time 10mm'], ff2['std reach time 10mm']], axis=1)
+    plt.clf()
+    plt.cla()
+
+    # plt.figure()
+    reward_df = pd.concat([ff['mean reach time 50mm'], ff2['mean reach time 50mm'], ff['std reach time 50mm'], ff2['std reach time 50mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean reach time 50mm")
@@ -232,8 +234,8 @@ if __name__ == '__main__':
 
     ###
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean success ratio 2mm'], ff2['mean success ratio 2mm'], ff['std success ratio 2mm'], ff2['std success ratio 2mm']], axis=1)
+    # plt.figure()
+    reward_df = pd.concat([ff['mean success ratio 20mm'], ff2['mean success ratio 20mm'], ff['std success ratio 20mm'], ff2['std success ratio 20mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean success ratio 20mm")
@@ -242,8 +244,11 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(save_dir+"success_20_comp.pdf", dpi=100)
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean reach time 2mm'], ff2['mean reach time 2mm'], ff['std reach time 2mm'], ff2['std reach time 2mm']], axis=1)
+    plt.clf()
+    plt.cla()
+
+    # plt.figure()
+    reward_df = pd.concat([ff['mean reach time 20mm'], ff2['mean reach time 20mm'], ff['std reach time 20mm'], ff2['std reach time 20mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean reach time 20mm")
@@ -257,8 +262,8 @@ if __name__ == '__main__':
 
     ###
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean success ratio 1mm'], ff2['mean success ratio 1mm'], ff['std success ratio 1mm'], ff2['std success ratio 1mm']], axis=1)
+    # plt.figure()
+    reward_df = pd.concat([ff['mean success ratio 10mm'], ff2['mean success ratio 10mm'], ff['std success ratio 10mm'], ff2['std success ratio 10mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean success ratio 10mm")
@@ -267,8 +272,11 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(save_dir+"success_10_comp.pdf", dpi=100)
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean reach time 1mm'], ff2['mean reach time 1mm'], ff['std reach time 1mm'], ff2['std reach time 1mm']], axis=1)
+    plt.clf()
+    plt.cla()
+
+    # plt.figure()
+    reward_df = pd.concat([ff['mean reach time 10mm'], ff2['mean reach time 10mm'], ff['std reach time 10mm'], ff2['std reach time 10mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean reach time 10mm")
@@ -282,8 +290,8 @@ if __name__ == '__main__':
 
     ###
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean success ratio 0.5mm'], ff2['mean success ratio 0.5mm'], ff['std success ratio 0.5mm'], ff2['std success ratio 0.5mm']], axis=1)
+    # plt.figure()
+    reward_df = pd.concat([ff['mean success ratio 5mm'], ff2['mean success ratio 5mm'], ff['std success ratio 5mm'], ff2['std success ratio 5mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean success ratio 5mm")
@@ -292,8 +300,12 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(save_dir+"success_5_comp.pdf", dpi=100)
 
-    plt.figure()
-    reward_df = pd.concat([ff['mean reach time 0.5mm'], ff2['mean reach time 0.5mm'], ff['std reach time 0.5mm'], ff2['std reach time 0.5mm']], axis=1)
+    plt.clf()
+    plt.cla()
+
+
+    # plt.figure()
+    reward_df = pd.concat([ff['mean reach time 5mm'], ff2['mean reach time 5mm'], ff['std reach time 5mm'], ff2['std reach time 5mm']], axis=1)
     reward_df.columns = ['mean1', 'mean2', 'std1', 'std2']
     reward_df[['mean1', 'mean2']].plot(kind='bar', yerr=reward_df[['std1', 'std2']].values.T, alpha = 0.7, error_kw=dict(ecolor='k', lw=0.8, capsize=3), rot=45)
     plt.ylabel("Mean reach time 5mm")

@@ -30,7 +30,6 @@ df_reward_only['timesteps'] = df['timesteps']
 # remove NaN due to rolling average
 df_reward_only.dropna(inplace=True) 
 
-print(df_reward_only)
 df_reward_only.to_csv(log_path+"/all_rewards_smooth.csv", index=False)
 
 # plot
@@ -68,7 +67,6 @@ df_reward_only['timesteps'] = df['timesteps']
 # remove NaN due to rolling average
 df_reward_only.dropna(inplace=True) 
 
-print(df_reward_only)
 df_reward_only.to_csv(log_path+"/all_rewards_smooth.csv", index=False)
 
 # plot

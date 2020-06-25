@@ -103,6 +103,19 @@ cd stable-baselines_zoo
 ./6_get_results.sh
 ```
 
+## Run and evaluate random policy
+
+```bash
+cd stable-baselines_zoo
+
+# run
+python 7_run_random_policy.py
+
+# evaluate
+python 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
+python clean_random_training.py
+```
+
 # RLKIT (deprecated)
 
 ## Train

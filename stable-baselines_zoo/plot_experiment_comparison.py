@@ -184,14 +184,14 @@ if __name__ == '__main__':
     # plot_col('mean reach time 0.5mm', 'std reach time 0.5mm', "reachtime_0.5mm.pdf")
 
     # changed for paper
-    plot_col('mean success ratio 10mm', 'std success ratio 10mm', "success_50mm", 'mean success ratio')
-    plot_col('mean reach time 10mm', 'std reach time 10mm', "reachtime_50mm", 'mean reach time')
-    plot_col('mean success ratio 2mm', 'std success ratio 2mm', "success_20mm", 'mean success ratio')
-    plot_col('mean reach time 2mm', 'std reach time 2mm', "reachtime_20mm", 'mean reach time')
-    plot_col('mean success ratio 1mm', 'std success ratio 1mm', "success_10mm", 'mean success ratio')
-    plot_col('mean reach time 1mm', 'std reach time 1mm', "reachtime_10mm", 'mean reach time')
-    plot_col('mean success ratio 0.5mm', 'std success ratio 0.5mm', "success_5mm", 'mean success ratio')
-    plot_col('mean reach time 0.5mm', 'std reach time 0.5mm', "reachtime_5mm", 'mean reach time')
+    plot_col('mean success ratio 50mm', 'std success ratio 50mm', "success_50mm", 'mean success ratio')
+    plot_col('mean reach time 50mm', 'std reach time 50mm', "reachtime_50mm", 'mean reach time')
+    plot_col('mean success ratio 20mm', 'std success ratio 20mm', "success_20mm", 'mean success ratio')
+    plot_col('mean reach time 20mm', 'std reach time 20mm', "reachtime_20mm", 'mean reach time')
+    plot_col('mean success ratio 10mm', 'std success ratio 10mm', "success_10mm", 'mean success ratio')
+    plot_col('mean reach time 10mm', 'std reach time 10mm', "reachtime_10mm", 'mean reach time')
+    plot_col('mean success ratio 5mm', 'std success ratio 5mm', "success_5mm", 'mean success ratio')
+    plot_col('mean reach time 5mm', 'std reach time 5mm', "reachtime_5mm", 'mean reach time')
 
 
     plot_col('mean reward', 'std reward (seed)', "mean_reward", 'mean return')

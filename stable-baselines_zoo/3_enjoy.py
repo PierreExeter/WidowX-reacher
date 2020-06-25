@@ -147,14 +147,14 @@ def main():
     # success_list_00005, reachtime_list_00005, episode_success_list_00005 = [], [], []
 
     # changed for the paper
-    success_threshold_001 = 0.05
-    success_list_001, reachtime_list_001, episode_success_list_001 = [], [], []
-    success_threshold_0002 = 0.02
-    success_list_0002, reachtime_list_0002, episode_success_list_0002 = [], [], []
-    success_threshold_0001 = 0.01
-    success_list_0001, reachtime_list_0001, episode_success_list_0001 = [], [], []
-    success_threshold_00005 = 0.005
-    success_list_00005, reachtime_list_00005, episode_success_list_00005 = [], [], []
+    success_threshold_50 = 0.05
+    success_list_50, reachtime_list_50, episode_success_list_50 = [], [], []
+    success_threshold_20 = 0.02
+    success_list_20, reachtime_list_20, episode_success_list_20 = [], [], []
+    success_threshold_10 = 0.01
+    success_list_10, reachtime_list_10, episode_success_list_10 = [], [], []
+    success_threshold_5 = 0.005
+    success_list_5, reachtime_list_5, episode_success_list_5 = [], [], []
 
 
     # For HER, monitor success rate
@@ -176,25 +176,25 @@ def main():
         if args.render_pybullet:
             time.sleep(1./30.)     # added by Pierre (slow down Pybullet for rendering)
         
-        if infos[0]['total_distance'] <= success_threshold_001:
-            episode_success_list_001.append(1)
+        if infos[0]['total_distance'] <= success_threshold_50:
+            episode_success_list_50.append(1)
         else:
-            episode_success_list_001.append(0)
+            episode_success_list_50.append(0)
 
-        if infos[0]['total_distance'] <= success_threshold_0002:
-            episode_success_list_0002.append(1)
+        if infos[0]['total_distance'] <= success_threshold_20:
+            episode_success_list_20.append(1)
         else:
-            episode_success_list_0002.append(0)
+            episode_success_list_20.append(0)
 
-        if infos[0]['total_distance'] <= success_threshold_0001:
-            episode_success_list_0001.append(1)
+        if infos[0]['total_distance'] <= success_threshold_10:
+            episode_success_list_10.append(1)
         else:
-            episode_success_list_0001.append(0)
+            episode_success_list_10.append(0)
 
-        if infos[0]['total_distance'] <= success_threshold_00005:
-            episode_success_list_00005.append(1)
+        if infos[0]['total_distance'] <= success_threshold_5:
+            episode_success_list_5.append(1)
         else:
-            episode_success_list_00005.append(0)
+            episode_success_list_5.append(0)
         
 
         if plot_bool:
@@ -261,42 +261,42 @@ def main():
             if done and not is_atari and args.verbose > 0:
                 # NOTE: for env using VecNormalize, the mean reward
                 # is a normalized reward when `--norm_reward` flag is passed
-                print("Episode Reward: {:.2f}".format(episode_reward))
-                print("Episode Length", ep_len)
+                print("Episode nb: {} | Episode Reward: {:.2f} | Episode Length: {}".format(episode, episode_reward, ep_len))
+                # print("Episode Length", ep_len) # commented by Pierre
                 state = None
                 episode_rewards.append(episode_reward)
                 episode_lengths.append(ep_len)
 
                 # append the last element of the episode success list when episode is done
-                success_list_001.append(episode_success_list_001[-1]) 
-                success_list_0002.append(episode_success_list_0002[-1]) 
-                success_list_0001.append(episode_success_list_0001[-1]) 
-                success_list_00005.append(episode_success_list_00005[-1])  
+                success_list_50.append(episode_success_list_50[-1]) 
+                success_list_20.append(episode_success_list_20[-1]) 
+                success_list_10.append(episode_success_list_10[-1]) 
+                success_list_5.append(episode_success_list_5[-1])  
 
                 # if the episode is successful and it starts from an unsucessful step, calculate reach time
-                if episode_success_list_001[-1] == True and episode_success_list_001[0] == False:
+                if episode_success_list_50[-1] == True and episode_success_list_50[0] == False:
                     idx = 0
-                    while episode_success_list_001[idx] == False:
+                    while episode_success_list_50[idx] == False:
                         idx += 1
-                    reachtime_list_001.append(idx)
+                    reachtime_list_50.append(idx)
 
-                if episode_success_list_0002[-1] == True and episode_success_list_0002[0] == False:
+                if episode_success_list_20[-1] == True and episode_success_list_20[0] == False:
                     idx = 0
-                    while episode_success_list_0002[idx] == False:
+                    while episode_success_list_20[idx] == False:
                         idx += 1
-                    reachtime_list_0002.append(idx)
+                    reachtime_list_20.append(idx)
 
-                if episode_success_list_0001[-1] == True and episode_success_list_0001[0] == False:
+                if episode_success_list_10[-1] == True and episode_success_list_10[0] == False:
                     idx = 0
-                    while episode_success_list_0001[idx] == False:
+                    while episode_success_list_10[idx] == False:
                         idx += 1
-                    reachtime_list_0001.append(idx)
+                    reachtime_list_10.append(idx)
 
-                if episode_success_list_00005[-1] == True and episode_success_list_00005[0] == False:
+                if episode_success_list_5[-1] == True and episode_success_list_5[0] == False:
                     idx = 0
-                    while episode_success_list_00005[idx] == False:
+                    while episode_success_list_5[idx] == False:
                         idx += 1
-                    reachtime_list_00005.append(idx)
+                    reachtime_list_5.append(idx)
 
 
                 if log_bool:
@@ -306,10 +306,10 @@ def main():
                 # reset for new episode
                 episode_reward = 0.0
                 ep_len = 0
-                episode_success_list_001 = []  
-                episode_success_list_0001 = []  
-                episode_success_list_0002 = []  
-                episode_success_list_00005 = []  
+                episode_success_list_50 = []  
+                episode_success_list_20 = []  
+                episode_success_list_10 = []  
+                episode_success_list_5 = []  
                 episode += 1 
 
             # Reset also when the goal is achieved when using HER
@@ -328,24 +328,24 @@ def main():
 
     if args.verbose > 0 and len(episode_rewards) > 0:
         print("Mean reward: {:.2f} +/- {:.2f}".format(np.mean(episode_rewards), np.std(episode_rewards)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_001, np.mean(success_list_001), np.mean(reachtime_list_001)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_0002, np.mean(success_list_0002), np.mean(reachtime_list_0002)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_0001, np.mean(success_list_0001), np.mean(reachtime_list_0001)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_00005, np.mean(success_list_00005), np.mean(reachtime_list_00005)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_50, np.mean(success_list_50), np.mean(reachtime_list_50)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_20, np.mean(success_list_20), np.mean(reachtime_list_20)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_10, np.mean(success_list_10), np.mean(reachtime_list_10)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_5, np.mean(success_list_5), np.mean(reachtime_list_5)))
 
         # added by Pierre
         print("path:", log_path)
         d = {
             "Eval mean reward": np.mean(episode_rewards), 
             "Eval std": np.std(episode_rewards), 
-            "success ratio 10mm": np.mean(success_list_001),
-            "Average reach time 10mm": np.mean(reachtime_list_001),
-            "success ratio 2mm": np.mean(success_list_0002),
-            "Average reach time 2mm": np.mean(reachtime_list_0002),
-            "success ratio 1mm": np.mean(success_list_0001),
-            "Average reach time 1mm": np.mean(reachtime_list_0001),
-            "success ratio 0.5mm": np.mean(success_list_00005),
-            "Average reach time 0.5mm": np.mean(reachtime_list_00005),
+            "success ratio 50mm": np.mean(success_list_50),
+            "Average reach time 50mm": np.mean(reachtime_list_50),
+            "success ratio 20mm": np.mean(success_list_20),
+            "Average reach time 20mm": np.mean(reachtime_list_20),
+            "success ratio 10mm": np.mean(success_list_10),
+            "Average reach time 10mm": np.mean(reachtime_list_10),
+            "success ratio 5mm": np.mean(success_list_5),
+            "Average reach time 5mm": np.mean(reachtime_list_5),
             }
         df = pd.DataFrame(d, index=[0])
 

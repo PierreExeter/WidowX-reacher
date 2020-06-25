@@ -34,4 +34,3 @@ do
     echo "HER $i"
     python3 2_train.py --algo her --env ${env_her} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_td3_0$i.run
 done
-
