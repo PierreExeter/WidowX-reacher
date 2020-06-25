@@ -44,8 +44,8 @@ JOINT_NAMES = ['joint_1', 'joint_2', 'joint_3',
 SIM_START_POSITION = np.array([-0.185033226409, 0.00128528, 0.46227163])
 
 
-
-class WidowxEnv(gym.Env):
+# class WidowxEnv(gym.Env):
+class WidowxEnv(gym.GoalEnv):  # added by Pierre
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
@@ -63,6 +63,9 @@ class WidowxEnv(gym.Env):
 
         self.goal is set to a fixed, randomly drawn goal if goal_oriented = False
         """
+        # super().__init__() 
+        # super(WidowxEnv, self).__init__()  # added by Pierre
+
         self.obs_space_low = np.array(
             [-.16, -.15, 0.14, -3.1, -1.6, -1.6, -1.8, -3.1, 0])
         self.obs_space_high = np.array(
@@ -70,23 +73,18 @@ class WidowxEnv(gym.Env):
         observation_space = spaces.Box(
             low=self.obs_space_low, high=self.obs_space_high, dtype=np.float32)
         self.observation_space = observation_space
-        
-        # added by Pierre, normalize action space, cf https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html
         self.action_space = spaces.Box(low=np.array([-0.5, -0.25, -0.25, -0.25, -0.5, -0.005]) / 10,
                                        high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 10, dtype=np.float32)
-        # PB: actions are too big and the robot moves too much
-        # self.action_space = spaces.Box(low=np.array([-1, -1, -1, -1, -1, -1]),
-        #                                high=np.array([1, 1, 1, 1, 1, 1]), dtype=np.float32)
-
         self.current_pos = None
         #self.goal = np.array([-.14, -.13, 0.26])
         self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_sim(goal_oriented=False, render_bool=False)
+        self.start_sim(goal_oriented=True, render_bool=False)
+        pass
 
     # re-added by Pierre
-    def start_sim(self, goal_oriented=False, render_bool=False):
+    def start_sim(self, goal_oriented=True, render_bool=False):
 
         self.render_bool = render_bool
         self.goal_oriented = goal_oriented
@@ -199,12 +197,13 @@ class WidowxEnv(gym.Env):
     def reset(self):
 
         p.resetBasePositionAndOrientation(self.arm, [0, 0, 0], p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))
-        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
         self._force_joint_positions(RESET_VALUES)
         self.current_pos = self._get_current_state()
 
+        self.set_goal(self.sample_goal_for_rollout())  # added by Pierre
+        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
+
         if self.goal_oriented:
-            self.set_goal(self.sample_goal_for_rollout())
             return self._get_obs()
 
         return self.current_pos

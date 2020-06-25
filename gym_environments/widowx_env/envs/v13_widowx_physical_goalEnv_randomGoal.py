@@ -13,7 +13,7 @@ from rospy_tutorials.msg import Floats
 from std_msgs.msg import String
 
 
-class WidowxEnv(gym.Env):
+class WidowxEnv(gym.GoalEnv):   # added by Pierre
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
@@ -45,10 +45,10 @@ class WidowxEnv(gym.Env):
         self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_rospy(goal_oriented=False)
+        self.start_rospy(goal_oriented=True)
 
 
-    def start_rospy(self, goal_oriented=False):
+    def start_rospy(self, goal_oriented=True):
         self.mode = 'robot'
         self.rand_init = random.random()
         rospy.init_node("widowx_custom_controller_%0.5f" % self.rand_init)
@@ -73,7 +73,6 @@ class WidowxEnv(gym.Env):
             ))
         self.reset()
         return self
-
 
     #shared functions between both sim and robot mode   
     
@@ -141,8 +140,10 @@ class WidowxEnv(gym.Env):
         self.reset_publisher.publish(String("RESET"))
         self.current_pos = np.array(rospy.wait_for_message("/replab/action/observation", numpy_msg(Floats)).data)
 
+        # re-sample new goal for goal oriented environment
+        self.set_goal(self.sample_goal_for_rollout())
+
         if self.goal_oriented:
-            self.set_goal(self.sample_goal_for_rollout())
             return self._get_obs()
         return self.current_pos
 
@@ -236,7 +237,6 @@ class WidowxEnv(gym.Env):
     def update_position(self, x):
         self.current_pos = np.array(x.data)
         self.position_updated_publisher.publish('received')
-
 
     # Functions for pickling
     def __getstate__(self):

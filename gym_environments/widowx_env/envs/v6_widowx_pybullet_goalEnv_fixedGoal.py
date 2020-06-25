@@ -3,17 +3,49 @@ from gym import error, spaces, utils
 from gym.utils import seeding
 from numbers import Number
 from collections import OrderedDict
+import pybullet as p
+import pybullet_data
 import os
 import numpy as np
 import random
 
-import rospy
-from rospy.numpy_msg import numpy_msg
-from rospy_tutorials.msg import Floats
-from std_msgs.msg import String
+
+# ENVIRONMENT CONFIGURATION
+NEUTRAL_VALUES = [0.015339807878856412, -1.4839419194602816,
+                  1.4971652489763858, -0.008369006790373335, -0.08692557798018634, .027]
+RESET_VALUES = [0.015339807878856412, -1.2931458041875956,
+                1.0109710760673565, -1.3537670644267164, -0.07158577010132992, .027]
+
+# RL BOUNDS
+BOUNDS_FLOOR = .41
+BOUNDS_LEFTWALL = .14
+BOUNDS_RIGHTWALL = -.14
+BOUNDS_FRONTWALL = -.13
+BOUNDS_BACKWALL = .13
+
+JOINT_MIN = np.array([
+    -3.1,
+    -1.571,
+    -1.571,
+    -1.745,
+    -2.617,
+    0.003
+])
+JOINT_MAX = np.array([
+    3.1,
+    1.571,
+    1.571,
+    1.745,
+    2.617,
+    0.03
+])
+JOINT_NAMES = ['joint_1', 'joint_2', 'joint_3',
+               'joint_4', 'joint_5', 'gripper_joint']
+SIM_START_POSITION = np.array([-0.185033226409, 0.00128528, 0.46227163])
 
 
-class WidowxEnv(gym.GoalEnv):   # added by Pierre
+# class WidowxEnv(gym.Env):
+class WidowxEnv(gym.GoalEnv):  # added by Pierre
     metadata = {'render.modes': ['human']}
 
     def __init__(self):
@@ -31,6 +63,9 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
 
         self.goal is set to a fixed, randomly drawn goal if goal_oriented = False
         """
+        # super().__init__() 
+        # super(WidowxEnv, self).__init__()  # added by Pierre
+
         self.obs_space_low = np.array(
             [-.16, -.15, 0.14, -3.1, -1.6, -1.6, -1.8, -3.1, 0])
         self.obs_space_high = np.array(
@@ -45,24 +80,20 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
         self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_rospy(goal_oriented=False)
+        self.start_sim(goal_oriented=True, render_bool=False)
+        pass
 
+    # re-added by Pierre
+    def start_sim(self, goal_oriented=True, render_bool=False):
 
-    def start_rospy(self, goal_oriented=False):
-        self.mode = 'robot'
-        self.rand_init = random.random()
-        rospy.init_node("widowx_custom_controller_%0.5f" % self.rand_init)
-        self.reset_publisher = rospy.Publisher(
-            "/replab/reset", String, queue_size=1)
-        self.position_updated_publisher = rospy.Publisher(
-            "/replab/received/position", String, queue_size=1)
-        self.action_publisher = rospy.Publisher(
-            "/replab/action", numpy_msg(Floats), queue_size=1)
-        self.current_position_subscriber = rospy.Subscriber(
-            "/replab/action/observation", numpy_msg(Floats), self.update_position)
-        rospy.sleep(2)
-
+        self.render_bool = render_bool
         self.goal_oriented = goal_oriented
+
+        if self.render_bool:
+            self.physics_client = p.connect(p.GUI)
+        else:
+            self.physics_client = p.connect(p.DIRECT)
+
         if self.goal_oriented:
             self.observation_space = spaces.Dict(dict(
                 desired_goal=spaces.Box(low=np.array(
@@ -71,8 +102,16 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
                     :3], high=self.obs_space_high[:3], dtype=np.float32),
                 observation=self.observation_space
             ))
+        # p.resetSimulation()
+        # p.setTimeStep(0.01)
+        p.setAdditionalSearchPath(pybullet_data.getDataPath())
+        path = os.path.abspath(os.path.dirname(__file__))
+        self.arm = p.loadURDF(os.path.join(path, "URDFs/widowx/widowx.urdf"), useFixedBase=True)
+        self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"), useFixedBase=True)      # added by Pierre
+        self.plane = p.loadURDF('plane.urdf')   # added by Pierre
         self.reset()
         return self
+
 
     #shared functions between both sim and robot mode   
     
@@ -107,10 +146,30 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
         """
         action = np.array(action, dtype=np.float32)
 
-        # ROS specific here
-        self.action_publisher.publish(action)
-        self.current_pos = np.array(rospy.wait_for_message("/replab/action/observation", numpy_msg(Floats)).data)
+        joint_positions = self._get_current_joint_positions()
+        new_joint_positions = joint_positions + action
+        new_joint_positions = np.clip(np.array(new_joint_positions), JOINT_MIN, JOINT_MAX)
+        self._force_joint_positions(new_joint_positions)
         
+        end_effector_pos = self._get_current_end_effector_position()
+        x, y, z = end_effector_pos[0], end_effector_pos[1], end_effector_pos[2]
+        conditions = [
+            x <= BOUNDS_LEFTWALL,
+            x >= BOUNDS_RIGHTWALL,
+            y <= BOUNDS_BACKWALL,
+            y >= BOUNDS_FRONTWALL,
+            z <= BOUNDS_FLOOR,
+            z >= 0.15
+        ]
+        violated_boundary = False
+        for condition in conditions:
+            if not condition:
+                violated_boundary = True
+                break
+        if violated_boundary:
+            self._force_joint_positions(joint_positions)
+        self.current_pos = self._get_current_state()
+
         return self._generate_step_tuple()
 
     def _generate_step_tuple(self):
@@ -136,14 +195,17 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
         return self.current_pos, reward, episode_over, info
 
     def reset(self):
-        # ROS specific here
-        self.reset_publisher.publish(String("RESET"))
-        self.current_pos = np.array(rospy.wait_for_message("/replab/action/observation", numpy_msg(Floats)).data)
 
-        # commented by Pierre: don't re-sample new goal for goal oriented environment
+        p.resetBasePositionAndOrientation(self.arm, [0, 0, 0], p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))
+        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
+        self._force_joint_positions(RESET_VALUES)
+        self.current_pos = self._get_current_state()
+
+        # commented by Pierre: don't re-sample new goal
         if self.goal_oriented:
         #     self.set_goal(self.sample_goal_for_rollout())
             return self._get_obs()
+
         return self.current_pos
 
     def _get_obs(self):
@@ -233,35 +295,58 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
                           s[-1] for s in stat], always_show_all_stats=True,))
         return statistics
 
-    def update_position(self, x):
-        self.current_pos = np.array(x.data)
-        self.position_updated_publisher.publish('received')
+    #Functions only for sim mode
+    def _get_current_joint_positions(self):
+        joint_positions = []
+        for i in range(6):
+            joint_positions.append(p.getJointState(self.arm, i)[0])
+        return np.array(joint_positions, dtype=np.float32)
+        
+    def _get_current_end_effector_position(self):
+        real_position = np.array(list(p.getLinkState(self.arm, 5, computeForwardKinematics=1)[4]))
+        #real_position[2] = -real_position[2] #SIM z coordinates are reversed
+        #adjusted_position = real_position + SIM_START_POSITION
+        return real_position
+
+    def _set_joint_positions(self, joint_positions):
+        # In SIM, gripper halves are controlled separately
+        joint_positions = list(joint_positions) + [joint_positions[-1]]
+        p.setJointMotorControlArray(
+            self.arm,
+            [0, 1, 2, 3, 4, 7, 8],
+            controlMode=p.POSITION_CONTROL,
+            targetPositions=joint_positions
+        )
+
+    def _force_joint_positions(self, joint_positions):
+        for i in range(5):
+            p.resetJointState(
+                self.arm,
+                i,
+                joint_positions[i]
+            )
+        for i in range(7, 9):
+            p.resetJointState(
+                self.arm,
+                i,
+                joint_positions[-1]
+            )
+
+    def _get_current_state(self):
+        return np.concatenate(
+                [self._get_current_end_effector_position(),
+                self._get_current_joint_positions()],
+                axis = 0)
 
     # Functions for pickling
     def __getstate__(self):
         state = self.__dict__.copy()
-        # ROS specific here
-        if self.mode == 'robot':
-            del state['reset_publisher']
-            del state['position_updated_publisher']
-            del state['action_publisher']
-            del state['current_position_subscriber']
         return state
 
     def __setstate__(self, state):
-        # ROS specific here
-        if state['mode'] == 'robot':
-            try:
-                self.start_rospy(goal_oriented=state['goal_oriented'])
-            except rospy.ROSException:
-                print('ROS Node already started')
-                self.reset_publisher = rospy.Publisher(
-                    "/replab/reset", String, queue_size=1)
-                self.position_updated_publisher = rospy.Publisher(
-                    "/replab/received/position", String, queue_size=1)
-                self.action_publisher = rospy.Publisher(
-                    "/replab/action", numpy_msg(Floats), queue_size=1)
-                self.current_position_subscriber = rospy.Subscriber(
-                    "/replab/action/observation", numpy_msg(Floats), self.update_position)
-            self.__dict__.update(state)
+        self.__dict__.update(state)
+        if state['render_bool']:
+            self.start_sim(goal_oriented=state['goal_oriented'], render_bool=False)
+        else:
+            self.start_sim(goal_oriented=state['goal_oriented'], render_bool=state['render_bool'])
         self.reset()
