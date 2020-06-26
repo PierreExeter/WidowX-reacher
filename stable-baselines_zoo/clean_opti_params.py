@@ -115,6 +115,18 @@ def convert_trpo_params(param):
     return param
 
 
+def convert_her_params(param):
+    first_key = next(iter(param))
+
+    if param[first_key]['model_class'] == "sac":
+        param = convert_sac_params(param)
+    elif param[first_key]['model_class'] == "td3":
+        param = convert_td3_params(param)
+    elif param[first_key]['model_class'] == "ddpg":
+        param = convert_ddpg_params(param)
+    
+    return param
+
 
 if __name__ == '__main__':
 
@@ -193,3 +205,9 @@ if __name__ == '__main__':
             with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
                 yaml.dump(cleaned_params, f, default_flow_style=False)
 
+        elif 'her' in filepath:
+            print("HER")
+            cleaned_params = convert_her_params(final_params)
+            print("cleaned params: ", cleaned_params)
+            with open(filepath[:-16]+'cleaned_params.yml', 'w') as f:
+                yaml.dump(cleaned_params, f, default_flow_style=False)

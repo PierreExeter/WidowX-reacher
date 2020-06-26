@@ -163,17 +163,32 @@ widowx_reacher-v2:
   learning_rate: 0.002
 
 
+# widowx_reacher-v5:
+#   normalize: true
+#   n_envs: 8
+#   n_timesteps: !!float 1e6
+#   policy: 'MlpPolicy'
+#   ent_coef: 0.001
+#   n_steps: 32
+#   vf_coef: 0.5
+#   lr_schedule: 'linear'
+#   gamma: 0.99
+#   learning_rate: 0.002
+
+# tuned
 widowx_reacher-v5:
-  normalize: true
-  n_envs: 8
-  n_timesteps: !!float 1e6
-  policy: 'MlpPolicy'
-  ent_coef: 0.001
-  n_steps: 32
-  vf_coef: 0.5
-  lr_schedule: 'linear'
+  ent_coef: 2.8248618994244886e-08
   gamma: 0.99
-  learning_rate: 0.002
+  learning_rate: 0.05253399083367626
+  lr_schedule: linear
+  n_envs: 8
+  n_steps: 2048
+  n_timesteps: 1000000.0
+  normalize: true
+  policy: MlpPolicy
+  vf_coef: 0.21903374671252315
+
+
 
 
 widowx_reacher-v7:

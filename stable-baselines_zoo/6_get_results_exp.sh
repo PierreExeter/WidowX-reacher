@@ -6,6 +6,7 @@
 
 nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=2
+opti_dir="logs/opti100t_0.1M_widowx_reacher-v5_SONIC/"
 log_dir="logs/train_0.5M_widowx_reacher-v5_KAY/"
 log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.5M_widowx_reacher-v5_KAY/"
@@ -58,8 +59,8 @@ echo "ENV: ${env}"
 # done
 
 # evaluate random policy
-python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
-python clean_random_training.py
+# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
+# python clean_random_training.py
 
 # record video
 # python3 -m utils.record_video --algo td3 --env ${env} -n 400 -f ${log_dir}td3/${env}_1/
@@ -87,6 +88,14 @@ python clean_random_training.py
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py
 # python3 plot_opti_best.py
+# python clean_opti_params.py -f ${opti_dir}a2c/
+# python clean_opti_params.py -f ${opti_dir}acktr/
+# python clean_opti_params.py -f ${opti_dir}ddpg/
+# python clean_opti_params.py -f ${opti_dir}ppo2/
+# python clean_opti_params.py -f ${opti_dir}sac/
+# python clean_opti_params.py -f ${opti_dir}td3/
+# python clean_opti_params.py -f ${opti_dir}trpo/
+# python clean_opti_params.py -f ${opti_dir}her/
 
 
 # STEP 4: view trained agent

@@ -101,12 +101,28 @@ widowx_reacher-v2:
   memory_limit: 50000
 
 
+# widowx_reacher-v5:
+#   n_timesteps: !!float 2e5
+#   policy: 'MlpPolicy'
+#   noise_type: 'ornstein-uhlenbeck'
+#   noise_std: 0.1
+#   memory_limit: 50000
+
+# tuned
 widowx_reacher-v5:
-  n_timesteps: !!float 2e5
-  policy: 'MlpPolicy'
-  noise_type: 'ornstein-uhlenbeck'
-  noise_std: 0.1
-  memory_limit: 50000
+  actor_lr: 0.0010561308249352115
+  batch_size: 64
+  critic_lr: 0.0010561308249352115
+  gamma: 0.98
+  memory_limit: 100000
+  n_timesteps: 200000.0
+  noise_std: 0.6404031783349042
+  noise_type: normal
+  normalize_observations: true
+  normalize_returns: true
+  policy: MlpPolicy
+
+
 
 widowx_reacher-v7:
   n_timesteps: !!float 2e5

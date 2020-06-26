@@ -1,0 +1,8 @@
+batch_size: 64
+gamma: 0.98
+lr: 0.0010561308249352115
+memory_limit: 100000
+noise_std: 0.6404031783349042
+noise_type: normal
+normalize_observations: true
+normalize_returns: true

@@ -1,0 +1,10 @@
+batch_size: 128
+buffer_size: 1000000
+ent_coef: 0.5
+gamma: 0.98
+learning_starts: 0
+lr: 0.00015721498327357606
+n_sampled_goal: 2
+net_arch: medium
+random_exploration: 0.6415024561966096
+train_freq: 10

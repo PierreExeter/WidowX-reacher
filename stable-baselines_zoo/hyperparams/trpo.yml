@@ -201,17 +201,32 @@ widowx_reacher-v2:
   vf_stepsize: 0.00428
 
 
+# widowx_reacher-v5:
+#   n_timesteps: !!float 3e5
+#   policy: 'MlpPolicy'
+#   max_kl: 0.000193
+#   timesteps_per_batch: 1024
+#   gamma: 0.99
+#   lam: 0.9
+#   entcoeff: 0.01118
+#   cg_damping: 2.35e-05
+#   vf_iters: 10
+#   vf_stepsize: 0.00428
+
+# tuned
 widowx_reacher-v5:
-  n_timesteps: !!float 3e5
-  policy: 'MlpPolicy'
-  max_kl: 0.000193
-  timesteps_per_batch: 1024
-  gamma: 0.99
-  lam: 0.9
-  entcoeff: 0.01118
   cg_damping: 2.35e-05
-  vf_iters: 10
-  vf_stepsize: 0.00428
+  cg_iters: 15
+  entcoeff: 9.386438752202742e-07
+  gamma: 0.9
+  lam: 0.95
+  max_kl: 0.0017296927404930307
+  n_timesteps: 300000.0
+  policy: MlpPolicy
+  timesteps_per_batch: 256
+  vf_iters: 20
+  vf_stepsize: 0.003995018180464256
+
 
 widowx_reacher-v7:
   n_timesteps: !!float 3e5

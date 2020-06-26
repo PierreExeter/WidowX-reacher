@@ -1,0 +1,16 @@
+widowx_reacher-v6:
+  batch_size: 128
+  buffer_size: 1000000
+  ent_coef: 0.5
+  gamma: 0.98
+  goal_selection_strategy: future
+  learning_rate: 0.001
+  learning_starts: 0
+  lr: 0.00015721498327357606
+  model_class: sac
+  n_sampled_goal: 2
+  n_timesteps: 20000.0
+  net_arch: medium
+  policy: MlpPolicy
+  random_exploration: 0.6415024561966096
+  train_freq: 10
