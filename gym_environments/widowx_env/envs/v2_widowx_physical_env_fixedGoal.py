@@ -42,7 +42,8 @@ class WidowxEnv(gym.Env):
                                        high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 10, dtype=np.float32)
         self.current_pos = None
         #self.goal = np.array([-.14, -.13, 0.26])
-        self.set_goal(self.sample_goal_for_rollout())
+        self.goal = np.array([.14, .0, 0.26])  # added by Pierre
+        # self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
         self.start_rospy(goal_oriented=False)
