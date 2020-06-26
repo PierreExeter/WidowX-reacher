@@ -1,27 +1,28 @@
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+[sonicgpu1.compute:27587] pml_ucx.c:285  Error: UCP worker does not support MPI_THREAD_MULTIPLE
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
 
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
 
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
 
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/policies.py:116: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/common/policies.py:116: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
 
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
 
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/policies.py:561: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/common/policies.py:561: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use keras.layers.flatten instead.
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/a2c/a2c.py:160: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/a2c/a2c.py:160: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
 
-WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/clip_ops.py:286: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/people/paumjaud/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/clip_ops.py:286: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.where in 2.0, which has the same broadcast rule as np.where
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/a2c/a2c.py:184: The name tf.train.RMSPropOptimizer is deprecated. Please use tf.compat.v1.train.RMSPropOptimizer instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/a2c/a2c.py:184: The name tf.train.RMSPropOptimizer is deprecated. Please use tf.compat.v1.train.RMSPropOptimizer instead.
 
-WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/training/rmsprop.py:119: calling Ones.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/people/paumjaud/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/training/rmsprop.py:119: calling Ones.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
 Instructions for updating:
 Call initializer instance with the dtype argument instead of passing it to the constructor
-WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/a2c/a2c.py:196: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+WARNING:tensorflow:From /home/people/paumjaud/WidowX-reacher/stable-baselines/stable_baselines/a2c/a2c.py:196: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
 
 ========== widowx_reacher-v5 ==========
 Seed: 1
@@ -36,12 +37,74 @@ OrderedDict([('ent_coef', 2.8248618994244886e-08),
              ('policy', 'MlpPolicy'),
              ('vf_coef', 0.21903374671252315)])
 Using 8 environments
-Overwriting n_timesteps with n=10000
+Overwriting n_timesteps with n=200000
 Normalizing input and reward
 Creating test environment
-TRAINING ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f9b453cc0b8>
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7fd4a35b9b70>
 Normalization activated: {'norm_reward': False}
-EVAL ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f9b453d72b0>
-Log path: logs/train_0.01M_widowx_reacher-v5/a2c/widowx_reacher-v5_3
-Saving to logs/train_0.01M_widowx_reacher-v5/a2c/widowx_reacher-v5_3
+EVAL ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7fd4a355aef0>
+Log path: logs/train_0.2M_widowx_reacher-v5_SONIC/a2c/widowx_reacher-v5_2
+Eval num_timesteps=10000, episode_reward=-2.76 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+---------------------------------
+| ep_len_mean        | 100      |
+| ep_reward_mean     | -2.98    |
+| explained_variance | -0.0455  |
+| fps                | 3366     |
+| nupdates           | 1        |
+| policy_entropy     | 8.51     |
+| total_timesteps    | 16384    |
+| value_loss         | 4.18     |
+---------------------------------
+Eval num_timesteps=20000, episode_reward=-2.62 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=30000, episode_reward=-2.61 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=40000, episode_reward=-2.45 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=50000, episode_reward=-2.38 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=60000, episode_reward=-2.42 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=70000, episode_reward=-2.38 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=80000, episode_reward=-2.38 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=90000, episode_reward=-2.35 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=100000, episode_reward=-2.29 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=110000, episode_reward=-2.29 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=120000, episode_reward=-2.29 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=130000, episode_reward=-2.29 +/- 0.00
+Episode length: 100.00 +/- 0.00
+Eval num_timesteps=140000, episode_reward=-2.23 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=150000, episode_reward=-2.20 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=160000, episode_reward=-2.20 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=170000, episode_reward=-2.18 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=180000, episode_reward=-2.18 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Eval num_timesteps=190000, episode_reward=-2.15 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Saving to logs/train_0.2M_widowx_reacher-v5_SONIC/a2c/widowx_reacher-v5_2
 pybullet build time: May 18 2020 02:46:26

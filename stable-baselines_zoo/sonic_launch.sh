@@ -7,7 +7,7 @@
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:2
 #SBATCH --ntasks-per-node=32
-#SBATCH -t 20:00:00
+#SBATCH -t 72:00:00
 #SBATCH -o submission_log/output.txt
 #SBATCH --mail-user=pierre.aumjaud@ucd.ie
 #SBATCH --mail-type=ALL

@@ -1,0 +1,23 @@
+!!python/object/apply:collections.OrderedDict
+- - - actor_lr
+    - 0.0010561308249352115
+  - - batch_size
+    - 64
+  - - critic_lr
+    - 0.0010561308249352115
+  - - gamma
+    - 0.98
+  - - memory_limit
+    - 100000
+  - - n_timesteps
+    - 200000.0
+  - - noise_std
+    - 0.6404031783349042
+  - - noise_type
+    - normal
+  - - normalize_observations
+    - true
+  - - normalize_returns
+    - true
+  - - policy
+    - MlpPolicy
