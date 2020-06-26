@@ -1,355 +1,47 @@
---------------------------------------------------------------------------
-WARNING: There was an error initializing an OpenFabrics device.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
 
-  Local host:   n295
-  Local device: hfi1_0
---------------------------------------------------------------------------
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
 
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
 
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/policies.py:116: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
 
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/policies.py:116: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
 
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
-
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/common/policies.py:561: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/policies.py:561: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use keras.layers.flatten instead.
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/a2c/a2c.py:160: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/a2c/a2c.py:160: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
 
-WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/clip_ops.py:286: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/clip_ops.py:286: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 Use tf.where in 2.0, which has the same broadcast rule as np.where
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/a2c/a2c.py:184: The name tf.train.RMSPropOptimizer is deprecated. Please use tf.compat.v1.train.RMSPropOptimizer instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/a2c/a2c.py:184: The name tf.train.RMSPropOptimizer is deprecated. Please use tf.compat.v1.train.RMSPropOptimizer instead.
 
-WARNING:tensorflow:From /ichec/home/users/pierre/.conda/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/training/rmsprop.py:119: calling Ones.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/training/rmsprop.py:119: calling Ones.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
 Instructions for updating:
 Call initializer instance with the dtype argument instead of passing it to the constructor
-WARNING:tensorflow:From /ichec/home/users/pierre/WidowX-reacher/stable-baselines/stable_baselines/a2c/a2c.py:196: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/a2c/a2c.py:196: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
 
-========== widowx_reacher-v7 ==========
+========== widowx_reacher-v5 ==========
 Seed: 0
-OrderedDict([('ent_coef', 0.001),
+OrderedDict([('ent_coef', 2.8248618994244886e-08),
              ('gamma', 0.99),
-             ('learning_rate', 0.002),
+             ('learning_rate', 0.05253399083367626),
              ('lr_schedule', 'linear'),
              ('n_envs', 8),
-             ('n_steps', 32),
+             ('n_steps', 2048),
              ('n_timesteps', 1000000.0),
              ('normalize', True),
              ('policy', 'MlpPolicy'),
-             ('vf_coef', 0.5)])
+             ('vf_coef', 0.21903374671252315)])
 Using 8 environments
-Overwriting n_timesteps with n=500000
+Overwriting n_timesteps with n=10000
 Normalizing input and reward
 Creating test environment
-TRAINING ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f630cd944e0>
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f52f515b0b8>
 Normalization activated: {'norm_reward': False}
-EVAL ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f630a707668>
-Log path: logs/train_0.5M_widowx_reacher-v7_KAY/a2c/widowx_reacher-v7_1
----------------------------------
-| explained_variance | 0.0397   |
-| fps                | 660      |
-| nupdates           | 1        |
-| policy_entropy     | 8.51     |
-| total_timesteps    | 256      |
-| value_loss         | 12.8     |
----------------------------------
-Eval num_timesteps=10000, episode_reward=-1.96 +/- 0.79
-Episode length: 100.00 +/- 0.00
-New best mean reward!
-Eval num_timesteps=20000, episode_reward=-1.94 +/- 1.55
-Episode length: 100.00 +/- 0.00
-New best mean reward!
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.85    |
-| explained_variance | -1.09    |
-| fps                | 3422     |
-| nupdates           | 100      |
-| policy_entropy     | 8.51     |
-| total_timesteps    | 25600    |
-| value_loss         | 0.89     |
----------------------------------
-Eval num_timesteps=30000, episode_reward=-3.56 +/- 1.94
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=40000, episode_reward=-2.16 +/- 0.97
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=50000, episode_reward=-2.38 +/- 1.20
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.93    |
-| explained_variance | -1.06    |
-| fps                | 3407     |
-| nupdates           | 200      |
-| policy_entropy     | 8.51     |
-| total_timesteps    | 51200    |
-| value_loss         | 0.282    |
----------------------------------
-Eval num_timesteps=60000, episode_reward=-1.25 +/- 0.59
-Episode length: 100.00 +/- 0.00
-New best mean reward!
-Eval num_timesteps=70000, episode_reward=-1.37 +/- 0.67
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.8     |
-| explained_variance | -0.0117  |
-| fps                | 3478     |
-| nupdates           | 300      |
-| policy_entropy     | 8.51     |
-| total_timesteps    | 76800    |
-| value_loss         | 0.158    |
----------------------------------
-Eval num_timesteps=80000, episode_reward=-2.35 +/- 0.92
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=90000, episode_reward=-2.21 +/- 0.73
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=100000, episode_reward=-2.51 +/- 1.45
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.75    |
-| explained_variance | -0.0204  |
-| fps                | 3471     |
-| nupdates           | 400      |
-| policy_entropy     | 8.51     |
-| total_timesteps    | 102400   |
-| value_loss         | 0.31     |
----------------------------------
-Eval num_timesteps=110000, episode_reward=-2.45 +/- 0.95
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=120000, episode_reward=-3.64 +/- 1.70
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.76    |
-| explained_variance | 0.0542   |
-| fps                | 3507     |
-| nupdates           | 500      |
-| policy_entropy     | 8.54     |
-| total_timesteps    | 128000   |
-| value_loss         | 0.657    |
----------------------------------
-Eval num_timesteps=130000, episode_reward=-3.24 +/- 1.94
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=140000, episode_reward=-3.07 +/- 1.58
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=150000, episode_reward=-1.45 +/- 0.93
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.72    |
-| explained_variance | -0.12    |
-| fps                | 3505     |
-| nupdates           | 600      |
-| policy_entropy     | 8.53     |
-| total_timesteps    | 153600   |
-| value_loss         | 0.884    |
----------------------------------
-Eval num_timesteps=160000, episode_reward=-2.10 +/- 1.00
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=170000, episode_reward=-2.38 +/- 0.57
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -2.07    |
-| explained_variance | -0.101   |
-| fps                | 3531     |
-| nupdates           | 700      |
-| policy_entropy     | 8.57     |
-| total_timesteps    | 179200   |
-| value_loss         | 0.648    |
----------------------------------
-Eval num_timesteps=180000, episode_reward=-1.25 +/- 0.93
-Episode length: 100.00 +/- 0.00
-New best mean reward!
-Eval num_timesteps=190000, episode_reward=-2.39 +/- 0.96
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=200000, episode_reward=-1.35 +/- 0.59
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.92    |
-| explained_variance | 0.124    |
-| fps                | 3523     |
-| nupdates           | 800      |
-| policy_entropy     | 8.61     |
-| total_timesteps    | 204800   |
-| value_loss         | 0.624    |
----------------------------------
-Eval num_timesteps=210000, episode_reward=-1.83 +/- 0.94
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=220000, episode_reward=-1.55 +/- 0.73
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=230000, episode_reward=-1.91 +/- 0.33
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.85    |
-| explained_variance | 0.162    |
-| fps                | 3518     |
-| nupdates           | 900      |
-| policy_entropy     | 8.61     |
-| total_timesteps    | 230400   |
-| value_loss         | 0.507    |
----------------------------------
-Eval num_timesteps=240000, episode_reward=-1.70 +/- 0.66
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=250000, episode_reward=-1.40 +/- 0.78
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.77    |
-| explained_variance | 0.181    |
-| fps                | 3535     |
-| nupdates           | 1000     |
-| policy_entropy     | 8.61     |
-| total_timesteps    | 256000   |
-| value_loss         | 0.306    |
----------------------------------
-Eval num_timesteps=260000, episode_reward=-2.06 +/- 0.74
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=270000, episode_reward=-1.76 +/- 0.74
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=280000, episode_reward=-1.12 +/- 0.39
-Episode length: 100.00 +/- 0.00
-New best mean reward!
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.55    |
-| explained_variance | 0.417    |
-| fps                | 3532     |
-| nupdates           | 1100     |
-| policy_entropy     | 8.59     |
-| total_timesteps    | 281600   |
-| value_loss         | 0.597    |
----------------------------------
-Eval num_timesteps=290000, episode_reward=-1.22 +/- 0.72
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=300000, episode_reward=-2.10 +/- 0.73
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.6     |
-| explained_variance | 0.375    |
-| fps                | 3543     |
-| nupdates           | 1200     |
-| policy_entropy     | 8.61     |
-| total_timesteps    | 307200   |
-| value_loss         | 0.447    |
----------------------------------
-Eval num_timesteps=310000, episode_reward=-1.01 +/- 0.41
-Episode length: 100.00 +/- 0.00
-New best mean reward!
-Eval num_timesteps=320000, episode_reward=-1.70 +/- 0.61
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=330000, episode_reward=-1.48 +/- 0.77
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.74    |
-| explained_variance | -0.11    |
-| fps                | 3535     |
-| nupdates           | 1300     |
-| policy_entropy     | 8.6      |
-| total_timesteps    | 332800   |
-| value_loss         | 0.326    |
----------------------------------
-Eval num_timesteps=340000, episode_reward=-2.08 +/- 1.12
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=350000, episode_reward=-1.40 +/- 0.35
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.77    |
-| explained_variance | 0.171    |
-| fps                | 3542     |
-| nupdates           | 1400     |
-| policy_entropy     | 8.59     |
-| total_timesteps    | 358400   |
-| value_loss         | 0.154    |
----------------------------------
-Eval num_timesteps=360000, episode_reward=-1.42 +/- 0.74
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=370000, episode_reward=-1.80 +/- 0.62
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=380000, episode_reward=-1.45 +/- 0.57
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.52    |
-| explained_variance | 0.218    |
-| fps                | 3538     |
-| nupdates           | 1500     |
-| policy_entropy     | 8.6      |
-| total_timesteps    | 384000   |
-| value_loss         | 0.146    |
----------------------------------
-Eval num_timesteps=390000, episode_reward=-1.51 +/- 0.83
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=400000, episode_reward=-1.73 +/- 0.95
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.49    |
-| explained_variance | 0.309    |
-| fps                | 3547     |
-| nupdates           | 1600     |
-| policy_entropy     | 8.58     |
-| total_timesteps    | 409600   |
-| value_loss         | 0.212    |
----------------------------------
-Eval num_timesteps=410000, episode_reward=-1.69 +/- 1.06
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=420000, episode_reward=-1.15 +/- 0.82
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=430000, episode_reward=-1.38 +/- 0.38
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.46    |
-| explained_variance | 0.0824   |
-| fps                | 3542     |
-| nupdates           | 1700     |
-| policy_entropy     | 8.59     |
-| total_timesteps    | 435200   |
-| value_loss         | 0.131    |
----------------------------------
-Eval num_timesteps=440000, episode_reward=-1.58 +/- 0.67
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=450000, episode_reward=-1.48 +/- 0.57
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=460000, episode_reward=-1.89 +/- 0.97
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.61    |
-| explained_variance | -0.109   |
-| fps                | 3534     |
-| nupdates           | 1800     |
-| policy_entropy     | 8.59     |
-| total_timesteps    | 460800   |
-| value_loss         | 0.186    |
----------------------------------
-Eval num_timesteps=470000, episode_reward=-1.03 +/- 0.59
-Episode length: 100.00 +/- 0.00
-Eval num_timesteps=480000, episode_reward=-1.21 +/- 0.45
-Episode length: 100.00 +/- 0.00
----------------------------------
-| ep_len_mean        | 100      |
-| ep_reward_mean     | -1.5     |
-| explained_variance | 0.64     |
-| fps                | 3541     |
-| nupdates           | 1900     |
-| policy_entropy     | 8.6      |
-| total_timesteps    | 486400   |
-| value_loss         | 0.107    |
----------------------------------
-Eval num_timesteps=490000, episode_reward=-1.48 +/- 0.97
-Episode length: 100.00 +/- 0.00
-Saving to logs/train_0.5M_widowx_reacher-v7_KAY/a2c/widowx_reacher-v7_1
+EVAL ENV TYPE :  <stable_baselines.common.vec_env.vec_normalize.VecNormalize object at 0x7f52f5167278>
+Log path: logs/train_0.01M_widowx_reacher-v5/a2c/widowx_reacher-v5_2
+Saving to logs/train_0.01M_widowx_reacher-v5/a2c/widowx_reacher-v5_2
 pybullet build time: May 18 2020 02:46:26

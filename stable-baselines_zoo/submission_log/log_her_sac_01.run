@@ -1,0 +1,73 @@
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/misc_util.py:26: The name tf.set_random_seed is deprecated. Please use tf.compat.v1.set_random_seed instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:191: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_util.py:200: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/sac/sac.py:141: The name tf.variable_scope is deprecated. Please use tf.compat.v1.variable_scope instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/input.py:25: The name tf.placeholder is deprecated. Please use tf.compat.v1.placeholder instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/sac/policies.py:194: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/common/tf_layers.py:57: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/init_ops.py:1251: calling VarianceScaling.__init__ (from tensorflow.python.ops.init_ops) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Call initializer instance with the dtype argument instead of passing it to the constructor
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/sac/sac.py:254: The name tf.train.AdamOptimizer is deprecated. Please use tf.compat.v1.train.AdamOptimizer instead.
+
+WARNING:tensorflow:From /home/pierre/bin/anaconda3/envs/SB_widowx/lib/python3.6/site-packages/tensorflow/python/ops/math_grad.py:1205: add_dispatch_support.<locals>.wrapper (from tensorflow.python.ops.array_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.where in 2.0, which has the same broadcast rule as np.where
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/sac/sac.py:294: The name tf.summary.scalar is deprecated. Please use tf.compat.v1.summary.scalar instead.
+
+WARNING:tensorflow:From /home/pierre/HDD/0_Complearn/1_learning/0_Reinforcement_learning/18_replab/pierreExeter_github/stable-baselines/stable_baselines/sac/sac.py:314: The name tf.summary.merge_all is deprecated. Please use tf.compat.v1.summary.merge_all instead.
+
+========== widowx_reacher-v6 ==========
+Seed: 1
+OrderedDict([('batch_size', 128),
+             ('buffer_size', 1000000),
+             ('ent_coef', 0.5),
+             ('gamma', 0.98),
+             ('goal_selection_strategy', 'future'),
+             ('gradient_steps', 10),
+             ('learning_rate', 0.00015721498327357606),
+             ('learning_starts', 0),
+             ('model_class', 'sac'),
+             ('n_sampled_goal', 2),
+             ('n_timesteps', 20000.0),
+             ('policy', 'MlpPolicy'),
+             ('policy_kwargs', 'dict(layers=[256, 256])'),
+             ('random_exploration', 0.6415024561966096),
+             ('train_freq', 10)])
+Using 1 environments
+Overwriting n_timesteps with n=10000
+Creating test environment
+TRAINING ENV TYPE :  <stable_baselines.common.vec_env.dummy_vec_env.DummyVecEnv object at 0x7fafc79c3208>
+Not replacing HERGoalEnvWrapper env by a DummyVecEnv
+EVAL ENV TYPE :  <stable_baselines.her.utils.HERGoalEnvWrapper object at 0x7fafc79c7eb8>
+Log path: logs/train_0.01M_widowx_reacher-v5/her/widowx_reacher-v6_2
+----------------------------------------
+| current_lr              | 0.000157   |
+| entropy                 | 7.4048777  |
+| ep_rewmean              | -2.99      |
+| episodes                | 100        |
+| eplenmean               | 100        |
+| fps                     | 254        |
+| mean 100 episode reward | -3         |
+| n_updates               | 9810       |
+| policy_loss             | -57.858715 |
+| qf1_loss                | 6.309976   |
+| qf2_loss                | 6.2731085  |
+| time_elapsed            | 38         |
+| total timesteps         | 9900       |
+| value_loss              | 0.2199337  |
+----------------------------------------
+Eval num_timesteps=10000, episode_reward=-1.07 +/- 0.00
+Episode length: 100.00 +/- 0.00
+New best mean reward!
+Saving to logs/train_0.01M_widowx_reacher-v5/her/widowx_reacher-v6_2
+pybullet build time: May 18 2020 02:46:26
