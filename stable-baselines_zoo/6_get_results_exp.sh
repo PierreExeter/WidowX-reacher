@@ -62,37 +62,30 @@ echo "ENV: ${env}"
 
 # STEP1 BIS: EVALUATE ON PHYSICAL ROBOT
 
-echo "A2C $i"
-python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}a2c/${env}_$i/
+echo "A2C PHYSICAL"
+python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "ACKTR $i"
-python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}acktr/${env}_$i/
+echo "ACKTR PHYSICAL"
+python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "DDPG $i"
-python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}ddpg/${env}_$i/
+echo "DDPG PHYSICAL"
+python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "PPO2 $i"
-python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}ppo2/${env}_$i/
+echo "PPO2 PHYSICAL"
+python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "SAC $i"
-python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}sac/${env}_$i/
+echo "SAC PHYSICAL"
+python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "TD3 $i"
-python3 3_enjoy.py --algo td3 --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}/td3/${env}_$i/
+echo "TD3 PHYSICAL"
+python3 3_enjoy.py --algo td3 --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "TRPO $i"
-python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}trpo/${env}_$i/
+echo "TRPO PHYSICAL"
+python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "HER $i"
-python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir_real} --exp-id 0 --no-render -n ${nsteps}
-python3 plot_1seed.py -f ${log_dir_real}her/${env_her}_$i/
+echo "HER PHYSICAL"
+python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+
 
 
 
