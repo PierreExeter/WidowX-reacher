@@ -143,6 +143,10 @@ FetchReachDense-v1:
   batch_size: 256
 
 
+##########################
+# ENV4
+##########################
+
 
 
 # # SAC hyperparams
@@ -192,6 +196,134 @@ widowx_reacher-v4:
 #   policy_kwargs: "dict(layers=[256, 256, 256])"
 
 
+
+
+##########################
+# ENV3
+##########################
+
+
+# # # SAC hyperparams
+# widowx_reacher-v3:
+#   n_timesteps: !!float 20000
+#   policy: 'MlpPolicy'
+#   model_class: 'sac'
+#   n_sampled_goal: 4
+#   goal_selection_strategy: 'future'
+#   buffer_size: 1000000
+#   ent_coef: 'auto'
+#   batch_size: 256
+#   gamma: 0.95
+#   learning_rate: 0.001
+#   learning_starts: 1000
+
+# tuned
+# widowx_reacher-v3:
+#   batch_size: 128
+#   buffer_size: 1000000
+#   ent_coef: 0.5
+#   gamma: 0.98
+#   goal_selection_strategy: future
+#   gradient_steps: 10
+#   learning_rate: 0.00015721498327357606
+#   learning_starts: 0
+#   model_class: sac
+#   n_sampled_goal: 2
+#   n_timesteps: 20000.0
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[256, 256])
+#   random_exploration: 0.6415024561966096
+#   train_freq: 10
+
+
+
+# TD3 hyperparams
+# widowx_reacher-v3:
+#   n_timesteps: !!float 25000
+#   policy: 'MlpPolicy'
+#   model_class: 'td3'
+#   n_sampled_goal: 4
+#   goal_selection_strategy: 'future'
+#   buffer_size: 1000000
+#   batch_size: 256
+#   gamma: 0.95
+#   learning_rate: 0.001
+#   learning_starts: 1000
+
+# tuned
+widowx_reacher-v3:
+  batch_size: 128
+  buffer_size: 10000
+  gamma: 0.9999
+  goal_selection_strategy: future
+  gradient_steps: 1
+  learning_rate: 2.465617656214891e-05
+  learning_starts: 1000
+  model_class: td3
+  n_sampled_goal: 4
+  n_timesteps: 25000.0
+  noise_std: 0.9088912514650789
+  noise_type: normal
+  policy: MlpPolicy
+  random_exploration: 0.5533817222350345
+  train_freq: 1
+
+
+##########################
+# ENV13
+##########################
+
+
+# # # SAC hyperparams
+# widowx_reacher-v13:
+#   n_timesteps: !!float 20000
+#   policy: 'MlpPolicy'
+#   model_class: 'sac'
+#   n_sampled_goal: 4
+#   goal_selection_strategy: 'future'
+#   buffer_size: 1000000
+#   ent_coef: 'auto'
+#   batch_size: 256
+#   gamma: 0.95
+#   learning_rate: 0.001
+#   learning_starts: 1000
+
+# TD3 hyperparams
+# widowx_reacher-v13:
+#   n_timesteps: !!float 25000
+#   policy: 'MlpPolicy'
+#   model_class: 'td3'
+#   n_sampled_goal: 4
+#   goal_selection_strategy: 'future'
+#   buffer_size: 1000000
+#   batch_size: 256
+#   gamma: 0.95
+#   learning_rate: 0.001
+#   learning_starts: 1000
+
+# tuned
+widowx_reacher-v13:
+  batch_size: 100
+  buffer_size: 100000
+  gamma: 0.98
+  goal_selection_strategy: future
+  gradient_steps: 1000
+  learning_rate: 1.3615831358185135e-05
+  learning_starts: 1000
+  model_class: td3
+  n_sampled_goal: 6
+  n_timesteps: 25000.0
+  noise_std: 0.9338888533356444
+  noise_type: ornstein-uhlenbeck
+  policy: MlpPolicy
+  random_exploration: 0.05613045539938587
+  train_freq: 1000
+
+
+
+##########################
+# ENV6
+##########################
 
 # # # SAC hyperparams
 # widowx_reacher-v6:
@@ -280,6 +412,10 @@ widowx_reacher-v6:
 #   normalize_returns: false
 #   policy_kwargs: "dict(layers=[256, 256, 256])"
 
+
+##########################
+# ENV8
+##########################
 
 
 # # # SAC hyperparams
