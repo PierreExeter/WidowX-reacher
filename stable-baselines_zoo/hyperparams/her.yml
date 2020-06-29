@@ -208,22 +208,22 @@ widowx_reacher-v4:
 #   learning_starts: 1000
 
 # tuned
-widowx_reacher-v6:
-  batch_size: 128
-  buffer_size: 1000000
-  ent_coef: 0.5
-  gamma: 0.98
-  goal_selection_strategy: future
-  gradient_steps: 10
-  learning_rate: 0.00015721498327357606
-  learning_starts: 0
-  model_class: sac
-  n_sampled_goal: 2
-  n_timesteps: 20000.0
-  policy: MlpPolicy
-  policy_kwargs: dict(layers=[256, 256])
-  random_exploration: 0.6415024561966096
-  train_freq: 10
+# widowx_reacher-v6:
+#   batch_size: 128
+#   buffer_size: 1000000
+#   ent_coef: 0.5
+#   gamma: 0.98
+#   goal_selection_strategy: future
+#   gradient_steps: 10
+#   learning_rate: 0.00015721498327357606
+#   learning_starts: 0
+#   model_class: sac
+#   n_sampled_goal: 2
+#   n_timesteps: 20000.0
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[256, 256])
+#   random_exploration: 0.6415024561966096
+#   train_freq: 10
 
 
 
@@ -239,6 +239,27 @@ widowx_reacher-v6:
 #   gamma: 0.95
 #   learning_rate: 0.001
 #   learning_starts: 1000
+
+# tuned
+widowx_reacher-v6:
+  batch_size: 128
+  buffer_size: 10000
+  gamma: 0.9999
+  goal_selection_strategy: future
+  gradient_steps: 1
+  learning_rate: 2.465617656214891e-05
+  learning_starts: 1000
+  model_class: td3
+  n_sampled_goal: 4
+  n_timesteps: 25000.0
+  noise_std: 0.9088912514650789
+  noise_type: normal
+  policy: MlpPolicy
+  random_exploration: 0.5533817222350345
+  train_freq: 1
+
+
+
 
 # DDPG hyperparams
 # widowx_reacher-v6:

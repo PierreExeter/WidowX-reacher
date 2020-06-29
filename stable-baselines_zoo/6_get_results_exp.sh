@@ -6,7 +6,7 @@
 
 nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=10
-opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_SONIC/"
+opti_dir="logs/opti100t_0.1M_widowx_reacher-v5_SONIC_HER_TD3/"
 log_dir="logs/train_0.2M_widowx_reacher-v5_SONIC/"
 # log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
@@ -88,13 +88,13 @@ echo "ENV: ${env}"
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py
 # python3 plot_opti_best.py
-python clean_opti_params.py -f ${opti_dir}a2c/
-python clean_opti_params.py -f ${opti_dir}acktr/
-python clean_opti_params.py -f ${opti_dir}ddpg/
-python clean_opti_params.py -f ${opti_dir}ppo2/
-python clean_opti_params.py -f ${opti_dir}sac/
-python clean_opti_params.py -f ${opti_dir}td3/
-python clean_opti_params.py -f ${opti_dir}trpo/
+# python clean_opti_params.py -f ${opti_dir}a2c/
+# python clean_opti_params.py -f ${opti_dir}acktr/
+# python clean_opti_params.py -f ${opti_dir}ddpg/
+# python clean_opti_params.py -f ${opti_dir}ppo2/
+# python clean_opti_params.py -f ${opti_dir}sac/
+# python clean_opti_params.py -f ${opti_dir}td3/
+# python clean_opti_params.py -f ${opti_dir}trpo/
 python clean_opti_params.py -f ${opti_dir}her/
 
 

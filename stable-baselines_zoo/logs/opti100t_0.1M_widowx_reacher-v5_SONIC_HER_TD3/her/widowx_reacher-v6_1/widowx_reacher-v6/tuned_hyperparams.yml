@@ -1,0 +1,9 @@
+batch_size: 128
+buffer_size: 10000
+gamma: 0.9999
+lr: 2.465617656214891e-05
+n_sampled_goal: 4
+noise_std: 0.9088912514650789
+noise_type: normal
+random_exploration: 0.5533817222350345
+train_freq: 1
