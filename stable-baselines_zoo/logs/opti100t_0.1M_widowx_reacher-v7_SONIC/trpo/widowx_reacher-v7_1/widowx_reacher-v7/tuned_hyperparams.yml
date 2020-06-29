@@ -1,0 +1,8 @@
+cg_iters: 10
+ent_coef: 1.6261792880977647e-08
+gamma: 0.9999
+lamdba: 0.99
+max_kl: 1.3228450829057356e-06
+timesteps_per_batch: 2048
+vf_iters: 10
+vf_stepsize: 0.03755429324149827

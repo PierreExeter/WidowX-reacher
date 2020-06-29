@@ -283,17 +283,33 @@ widowx_reacher-v5:
 
 
 
+# widowx_reacher-v7:
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+#   n_timesteps: !!float 1e6
+#   policy: 'MlpPolicy'
+#   gamma: 0.99
+#   buffer_size: 1000000
+#   noise_type: 'normal'
+#   noise_std: 0.1
+#   learning_starts: 10000
+#   batch_size: 100
+#   learning_rate: !!float 1e-3
+#   train_freq: 1000
+#   gradient_steps: 1000
+#   policy_kwargs: "dict(layers=[400, 300])"
+
+# tuned
 widowx_reacher-v7:
-  env_wrapper: utils.wrappers.TimeFeatureWrapper
-  n_timesteps: !!float 1e6
-  policy: 'MlpPolicy'
-  gamma: 0.99
+  batch_size: 32
   buffer_size: 1000000
-  noise_type: 'normal'
-  noise_std: 0.1
+  env_wrapper: utils.wrappers.TimeFeatureWrapper
+  gamma: 0.999
+  gradient_steps: 100
+  learning_rate: 0.0011249286976613144
   learning_starts: 10000
-  batch_size: 100
-  learning_rate: !!float 1e-3
-  train_freq: 1000
-  gradient_steps: 1000
-  policy_kwargs: "dict(layers=[400, 300])"
+  n_timesteps: 1000000.0
+  noise_std: 0.8326412050184251
+  noise_type: normal
+  policy: MlpPolicy
+  policy_kwargs: dict(layers=[400, 300])
+  train_freq: 100

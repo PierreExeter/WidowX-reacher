@@ -1,0 +1,12 @@
+widowx_reacher-v7:
+  batch_size: 256
+  buffer_size: 1000000
+  ent_coef: 0.05
+  gamma: 0.999
+  learning_starts: 0
+  lr: 0.020074770889398366
+  n_timesteps: 60000.0
+  net_arch: small
+  policy: MlpPolicy
+  policy_kwargs: dict(layers=[256, 256])
+  train_freq: 10

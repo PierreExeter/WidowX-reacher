@@ -11,13 +11,13 @@ import time
 env_id = "widowx_reacher-v7"
 env = gym.make(env_id)
 
-log_path = "logs/random_policy/"+env_id
+log_path = "logs/random_policy_0.2M/"+env_id
 os.makedirs(log_path, exist_ok=True)
 
 
 ## LEARNING CURVE
          
-nb_timesteps = 500000
+nb_timesteps = 200000
 nb_seeds = 10
 walltime_seed = []
 all_rewards = []

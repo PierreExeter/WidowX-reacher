@@ -5,16 +5,16 @@
 
 
 nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
-nb_seeds=2
-opti_dir="logs/opti100t_0.1M_widowx_reacher-v5_SONIC/"
-log_dir="logs/train_0.5M_widowx_reacher-v5_KAY/"
-log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
-save_dir="experiment_reports/train_0.5M_widowx_reacher-v5_KAY/"
-save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
-env="widowx_reacher-v12"
+nb_seeds=10
+opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_SONIC/"
+log_dir="logs/train_0.2M_widowx_reacher-v5_SONIC/"
+# log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
+save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
+# save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
+env="widowx_reacher-v5"
 env_her="widowx_reacher-v6"
 appendix="_env1"
-random_log_folder="logs/random_policy/widowx_reacher-v12/"
+random_log_folder="logs/random_policy_0.2M/widowx_reacher-v5/"
 echo "ENV: ${env}"
 
 # STEP 1
@@ -59,8 +59,8 @@ echo "ENV: ${env}"
 # done
 
 # evaluate random policy
-# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}
-# python clean_random_training.py
+# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}  # if random-pol = True, it doesn't matter to specify -f ${log_dir}
+# python clean_random_training.py -f ${random_log_folder}
 
 # record video
 # python3 -m utils.record_video --algo td3 --env ${env} -n 400 -f ${log_dir}td3/${env}_1/
@@ -88,16 +88,16 @@ echo "ENV: ${env}"
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py
 # python3 plot_opti_best.py
-# python clean_opti_params.py -f ${opti_dir}a2c/
-# python clean_opti_params.py -f ${opti_dir}acktr/
-# python clean_opti_params.py -f ${opti_dir}ddpg/
-# python clean_opti_params.py -f ${opti_dir}ppo2/
-# python clean_opti_params.py -f ${opti_dir}sac/
-# python clean_opti_params.py -f ${opti_dir}td3/
-# python clean_opti_params.py -f ${opti_dir}trpo/
-# python clean_opti_params.py -f ${opti_dir}her/
+python clean_opti_params.py -f ${opti_dir}a2c/
+python clean_opti_params.py -f ${opti_dir}acktr/
+python clean_opti_params.py -f ${opti_dir}ddpg/
+python clean_opti_params.py -f ${opti_dir}ppo2/
+python clean_opti_params.py -f ${opti_dir}sac/
+python clean_opti_params.py -f ${opti_dir}td3/
+python clean_opti_params.py -f ${opti_dir}trpo/
+python clean_opti_params.py -f ${opti_dir}her/
 
 
 # STEP 4: view trained agent
-# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True

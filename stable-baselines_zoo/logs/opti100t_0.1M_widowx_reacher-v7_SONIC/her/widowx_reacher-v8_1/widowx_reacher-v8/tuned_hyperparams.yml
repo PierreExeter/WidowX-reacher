@@ -1,0 +1,9 @@
+batch_size: 100
+buffer_size: 100000
+gamma: 0.98
+lr: 1.3615831358185135e-05
+n_sampled_goal: 6
+noise_std: 0.9338888533356444
+noise_type: ornstein-uhlenbeck
+random_exploration: 0.05613045539938587
+train_freq: 1000

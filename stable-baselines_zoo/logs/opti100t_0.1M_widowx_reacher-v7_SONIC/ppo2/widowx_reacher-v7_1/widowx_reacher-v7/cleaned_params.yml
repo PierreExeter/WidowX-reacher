@@ -1,0 +1,13 @@
+widowx_reacher-v7:
+  cliprange: 0.3
+  ent_coef: 9.960211103753452e-06
+  gamma: 0.95
+  lam: 0.98
+  learning_rate: 0.01200853885461077
+  n_envs: 8
+  n_steps: 64
+  n_timesteps: 1000000.0
+  nminibatches: 1
+  noptepochs: 20
+  normalize: true
+  policy: MlpPolicy

@@ -124,9 +124,24 @@ widowx_reacher-v5:
 
 
 
+# widowx_reacher-v7:
+#   n_timesteps: !!float 2e5
+#   policy: 'MlpPolicy'
+#   noise_type: 'ornstein-uhlenbeck'
+#   noise_std: 0.1
+#   memory_limit: 50000
+
+# tuned
 widowx_reacher-v7:
-  n_timesteps: !!float 2e5
-  policy: 'MlpPolicy'
-  noise_type: 'ornstein-uhlenbeck'
-  noise_std: 0.1
-  memory_limit: 50000
+  actor_lr: 1.0066416439777964e-05
+  batch_size: 256
+  critic_lr: 1.0066416439777964e-05
+  gamma: 0.999
+  memory_limit: 100000
+  n_timesteps: 200000.0
+  noise_std: 0.4711262569121476
+  noise_type: adaptive-param
+  normalize_observations: true
+  normalize_returns: true
+  policy: MlpPolicy
+  policy_kwargs: dict(layer_norm=True)

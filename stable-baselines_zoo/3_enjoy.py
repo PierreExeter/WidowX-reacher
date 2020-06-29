@@ -350,7 +350,7 @@ def main():
         df = pd.DataFrame(d, index=[0])
 
         if args.random_pol:
-            df.to_csv("logs/random_policy/"+env_id+"/stats.csv", index=False)
+            df.to_csv("logs/random_policy_0.2M/"+env_id+"/stats.csv", index=False)  # make path naming more robust
         else:
             df.to_csv(log_path+"/stats.csv", index=False)
 

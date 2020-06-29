@@ -1,0 +1,8 @@
+batch_size: 256
+cliprange: 0.3
+ent_coef: 9.960211103753452e-06
+gamma: 0.95
+lamdba: 0.98
+lr: 0.01200853885461077
+n_steps: 64
+noptepochs: 20

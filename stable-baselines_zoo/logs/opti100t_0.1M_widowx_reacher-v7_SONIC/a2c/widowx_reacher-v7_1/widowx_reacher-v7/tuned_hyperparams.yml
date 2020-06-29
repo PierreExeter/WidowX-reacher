@@ -1,0 +1,6 @@
+ent_coef: 5.767989936188226e-06
+gamma: 0.95
+lr: 0.6361100701718335
+lr_schedule: constant
+n_steps: 32
+vf_coef: 0.21992631903626592
