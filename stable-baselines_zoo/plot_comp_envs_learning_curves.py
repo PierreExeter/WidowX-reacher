@@ -152,7 +152,7 @@ if __name__ == '__main__':
         plot_shaded(df2, ax, "Env2")
 
         plt.legend(loc="lower right", fontsize=15)
-        plt.ylabel(r'Mean return $R_t$', fontsize=15)
+        plt.ylabel(r'Average return $R_t$', fontsize=15)
         plt.xlabel(r'Timesteps $t$', fontsize=15)
         plt.savefig(save_dir+lab+".pdf", dpi=500)
 

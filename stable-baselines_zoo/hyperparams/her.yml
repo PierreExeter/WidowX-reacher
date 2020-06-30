@@ -202,22 +202,21 @@ widowx_reacher-v4:
 # ENV3
 ##########################
 
-
 # # # SAC hyperparams
-# widowx_reacher-v3:
-#   n_timesteps: !!float 20000
-#   policy: 'MlpPolicy'
-#   model_class: 'sac'
-#   n_sampled_goal: 4
-#   goal_selection_strategy: 'future'
-#   buffer_size: 1000000
-#   ent_coef: 'auto'
-#   batch_size: 256
-#   gamma: 0.95
-#   learning_rate: 0.001
-#   learning_starts: 1000
+widowx_reacher-v3:
+  n_timesteps: !!float 20000
+  policy: 'MlpPolicy'
+  model_class: 'sac'
+  n_sampled_goal: 4
+  goal_selection_strategy: 'future'
+  buffer_size: 1000000
+  ent_coef: 'auto'
+  batch_size: 256
+  gamma: 0.95
+  learning_rate: 0.001
+  learning_starts: 1000
 
-# tuned
+# tuned: don't work
 # widowx_reacher-v3:
 #   batch_size: 128
 #   buffer_size: 1000000
@@ -236,8 +235,7 @@ widowx_reacher-v4:
 #   train_freq: 10
 
 
-
-# TD3 hyperparams
+# # TD3 hyperparams
 # widowx_reacher-v3:
 #   n_timesteps: !!float 25000
 #   policy: 'MlpPolicy'
@@ -250,23 +248,23 @@ widowx_reacher-v4:
 #   learning_rate: 0.001
 #   learning_starts: 1000
 
-# tuned
-widowx_reacher-v3:
-  batch_size: 128
-  buffer_size: 10000
-  gamma: 0.9999
-  goal_selection_strategy: future
-  gradient_steps: 1
-  learning_rate: 2.465617656214891e-05
-  learning_starts: 1000
-  model_class: td3
-  n_sampled_goal: 4
-  n_timesteps: 25000.0
-  noise_std: 0.9088912514650789
-  noise_type: normal
-  policy: MlpPolicy
-  random_exploration: 0.5533817222350345
-  train_freq: 1
+# tuned: don't work
+# widowx_reacher-v3:
+#   batch_size: 128
+#   buffer_size: 10000
+#   gamma: 0.9999
+#   goal_selection_strategy: future
+#   gradient_steps: 1
+#   learning_rate: 2.465617656214891e-05
+#   learning_starts: 1000
+#   model_class: td3
+#   n_sampled_goal: 4
+#   n_timesteps: 25000.0
+#   noise_std: 0.9088912514650789
+#   noise_type: normal
+#   policy: MlpPolicy
+#   random_exploration: 0.5533817222350345
+#   train_freq: 1
 
 
 ##########################
@@ -275,20 +273,20 @@ widowx_reacher-v3:
 
 
 # # # SAC hyperparams
-# widowx_reacher-v13:
-#   n_timesteps: !!float 20000
-#   policy: 'MlpPolicy'
-#   model_class: 'sac'
-#   n_sampled_goal: 4
-#   goal_selection_strategy: 'future'
-#   buffer_size: 1000000
-#   ent_coef: 'auto'
-#   batch_size: 256
-#   gamma: 0.95
-#   learning_rate: 0.001
-#   learning_starts: 1000
+widowx_reacher-v13:
+  n_timesteps: !!float 20000
+  policy: 'MlpPolicy'
+  model_class: 'sac'
+  n_sampled_goal: 4
+  goal_selection_strategy: 'future'
+  buffer_size: 1000000
+  ent_coef: 'auto'
+  batch_size: 256
+  gamma: 0.95
+  learning_rate: 0.001
+  learning_starts: 1000
 
-# TD3 hyperparams
+# # TD3 hyperparams
 # widowx_reacher-v13:
 #   n_timesteps: !!float 25000
 #   policy: 'MlpPolicy'
@@ -301,23 +299,23 @@ widowx_reacher-v3:
 #   learning_rate: 0.001
 #   learning_starts: 1000
 
-# tuned
-widowx_reacher-v13:
-  batch_size: 100
-  buffer_size: 100000
-  gamma: 0.98
-  goal_selection_strategy: future
-  gradient_steps: 1000
-  learning_rate: 1.3615831358185135e-05
-  learning_starts: 1000
-  model_class: td3
-  n_sampled_goal: 6
-  n_timesteps: 25000.0
-  noise_std: 0.9338888533356444
-  noise_type: ornstein-uhlenbeck
-  policy: MlpPolicy
-  random_exploration: 0.05613045539938587
-  train_freq: 1000
+# # tuned: don't work
+# widowx_reacher-v13:
+#   batch_size: 100
+#   buffer_size: 100000
+#   gamma: 0.98
+#   goal_selection_strategy: future
+#   gradient_steps: 1000
+#   learning_rate: 1.3615831358185135e-05
+#   learning_starts: 1000
+#   model_class: td3
+#   n_sampled_goal: 6
+#   n_timesteps: 25000.0
+#   noise_std: 0.9338888533356444
+#   noise_type: ornstein-uhlenbeck
+#   policy: MlpPolicy
+#   random_exploration: 0.05613045539938587
+#   train_freq: 1000
 
 
 
@@ -339,7 +337,7 @@ widowx_reacher-v13:
 #   learning_rate: 0.001
 #   learning_starts: 1000
 
-# tuned
+# tuned: don't work !!!
 # widowx_reacher-v6:
 #   batch_size: 128
 #   buffer_size: 1000000
@@ -358,7 +356,6 @@ widowx_reacher-v13:
 #   train_freq: 10
 
 
-
 # TD3 hyperparams
 widowx_reacher-v6:
   n_timesteps: !!float 25000
@@ -372,7 +369,7 @@ widowx_reacher-v6:
   learning_rate: 0.001
   learning_starts: 1000
 
-# # tuned
+# # tuned: don't work !!!
 # widowx_reacher-v6:
 #   batch_size: 128
 #   buffer_size: 10000
@@ -389,8 +386,6 @@ widowx_reacher-v6:
 #   policy: MlpPolicy
 #   random_exploration: 0.5533817222350345
 #   train_freq: 1
-
-
 
 
 # DDPG hyperparams
@@ -445,7 +440,7 @@ widowx_reacher-v8:
 #   learning_rate: 0.001
 #   learning_starts: 1000
 
-# tuned: don't work?
+# tuned: don't work!!!
 # widowx_reacher-v8:
 #   batch_size: 100
 #   buffer_size: 100000
@@ -462,7 +457,6 @@ widowx_reacher-v8:
 #   policy: MlpPolicy
 #   random_exploration: 0.05613045539938587
 #   train_freq: 1000
-
 
 
 # DDPG hyperparams

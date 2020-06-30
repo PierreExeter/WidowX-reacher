@@ -4,8 +4,8 @@
 #SBATCH -N 1
 
 # GPU QUEUE
-##SBATCH --partition=gpu
-##SBATCH --gres=gpu:2
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:2
 #SBATCH --ntasks-per-node=32
 #SBATCH -t 72:00:00
 #SBATCH -o submission_log/output.txt
