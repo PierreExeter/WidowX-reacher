@@ -3,12 +3,12 @@
 # experiments over 10 initialisation seeds
 
 nsteps=200000    
-log_dir="logs/train_0.2M_widowx_reacher-v7_HER_SAC_G5"
+log_dir="logs/train_0.2M_widowx_reacher-v7_HER_SAC_SONIC"
 env="widowx_reacher-v7"
 env_her="widowx_reacher-v8"
 
 
-for ((i=0;i<2;i+=1))
+for ((i=0;i<10;i+=1))
 do
     # echo "A2C $i"
     # python3 2_train.py --algo a2c --env ${env} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_a2c_0$i.run

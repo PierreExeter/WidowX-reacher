@@ -5,9 +5,9 @@
 
 
 nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
-nb_seeds=3
+nb_seeds=2
 opti_dir="logs/opti100t_0.1M_widowx_reacher-v5_SONIC_HER_TD3/"
-log_dir="logs/train_0.2M_widowx_reacher-v7_HER_TD3_NOT_TUNED_SONIC/"
+log_dir="logs/train_0.2M_widowx_reacher-v7_HER_SAC_G5/"
 log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 # log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
