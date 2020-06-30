@@ -12,8 +12,8 @@ log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 # log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
 # save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
-env="widowx_reacher-v2"
-env_her="widowx_reacher-v3"
+env="widowx_reacher-v7"
+env_her="widowx_reacher-v8"
 appendix="_env1"
 random_log_folder="logs/random_policy_0.2M/widowx_reacher-v5/"
 echo "ENV: ${env}"
@@ -62,37 +62,34 @@ echo "ENV: ${env}"
 
 # STEP1 BIS: EVALUATE ON PHYSICAL ROBOT
 
-echo "A2C PHYSICAL"
-python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "A2C PHYSICAL"
+# python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "ACKTR PHYSICAL"
-python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "ACKTR PHYSICAL"
+# python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "DDPG PHYSICAL"
-python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "DDPG PHYSICAL"
+# python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "PPO2 PHYSICAL"
-python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "PPO2 PHYSICAL"
+# python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "SAC PHYSICAL"
-python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "SAC PHYSICAL"
+# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "TD3 PHYSICAL"
-python3 3_enjoy.py --algo td3 --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "TD3 PHYSICAL"
+# python3 3_enjoy.py --algo td3 --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "TRPO PHYSICAL"
-python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+# echo "TRPO PHYSICAL"
+# python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-echo "HER PHYSICAL"
-python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
-
-
-
+# echo "HER PHYSICAL"
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
 
 
 # evaluate random policy
-# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}  # if random-pol = True, it doesn't matter to specify -f ${log_dir}
+python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}  # if random-pol = True, it doesn't matter to specify -f ${log_dir}
 # python clean_random_training.py -f ${random_log_folder}
 
 # record video
