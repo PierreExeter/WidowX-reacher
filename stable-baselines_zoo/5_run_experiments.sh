@@ -3,9 +3,9 @@
 # experiments over 10 initialisation seeds
 
 nsteps=200000    
-log_dir="logs/train_0.2M_widowx_reacher-v7_HER_SAC_SONIC"
-env="widowx_reacher-v7"
-env_her="widowx_reacher-v8"
+log_dir="logs/train_0.2M_widowx_reacher-v5_HER_SAC_SONIC"
+env="widowx_reacher-v5"
+env_her="widowx_reacher-v6"
 
 
 for ((i=0;i<10;i+=1))
