@@ -34,7 +34,8 @@ if __name__ == '__main__':
     df5 = pd.read_csv(path_base+"sac/all_rewards_smooth.csv")
     df6 = pd.read_csv(path_base+"td3/all_rewards_smooth.csv")
     df7 = pd.read_csv(path_base+"trpo/all_rewards_smooth.csv")
-    df8 = pd.read_csv(path_base+"her/all_rewards_smooth.csv")
+    df8 = pd.read_csv(path_base+"her_sac/all_rewards_smooth.csv")
+    df9 = pd.read_csv(path_base+"her_td3/all_rewards_smooth.csv")
 
     df_list = [
         df1, 
@@ -44,7 +45,8 @@ if __name__ == '__main__':
         df5, 
         df6, 
         df7,
-        df8
+        df8,
+        df9
     ]
 
     df_label = [
@@ -55,7 +57,8 @@ if __name__ == '__main__':
         "SAC",
         "TD3",
         "TRPO",
-        "HER"
+        "SAC + HER",
+        "TD3 + HER"
     ]
 
     ff1 = pd.read_csv(path_base+"/a2c/results_seed_exp.csv")
@@ -65,7 +68,8 @@ if __name__ == '__main__':
     ff5 = pd.read_csv(path_base+"/sac/results_seed_exp.csv")
     ff6 = pd.read_csv(path_base+"/td3/results_seed_exp.csv")
     ff7 = pd.read_csv(path_base+"/trpo/results_seed_exp.csv")
-    ff8 = pd.read_csv(path_base+"/her/results_seed_exp.csv")
+    ff8 = pd.read_csv(path_base+"/her_sac/results_seed_exp.csv")
+    ff9 = pd.read_csv(path_base+"/her_td3/results_seed_exp.csv")
 
 
     ff_list = [
@@ -76,7 +80,8 @@ if __name__ == '__main__':
         ff5,
         ff6,
         ff7,
-        ff8
+        ff8,
+        ff9
     ]
 
 
@@ -87,25 +92,10 @@ if __name__ == '__main__':
 
     ### PLOT LEARNING CURVES ###
 
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 
-    # # apply curve smoothing by moving average
-
-    # def smooth_reward(df):
-    #     df['mean_reward'] = df['mean_reward'].rolling(window=50).mean()
-
-
-    # def smooth_upper_lower(df):
-    #     df['upper'] = df['upper'].rolling(window=50).mean()
-    #     df['lower'] = df['lower'].rolling(window=50).mean()
-
-
-    # for df in df_list:
-    #     smooth_reward(df)
-    #     smooth_upper_lower(df)
-
-
-
-    plt.figure(1)
+    plt.figure(1, figsize=(8, 6))
     ax1 = plt.axes()
 
     for (df, lab) in zip(df_list, df_label):
@@ -115,8 +105,9 @@ if __name__ == '__main__':
     random_df = pd.read_csv(random_dir+"all_rewards_smooth.csv")
     random_df.plot(x='timesteps', y='mean_reward', ax=ax1, label="random")    ## add random
 
-    plt.ylabel("Episode reward")
-    plt.savefig(save_dir+"learning_curves"+appendix+".pdf", dpi=100)
+    plt.ylabel(r'Mean return $R_t$', fontsize=15)
+    plt.xlabel(r'Timesteps', fontsize=15)
+    plt.savefig(save_dir+"learning_curves"+appendix+".pdf", dpi=500)
 
 
 
@@ -132,9 +123,9 @@ if __name__ == '__main__':
         plot_shaded(df, ax, lab)
 
         plt.legend(loc="lower right")
-        plt.ylabel("Mean reward")
-        plt.xlabel("Timesteps")
-        plt.savefig(save_dir+lab+appendix+".pdf", dpi=100)
+        plt.ylabel(r'Mean return $R_t$', fontsize=15)
+        plt.xlabel(r'Timesteps', fontsize=15)
+        plt.savefig(save_dir+lab+appendix+".pdf", dpi=500)
 
     
 

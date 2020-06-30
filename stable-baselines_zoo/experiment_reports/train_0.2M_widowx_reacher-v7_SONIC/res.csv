@@ -1,0 +1,9 @@
+mean reward,std reward (seed),std reward (eval),mean train walltime (s),std train walltime (s),mean success ratio 50mm,std success ratio 50mm,mean reach time 50mm,std reach time 50mm,mean success ratio 20mm,std success ratio 20mm,mean reach time 20mm,std reach time 20mm,mean success ratio 10mm,std success ratio 10mm,mean reach time 10mm,std reach time 10mm,mean success ratio 5mm,std success ratio 5mm,mean reach time 5mm,std reach time 5mm,exp type,efficiency (reward / s),mean train walltime (min),std train walltime (min)
+-3.06,1.19,1.66,61.09,2.07,0.02,0.01,24.88,15.37,0.0,0.0,54.0,,0.0,0.0,,,0.0,0.0,,,A2C,-0.05,1.02,0.03
+-1.76,0.06,0.99,59.38,2.47,0.02,0.02,50.92,17.22,0.0,0.0,,,0.0,0.0,,,0.0,0.0,,,ACKTR,-0.03,0.99,0.04
+-1.8,0.22,0.88,1091.81,25.84,0.03,0.02,55.48,27.15,0.0,0.0,56.0,,0.0,0.0,59.0,,0.0,0.0,,,DDPG,-0.0,18.2,0.43
+-2.33,0.71,1.32,83.44,2.05,0.03,0.02,40.9,15.88,0.0,0.0,36.5,10.61,0.0,0.0,,,0.0,0.0,,,PPO2,-0.03,1.39,0.03
+-1.92,0.54,1.02,1139.79,28.01,0.03,0.02,58.25,4.6,0.0,0.0,,,0.0,0.0,,,0.0,0.0,,,SAC,-0.0,19.0,0.47
+-2.13,0.99,1.09,720.88,14.11,0.03,0.02,39.81,29.57,0.0,0.01,96.33,,0.0,0.0,,,0.0,0.0,,,TD3,-0.0,12.01,0.24
+-1.68,0.06,1.01,196.42,7.39,0.05,0.02,43.51,22.99,0.0,0.01,60.33,13.67,0.0,0.0,39.0,,0.0,0.0,,,TRPO,-0.01,3.27,0.12
+-2.32,1.1,1.35,852.72,9.05,0.03,0.02,23.83,19.64,0.0,0.0,19.0,4.24,0.0,0.0,,,0.0,0.0,,,HER,-0.0,14.21,0.15

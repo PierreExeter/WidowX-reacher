@@ -5,17 +5,17 @@
 
 
 nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
-nb_seeds=10
+nb_seeds=3
 opti_dir="logs/opti100t_0.1M_widowx_reacher-v5_SONIC_HER_TD3/"
-log_dir="logs/train_0.2M_widowx_reacher-v5_SONIC/"
+log_dir="logs/train_0.2M_widowx_reacher-v7_HER_TD3_NOT_TUNED_SONIC/"
 log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 # log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
 save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
 # save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
 env="widowx_reacher-v7"
 env_her="widowx_reacher-v8"
-appendix="_env1"
-random_log_folder="logs/random_policy_0.2M/widowx_reacher-v5/"
+appendix="_env2"
+random_log_folder="logs/random_policy_0.2M/widowx_reacher-v7/"
 echo "ENV: ${env}"
 
 # STEP 1
@@ -23,8 +23,8 @@ echo "ENV: ${env}"
 # + plot
 
 
-# for ((i=1;i<${nb_seeds}+1;i+=1))
-# do
+for ((i=1;i<${nb_seeds}+1;i+=1))
+do
 #     echo "A2C $i"
 #     python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
 #     python3 plot_1seed.py -f ${log_dir}a2c/${env}_$i/
@@ -53,11 +53,11 @@ echo "ENV: ${env}"
 #     python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
 #     python3 plot_1seed.py -f ${log_dir}trpo/${env}_$i/
 
-#     echo "HER $i"
-#     python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
-#     python3 plot_1seed.py -f ${log_dir}her/${env_her}_$i/
+    echo "HER $i"
+    python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
+    python3 plot_1seed.py -f ${log_dir}her/${env_her}_$i/
 
-# done
+done
 
 
 # STEP1 BIS: EVALUATE ON PHYSICAL ROBOT
@@ -89,7 +89,7 @@ echo "ENV: ${env}"
 
 
 # evaluate random policy
-python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}  # if random-pol = True, it doesn't matter to specify -f ${log_dir}
+# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps}  # if random-pol = True, it doesn't matter to specify -f ${log_dir}
 # python clean_random_training.py -f ${random_log_folder}
 
 # record video
@@ -110,7 +110,7 @@ python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no
 
 
 # # STEP 3: Plot learning curves and training stats
-# python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
+python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
  
 ## STEP 4: compare learning curves between 2 envs
 #python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
@@ -129,5 +129,5 @@ python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no
 
 
 # STEP 4: view trained agent
-# python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
