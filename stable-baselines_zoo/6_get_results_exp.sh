@@ -5,13 +5,13 @@
 
 
 nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
-nb_seeds=2
+nb_seeds=10
 opti_dir="logs/opti100t_0.1M_widowx_reacher-v5_SONIC_HER_TD3/"
-log_dir="logs/train_0.2M_widowx_reacher-v7_HER_SAC_G5/"
+log_dir="logs/train_0.2M_widowx_reacher-v5_SONIC/"
 log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
-# log_dir2="logs/train_0.5M_widowx_reacher-v7_KAY/"
-save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
-# save_dir2="experiment_reports/comp_0.5M_widowx_reacher-v5-v7_KAY/"
+log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
+save_dir="experiment_reports/train_0.2M_widowx_reacher-v7_SONIC/"
+save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
 env="widowx_reacher-v7"
 env_her="widowx_reacher-v8"
 appendix="_env2"
@@ -23,8 +23,8 @@ echo "ENV: ${env}"
 # + plot
 
 
-for ((i=1;i<${nb_seeds}+1;i+=1))
-do
+# for ((i=1;i<${nb_seeds}+1;i+=1))
+# do
 #     echo "A2C $i"
 #     python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
 #     python3 plot_1seed.py -f ${log_dir}a2c/${env}_$i/
@@ -53,11 +53,11 @@ do
 #     python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
 #     python3 plot_1seed.py -f ${log_dir}trpo/${env}_$i/
 
-    echo "HER $i"
-    python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
-    python3 plot_1seed.py -f ${log_dir}her/${env_her}_$i/
+#     echo "HER $i"
+#     python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
+#     python3 plot_1seed.py -f ${log_dir}her/${env_her}_$i/
 
-done
+# done
 
 
 # STEP1 BIS: EVALUATE ON PHYSICAL ROBOT
@@ -106,14 +106,15 @@ done
 # python3 plot_experiment.py -f ${log_dir}sac/ --env ${env}
 # python3 plot_experiment.py -f ${log_dir}td3/ --env ${env}
 # python3 plot_experiment.py -f ${log_dir}trpo/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}her/ --env ${env_her}
+# python3 plot_experiment.py -f ${log_dir}her_sac/ --env ${env_her}
+# python3 plot_experiment.py -f ${log_dir}her_td3/ --env ${env_her}
 
 
 # # STEP 3: Plot learning curves and training stats
-python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
+# python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
  
 ## STEP 4: compare learning curves between 2 envs
-#python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
+python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py

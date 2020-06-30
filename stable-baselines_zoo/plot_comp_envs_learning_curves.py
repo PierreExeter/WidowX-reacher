@@ -32,7 +32,8 @@ if __name__ == '__main__':
     df5 = pd.read_csv(path_base+"sac/all_rewards_smooth.csv")
     df6 = pd.read_csv(path_base+"td3/all_rewards_smooth.csv")
     df7 = pd.read_csv(path_base+"trpo/all_rewards_smooth.csv")
-    df8 = pd.read_csv(path_base+"her/all_rewards_smooth.csv")
+    df8 = pd.read_csv(path_base+"her_sac/all_rewards_smooth.csv")
+    df9 = pd.read_csv(path_base+"her_td3/all_rewards_smooth.csv")
 
     env2_df1 = pd.read_csv(path_base2+"a2c/all_rewards_smooth.csv")
     env2_df2 = pd.read_csv(path_base2+"acktr/all_rewards_smooth.csv")
@@ -41,7 +42,8 @@ if __name__ == '__main__':
     env2_df5 = pd.read_csv(path_base2+"sac/all_rewards_smooth.csv")
     env2_df6 = pd.read_csv(path_base2+"td3/all_rewards_smooth.csv")
     env2_df7 = pd.read_csv(path_base2+"trpo/all_rewards_smooth.csv")
-    env2_df8 = pd.read_csv(path_base2+"her/all_rewards_smooth.csv")
+    env2_df8 = pd.read_csv(path_base2+"her_sac/all_rewards_smooth.csv")
+    env2_df9 = pd.read_csv(path_base2+"her_td3/all_rewards_smooth.csv")
 
     df_list = [
         df1, 
@@ -51,7 +53,8 @@ if __name__ == '__main__':
         df5, 
         df6, 
         df7,
-        df8
+        df8,
+        df9
     ]
 
     df_list2 = [
@@ -62,7 +65,8 @@ if __name__ == '__main__':
         env2_df5, 
         env2_df6, 
         env2_df7,
-        env2_df8
+        env2_df8,
+        env2_df9
     ]
 
     df_label = [
@@ -73,7 +77,8 @@ if __name__ == '__main__':
         "SAC",
         "TD3",
         "TRPO",
-        "HER"
+        "SAC + HER",
+        "TD3 + HER"
     ]
 
     ff1 = pd.read_csv(path_base+"/a2c/results_seed_exp.csv")
@@ -83,7 +88,8 @@ if __name__ == '__main__':
     ff5 = pd.read_csv(path_base+"/sac/results_seed_exp.csv")
     ff6 = pd.read_csv(path_base+"/td3/results_seed_exp.csv")
     ff7 = pd.read_csv(path_base+"/trpo/results_seed_exp.csv")
-    ff8 = pd.read_csv(path_base+"/her/results_seed_exp.csv")
+    ff8 = pd.read_csv(path_base+"/her_sac/results_seed_exp.csv")
+    ff9 = pd.read_csv(path_base+"/her_td3/results_seed_exp.csv")
 
     env2_ff1 = pd.read_csv(path_base2+"/a2c/results_seed_exp.csv")
     env2_ff2 = pd.read_csv(path_base2+"/acktr/results_seed_exp.csv")
@@ -92,7 +98,8 @@ if __name__ == '__main__':
     env2_ff5 = pd.read_csv(path_base2+"/sac/results_seed_exp.csv")
     env2_ff6 = pd.read_csv(path_base2+"/td3/results_seed_exp.csv")
     env2_ff7 = pd.read_csv(path_base2+"/trpo/results_seed_exp.csv")
-    env2_ff8 = pd.read_csv(path_base2+"/her/results_seed_exp.csv")
+    env2_ff8 = pd.read_csv(path_base2+"/her_sac/results_seed_exp.csv")
+    env2_ff9 = pd.read_csv(path_base2+"/her_td3/results_seed_exp.csv")
 
 
     ff_list = [
@@ -103,7 +110,8 @@ if __name__ == '__main__':
         ff5,
         ff6,
         ff7,
-        ff8
+        ff8,
+        ff9
     ]
 
 
@@ -115,7 +123,8 @@ if __name__ == '__main__':
         env2_ff5,
         env2_ff6,
         env2_ff7,
-        env2_ff8
+        env2_ff8,
+        env2_ff9
     ]
 
 
@@ -127,7 +136,8 @@ if __name__ == '__main__':
 
     ### PLOT LEARNING CURVES ###
 
-
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 
     def plot_shaded(df, ax, lab):
         ax.plot(df['timesteps'], df['mean_reward'], label=lab)
@@ -136,15 +146,15 @@ if __name__ == '__main__':
 
 
     for (df,  df2, lab) in zip(df_list, df_list2, df_label):
-        plt.figure()
+        plt.figure(figsize=(8, 6))
         ax = plt.axes()
         plot_shaded(df, ax, "Env1")
         plot_shaded(df2, ax, "Env2")
 
-        plt.legend(loc="lower right")
-        plt.ylabel("Mean reward")
-        plt.xlabel("Timesteps")
-        plt.savefig(save_dir+lab+".pdf", dpi=100)
+        plt.legend(loc="lower right", fontsize=15)
+        plt.ylabel(r'Mean return $R_t$', fontsize=15)
+        plt.xlabel(r'Timesteps $t$', fontsize=15)
+        plt.savefig(save_dir+lab+".pdf", dpi=500)
 
 
     ### PLOT TRAINING STATS ###
