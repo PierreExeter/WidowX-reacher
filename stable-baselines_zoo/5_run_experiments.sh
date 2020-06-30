@@ -3,12 +3,12 @@
 # experiments over 10 initialisation seeds
 
 nsteps=200000    
-log_dir="logs/train_0.2M_widowx_reacher-v5_HER_TD3_SONIC"
-env="widowx_reacher-v5"
-env_her="widowx_reacher-v6"
+log_dir="logs/train_0.2M_widowx_reacher-v7_HER_SAC_G5"
+env="widowx_reacher-v7"
+env_her="widowx_reacher-v8"
 
 
-for ((i=0;i<10;i+=1))
+for ((i=0;i<2;i+=1))
 do
     # echo "A2C $i"
     # python3 2_train.py --algo a2c --env ${env} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_a2c_0$i.run
@@ -32,7 +32,7 @@ do
     # python3 2_train.py --algo trpo --env ${env} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_trpo_0$i.run
 
     echo "HER $i"
-    python3 2_train.py --algo her --env ${env_her} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_td3_0$i.run
+    python3 2_train.py --algo her --env ${env_her} -n ${nsteps} --seed $i --log-folder ${log_dir} &> submission_log/log_her_sac_0$i.run
 done
 
 # python 7_run_random_policy.py
