@@ -245,7 +245,7 @@ python examples/td3.py
 
 # Tested on
 
-- ROS Melodic
-- Ubuntu 18.04
+- ROS Kinetic
+- Ubuntu 16.04
 - Python 3.6.10
 - Conda 4.8.0
