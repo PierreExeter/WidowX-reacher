@@ -1,0 +1,27 @@
+!!python/object/apply:collections.OrderedDict
+- - - batch_size
+    - 32
+  - - buffer_size
+    - 1000000
+  - - env_wrapper
+    - utils.wrappers.TimeFeatureWrapper
+  - - gamma
+    - 0.999
+  - - gradient_steps
+    - 100
+  - - learning_rate
+    - 0.0011249286976613144
+  - - learning_starts
+    - 10000
+  - - n_timesteps
+    - 1000000.0
+  - - noise_std
+    - 0.8326412050184251
+  - - noise_type
+    - normal
+  - - policy
+    - MlpPolicy
+  - - policy_kwargs
+    - dict(layers=[400, 300])
+  - - train_freq
+    - 100

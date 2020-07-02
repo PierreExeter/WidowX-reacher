@@ -427,6 +427,26 @@ widowx_reacher-v8:
   learning_rate: 0.001
   learning_starts: 1000
 
+# tuned  
+# widowx_reacher-v8:
+#   batch_size: 256
+#   buffer_size: 10000
+#   ent_coef: auto
+#   gamma: 0.99
+#   goal_selection_strategy: future
+#   gradient_steps: 1
+#   learning_rate: 0.001025699215141441
+#   learning_starts: 20000
+#   model_class: sac
+#   n_sampled_goal: 1
+#   n_timesteps: 20000.0
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[256, 256])
+#   random_exploration: 0.642423627812771
+#   target_entropy: auto
+#   train_freq: 1
+
+
 # TD3 hyperparams
 # widowx_reacher-v8:
 #   n_timesteps: !!float 25000

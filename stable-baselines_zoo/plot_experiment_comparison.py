@@ -105,11 +105,12 @@ if __name__ == '__main__':
     random_df = pd.read_csv(random_dir+"all_rewards_smooth.csv")
     random_df.plot(x='timesteps', y='mean_reward', ax=ax1, label="random")    ## add random
 
+    ax1.ticklabel_format(axis='x', style='sci', scilimits=(0, 5))
     plt.ylabel(r'Average return $R_t$', fontsize=15)
     plt.xlabel(r'Timesteps $t$', fontsize=15)
     ax1.legend(loc='upper center', bbox_to_anchor=(0.5, 1.12), ncol=5, fancybox=True, shadow=True)
 
-    plt.savefig(save_dir+"learning_curves"+appendix+".pdf", dpi=500)
+    plt.savefig(save_dir+"learning_curves"+appendix+".pdf", bbox_inches='tight', dpi=1000)
 
 
 
@@ -127,7 +128,7 @@ if __name__ == '__main__':
         plt.legend(loc="lower right")
         plt.ylabel(r'Average return $R_t$', fontsize=15)
         plt.xlabel(r'Timesteps $t$', fontsize=15)
-        plt.savefig(save_dir+lab+appendix+".pdf", dpi=500)
+        plt.savefig(save_dir+lab+appendix+".pdf", bbox_inches='tight', dpi=500)
 
     
 

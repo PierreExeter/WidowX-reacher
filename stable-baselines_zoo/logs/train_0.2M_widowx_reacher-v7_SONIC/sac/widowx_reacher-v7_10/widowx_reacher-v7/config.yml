@@ -1,23 +1,7 @@
 !!python/object/apply:collections.OrderedDict
-- - - batch_size
-    - 256
-  - - buffer_size
-    - 1000000
-  - - ent_coef
-    - 0.05
-  - - gamma
-    - 0.999
-  - - gradient_steps
-    - 10
-  - - learning_rate
-    - 0.020074770889398366
-  - - learning_starts
-    - 0
-  - - n_timesteps
+- - - n_timesteps
     - 60000.0
   - - policy
     - MlpPolicy
   - - policy_kwargs
-    - dict(layers=[64, 64])
-  - - train_freq
-    - 10
+    - dict(layers=[256, 256])

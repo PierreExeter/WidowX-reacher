@@ -5,7 +5,7 @@ import numpy as np
 import os
 import argparse
 from sklearn import preprocessing
-
+from matplotlib.ticker import EngFormatter
 
 
 if __name__ == '__main__':
@@ -134,12 +134,19 @@ if __name__ == '__main__':
     ff2 = pd.concat(ff_list2, axis=0)
     ff2['exp type'] = df_label
 
+    
+
     ### PLOT LEARNING CURVES ###
 
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
+    plt.rc('xtick', labelsize=20) 
+    plt.rc('ytick', labelsize=20) 
+
 
     def plot_shaded(df, ax, lab):
+        # df['timesteps'] /= 1000
+
         ax.plot(df['timesteps'], df['mean_reward'], label=lab)
         ax.fill_between(df['timesteps'], df['lower'], df['upper'], alpha=0.35)
 
@@ -151,10 +158,12 @@ if __name__ == '__main__':
         plot_shaded(df, ax, "Env1")
         plot_shaded(df2, ax, "Env2")
 
-        plt.legend(loc="lower right", fontsize=15)
-        plt.ylabel(r'Average return $R_t$', fontsize=15)
-        plt.xlabel(r'Timesteps $t$', fontsize=15)
-        plt.savefig(save_dir+lab+".pdf", dpi=500)
+        ax.ticklabel_format(axis='x', style='sci', scilimits=(0, 5))
+
+        plt.legend(loc="lower right", fontsize=25)
+        plt.ylabel(r'Average return $R_t$', fontsize=25)
+        plt.xlabel(r'Timesteps $t$', fontsize=25)
+        plt.savefig(save_dir+lab+".pdf", bbox_inches='tight', dpi=1000)
 
 
     ### PLOT TRAINING STATS ###
