@@ -374,56 +374,40 @@ ReachingJaco-v1:
 
   
 
-# widowx_reacher-v2:
-#   normalize: true
-#   n_envs: 8
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
-#   n_steps: 256
-#   nminibatches: 32
-#   lam: 0.95
-#   gamma: 0.99
-#   noptepochs: 10
-#   ent_coef: 0.0
-#   learning_rate: 2.5e-4
-#   cliprange: 0.2
-
-# tuned
 widowx_reacher-v2:
-  cliprange: 0.3
-  ent_coef: 0.004507482802317943
-  gamma: 0.999
-  lam: 0.8
-  learning_rate: 0.012856704951056681
-  n_envs: 8
-  n_steps: 512
-  n_timesteps: 1000000.0
-  nminibatches: 2
-  noptepochs: 20
   normalize: true
-  policy: MlpPolicy
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+#   n_steps: 256
+#   nminibatches: 32
+#   lam: 0.95
+#   gamma: 0.99
+#   noptepochs: 10
+#   ent_coef: 0.0
+#   learning_rate: 2.5e-4
+#   cliprange: 0.2
 
-# tuned  
+# # tuned
+# widowx_reacher-v2:
+#   cliprange: 0.3
+#   ent_coef: 0.004507482802317943
+#   gamma: 0.999
+#   lam: 0.8
+#   learning_rate: 0.012856704951056681
+#   n_envs: 8
+#   n_steps: 512
+#   n_timesteps: 1000000.0
+#   nminibatches: 2
+#   noptepochs: 20
+#   normalize: true
+#   policy: MlpPolicy
+
 widowx_reacher-v12:
-  cliprange: 0.3
-  ent_coef: 9.960211103753452e-06
-  gamma: 0.95
-  lam: 0.98
-  learning_rate: 0.01200853885461077
-  n_envs: 8
-  n_steps: 64
-  n_timesteps: 1000000.0
-  nminibatches: 1
-  noptepochs: 20
   normalize: true
-  policy: MlpPolicy  
-
-
-# widowx_reacher-v5:
-#   normalize: true
-#   n_envs: 8
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
 #   n_steps: 256
 #   nminibatches: 32
 #   lam: 0.95
@@ -433,27 +417,27 @@ widowx_reacher-v12:
 #   learning_rate: 2.5e-4
 #   cliprange: 0.2
 
-# tuned
+# # tuned  
+# widowx_reacher-v12:
+#   cliprange: 0.3
+#   ent_coef: 9.960211103753452e-06
+#   gamma: 0.95
+#   lam: 0.98
+#   learning_rate: 0.01200853885461077
+#   n_envs: 8
+#   n_steps: 64
+#   n_timesteps: 1000000.0
+#   nminibatches: 1
+#   noptepochs: 20
+#   normalize: true
+#   policy: MlpPolicy  
+
+
 widowx_reacher-v5:
-  cliprange: 0.3
-  ent_coef: 0.004507482802317943
-  gamma: 0.999
-  lam: 0.8
-  learning_rate: 0.012856704951056681
-  n_envs: 8
-  n_steps: 512
-  n_timesteps: 1000000.0
-  nminibatches: 2
-  noptepochs: 20
   normalize: true
-  policy: MlpPolicy
-
-
-# widowx_reacher-v7:
-#   normalize: true
-#   n_envs: 8
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
 #   n_steps: 256
 #   nminibatches: 32
 #   lam: 0.95
@@ -463,20 +447,50 @@ widowx_reacher-v5:
 #   learning_rate: 2.5e-4
 #   cliprange: 0.2
 
-# tuned  
+# # tuned
+# widowx_reacher-v5:
+#   cliprange: 0.3
+#   ent_coef: 0.004507482802317943
+#   gamma: 0.999
+#   lam: 0.8
+#   learning_rate: 0.012856704951056681
+#   n_envs: 8
+#   n_steps: 512
+#   n_timesteps: 1000000.0
+#   nminibatches: 2
+#   noptepochs: 20
+#   normalize: true
+#   policy: MlpPolicy
+
+
 widowx_reacher-v7:
-  cliprange: 0.3
-  ent_coef: 9.960211103753452e-06
-  gamma: 0.95
-  lam: 0.98
-  learning_rate: 0.01200853885461077
-  n_envs: 8
-  n_steps: 64
-  n_timesteps: 1000000.0
-  nminibatches: 1
-  noptepochs: 20
   normalize: true
-  policy: MlpPolicy  
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+#   n_steps: 256
+#   nminibatches: 32
+#   lam: 0.95
+#   gamma: 0.99
+#   noptepochs: 10
+#   ent_coef: 0.0
+#   learning_rate: 2.5e-4
+#   cliprange: 0.2
+
+# # tuned  
+# widowx_reacher-v7:
+#   cliprange: 0.3
+#   ent_coef: 9.960211103753452e-06
+#   gamma: 0.95
+#   lam: 0.98
+#   learning_rate: 0.01200853885461077
+#   n_envs: 8
+#   n_steps: 64
+#   n_timesteps: 1000000.0
+#   nminibatches: 1
+#   noptepochs: 20
+#   normalize: true
+#   policy: MlpPolicy  
   
   
   

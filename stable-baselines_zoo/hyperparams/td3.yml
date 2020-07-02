@@ -233,58 +233,41 @@ ReachingJaco-v1:
   train_freq: 2000
 
 
-# widowx_reacher-v2:
-#   env_wrapper: utils.wrappers.TimeFeatureWrapper
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
-#   gamma: 0.99
-#   buffer_size: 1000000
-#   noise_type: 'normal'
-#   noise_std: 0.1
-#   learning_starts: 10000
-#   batch_size: 100
-#   learning_rate: !!float 1e-3
-#   train_freq: 1000
-#   gradient_steps: 1000
-#   policy_kwargs: "dict(layers=[400, 300])"
-
-# tuned
 widowx_reacher-v2:
-  batch_size: 32
-  buffer_size: 10000
-  env_wrapper: utils.wrappers.TimeFeatureWrapper
-  gamma: 0.9999
-  gradient_steps: 10
-  learning_rate: 0.0002375898086559317
-  learning_starts: 10000
-  n_timesteps: 1000000.0
-  noise_std: 0.5757724244213915
-  noise_type: normal
-  policy: MlpPolicy
-  policy_kwargs: dict(layers=[400, 300])
-  train_freq: 10
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+#   gamma: 0.99
+#   buffer_size: 1000000
+#   noise_type: 'normal'
+#   noise_std: 0.1
+#   learning_starts: 10000
+#   batch_size: 100
+#   learning_rate: !!float 1e-3
+#   train_freq: 1000
+#   gradient_steps: 1000
+#   policy_kwargs: "dict(layers=[400, 300])"
 
-# tuned
+# # tuned
+# widowx_reacher-v2:
+#   batch_size: 32
+#   buffer_size: 10000
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+#   gamma: 0.9999
+#   gradient_steps: 10
+#   learning_rate: 0.0002375898086559317
+#   learning_starts: 10000
+#   n_timesteps: 1000000.0
+#   noise_std: 0.5757724244213915
+#   noise_type: normal
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[400, 300])
+#   train_freq: 10
+
 widowx_reacher-v12:
-  batch_size: 32
-  buffer_size: 1000000
-  env_wrapper: utils.wrappers.TimeFeatureWrapper
-  gamma: 0.999
-  gradient_steps: 100
-  learning_rate: 0.0011249286976613144
-  learning_starts: 10000
-  n_timesteps: 1000000.0
-  noise_std: 0.8326412050184251
-  noise_type: normal
-  policy: MlpPolicy
-  policy_kwargs: dict(layers=[400, 300])
-  train_freq: 100
-
-
-# widowx_reacher-v5:
 #   env_wrapper: utils.wrappers.TimeFeatureWrapper
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
 #   gamma: 0.99
 #   buffer_size: 1000000
 #   noise_type: 'normal'
@@ -296,28 +279,27 @@ widowx_reacher-v12:
 #   gradient_steps: 1000
 #   policy_kwargs: "dict(layers=[400, 300])"
 
-# tuned
+# # tuned
+# widowx_reacher-v12:
+#   batch_size: 32
+#   buffer_size: 1000000
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+#   gamma: 0.999
+#   gradient_steps: 100
+#   learning_rate: 0.0011249286976613144
+#   learning_starts: 10000
+#   n_timesteps: 1000000.0
+#   noise_std: 0.8326412050184251
+#   noise_type: normal
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[400, 300])
+#   train_freq: 100
+
+
 widowx_reacher-v5:
-  batch_size: 32
-  buffer_size: 10000
-  env_wrapper: utils.wrappers.TimeFeatureWrapper
-  gamma: 0.9999
-  gradient_steps: 10
-  learning_rate: 0.0002375898086559317
-  learning_starts: 10000
-  n_timesteps: 1000000.0
-  noise_std: 0.5757724244213915
-  noise_type: normal
-  policy: MlpPolicy
-  policy_kwargs: dict(layers=[400, 300])
-  train_freq: 10
-
-
-
-# widowx_reacher-v7:
 #   env_wrapper: utils.wrappers.TimeFeatureWrapper
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
 #   gamma: 0.99
 #   buffer_size: 1000000
 #   noise_type: 'normal'
@@ -329,18 +311,51 @@ widowx_reacher-v5:
 #   gradient_steps: 1000
 #   policy_kwargs: "dict(layers=[400, 300])"
 
-# tuned
+# # tuned
+# widowx_reacher-v5:
+#   batch_size: 32
+#   buffer_size: 10000
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+#   gamma: 0.9999
+#   gradient_steps: 10
+#   learning_rate: 0.0002375898086559317
+#   learning_starts: 10000
+#   n_timesteps: 1000000.0
+#   noise_std: 0.5757724244213915
+#   noise_type: normal
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[400, 300])
+#   train_freq: 10
+
+
+
 widowx_reacher-v7:
-  batch_size: 32
-  buffer_size: 1000000
-  env_wrapper: utils.wrappers.TimeFeatureWrapper
-  gamma: 0.999
-  gradient_steps: 100
-  learning_rate: 0.0011249286976613144
-  learning_starts: 10000
-  n_timesteps: 1000000.0
-  noise_std: 0.8326412050184251
-  noise_type: normal
-  policy: MlpPolicy
-  policy_kwargs: dict(layers=[400, 300])
-  train_freq: 100
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+#   gamma: 0.99
+#   buffer_size: 1000000
+#   noise_type: 'normal'
+#   noise_std: 0.1
+#   learning_starts: 10000
+#   batch_size: 100
+#   learning_rate: !!float 1e-3
+#   train_freq: 1000
+#   gradient_steps: 1000
+#   policy_kwargs: "dict(layers=[400, 300])"
+
+# # tuned
+# widowx_reacher-v7:
+#   batch_size: 32
+#   buffer_size: 1000000
+#   env_wrapper: utils.wrappers.TimeFeatureWrapper
+#   gamma: 0.999
+#   gradient_steps: 100
+#   learning_rate: 0.0011249286976613144
+#   learning_starts: 10000
+#   n_timesteps: 1000000.0
+#   noise_std: 0.8326412050184251
+#   noise_type: normal
+#   policy: MlpPolicy
+#   policy_kwargs: dict(layers=[400, 300])
+#   train_freq: 100

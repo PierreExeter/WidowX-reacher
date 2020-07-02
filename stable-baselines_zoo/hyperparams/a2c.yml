@@ -150,51 +150,37 @@ ReachingJaco-v1:
   learning_rate: 0.002
 
 
-# widowx_reacher-v2:
-#   normalize: true
-#   n_envs: 8
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
-#   ent_coef: 0.001
-#   n_steps: 32
-#   vf_coef: 0.5
-#   lr_schedule: 'linear'
-#   gamma: 0.99
-#   learning_rate: 0.002
-
-# tuned  
 widowx_reacher-v2:
-  ent_coef: 2.8248618994244886e-08
-  gamma: 0.99
-  learning_rate: 0.05253399083367626
-  lr_schedule: linear
-  n_envs: 8
-  n_steps: 2048
-  n_timesteps: 1000000.0
   normalize: true
-  policy: MlpPolicy
-  vf_coef: 0.21903374671252315
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+#   ent_coef: 0.001
+#   n_steps: 32
+#   vf_coef: 0.5
+#   lr_schedule: 'linear'
+#   gamma: 0.99
+#   learning_rate: 0.002
 
-# tuned
+# # tuned  
+# widowx_reacher-v2:
+#   ent_coef: 2.8248618994244886e-08
+#   gamma: 0.99
+#   learning_rate: 0.05253399083367626
+#   lr_schedule: linear
+#   n_envs: 8
+#   n_steps: 2048
+#   n_timesteps: 1000000.0
+#   normalize: true
+#   policy: MlpPolicy
+#   vf_coef: 0.21903374671252315
+
+
 widowx_reacher-v12:
-  ent_coef: 5.767989936188226e-06
-  gamma: 0.95
-  learning_rate: 0.6361100701718335
-  lr_schedule: constant
-  n_envs: 8
-  n_steps: 32
-  n_timesteps: 1000000.0
   normalize: true
-  policy: MlpPolicy
-  vf_coef: 0.21992631903626592
-
-
-
-# widowx_reacher-v5:
-#   normalize: true
-#   n_envs: 8
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
 #   ent_coef: 0.001
 #   n_steps: 32
 #   vf_coef: 0.5
@@ -202,27 +188,54 @@ widowx_reacher-v12:
 #   gamma: 0.99
 #   learning_rate: 0.002
 
-# tuned
+# # tuned
+# widowx_reacher-v12:
+#   ent_coef: 5.767989936188226e-06
+#   gamma: 0.95
+#   learning_rate: 0.6361100701718335
+#   lr_schedule: constant
+#   n_envs: 8
+#   n_steps: 32
+#   n_timesteps: 1000000.0
+#   normalize: true
+#   policy: MlpPolicy
+#   vf_coef: 0.21992631903626592
+
+
+
 widowx_reacher-v5:
-  ent_coef: 2.8248618994244886e-08
-  gamma: 0.99
-  learning_rate: 0.05253399083367626
-  lr_schedule: linear
-  n_envs: 8
-  n_steps: 2048
-  n_timesteps: 1000000.0
   normalize: true
-  policy: MlpPolicy
-  vf_coef: 0.21903374671252315
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
+#   ent_coef: 0.001
+#   n_steps: 32
+#   vf_coef: 0.5
+#   lr_schedule: 'linear'
+#   gamma: 0.99
+#   learning_rate: 0.002
 
-
-
-
-# widowx_reacher-v7:
-#   normalize: true
+# # tuned
+# widowx_reacher-v5:
+#   ent_coef: 2.8248618994244886e-08
+#   gamma: 0.99
+#   learning_rate: 0.05253399083367626
+#   lr_schedule: linear
 #   n_envs: 8
-#   n_timesteps: !!float 1e6
-#   policy: 'MlpPolicy'
+#   n_steps: 2048
+#   n_timesteps: 1000000.0
+#   normalize: true
+#   policy: MlpPolicy
+#   vf_coef: 0.21903374671252315
+
+
+
+
+widowx_reacher-v7:
+  normalize: true
+  n_envs: 8
+  n_timesteps: !!float 1e6
+  policy: 'MlpPolicy'
 #   ent_coef: 0.001
 #   n_steps: 32
 #   vf_coef: 0.5
@@ -231,14 +244,14 @@ widowx_reacher-v5:
 #   learning_rate: 0.002
 
 # tuned
-widowx_reacher-v7:
-  ent_coef: 5.767989936188226e-06
-  gamma: 0.95
-  learning_rate: 0.6361100701718335
-  lr_schedule: constant
-  n_envs: 8
-  n_steps: 32
-  n_timesteps: 1000000.0
-  normalize: true
-  policy: MlpPolicy
-  vf_coef: 0.21992631903626592
+# widowx_reacher-v7:
+#   ent_coef: 5.767989936188226e-06
+#   gamma: 0.95
+#   learning_rate: 0.6361100701718335
+#   lr_schedule: constant
+#   n_envs: 8
+#   n_steps: 32
+#   n_timesteps: 1000000.0
+#   normalize: true
+#   policy: MlpPolicy
+#   vf_coef: 0.21992631903626592

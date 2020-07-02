@@ -4,7 +4,7 @@
 
 
 
-nsteps=10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
+nsteps=2000 #10000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=10
 opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
 log_dir="logs/train_0.2M_widowx_reacher-v5_SONIC/"
@@ -12,7 +12,7 @@ log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
 save_dir="experiment_reports/train_0.2M_widowx_reacher-v7_SONIC/"
 save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
-env="widowx_reacher-v5"
+env="widowx_reacher-v2"
 env_her="widowx_reacher-v6"
 appendix="_env1"
 random_log_folder="logs/random_policy_0.2M/widowx_reacher-v5/"
@@ -62,11 +62,11 @@ echo "ENV: ${env}"
 
 # STEP1 BIS: EVALUATE ON PHYSICAL ROBOT
 
-# echo "A2C PHYSICAL"
-# python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+echo "A2C PHYSICAL"
+python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
-# echo "ACKTR PHYSICAL"
-# python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
+echo "ACKTR PHYSICAL"
+python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
 
 # echo "DDPG PHYSICAL"
 # python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir_real} --exp-id 100 --no-render -n ${nsteps}
@@ -114,7 +114,7 @@ echo "ENV: ${env}"
 # python3 plot_experiment_comparison.py -f ${log_dir} -s ${save_dir} -e ${appendix} -r ${random_log_folder}
  
 ## STEP 4: compare learning curves between 2 envs
-python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
+# python3 plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 
 # # IF OPTIMISATION
 # # python3 plot_opti_report.py
