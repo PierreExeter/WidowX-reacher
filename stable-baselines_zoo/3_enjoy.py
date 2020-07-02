@@ -17,7 +17,7 @@ from mpl_toolkits.mplot3d import Axes3D
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
 warnings.filterwarnings("ignore", category=UserWarning, module='gym')
 
-from rlkit.envs.wrappers import NormalizedBoxEnv
+# from rlkit.envs.wrappers import NormalizedBoxEnv
 import gym, widowx_env
 import utils.import_envs  # pytype: disable=import-error
 import numpy as np
