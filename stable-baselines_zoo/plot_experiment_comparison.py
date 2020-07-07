@@ -106,7 +106,7 @@ if __name__ == '__main__':
     random_df.plot(x='timesteps', y='mean_reward', ax=ax1, label="random")    ## add random
 
     ax1.ticklabel_format(axis='x', style='sci', scilimits=(0, 5))
-    plt.ylabel(r'Average return $R_t$', fontsize=15)
+    plt.ylabel(r'Average return $R_t$ (m\textsuperscript{2})', fontsize=15)
     plt.xlabel(r'Timesteps $t$', fontsize=15)
     ax1.legend(loc='upper center', bbox_to_anchor=(0.5, 1.12), ncol=5, fancybox=True, shadow=True)
 

@@ -63,11 +63,12 @@ def main():
     parser.add_argument('--random-pol', help='Random policy', default=False) # added by Pierre
     args = parser.parse_args()
 
-    plot_bool = False
+    plot_bool = True
     plot_dim = 2
     log_bool = False
 
     if plot_bool:
+
         if plot_dim == 2:
             fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(10, 5))
         elif plot_dim == 3:
@@ -203,32 +204,32 @@ def main():
 
             if plot_dim == 2:
                 ax1.cla()
-                ax1.plot(goal[0], goal[2], marker='x', color='b')
-                ax1.plot(tip[0], tip[2], marker='o', color='r')
+                ax1.plot(goal[0], goal[2], marker='x', color='b', markersize=10)
+                ax1.plot(tip[0], tip[2], marker='o', color='r', markersize=10)
                 ax1.set_xlim([-0.2, 0.2])
                 ax1.set_ylim([0, 0.5])
-                ax1.set_xlabel("x")
-                ax1.set_ylabel("z")
+                ax1.set_xlabel("x (m)", fontsize=15)
+                ax1.set_ylabel("z (m)", fontsize=15)
 
                 ax2.cla()
-                ax2.plot(goal[1], goal[2], marker='x', color='b')
-                ax2.plot(tip[1], tip[2], marker='o', color='r')
+                ax2.plot(goal[1], goal[2], marker='x', color='b', markersize=10)
+                ax2.plot(tip[1], tip[2], marker='o', color='r', markersize=10)
                 ax2.set_xlim([-0.2, 0.2])
                 ax2.set_ylim([0, 0.5])
-                ax2.set_xlabel("y")
+                ax2.set_xlabel("y (m)", fontsize=15)
 
             elif plot_dim == 3:
                 ax.cla()
-                ax.plot([tip[0]], [tip[1]], zs=[tip[2]], marker='o', color='b')
-                ax.plot([goal[0]], [goal[1]], zs=[goal[2]], marker='x', color='r', linestyle="None")
+                ax.plot([tip[0]], [tip[1]], zs=[tip[2]], marker='x', color='b')
+                ax.plot([goal[0]], [goal[1]], zs=[goal[2]], marker='o', color='r', linestyle="None")
                 ax.set_xlim([-0.2, 0.2])
                 ax.set_ylim([-0.2, 0.2])
                 ax.set_zlim([0, 0.5])
-                ax.set_xlabel("x")
-                ax.set_ylabel("y")
-                ax.set_zlabel("z")
+                ax.set_xlabel("x (m)", fontsize=15)
+                ax.set_ylabel("y (m)", fontsize=15)
+                ax.set_zlabel("z (m)", fontsize=15)
 
-            fig.suptitle("timestep "+str(ep_len)+" | dist to target: "+str(infos[0]['total_distance']))
+            fig.suptitle("timestep "+str(ep_len)+" | dist to target: "+str(round(infos[0]['total_distance'], 2)))
             plt.pause(0.01)
             # plt.show()
 

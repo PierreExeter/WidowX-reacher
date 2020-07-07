@@ -161,7 +161,7 @@ if __name__ == '__main__':
         ax.ticklabel_format(axis='x', style='sci', scilimits=(0, 5))
 
         plt.legend(loc="lower right", fontsize=25)
-        plt.ylabel(r'Average return $R_t$', fontsize=25)
+        plt.ylabel(r'Average return $R_t$ (m\textsuperscript{2})', fontsize=25)
         plt.xlabel(r'Timesteps $t$', fontsize=25)
         plt.savefig(save_dir+lab+".pdf", bbox_inches='tight', dpi=1000)
 
