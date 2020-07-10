@@ -81,7 +81,7 @@ class WidowxEnv(gym.GoalEnv):  # added by Pierre
         # self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_sim(goal_oriented=True, render_bool=False)
+        self.start_sim(goal_oriented=True, render_bool=True)
         pass
 
     # re-added by Pierre
@@ -105,7 +105,7 @@ class WidowxEnv(gym.GoalEnv):  # added by Pierre
             ))
         # p.resetSimulation()
         # p.setTimeStep(0.01)
-        p.resetDebugVisualizerCamera(cameraDistance=0.6, cameraYaw=20, cameraPitch=-30, cameraTargetPosition=[0, 0, 0.1], physicsClientId=self.physics_client)  # added by Pierre
+        p.resetDebugVisualizerCamera(cameraDistance=0.6, cameraYaw=0, cameraPitch=-30, cameraTargetPosition=[0.2, 0, 0.1], physicsClientId=self.physics_client)  # added by Pierre
 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         path = os.path.abspath(os.path.dirname(__file__))

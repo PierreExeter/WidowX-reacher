@@ -151,7 +151,8 @@ Add Docker pull
 ## Run Docker image
 
 ```bash
-docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/widowx_rl:version2 
+xhost +local:docker  # to allow graphics forwarding
+docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --privileged pierre/widowx_rl:version9 
 ```
 
 

@@ -7,15 +7,15 @@
 nsteps=100000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=10
 opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
-log_dir="logs/train_0.2M_widowx_reacher-v5_SONIC/"
+log_dir="logs/train_0.2M_widowx_reacher-v7_SONIC/"
 log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
 save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
 save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
-env="widowx_reacher-v5"
-env_her="widowx_reacher-v6"
-appendix="_env1"
-random_log_folder="logs/random_policy_0.2M/widowx_reacher-v5/"
+env="widowx_reacher-v7"
+env_her="widowx_reacher-v8"
+appendix="_env2"
+random_log_folder="logs/random_policy_0.2M/widowx_reacher-v7/"
 echo "ENV: ${env}"
 
 # STEP 1
@@ -130,5 +130,32 @@ echo "ENV: ${env}"
 
 
 # STEP 4: view trained agent
-python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+
+
+# best seeds in Env 5
+# python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id 7 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir} --exp-id 7 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir} --exp-id 9 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 9 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 10 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo td3 --env ${env} -f ${log_dir} --exp-id 3 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir} --exp-id 6 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 9 -n ${nsteps} --render-pybullet True   # her + sac
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 2 -n ${nsteps} --render-pybullet True  # her + td3
+
+# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps} --render-pybullet True
+
+# best seeds in Env 7
+# python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id 9 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo acktr --env ${env} -f ${log_dir} --exp-id 8 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir} --exp-id 3 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 6 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id 4 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo td3 --env ${env} -f ${log_dir} --exp-id 6 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir} --exp-id 9 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 6 -n ${nsteps} --render-pybullet True   # her + sac
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True   # her + td3
+
+python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps} --render-pybullet True

@@ -107,7 +107,7 @@ class WidowxEnv(gym.Env):
             ))
         # p.resetSimulation()
         # p.setTimeStep(0.01)
-        p.resetDebugVisualizerCamera(cameraDistance=0.6, cameraYaw=20, cameraPitch=-30, cameraTargetPosition=[0, 0, 0.1], physicsClientId=self.physics_client)  # added by Pierre
+        p.resetDebugVisualizerCamera(cameraDistance=0.6, cameraYaw=0, cameraPitch=-30, cameraTargetPosition=[0.2, 0, 0.1], physicsClientId=self.physics_client)  # added by Pierre
 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         path = os.path.abspath(os.path.dirname(__file__))

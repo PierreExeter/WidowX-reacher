@@ -70,7 +70,7 @@ def main():
     if plot_bool:
 
         if plot_dim == 2:
-            fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(10, 5))
+            fig, (ax1, ax2) = plt.subplots(2, 1, sharey=True, figsize=(5, 10))
         elif plot_dim == 3:
             fig = plt.figure()
             ax = fig.gca(projection='3d')
@@ -204,19 +204,42 @@ def main():
 
             if plot_dim == 2:
                 ax1.cla()
-                ax1.plot(goal[0], goal[2], marker='x', color='b', markersize=10)
-                ax1.plot(tip[0], tip[2], marker='o', color='r', markersize=10)
-                ax1.set_xlim([-0.2, 0.2])
+                ax1.plot(goal[0], goal[2], marker='x', color='b', linestyle='', markersize=10, label="goal", mew=3)
+                ax1.plot(tip[0], tip[2], marker='o', color='r', linestyle='', markersize=10, label="end effector")
+
+                circ_1_50 = plt.Circle((goal[0], goal[2]), radius=success_threshold_50, edgecolor='g', facecolor='w', linestyle='--', label="50 mm")
+                circ_1_20 = plt.Circle((goal[0], goal[2]), radius=success_threshold_20, edgecolor='b', facecolor='w', linestyle='--', label="20 mm")
+                circ_1_10 = plt.Circle((goal[0], goal[2]), radius=success_threshold_10, edgecolor='m', facecolor='w', linestyle='--', label="10 mm")
+                circ_1_5 = plt.Circle((goal[0], goal[2]), radius=success_threshold_5, edgecolor='r', facecolor='w', linestyle='--', label="5 mm")
+                ax1.add_patch(circ_1_50)
+                ax1.add_patch(circ_1_20)
+                ax1.add_patch(circ_1_10)
+                ax1.add_patch(circ_1_5)
+
+                ax1.set_xlim([-0.25, 0.25])
                 ax1.set_ylim([0, 0.5])
                 ax1.set_xlabel("x (m)", fontsize=15)
                 ax1.set_ylabel("z (m)", fontsize=15)
 
                 ax2.cla()
-                ax2.plot(goal[1], goal[2], marker='x', color='b', markersize=10)
-                ax2.plot(tip[1], tip[2], marker='o', color='r', markersize=10)
-                ax2.set_xlim([-0.2, 0.2])
+                ax2.plot(goal[1], goal[2], marker='x', color='b', linestyle='', markersize=10, mew=3)
+                ax2.plot(tip[1], tip[2], marker='o', color='r', linestyle='', markersize=10)
+
+                circ_2_50 = plt.Circle((goal[1], goal[2]), radius=success_threshold_50, edgecolor='g', facecolor='w', linestyle='--')
+                circ_2_20 = plt.Circle((goal[1], goal[2]), radius=success_threshold_20, edgecolor='b', facecolor='w', linestyle='--')
+                circ_2_10 = plt.Circle((goal[1], goal[2]), radius=success_threshold_10, edgecolor='m', facecolor='w', linestyle='--')
+                circ_2_5 = plt.Circle((goal[1], goal[2]), radius=success_threshold_5, edgecolor='r', facecolor='w', linestyle='--')
+                ax2.add_patch(circ_2_50)
+                ax2.add_patch(circ_2_20)
+                ax2.add_patch(circ_2_10)
+                ax2.add_patch(circ_2_5)
+
+                ax2.set_xlim([-0.25, 0.25])
                 ax2.set_ylim([0, 0.5])
                 ax2.set_xlabel("y (m)", fontsize=15)
+                ax2.set_ylabel("z (m)", fontsize=15)
+
+                ax1.legend(loc='upper left', bbox_to_anchor=(0, 1.2), ncol=3, fancybox=True, shadow=True)
 
             elif plot_dim == 3:
                 ax.cla()
@@ -229,7 +252,7 @@ def main():
                 ax.set_ylabel("y (m)", fontsize=15)
                 ax.set_zlabel("z (m)", fontsize=15)
 
-            fig.suptitle("timestep "+str(ep_len)+" | dist to target: "+str(round(infos[0]['total_distance'], 2)))
+            fig.suptitle("timestep "+str(ep_len)+" | distance to target: "+str(round(infos[0]['total_distance']*1000, 1))+" mm")
             plt.pause(0.01)
             # plt.show()
 
