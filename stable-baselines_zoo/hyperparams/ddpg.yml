@@ -140,7 +140,7 @@ widowx_reacher-v12:
 
 # Defaults params
 widowx_reacher-v5:
-  n_timesteps: 10000
+  n_timesteps: 500000
   policy: 'MlpPolicy'
   gamma: 0.99
   nb_train_steps: 50

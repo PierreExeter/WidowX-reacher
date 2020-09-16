@@ -243,7 +243,7 @@ widowx_reacher-v12:
 
 # DEFAULTS PARAMETERS
 widowx_reacher-v5:
-  n_timesteps: 10000
+  n_timesteps: 500000
   policy: 'MlpPolicy'
   gamma: 0.99
   timesteps_per_batch: 1024

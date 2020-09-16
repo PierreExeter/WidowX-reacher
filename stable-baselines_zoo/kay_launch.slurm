@@ -2,7 +2,7 @@
 # Slurm flags
 #SBATCH -p ProdQ
 #SBATCH -N 1
-#SBATCH -t 15:00:00
+#SBATCH -t 20:00:00
 #SBATCH -A ucd01
 #SBATCH -o submission_log/output.txt
 # Mail me on job start & end

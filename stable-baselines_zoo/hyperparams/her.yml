@@ -349,7 +349,7 @@ widowx_reacher-v13:
 
 # DEFAULT PARAMS HER + SAC
 # widowx_reacher-v6:
-#   n_timesteps: 10000
+#   n_timesteps: 500000
 #   policy: 'MlpPolicy'
 #   model_class: 'sac'
 #   n_sampled_goal: 4
@@ -407,7 +407,7 @@ widowx_reacher-v13:
 
 # # # DEFAULTS PARAMS HER + TD3
 widowx_reacher-v6:
-  n_timesteps: 10000
+  n_timesteps: 500000
   policy: 'MlpPolicy'
   model_class: 'td3'
   n_sampled_goal: 4
