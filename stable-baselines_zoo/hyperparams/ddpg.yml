@@ -138,10 +138,34 @@ widowx_reacher-v12:
 #   policy: MlpPolicy
 #   policy_kwargs: dict(layer_norm=True)
 
-
+# Defaults params
 widowx_reacher-v5:
-  n_timesteps: !!float 2e5
+  n_timesteps: 10000
   policy: 'MlpPolicy'
+  gamma: 0.99
+  nb_train_steps: 50
+  nb_rollout_steps: 100
+  nb_eval_steps: 100
+  normalize_observations: False
+  tau: 0.001
+  batch_size: 128
+  param_noise_adaption_interval: 50
+  normalize_returns: False
+  enable_popart: False
+  critic_l2_reg: 0.0
+  actor_lr: 0.0001
+  critic_lr: 0.001
+  reward_scale: 1.0
+  render: False
+  render_eval: False
+  buffer_size: 50000
+  random_exploration: 0.0
+  policy_kwargs: None
+
+# PAPER
+# widowx_reacher-v5:
+#   n_timesteps: !!float 2e5
+#   policy: 'MlpPolicy'
 #   noise_type: 'ornstein-uhlenbeck'
 #   noise_std: 0.1
 #   memory_limit: 50000

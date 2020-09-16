@@ -240,9 +240,26 @@ widowx_reacher-v12:
 #   vf_iters: 10
 #   vf_stepsize: 0.03755429324149827
 
+
+# DEFAULTS PARAMETERS
 widowx_reacher-v5:
-  n_timesteps: !!float 3e5
+  n_timesteps: 10000
   policy: 'MlpPolicy'
+  gamma: 0.99
+  timesteps_per_batch: 1024
+  max_kl: 0.01
+  cg_iters: 10
+  lam: 0.98
+  entcoeff: 0.0
+  cg_damping: 0.01
+  vf_stepsize: 0.0003
+  vf_iters: 3
+  policy_kwargs: None
+
+# PAPER
+# widowx_reacher-v5:
+#   n_timesteps: !!float 3e5
+#   policy: 'MlpPolicy'
 #   max_kl: 0.000193
 #   timesteps_per_batch: 1024
 #   gamma: 0.99

@@ -4,18 +4,18 @@
 
 
 
-nsteps=100000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
-nb_seeds=10
-opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
-log_dir="logs/train_0.2M_widowx_reacher-v7_SONIC/"
-log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
-log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
-save_dir="experiment_reports/train_0.2M_widowx_reacher-v5_SONIC/"
-save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
-env="widowx_reacher-v7"
-env_her="widowx_reacher-v8"
-appendix="_env2"
-random_log_folder="logs/random_policy_0.2M/widowx_reacher-v7/"
+nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
+nb_seeds=2
+# opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
+log_dir="logs/train_10K_widowx_reacher-v5/"
+# log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
+# log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
+# save_dir="experiment_reports/train_10K_widowx_reacher-v5/"
+# save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
+env="widowx_reacher-v5"
+env_her="widowx_reacher-v6"
+# appendix="_env2"
+random_log_folder="logs/train_10K_widowx_reacher-v5_random/"
 echo "ENV: ${env}"
 
 # STEP 1
@@ -98,16 +98,17 @@ echo "ENV: ${env}"
 
 
 # STEP 2: Get the mean of the reward and wall train time of all the seed runs in the experiment
+# Note: Here you might need to rename the logs/her folder to logs/her_sac or her_td3 as needed
 
-# python3 plot_experiment.py -f ${log_dir}a2c/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}acktr/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}ddpg/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}ppo2/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}sac/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}td3/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}trpo/ --env ${env}
-# python3 plot_experiment.py -f ${log_dir}her_sac/ --env ${env_her}
-# python3 plot_experiment.py -f ${log_dir}her_td3/ --env ${env_her}
+# python3 plot_experiment.py -f ${log_dir}a2c/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}acktr/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}ddpg/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}sac/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}td3/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}trpo/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+# python3 plot_experiment.py -f ${log_dir}her_sac/ --env ${env_her} --nb-seeds ${nb_seeds} -n ${nsteps}
+python3 plot_experiment.py -f ${log_dir}her_td3/ --env ${env_her} --nb-seeds ${nb_seeds} -n ${nsteps}
 
 
 # # STEP 3: Plot learning curves and training stats
@@ -158,4 +159,4 @@ echo "ENV: ${env}"
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 6 -n ${nsteps} --render-pybullet True   # her + sac
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True   # her + td3
 
-python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --random-pol True --env ${env} -f ${log_dir} --exp-id -1 --no-render -n ${nsteps} --render-pybullet True

@@ -203,11 +203,30 @@ widowx_reacher-v12:
 
 
 
+# Defaults params
 widowx_reacher-v5:
   normalize: true
   n_envs: 8
-  n_timesteps: !!float 1e6
+  n_timesteps: 10000
   policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 5
+  vf_coef: 0.25
+  ent_coef: 0.01
+  max_grad_norm: 0.5
+  learning_rate: 0.0007
+  alpha: 0.99
+  momentum: 0.0
+  epsilon: 0.00001
+  lr_schedule: 'constant'
+
+
+# Paper
+# widowx_reacher-v5:
+#   normalize: true
+#   n_envs: 8
+#   n_timesteps: !!float 1e6
+#   policy: 'MlpPolicy'
 #   ent_coef: 0.001
 #   n_steps: 32
 #   vf_coef: 0.5

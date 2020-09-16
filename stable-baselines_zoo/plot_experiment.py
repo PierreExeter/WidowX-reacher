@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+import yaml
 # import matplotlib.pyplot as plt
 
 # added by Pierre
@@ -53,12 +54,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--folder', help='Log folder', type=str, default='trained_agents')
     parser.add_argument('-e', '--env', help='env name', type=str)
+    parser.add_argument('-ns', '--nb-seeds', help='number of seeds', type=int)
+    parser.add_argument('-n', help='number of eval steps', type=int)
     args = parser.parse_args()
 
-
+    nb_eval_timesteps = args.n
+    nb_seeds = args.nb_seeds
     env_id = args.env
     log_dir = args.folder
     print(log_dir)
+
 
     ###############
     # METRICS 
@@ -123,6 +128,112 @@ if __name__ == '__main__':
 
     df_res = pd.DataFrame(d, index=[0])
     df_res.to_csv(log_dir+"results_seed_exp.csv", index=False)
+
+
+    ############### Prepare dataframe for compiling benchmark results
+
+    if env_id == "widowx_reacher-v5":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+
+    elif env_id == "widowx_reacher-v6":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 1
+        ep_len = 100
+
+    # I need to add forward slashes because reacher contains "her"...
+    if "/a2c/" in log_dir:
+        algo = "a2c"
+    elif "/acktr/" in log_dir:
+        algo = "acktr"
+    elif "/ddpg/" in log_dir:
+        algo = "ddpg"
+    elif "/ppo2/" in log_dir:
+        algo = "ppo2"
+    elif "/sac/" in log_dir:
+        algo = "sac"
+    elif "/td3/" in log_dir:
+        algo = "td3"
+    elif "/trpo/" in log_dir:
+        algo = "trpo"
+    elif "/her_sac/" in log_dir:
+        algo = "her_sac"
+    elif "/her_td3/" in log_dir:
+        algo = "her_td3"
+
+    # # Load hyperparameters from yaml file (this is not robuts, as the hyperparams/{}.yml may have been edited manually after the training)
+    # with open('hyperparams/{}.yml'.format(algo), 'r') as f:
+    #     hyperparams_dict = yaml.safe_load(f)
+    #     if env_id in list(hyperparams_dict.keys()):
+    #         hyperparams = hyperparams_dict[env_id]
+    #     else:
+    #         raise ValueError("Hyperparameters not found for {}-{}".format(algo, env_id))
+    
+
+    # # LOAD HYPERPARAMS FROM config.yml (it is the same for all the seeds so selecting any config.yml is fine)
+    # I specified the defaults hyperparameters in the hyperparameters/{algo}.yml
+    # So the config.yml should contain all the hyperparameters used during training
+    # Without omiting the default ones (so I don't need to load from tuned_hyperparams.yml)
+    for config_path in Path(log_dir).rglob('config.yml'):
+        print(config_path)
+
+    # # load hyperparams
+    with open(config_path, 'r') as f:
+        hyperparams_ordered = yaml.load(f, Loader=yaml.UnsafeLoader)
+        hyperparams = dict(hyperparams_ordered)
+
+    benchmark_dict = {
+        'env_id': env_id,
+        'nb_joints': nb_joints,
+        'action': action,
+        'obs': obs,
+        'reward': reward,
+        'random_goal': random_goal,
+        'goal_env': goal_env,
+        'algo': algo,
+        'nb_seeds': nb_seeds,
+        'mean_train_time(s)': df['Train walltime (s)'].mean(),
+        'std_train_time(s)': df['Train walltime (s)'].std(),
+        'nb_eval_timesteps': nb_eval_timesteps,
+        'mean_return': df['Eval mean reward'].mean(),
+        'std_return': df['Eval mean reward'].std(),
+        'mean_SR_50': df['success ratio 50mm'].mean(),
+        'std_SR_50': df['success ratio 50mm'].std(),
+        'mean_RT_50': df['Average reach time 50mm'].mean(),
+        'std_RT_50': df['Average reach time 50mm'].std(),
+        'mean_SR_20': df['success ratio 20mm'].mean(),
+        'std_SR_20': df['success ratio 20mm'].std(),
+        'mean_RT_20': df['Average reach time 20mm'].mean(),
+        'std_RT_20': df['Average reach time 20mm'].std(),
+        'mean_SR_10': df['success ratio 10mm'].mean(),
+        'std_SR_10': df['success ratio 10mm'].std(),
+        'mean_RT_10': df['Average reach time 10mm'].mean(),
+        'std_RT_10': df['Average reach time 10mm'].std(),
+        'mean_SR_0': df['success ratio 5mm'].mean(),
+        'std_SR_5': df['success ratio 5mm'].std(),
+        'mean_RT_5': df['Average reach time 5mm'].mean(),
+        'std_RT_5': df['Average reach time 5mm'].std(),
+    }
+
+    # append hyperparameters
+    benchmark_dict = {**benchmark_dict, **hyperparams}
+
+    # transform into a dataframe
+    df_bench = pd.DataFrame(benchmark_dict, index=[0])
+
+    # add to existing results and save
+    backedup_df = pd.read_csv("results/benchmark_results.csv")
+    appended_df = backedup_df.append(df_bench, ignore_index=True)
+    appended_df.to_csv("results/benchmark_results.csv", index=False)
 
     ###############
     # LEARNING CURVES

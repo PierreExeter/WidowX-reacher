@@ -81,7 +81,7 @@ class WidowxEnv(gym.GoalEnv):  # added by Pierre
         # self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_sim(goal_oriented=True, render_bool=True)
+        self.start_sim(goal_oriented=True, render_bool=False)
         pass
 
     # re-added by Pierre

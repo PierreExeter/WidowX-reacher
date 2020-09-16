@@ -63,7 +63,7 @@ def main():
     parser.add_argument('--random-pol', help='Random policy', default=False) # added by Pierre
     args = parser.parse_args()
 
-    plot_bool = True
+    plot_bool = False
     plot_dim = 2
     log_bool = False
 

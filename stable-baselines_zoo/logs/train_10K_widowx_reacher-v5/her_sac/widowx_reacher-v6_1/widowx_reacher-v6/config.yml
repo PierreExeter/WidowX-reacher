@@ -1,0 +1,37 @@
+!!python/object/apply:collections.OrderedDict
+- - - batch_size
+    - 64
+  - - buffer_size
+    - 50000
+  - - ent_coef
+    - auto
+  - - gamma
+    - 0.99
+  - - goal_selection_strategy
+    - future
+  - - gradient_steps
+    - 1
+  - - learning_rate
+    - 0.0003
+  - - learning_starts
+    - 100
+  - - model_class
+    - sac
+  - - n_sampled_goal
+    - 4
+  - - n_timesteps
+    - 10000
+  - - policy
+    - MlpPolicy
+  - - policy_kwargs
+    - None
+  - - random_exploration
+    - 0.0
+  - - target_entropy
+    - auto
+  - - target_update_interval
+    - 1
+  - - tau
+    - 0.005
+  - - train_freq
+    - 1
