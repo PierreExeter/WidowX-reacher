@@ -1,0 +1,31 @@
+!!python/object/apply:collections.OrderedDict
+- - - async_eigen_decomp
+    - false
+  - - ent_coef
+    - 0.01
+  - - gamma
+    - 0.99
+  - - kfac_clip
+    - 0.001
+  - - kfac_update
+    - 1
+  - - learning_rate
+    - 0.25
+  - - lr_schedule
+    - linear
+  - - max_grad_norm
+    - 0.5
+  - - n_envs
+    - 8
+  - - n_steps
+    - 20
+  - - n_timesteps
+    - 500000
+  - - normalize
+    - true
+  - - policy
+    - MlpPolicy
+  - - vf_coef
+    - 0.25
+  - - vf_fisher_coef
+    - 1.0

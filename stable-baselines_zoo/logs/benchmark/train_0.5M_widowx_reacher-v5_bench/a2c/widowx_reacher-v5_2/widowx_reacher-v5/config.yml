@@ -1,0 +1,29 @@
+!!python/object/apply:collections.OrderedDict
+- - - alpha
+    - 0.99
+  - - ent_coef
+    - 0.01
+  - - epsilon
+    - 1.0e-05
+  - - gamma
+    - 0.99
+  - - learning_rate
+    - 0.0007
+  - - lr_schedule
+    - constant
+  - - max_grad_norm
+    - 0.5
+  - - momentum
+    - 0.0
+  - - n_envs
+    - 8
+  - - n_steps
+    - 5
+  - - n_timesteps
+    - 500000
+  - - normalize
+    - true
+  - - policy
+    - MlpPolicy
+  - - vf_coef
+    - 0.25

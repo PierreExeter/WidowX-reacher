@@ -127,7 +127,7 @@ def main():
 
     # if not args.no_render:
         # env.render(mode="human")  # added by Pierre (to work with ReachingJaco-v1)
-    
+
     obs = env.reset()
 
     # Force deterministic for DQN, DDPG, SAC and HER (that is a wrapper around)
@@ -161,14 +161,14 @@ def main():
     # For HER, monitor success rate
     successes = []
     state = None
-    
+
     for _ in range(args.n_timesteps):
         if args.random_pol:
             # Random Agent
             action = [env.action_space.sample()]
         else:
             action, state = model.predict(obs, state=state, deterministic=deterministic)
-        
+
         # Clip Action to avoid out of bound errors
         if isinstance(env.action_space, gym.spaces.Box):
             action = np.clip(action, env.action_space.low, env.action_space.high)
@@ -176,7 +176,7 @@ def main():
 
         if args.render_pybullet:
             time.sleep(1./30.)     # added by Pierre (slow down Pybullet for rendering)
-        
+
         if infos[0]['total_distance'] <= success_threshold_50:
             episode_success_list_50.append(1)
         else:
@@ -196,7 +196,7 @@ def main():
             episode_success_list_5.append(1)
         else:
             episode_success_list_5.append(0)
-        
+
 
         if plot_bool:
             goal = infos[0]['goal position']
@@ -281,7 +281,7 @@ def main():
                 if episode_infos is not None:
                     print("Atari Episode Score: {:.2f}".format(episode_infos['r']))
                     print("Atari Episode Length", episode_infos['l'])
-            
+
             if done and not is_atari and args.verbose > 0:
                 # NOTE: for env using VecNormalize, the mean reward
                 # is a normalized reward when `--norm_reward` flag is passed
@@ -292,10 +292,10 @@ def main():
                 episode_lengths.append(ep_len)
 
                 # append the last element of the episode success list when episode is done
-                success_list_50.append(episode_success_list_50[-1]) 
-                success_list_20.append(episode_success_list_20[-1]) 
-                success_list_10.append(episode_success_list_10[-1]) 
-                success_list_5.append(episode_success_list_5[-1])  
+                success_list_50.append(episode_success_list_50[-1])
+                success_list_20.append(episode_success_list_20[-1])
+                success_list_10.append(episode_success_list_10[-1])
+                success_list_5.append(episode_success_list_5[-1])
 
                 # if the episode is successful and it starts from an unsucessful step, calculate reach time
                 if episode_success_list_50[-1] == True and episode_success_list_50[0] == False:
@@ -322,7 +322,6 @@ def main():
                         idx += 1
                     reachtime_list_5.append(idx)
 
-
                 if log_bool:
                     # output_df.to_csv(log_path+"/res_episode_"+str(episode)+".csv", index=False)  # slow
                     output_df.to_pickle(log_path+"/res_episode_"+str(episode)+".pkl")
@@ -330,11 +329,11 @@ def main():
                 # reset for new episode
                 episode_reward = 0.0
                 ep_len = 0
-                episode_success_list_50 = []  
-                episode_success_list_20 = []  
-                episode_success_list_10 = []  
-                episode_success_list_5 = []  
-                episode += 1 
+                episode_success_list_50 = []
+                episode_success_list_20 = []
+                episode_success_list_10 = []
+                episode_success_list_5 = []
+                episode += 1
 
             # Reset also when the goal is achieved when using HER
             if done or infos[0].get('is_success', False):
@@ -360,8 +359,8 @@ def main():
         # added by Pierre
         print("path:", log_path)
         d = {
-            "Eval mean reward": np.mean(episode_rewards), 
-            "Eval std": np.std(episode_rewards), 
+            "Eval mean reward": np.mean(episode_rewards),
+            "Eval std": np.std(episode_rewards),
             "success ratio 50mm": np.mean(success_list_50),
             "Average reach time 50mm": np.mean(reachtime_list_50),
             "success ratio 20mm": np.mean(success_list_20),

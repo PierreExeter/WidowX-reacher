@@ -372,7 +372,7 @@ ReachingJaco-v1:
   normalize: true
   policy: MlpPolicy
 
-  
+
 
 widowx_reacher-v2:
   normalize: true
@@ -417,7 +417,7 @@ widowx_reacher-v12:
 #   learning_rate: 2.5e-4
 #   cliprange: 0.2
 
-# # tuned  
+# # tuned
 # widowx_reacher-v12:
 #   cliprange: 0.3
 #   ent_coef: 9.960211103753452e-06
@@ -430,7 +430,7 @@ widowx_reacher-v12:
 #   nminibatches: 1
 #   noptepochs: 20
 #   normalize: true
-#   policy: MlpPolicy  
+#   policy: MlpPolicy
 
 
 
@@ -438,7 +438,7 @@ widowx_reacher-v12:
 widowx_reacher-v5:
   normalize: true
   n_envs: 8
-  n_timesteps: 500000
+  n_timesteps: 200000
   policy: 'MlpPolicy'
   gamma: 0.99
   n_steps: 128
@@ -497,7 +497,7 @@ widowx_reacher-v7:
 #   learning_rate: 2.5e-4
 #   cliprange: 0.2
 
-# # tuned  
+# # tuned
 # widowx_reacher-v7:
 #   cliprange: 0.3
 #   ent_coef: 9.960211103753452e-06
@@ -510,12 +510,4 @@ widowx_reacher-v7:
 #   nminibatches: 1
 #   noptepochs: 20
 #   normalize: true
-#   policy: MlpPolicy  
-  
-  
-  
-  
-  
-
-  
-
+#   policy: MlpPolicy

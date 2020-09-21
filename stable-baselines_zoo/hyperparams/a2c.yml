@@ -207,7 +207,7 @@ widowx_reacher-v12:
 widowx_reacher-v5:
   normalize: true
   n_envs: 8
-  n_timesteps: 10000
+  n_timesteps: 500000
   policy: 'MlpPolicy'
   gamma: 0.99
   n_steps: 5

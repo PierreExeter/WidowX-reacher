@@ -46,7 +46,7 @@ def plot_results(log_folder, type_str, leg_label):
     # plt.plot(x, y, label=leg_label)
     # plt.xlabel(type_str)
     plt.ylabel('Rewards')
-    
+
 
 
 if __name__ == '__main__':
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
 
     ###############
-    # METRICS 
+    # METRICS
     ###############
 
     # Get the mean of the reward and wall train time of all the seed runs in the experiment
@@ -177,7 +177,7 @@ if __name__ == '__main__':
     #         hyperparams = hyperparams_dict[env_id]
     #     else:
     #         raise ValueError("Hyperparameters not found for {}-{}".format(algo, env_id))
-    
+
 
     # # LOAD HYPERPARAMS FROM config.yml (it is the same for all the seeds so selecting any config.yml is fine)
     # I specified the defaults hyperparameters in the hyperparameters/{algo}.yml
@@ -218,7 +218,7 @@ if __name__ == '__main__':
         'std_SR_10': df['success ratio 10mm'].std(),
         'mean_RT_10': df['Average reach time 10mm'].mean(),
         'std_RT_10': df['Average reach time 10mm'].std(),
-        'mean_SR_0': df['success ratio 5mm'].mean(),
+        'mean_SR_5': df['success ratio 5mm'].mean(),
         'std_SR_5': df['success ratio 5mm'].std(),
         'mean_RT_5': df['Average reach time 5mm'].mean(),
         'std_RT_5': df['Average reach time 5mm'].std(),
@@ -256,7 +256,7 @@ if __name__ == '__main__':
     for filename in res_file_list:
         # print(filename)
         filename = str(filename) # convert from Posixpath to string
-        
+
         W = load_results(filename)
         print(W['r'])
 
@@ -271,7 +271,7 @@ if __name__ == '__main__':
 
     all_rewards = pd.concat(df_list, axis=1)
     all_rewards.columns = col_list
-    
+
     all_rewards_copy = all_rewards.copy()
     all_rewards["mean_reward"] = all_rewards_copy.mean(axis=1)
     all_rewards["std_reward"] = all_rewards_copy.std(axis=1)
