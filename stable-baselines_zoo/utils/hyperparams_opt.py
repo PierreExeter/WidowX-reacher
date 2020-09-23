@@ -32,7 +32,7 @@ def hyperparam_optimization(algo, model_fn, env_fn, n_trials=10, n_timesteps=500
     :param verbose: (int)
     :return: (pd.Dataframe) detailed result of the optimization
     """
-    
+
     # TODO: eval each hyperparams several times to account for noisy evaluation
     # TODO: take into account the normalization (also for the test env -> sync obs_rms)
     if hyperparams is None:
@@ -144,7 +144,7 @@ def hyperparam_optimization(algo, model_fn, env_fn, n_trials=10, n_timesteps=500
     for key, value in trial.params.items():
         print('    {}: {}'.format(key, value))
 
-    
+
 
     ######## added by pierre
     best_params = trial.params

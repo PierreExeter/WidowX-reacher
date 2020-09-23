@@ -1,0 +1,145 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+%\usepackage{geometry}
+\usepackage{placeins} % use float barriers
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{grffile}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage[table,xcdraw]{xcolor}
+
+\title{RL benchmark - Manual hyperparameter tuning}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Introduction and methods}
+
+This is a benchmark on the reaching WidowX arm. We vary the hyperparameters and keep the same training environment.
+
+\begin{itemize}
+  \item Algorithms: PPO2
+  \item Environment: widowx-reacher-v5
+  \item 6 joints
+  \item Fixed goal
+  \item Dense reward: -dist**2
+\end{itemize}
+
+
+
+\section{Results}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_n_timesteps.png}
+\caption{Number of training steps}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_normalize.png}
+\caption{Normalise observation and reward}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_n_envs.png}
+\caption{Number of parallel environments}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_gamma.png}
+\caption{Gamma}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_n_steps.png}
+\caption{Number of steps to run for each environment per update}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_learning_rate.png}
+\caption{Learning rate}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_ent_coef.png}
+\caption{Entropy coefficient for the loss calculation}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_cliprange.png}
+\caption{Clipping parameter}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_lam.png}
+\caption{Factor for trade-off of bias vs variance for Generalized Advantage Estimator}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_nminibatches.png}
+\caption{Number of training minibatches per update}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../ppo2_noptepochs.png}
+\caption{Number of epoch when optimizing the surrogate}
+\end{figure}
+
+
+\section{Findings summary}
+
+
+\begin{itemize}
+  \item 200,000 timesteps are enough for the return to reach a plateau, however 500, 000 timesteps are required to reach the highest success ratio at 5mm. This means that the reward may not describe sufficiently well the objective we want to achieve.
+  \item Best cliprange: 0.2
+  \item Best ent coef: 0.01
+  \item Best gamma: 0.95
+  \item Best lam: 0.95 (note that the best return is not the same as the best success ration @ 5mm)
+  \item Best learning rate: 0.01
+  \item Best nb envs: 1 (but try also 8 since many hyperparams are fitted to this value)
+  \item Best nminibatches: 8
+  \item Best noptepochs: 50
+  \item Best normalize: True
+  \item Best nsteps: 16
+\end{itemize} 
+
+
+These parameters take too long to train. The following parameters are faster to train.
+
+\begin{itemize}
+  \item Timesteps: 500, 000
+  \item cliprange: 0.1
+  \item ent coef: 0.0001
+  \item gamma: 0.95
+  \item lam: 0.99
+  \item learning rate: 0.01
+  \item nb envs: 8
+  \item nminibatches: 8
+  \item noptepochs: 20
+  \item normalize: True
+  \item nsteps: 16
+\end{itemize} 
+
+
+\end{document}
