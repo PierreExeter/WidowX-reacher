@@ -1,3 +1,13 @@
+import widowx_env
+import gym
+from utils import ALGOS, create_test_env, get_latest_run_id, get_saved_hyperparams, find_saved_model
+from stable_baselines.common.vec_env import VecNormalize, VecFrameStack, VecEnv
+from stable_baselines.common import set_global_seeds
+import stable_baselines
+import numpy as np
+import utils.import_envs  # pytype: disable=import-error
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 import os
 import sys
 import argparse
@@ -10,22 +20,13 @@ import time
 # added by Pierre
 import matplotlib as mpl
 mpl.use('TkAgg')  # or whatever other backend that you want
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 
 # numpy warnings because of tensorflow
 warnings.filterwarnings("ignore", category=FutureWarning, module='tensorflow')
 warnings.filterwarnings("ignore", category=UserWarning, module='gym')
 
 # from rlkit.envs.wrappers import NormalizedBoxEnv
-import gym, widowx_env
-import utils.import_envs  # pytype: disable=import-error
-import numpy as np
-import stable_baselines
-from stable_baselines.common import set_global_seeds
-from stable_baselines.common.vec_env import VecNormalize, VecFrameStack, VecEnv
 
-from utils import ALGOS, create_test_env, get_latest_run_id, get_saved_hyperparams, find_saved_model
 
 # Fix for breaking change in v2.6.0
 sys.modules['stable_baselines.ddpg.memory'] = stable_baselines.common.buffers
@@ -58,9 +59,11 @@ def main():
                         help='Normalize reward if applicable (trained with VecNormalize)')
     parser.add_argument('--seed', help='Random generator seed', type=int, default=0)
     parser.add_argument('--reward-log', help='Where to log reward', default='', type=str)
-    parser.add_argument('--gym-packages', type=str, nargs='+', default=[], help='Additional external Gym environemnt package modules to import (e.g. gym_minigrid)')
-    parser.add_argument('--render-pybullet', help='Slow down Pybullet simulation to render', default=False) # added by Pierre
-    parser.add_argument('--random-pol', help='Random policy', default=False) # added by Pierre
+    parser.add_argument('--gym-packages', type=str, nargs='+', default=[],
+                        help='Additional external Gym environemnt package modules to import (e.g. gym_minigrid)')
+    parser.add_argument(
+        '--render-pybullet', help='Slow down Pybullet simulation to render', default=False)  # added by Pierre
+    parser.add_argument('--random-pol', help='Random policy', default=False)  # added by Pierre
     args = parser.parse_args()
 
     plot_bool = False
@@ -96,7 +99,6 @@ def main():
     else:
         log_path = os.path.join(folder, algo)
 
-
     assert os.path.isdir(log_path), "The {} folder was not found".format(log_path)
 
     if not args.random_pol:  # added by Pierre
@@ -110,7 +112,8 @@ def main():
     is_atari = 'NoFrameskip' in env_id
 
     stats_path = os.path.join(log_path, env_id)
-    hyperparams, stats_path = get_saved_hyperparams(stats_path, norm_reward=args.norm_reward, test_mode=True)
+    hyperparams, stats_path = get_saved_hyperparams(
+        stats_path, norm_reward=args.norm_reward, test_mode=True)
 
     log_dir = args.reward_log if args.reward_log != '' else None
 
@@ -131,36 +134,64 @@ def main():
     obs = env.reset()
 
     # Force deterministic for DQN, DDPG, SAC and HER (that is a wrapper around)
-    deterministic = args.deterministic or algo in ['dqn', 'ddpg', 'sac', 'her', 'td3'] and not args.stochastic
+    deterministic = args.deterministic or algo in [
+        'dqn', 'ddpg', 'sac', 'her', 'td3'] and not args.stochastic
 
     episode_reward = 0.0
     episode_rewards, episode_lengths = [], []
     ep_len = 0
     episode = 0
-
-    # success_threshold_001 = 0.01
-    # success_list_001, reachtime_list_001, episode_success_list_001 = [], [], []
-    # success_threshold_0002 = 0.002
-    # success_list_0002, reachtime_list_0002, episode_success_list_0002 = [], [], []
-    # success_threshold_0001 = 0.001
-    # success_list_0001, reachtime_list_0001, episode_success_list_0001 = [], [], []
-    # success_threshold_00005 = 0.0005
-    # success_list_00005, reachtime_list_00005, episode_success_list_00005 = [], [], []
-
-    # changed for the paper
     success_threshold_50 = 0.05
-    success_list_50, reachtime_list_50, episode_success_list_50 = [], [], []
     success_threshold_20 = 0.02
-    success_list_20, reachtime_list_20, episode_success_list_20 = [], [], []
     success_threshold_10 = 0.01
-    success_list_10, reachtime_list_10, episode_success_list_10 = [], [], []
     success_threshold_5 = 0.005
-    success_list_5, reachtime_list_5, episode_success_list_5 = [], [], []
-
+    success_threshold_2 = 0.002
+    success_threshold_1 = 0.001
+    success_threshold_05 = 0.0005
+    episode_success_list_50 = []
+    episode_success_list_20 = []
+    episode_success_list_10 = []
+    episode_success_list_5 = []
+    episode_success_list_2 = []
+    episode_success_list_1 = []
+    episode_success_list_05 = []
+    success_list_50 = []
+    success_list_20 = []
+    success_list_10 = []
+    success_list_5 = []
+    success_list_2 = []
+    success_list_1 = []
+    success_list_05 = []
 
     # For HER, monitor success rate
     successes = []
     state = None
+
+    ##############
+    def calc_ep_success(success_threshold, episode_success_list):
+        """update episode_success_list for the current timestep"""
+
+        if infos[0]['total_distance'] <= success_threshold:
+            episode_success_list.append(1)
+        else:
+            episode_success_list.append(0)
+        return episode_success_list
+
+    def calc_success_list(episode_success_list, success_list):
+        """ Append the last element of the episode success list when episode is done """
+        success_list.append(episode_success_list[-1])
+        return success_list
+
+    def calc_reach_time(episode_success_list):
+        """ If the episode is successful and it starts from an unsucessful step, calculate reach time """
+        reachtime_list = []
+        if episode_success_list[-1] == True and episode_success_list[0] == False:
+            idx = 0
+            while episode_success_list[idx] == False:
+                idx += 1
+            reachtime_list.append(idx)
+        return reachtime_list
+    ##############
 
     for _ in range(args.n_timesteps):
         if args.random_pol:
@@ -177,26 +208,14 @@ def main():
         if args.render_pybullet:
             time.sleep(1./30.)     # added by Pierre (slow down Pybullet for rendering)
 
-        if infos[0]['total_distance'] <= success_threshold_50:
-            episode_success_list_50.append(1)
-        else:
-            episode_success_list_50.append(0)
-
-        if infos[0]['total_distance'] <= success_threshold_20:
-            episode_success_list_20.append(1)
-        else:
-            episode_success_list_20.append(0)
-
-        if infos[0]['total_distance'] <= success_threshold_10:
-            episode_success_list_10.append(1)
-        else:
-            episode_success_list_10.append(0)
-
-        if infos[0]['total_distance'] <= success_threshold_5:
-            episode_success_list_5.append(1)
-        else:
-            episode_success_list_5.append(0)
-
+        # update episode success list
+        episode_success_list_50 = calc_ep_success(success_threshold_50, episode_success_list_50)
+        episode_success_list_20 = calc_ep_success(success_threshold_20, episode_success_list_20)
+        episode_success_list_10 = calc_ep_success(success_threshold_10, episode_success_list_10)
+        episode_success_list_5 = calc_ep_success(success_threshold_5, episode_success_list_5)
+        episode_success_list_2 = calc_ep_success(success_threshold_2, episode_success_list_2)
+        episode_success_list_1 = calc_ep_success(success_threshold_1, episode_success_list_1)
+        episode_success_list_05 = calc_ep_success(success_threshold_05, episode_success_list_05)
 
         if plot_bool:
             goal = infos[0]['goal position']
@@ -204,13 +223,19 @@ def main():
 
             if plot_dim == 2:
                 ax1.cla()
-                ax1.plot(goal[0], goal[2], marker='x', color='b', linestyle='', markersize=10, label="goal", mew=3)
-                ax1.plot(tip[0], tip[2], marker='o', color='r', linestyle='', markersize=10, label="end effector")
+                ax1.plot(goal[0], goal[2], marker='x', color='b',
+                         linestyle='', markersize=10, label="goal", mew=3)
+                ax1.plot(tip[0], tip[2], marker='o', color='r',
+                         linestyle='', markersize=10, label="end effector")
 
-                circ_1_50 = plt.Circle((goal[0], goal[2]), radius=success_threshold_50, edgecolor='g', facecolor='w', linestyle='--', label="50 mm")
-                circ_1_20 = plt.Circle((goal[0], goal[2]), radius=success_threshold_20, edgecolor='b', facecolor='w', linestyle='--', label="20 mm")
-                circ_1_10 = plt.Circle((goal[0], goal[2]), radius=success_threshold_10, edgecolor='m', facecolor='w', linestyle='--', label="10 mm")
-                circ_1_5 = plt.Circle((goal[0], goal[2]), radius=success_threshold_5, edgecolor='r', facecolor='w', linestyle='--', label="5 mm")
+                circ_1_50 = plt.Circle((goal[0], goal[2]), radius=success_threshold_50,
+                                       edgecolor='g', facecolor='w', linestyle='--', label="50 mm")
+                circ_1_20 = plt.Circle((goal[0], goal[2]), radius=success_threshold_20,
+                                       edgecolor='b', facecolor='w', linestyle='--', label="20 mm")
+                circ_1_10 = plt.Circle((goal[0], goal[2]), radius=success_threshold_10,
+                                       edgecolor='m', facecolor='w', linestyle='--', label="10 mm")
+                circ_1_5 = plt.Circle((goal[0], goal[2]), radius=success_threshold_5,
+                                      edgecolor='r', facecolor='w', linestyle='--', label="5 mm")
                 ax1.add_patch(circ_1_50)
                 ax1.add_patch(circ_1_20)
                 ax1.add_patch(circ_1_10)
@@ -222,13 +247,18 @@ def main():
                 ax1.set_ylabel("z (m)", fontsize=15)
 
                 ax2.cla()
-                ax2.plot(goal[1], goal[2], marker='x', color='b', linestyle='', markersize=10, mew=3)
+                ax2.plot(goal[1], goal[2], marker='x', color='b',
+                         linestyle='', markersize=10, mew=3)
                 ax2.plot(tip[1], tip[2], marker='o', color='r', linestyle='', markersize=10)
 
-                circ_2_50 = plt.Circle((goal[1], goal[2]), radius=success_threshold_50, edgecolor='g', facecolor='w', linestyle='--')
-                circ_2_20 = plt.Circle((goal[1], goal[2]), radius=success_threshold_20, edgecolor='b', facecolor='w', linestyle='--')
-                circ_2_10 = plt.Circle((goal[1], goal[2]), radius=success_threshold_10, edgecolor='m', facecolor='w', linestyle='--')
-                circ_2_5 = plt.Circle((goal[1], goal[2]), radius=success_threshold_5, edgecolor='r', facecolor='w', linestyle='--')
+                circ_2_50 = plt.Circle(
+                    (goal[1], goal[2]), radius=success_threshold_50, edgecolor='g', facecolor='w', linestyle='--')
+                circ_2_20 = plt.Circle(
+                    (goal[1], goal[2]), radius=success_threshold_20, edgecolor='b', facecolor='w', linestyle='--')
+                circ_2_10 = plt.Circle(
+                    (goal[1], goal[2]), radius=success_threshold_10, edgecolor='m', facecolor='w', linestyle='--')
+                circ_2_5 = plt.Circle((goal[1], goal[2]), radius=success_threshold_5,
+                                      edgecolor='r', facecolor='w', linestyle='--')
                 ax2.add_patch(circ_2_50)
                 ax2.add_patch(circ_2_20)
                 ax2.add_patch(circ_2_10)
@@ -239,7 +269,8 @@ def main():
                 ax2.set_xlabel("y (m)", fontsize=15)
                 ax2.set_ylabel("z (m)", fontsize=15)
 
-                ax1.legend(loc='upper left', bbox_to_anchor=(0, 1.2), ncol=3, fancybox=True, shadow=True)
+                ax1.legend(loc='upper left', bbox_to_anchor=(
+                    0, 1.2), ncol=3, fancybox=True, shadow=True)
 
             elif plot_dim == 3:
                 ax.cla()
@@ -252,7 +283,8 @@ def main():
                 ax.set_ylabel("y (m)", fontsize=15)
                 ax.set_zlabel("z (m)", fontsize=15)
 
-            fig.suptitle("timestep "+str(ep_len)+" | distance to target: "+str(round(infos[0]['total_distance']*1000, 1))+" mm")
+            fig.suptitle("timestep "+str(ep_len)+" | distance to target: " +
+                         str(round(infos[0]['total_distance']*1000, 1))+" mm")
             plt.pause(0.01)
             # plt.show()
 
@@ -265,7 +297,6 @@ def main():
             dict_log['timestep'] = ep_len
             dict_log['episode'] = episode
             output_df = output_df.append(dict_log, ignore_index=True)
-
 
         # if not args.no_render:
         #     env.render('human')
@@ -285,42 +316,30 @@ def main():
             if done and not is_atari and args.verbose > 0:
                 # NOTE: for env using VecNormalize, the mean reward
                 # is a normalized reward when `--norm_reward` flag is passed
-                print("Episode nb: {} | Episode Reward: {:.2f} | Episode Length: {}".format(episode, episode_reward, ep_len))
+                print("Episode nb: {} | Episode Reward: {:.2f} | Episode Length: {}".format(
+                    episode, episode_reward, ep_len))
                 # print("Episode Length", ep_len) # commented by Pierre
                 state = None
                 episode_rewards.append(episode_reward)
                 episode_lengths.append(ep_len)
 
                 # append the last element of the episode success list when episode is done
-                success_list_50.append(episode_success_list_50[-1])
-                success_list_20.append(episode_success_list_20[-1])
-                success_list_10.append(episode_success_list_10[-1])
-                success_list_5.append(episode_success_list_5[-1])
+                success_list_50 = calc_success_list(episode_success_list_50, success_list_50)
+                success_list_20 = calc_success_list(episode_success_list_20, success_list_20)
+                success_list_10 = calc_success_list(episode_success_list_10, success_list_10)
+                success_list_5 = calc_success_list(episode_success_list_5, success_list_5)
+                success_list_2 = calc_success_list(episode_success_list_2, success_list_2)
+                success_list_1 = calc_success_list(episode_success_list_1, success_list_1)
+                success_list_05 = calc_success_list(episode_success_list_05, success_list_05)
 
-                # if the episode is successful and it starts from an unsucessful step, calculate reach time
-                if episode_success_list_50[-1] == True and episode_success_list_50[0] == False:
-                    idx = 0
-                    while episode_success_list_50[idx] == False:
-                        idx += 1
-                    reachtime_list_50.append(idx)
-
-                if episode_success_list_20[-1] == True and episode_success_list_20[0] == False:
-                    idx = 0
-                    while episode_success_list_20[idx] == False:
-                        idx += 1
-                    reachtime_list_20.append(idx)
-
-                if episode_success_list_10[-1] == True and episode_success_list_10[0] == False:
-                    idx = 0
-                    while episode_success_list_10[idx] == False:
-                        idx += 1
-                    reachtime_list_10.append(idx)
-
-                if episode_success_list_5[-1] == True and episode_success_list_5[0] == False:
-                    idx = 0
-                    while episode_success_list_5[idx] == False:
-                        idx += 1
-                    reachtime_list_5.append(idx)
+                # If the episode is successful and it starts from an unsucessful step, calculate reach time
+                reachtime_list_50 = calc_reach_time(episode_success_list_50)
+                reachtime_list_20 = calc_reach_time(episode_success_list_20)
+                reachtime_list_10 = calc_reach_time(episode_success_list_10)
+                reachtime_list_5 = calc_reach_time(episode_success_list_5)
+                reachtime_list_2 = calc_reach_time(episode_success_list_2)
+                reachtime_list_1 = calc_reach_time(episode_success_list_1)
+                reachtime_list_05 = calc_reach_time(episode_success_list_05)
 
                 if log_bool:
                     # output_df.to_csv(log_path+"/res_episode_"+str(episode)+".csv", index=False)  # slow
@@ -333,6 +352,9 @@ def main():
                 episode_success_list_20 = []
                 episode_success_list_10 = []
                 episode_success_list_5 = []
+                episode_success_list_2 = []
+                episode_success_list_1 = []
+                episode_success_list_05 = []
                 episode += 1
 
             # Reset also when the goal is achieved when using HER
@@ -350,11 +372,22 @@ def main():
         print("Success rate: {:.2f}%".format(100 * np.mean(successes)))
 
     if args.verbose > 0 and len(episode_rewards) > 0:
-        print("Mean reward: {:.2f} +/- {:.2f}".format(np.mean(episode_rewards), np.std(episode_rewards)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_50, np.mean(success_list_50), np.mean(reachtime_list_50)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_20, np.mean(success_list_20), np.mean(reachtime_list_20)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_10, np.mean(success_list_10), np.mean(reachtime_list_10)))
-        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(success_threshold_5, np.mean(success_list_5), np.mean(reachtime_list_5)))
+        print("Mean reward: {:.2f} +/- {:.2f}".format(np.mean(episode_rewards),
+                                                      np.std(episode_rewards)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_50, np.mean(success_list_50), np.mean(reachtime_list_50)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_20, np.mean(success_list_20), np.mean(reachtime_list_20)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_10, np.mean(success_list_10), np.mean(reachtime_list_10)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_5, np.mean(success_list_5), np.mean(reachtime_list_5)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_2, np.mean(success_list_2), np.mean(reachtime_list_2)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_1, np.mean(success_list_1), np.mean(reachtime_list_1)))
+        print("success threshold: {} | success ratio: {:.2f} | Average reach time: {:.2f}".format(
+            success_threshold_05, np.mean(success_list_05), np.mean(reachtime_list_05)))
 
         # added by Pierre
         print("path:", log_path)
@@ -369,17 +402,24 @@ def main():
             "Average reach time 10mm": np.mean(reachtime_list_10),
             "success ratio 5mm": np.mean(success_list_5),
             "Average reach time 5mm": np.mean(reachtime_list_5),
-            }
+            "success ratio 2mm": np.mean(success_list_2),
+            "Average reach time 2mm": np.mean(reachtime_list_2),
+            "success ratio 1mm": np.mean(success_list_1),
+            "Average reach time 1mm": np.mean(reachtime_list_1),
+            "success ratio 0.5mm": np.mean(success_list_05),
+            "Average reach time 0.5mm": np.mean(reachtime_list_05)
+        }
         df = pd.DataFrame(d, index=[0])
 
         if args.random_pol:
-            df.to_csv("logs/random_policy_0.2M/"+env_id+"/stats.csv", index=False)  # make path naming more robust
+            df.to_csv("logs/random_policy_0.2M/"+env_id+"/stats.csv",
+                      index=False)  # make path naming more robust
         else:
             df.to_csv(log_path+"/stats.csv", index=False)
 
-
     if args.verbose > 0 and len(episode_lengths) > 0:
-        print("Mean episode length: {:.2f} +/- {:.2f}".format(np.mean(episode_lengths), np.std(episode_lengths)))
+        print(
+            "Mean episode length: {:.2f} +/- {:.2f}".format(np.mean(episode_lengths), np.std(episode_lengths)))
 
     # Workaround for https://github.com/openai/gym/issues/893
     if not args.no_render:

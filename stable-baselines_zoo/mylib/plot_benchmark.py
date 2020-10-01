@@ -10,6 +10,7 @@ df = pd.read_csv("results/benchmark_results.csv")
 # be careful: ent_coeff is a string. I might need to convert it to a float in the future
 # df['ent_coef'] = df['ent_coef'].astype(float)
 
+
 def plot_df(dff, col, filename):
     """
     dff: dataframe to plot
@@ -24,6 +25,9 @@ def plot_df(dff, col, filename):
     dff.plot(x=col, y='mean_SR_20', yerr='std_SR_20', capsize=4, ax=ax3)
     dff.plot(x=col, y='mean_SR_10', yerr='std_SR_10', capsize=4, ax=ax3)
     dff.plot(x=col, y='mean_SR_5', yerr='std_SR_5', capsize=4, ax=ax3)
+    dff.plot(x=col, y='mean_SR_2', yerr='std_SR_2', capsize=4, ax=ax3)
+    dff.plot(x=col, y='mean_SR_1', yerr='std_SR_1', capsize=4, ax=ax3)
+    dff.plot(x=col, y='mean_SR_05', yerr='std_SR_05', capsize=4, ax=ax3)
     dff.plot(x=col, y='mean_RT_50', yerr='std_RT_50', capsize=4, ax=ax4)
     dff.plot(x=col, y='mean_RT_20', yerr='std_RT_20', capsize=4, ax=ax4)
     dff.plot(x=col, y='mean_RT_10', yerr='std_RT_10', capsize=4, ax=ax4)
@@ -33,6 +37,11 @@ def plot_df(dff, col, filename):
     ax2.set_ylabel("Train time (s)")
     ax3.set_ylabel("Success ratio")
     ax4.set_ylabel("Reach time")
+
+    # ax1.set_yscale('symlog')  # doesn't help
+
+    ax3.legend(bbox_to_anchor=(1, 1.05))
+    ax4.legend(bbox_to_anchor=(1.2, 1.05))
 
     plt.tight_layout()
     # plt.show()
@@ -51,9 +60,12 @@ def x_variable(dfa, mask, var):
 
     dfb = dfb.sort_values(var)
     print(dfb[var])
-    print(dfb["mean_SR_5"])
+    # print(dfb["mean_SR_5"])
     plot_df(dfb, var, "results/plots/ppo2_"+var+".png")
 
+
+print("max success ratio @5mm:",  df["mean_SR_5"].max())
+print("best config:", df["mean_SR_5"].argmax())
 
 # DEFAULT MASK WITH DEFAULT HYPERPRAMS
 # mask = (df['algo']=='ppo2') & \
@@ -70,196 +82,193 @@ def x_variable(dfa, mask, var):
 # (df['noptepochs']==4) & \
 # (df['cliprange']==0.2)
 
-# #
-# ### TIMESTEPS
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
 #
-# x_variable(df, mask, 'n_timesteps')
-#
-# ### NORMALISATION
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'normalize')
-#
-#
-# # ### N_ENVS
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'n_envs')
-#
-# ## GAMMA
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'gamma')
-#
-# ### NSTEPS
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'n_steps')
+# TIMESTEPS
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
 
-## ENT_COEFF
+x_variable(df, mask, 'n_timesteps')
 
-mask = (df['algo']=='ppo2') & \
-(df['normalize']==True)  & \
-(df['n_envs']==8) & \
-(df['n_timesteps']==500000) & \
-(df['gamma']==0.99) & \
-(df['n_steps']==128) & \
-(df['learning_rate']==0.00025) & \
-(df['vf_coef']==0.5) & \
-(df['lam']==0.95) & \
-(df['nminibatches']==4) & \
-(df['noptepochs']==4) & \
-(df['cliprange']==0.2)
+# NORMALISATION
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'normalize')
+
+
+# ### N_ENVS
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'n_envs')
+
+# GAMMA
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'gamma')
+
+# NSTEPS
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'n_steps')
+
+# ENT_COEFF
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
 
 x_variable(df, mask, 'ent_coef')
 
-# ## LEARNING RATE
+# LEARNING RATE
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'learning_rate')
+
+
+# LAM
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'lam')
 #
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'learning_rate')
-#
-#
-#
-# # LAM
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'lam')
-# #
-#
-# ### CLIPRANGE
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['noptepochs']==4)
-#
-# x_variable(df, mask, 'cliprange')
-#
-#
-#
-#
-# ## NMINIBATCHES
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['noptepochs']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'nminibatches')
-#
-# ## NOPTEPOCHS
-#
-# mask = (df['algo']=='ppo2') & \
-# (df['normalize']==True)  & \
-# (df['n_envs']==8) & \
-# (df['n_timesteps']==500000) & \
-# (df['gamma']==0.99) & \
-# (df['n_steps']==128) & \
-# (df['ent_coef']=='0.01')  & \
-# (df['learning_rate']==0.00025) & \
-# (df['vf_coef']==0.5) & \
-# (df['lam']==0.95) & \
-# (df['nminibatches']==4) & \
-# (df['cliprange']==0.2)
-#
-# x_variable(df, mask, 'noptepochs')
+
+# CLIPRANGE
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 4)
+
+x_variable(df, mask, 'cliprange')
+
+
+# NMINIBATCHES
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['noptepochs'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'nminibatches')
+
+# NOPTEPOCHS
+
+mask = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['cliprange'] == 0.2)
+
+x_variable(df, mask, 'noptepochs')

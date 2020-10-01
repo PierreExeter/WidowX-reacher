@@ -44,7 +44,6 @@ JOINT_NAMES = ['joint_1', 'joint_2', 'joint_3',
 SIM_START_POSITION = np.array([-0.185033226409, 0.00128528, 0.46227163])
 
 
-
 class WidowxEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 
@@ -70,7 +69,7 @@ class WidowxEnv(gym.Env):
         observation_space = spaces.Box(
             low=self.obs_space_low, high=self.obs_space_high, dtype=np.float32)
         self.observation_space = observation_space
-        
+
         # added by Pierre, normalize action space, cf https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html
         self.action_space = spaces.Box(low=np.array([-0.5, -0.25, -0.25, -0.25, -0.5, -0.005]) / 10,
                                        high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 10, dtype=np.float32)
@@ -107,19 +106,20 @@ class WidowxEnv(gym.Env):
             ))
         # p.resetSimulation()
         # p.setTimeStep(0.01)
-        p.resetDebugVisualizerCamera(cameraDistance=0.6, cameraYaw=0, cameraPitch=-30, cameraTargetPosition=[0.2, 0, 0.1], physicsClientId=self.physics_client)  # added by Pierre
+        p.resetDebugVisualizerCamera(cameraDistance=0.6, cameraYaw=0, cameraPitch=-30, cameraTargetPosition=[
+                                     0.2, 0, 0.1], physicsClientId=self.physics_client)  # added by Pierre
 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         path = os.path.abspath(os.path.dirname(__file__))
         self.arm = p.loadURDF(os.path.join(path, "URDFs/widowx/widowx.urdf"), useFixedBase=True)
-        self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"), useFixedBase=True)      # added by Pierre
+        self.sphere = p.loadURDF(os.path.join(path, "URDFs/sphere.urdf"),
+                                 useFixedBase=True)      # added by Pierre
         self.plane = p.loadURDF('plane.urdf')   # added by Pierre
         self.reset()
         return self
 
+    # shared functions between both sim and robot mode
 
-    #shared functions between both sim and robot mode   
-    
     def sample_goal_for_rollout(self):
         return np.random.uniform(low=np.array([-.14, -.13, 0.26]), high=np.array([.14, .13, .39]))
 
@@ -140,7 +140,7 @@ class WidowxEnv(gym.Env):
                 either current position or an observation object, depending on
                 the type of environment this is representing
             reward (float) :
-                negative, squared, l2 distance between current position and 
+                negative, squared, l2 distance between current position and
                 goal position
             episode_over (bool) :
                 Whether or not we have reached the goal
@@ -155,7 +155,7 @@ class WidowxEnv(gym.Env):
         new_joint_positions = joint_positions + action
         new_joint_positions = np.clip(np.array(new_joint_positions), JOINT_MIN, JOINT_MAX)
         self._force_joint_positions(new_joint_positions)
-        
+
         end_effector_pos = self._get_current_end_effector_position()
         x, y, z = end_effector_pos[0], end_effector_pos[1], end_effector_pos[2]
         conditions = [
@@ -201,8 +201,10 @@ class WidowxEnv(gym.Env):
 
     def reset(self):
 
-        p.resetBasePositionAndOrientation(self.arm, [0, 0, 0], p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))
-        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
+        p.resetBasePositionAndOrientation(
+            self.arm, [0, 0, 0], p.getQuaternionFromEuler([np.pi, np.pi, np.pi]))
+        p.resetBasePositionAndOrientation(self.sphere, self.goal, p.getQuaternionFromEuler(
+            [np.pi, np.pi, np.pi]))         # added by Pierre: move sphere to self.goal position
         self._force_joint_positions(RESET_VALUES)
         self.current_pos = self._get_current_state()
 
@@ -300,16 +302,16 @@ class WidowxEnv(gym.Env):
                           s[-1] for s in stat], always_show_all_stats=True,))
         return statistics
 
-    #Functions only for sim mode
+    # Functions only for sim mode
     def _get_current_joint_positions(self):
         joint_positions = []
         for i in range(6):
             joint_positions.append(p.getJointState(self.arm, i)[0])
         return np.array(joint_positions, dtype=np.float32)
-        
+
     def _get_current_end_effector_position(self):
         real_position = np.array(list(p.getLinkState(self.arm, 5, computeForwardKinematics=1)[4]))
-        #real_position[2] = -real_position[2] #SIM z coordinates are reversed
+        # real_position[2] = -real_position[2] #SIM z coordinates are reversed
         #adjusted_position = real_position + SIM_START_POSITION
         return real_position
 
@@ -339,9 +341,9 @@ class WidowxEnv(gym.Env):
 
     def _get_current_state(self):
         return np.concatenate(
-                [self._get_current_end_effector_position(),
-                self._get_current_joint_positions()],
-                axis = 0)
+            [self._get_current_end_effector_position(),
+             self._get_current_joint_positions()],
+            axis=0)
 
     # Functions for pickling
     def __getstate__(self):

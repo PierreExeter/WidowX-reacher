@@ -125,20 +125,20 @@ This is a benchmark on the reaching WidowX arm. We vary the hyperparameters and 
 \end{itemize} 
 
 
-These parameters take too long to train. The following parameters are faster to train.
+These parameters take too long to train. The best trained agent has the following parameters:
 
 \begin{itemize}
   \item Timesteps: 500, 000
-  \item cliprange: 0.1
-  \item ent coef: 0.0001
-  \item gamma: 0.95
-  \item lam: 0.99
-  \item learning rate: 0.01
+  \item cliprange: 0.2
+  \item ent coef: 0.01
+  \item gamma: 0.99
+  \item lam: 0.95
+  \item learning rate: 0.00025
   \item nb envs: 8
-  \item nminibatches: 8
-  \item noptepochs: 20
+  \item nminibatches: 4
+  \item noptepochs: 50
   \item normalize: True
-  \item nsteps: 16
+  \item nsteps: 128
 \end{itemize} 
 
 

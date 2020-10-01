@@ -1,2 +1,2 @@
-Eval mean reward,Eval std,success ratio 50mm,Average reach time 50mm,success ratio 20mm,Average reach time 20mm,success ratio 10mm,Average reach time 10mm,success ratio 5mm,Average reach time 5mm,Train walltime (s)
--0.12061689979045695,0.0009667833161379756,1.0,9.0,1.0,12.0,1.0,12.05,0.85,21.11764705882353,112.82431554794312
+Eval mean reward,Eval std,success ratio 50mm,Average reach time 50mm,success ratio 20mm,Average reach time 20mm,success ratio 10mm,Average reach time 10mm,success ratio 5mm,Average reach time 5mm,success ratio 2mm,Average reach time 2mm,success ratio 1mm,Average reach time 1mm,success ratio 0.5mm,Average reach time 0.5mm,Train walltime (s)
+-0.12066580007983704,0.0009870877940681506,1.0,9.0,1.0,12.0,0.95,12.0,0.85,17.0,0.0,,0.0,,0.0,,112.82431554794312

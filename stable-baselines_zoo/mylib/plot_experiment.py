@@ -1,3 +1,10 @@
+from stable_baselines.results_plotter import load_results, ts2xy
+from stable_baselines import results_plotter
+import argparse
+import os
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 import pandas as pd
 from pathlib import Path
 import yaml
@@ -6,47 +13,6 @@ import yaml
 # added by Pierre
 import matplotlib as mpl
 mpl.use('TkAgg')  # or whatever other backend that you want
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-import numpy as np
-import os
-import argparse
-
-from stable_baselines import results_plotter
-from stable_baselines.results_plotter import load_results, ts2xy
-
-
-def moving_average(values, window):
-        """
-        Smooth values by doing a moving average
-        :param values: (numpy array)
-        :param window: (int)
-        :return: (numpy array)
-        """
-        weights = np.repeat(1.0, window) / window
-        return np.convolve(values, weights, 'valid')
-
-
-def plot_results(log_folder, type_str, leg_label):
-    """
-    plot the results
-
-    :param log_folder: (str) the save location of the results to plot
-    :param type: (str) either 'timesteps', 'episodes' or 'walltime_hrs'
-    """
-
-    x, y = ts2xy(load_results(log_folder), type_str)
-
-    y = moving_average(y, window=50)
-    # Truncate x
-    x = x[len(x) - len(y):]
-
-    # plt.figure()
-    # plt.plot(x, y, label=leg_label)
-    # plt.xlabel(type_str)
-    plt.ylabel('Rewards')
-
 
 
 if __name__ == '__main__':
@@ -63,7 +29,6 @@ if __name__ == '__main__':
     env_id = args.env
     log_dir = args.folder
     print(log_dir)
-
 
     ###############
     # METRICS
@@ -124,13 +89,24 @@ if __name__ == '__main__':
         'std success ratio 5mm': df['success ratio 5mm'].std(),
         'mean reach time 5mm': df['Average reach time 5mm'].mean(),
         'std reach time 5mm': df['Average reach time 5mm'].std(),
+        'mean_SR_2': df['success ratio 2mm'].mean(),
+        'std_SR_2': df['success ratio 2mm'].std(),
+        'mean_RT_2': df['Average reach time 2mm'].mean(),
+        'std_RT_2': df['Average reach time 2mm'].std(),
+        'mean_SR_1': df['success ratio 1mm'].mean(),
+        'std_SR_1': df['success ratio 1mm'].std(),
+        'mean_RT_1': df['Average reach time 1mm'].mean(),
+        'std_RT_1': df['Average reach time 1mm'].std(),
+        'mean_SR_05': df['success ratio 0.5mm'].mean(),
+        'std_SR_05': df['success ratio 0.5mm'].std(),
+        'mean_RT_05': df['Average reach time 0.5mm'].mean(),
+        'std_RT_05': df['Average reach time 0.5mm'].std(),
     }
 
     df_res = pd.DataFrame(d, index=[0])
     df_res.to_csv(log_dir+"results_seed_exp.csv", index=False)
 
-
-    ############### Prepare dataframe for compiling benchmark results
+    # Prepare dataframe for compiling benchmark results
 
     if env_id == "widowx_reacher-v5":
         nb_joints = 6
@@ -178,7 +154,6 @@ if __name__ == '__main__':
     #     else:
     #         raise ValueError("Hyperparameters not found for {}-{}".format(algo, env_id))
 
-
     # # LOAD HYPERPARAMS FROM config.yml (it is the same for all the seeds so selecting any config.yml is fine)
     # I specified the defaults hyperparameters in the hyperparameters/{algo}.yml
     # So the config.yml should contain all the hyperparameters used during training
@@ -191,7 +166,7 @@ if __name__ == '__main__':
         hyperparams_ordered = yaml.load(f, Loader=yaml.UnsafeLoader)
         hyperparams = dict(hyperparams_ordered)
 
-    benchmark_dict = {
+    env_dict = {
         'env_id': env_id,
         'nb_joints': nb_joints,
         'action': action,
@@ -201,31 +176,64 @@ if __name__ == '__main__':
         'goal_env': goal_env,
         'algo': algo,
         'nb_seeds': nb_seeds,
+        'nb_eval_timesteps': nb_eval_timesteps
+    }
+
+    metrics_dict = {
         'mean_train_time(s)': df['Train walltime (s)'].mean(),
         'std_train_time(s)': df['Train walltime (s)'].std(),
-        'nb_eval_timesteps': nb_eval_timesteps,
+        'min_train_time(s)': df['Train walltime (s)'].min(),
+        'simulated_time_doc(s)': hyperparams['n_timesteps']/240,
+        'simulated_time_measured(s)': hyperparams['n_timesteps']*0.0001386822271347046,
         'mean_return': df['Eval mean reward'].mean(),
         'std_return': df['Eval mean reward'].std(),
+        'max_return': df['Eval mean reward'].max(),
         'mean_SR_50': df['success ratio 50mm'].mean(),
         'std_SR_50': df['success ratio 50mm'].std(),
+        'max_SR_50': df['success ratio 50mm'].max(),
         'mean_RT_50': df['Average reach time 50mm'].mean(),
         'std_RT_50': df['Average reach time 50mm'].std(),
+        'max_RT_50': df['Average reach time 50mm'].max(),
         'mean_SR_20': df['success ratio 20mm'].mean(),
         'std_SR_20': df['success ratio 20mm'].std(),
+        'max_SR_20': df['success ratio 20mm'].max(),
         'mean_RT_20': df['Average reach time 20mm'].mean(),
         'std_RT_20': df['Average reach time 20mm'].std(),
+        'max_RT_20': df['Average reach time 20mm'].max(),
         'mean_SR_10': df['success ratio 10mm'].mean(),
         'std_SR_10': df['success ratio 10mm'].std(),
+        'max_SR_10': df['success ratio 10mm'].max(),
         'mean_RT_10': df['Average reach time 10mm'].mean(),
         'std_RT_10': df['Average reach time 10mm'].std(),
+        'max_RT_10': df['Average reach time 10mm'].max(),
         'mean_SR_5': df['success ratio 5mm'].mean(),
         'std_SR_5': df['success ratio 5mm'].std(),
+        'max_SR_5': df['success ratio 5mm'].max(),
         'mean_RT_5': df['Average reach time 5mm'].mean(),
         'std_RT_5': df['Average reach time 5mm'].std(),
+        'max_RT_5': df['Average reach time 5mm'].max(),
+        'mean_SR_2': df['success ratio 2mm'].mean(),
+        'std_SR_2': df['success ratio 2mm'].std(),
+        'max_SR_2': df['success ratio 2mm'].max(),
+        'mean_RT_2': df['Average reach time 2mm'].mean(),
+        'std_RT_2': df['Average reach time 2mm'].std(),
+        'max_RT_2': df['Average reach time 2mm'].max(),
+        'mean_SR_1': df['success ratio 1mm'].mean(),
+        'std_SR_1': df['success ratio 1mm'].std(),
+        'max_SR_1': df['success ratio 1mm'].max(),
+        'mean_RT_1': df['Average reach time 1mm'].mean(),
+        'std_RT_1': df['Average reach time 1mm'].std(),
+        'max_RT_1': df['Average reach time 1mm'].max(),
+        'mean_SR_05': df['success ratio 0.5mm'].mean(),
+        'std_SR_05': df['success ratio 0.5mm'].std(),
+        'max_SR_05': df['success ratio 0.5mm'].max(),
+        'mean_RT_05': df['Average reach time 0.5mm'].mean(),
+        'std_RT_05': df['Average reach time 0.5mm'].std(),
+        'max_RT_05': df['Average reach time 0.5mm'].max()
     }
 
     # append hyperparameters
-    benchmark_dict = {**benchmark_dict, **hyperparams}
+    benchmark_dict = {**env_dict, **hyperparams, **metrics_dict}
 
     # transform into a dataframe
     df_bench = pd.DataFrame(benchmark_dict, index=[0])
@@ -255,7 +263,7 @@ if __name__ == '__main__':
 
     for filename in res_file_list:
         # print(filename)
-        filename = str(filename) # convert from Posixpath to string
+        filename = str(filename)  # convert from Posixpath to string
 
         W = load_results(filename)
         print(W['r'])
@@ -263,11 +271,6 @@ if __name__ == '__main__':
         df_list.append(W['r'])
         col_list.append("seed "+str(count))
         count += 1
-
-    #     plot_results(filename, 'timesteps', "seed nb "+str(count))
-    # #     plot_results(filename, 'episodes')
-    # #     plot_results(filename, 'walltime_hrs')
-
 
     all_rewards = pd.concat(df_list, axis=1)
     all_rewards.columns = col_list
@@ -296,9 +299,6 @@ if __name__ == '__main__':
     plt.legend()
     plt.savefig(log_dir+"reward_vs_timesteps.png", dpi=100)
     # plt.show()
-
-
-
 
     # apply rolling window (except on timesteps)
     for col in all_rewards.columns[:-1]:
