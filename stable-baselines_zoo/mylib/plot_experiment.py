@@ -126,6 +126,33 @@ if __name__ == '__main__':
         goal_env = 1
         ep_len = 100
 
+    elif env_id == "widowx_reacher-v14":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**3]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+
+    elif env_id == "widowx_reacher-v15":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**4]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+
+    elif env_id == "widowx_reacher-v16":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+
     # I need to add forward slashes because reacher contains "her"...
     if "/a2c/" in log_dir:
         algo = "a2c"

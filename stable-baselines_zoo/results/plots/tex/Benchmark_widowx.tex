@@ -12,7 +12,7 @@
 \usepackage{siunitx}
 \usepackage[table,xcdraw]{xcolor}
 
-\title{RL benchmark - Manual hyperparameter tuning}
+\title{RL benchmark - WidowX}
 \date{}
 
 \begin{document}
@@ -20,12 +20,25 @@
 \maketitle
 
 
-\section{Introduction and methods}
 
-This is a benchmark on the reaching WidowX arm. We vary the hyperparameters and keep the same training environment.
+\section{Compare RL algorithms}
+
+We train the WidowX arm with fixed goal with the different RL algorithm and their default hyperparameters.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../algo.png}
+\caption{Algorithms applied to widowx-reacher-v5}
+\end{figure}
+
+PPO2 gives the best performance and train time.
+
+
+\section{Manual hyperparameter tuning}
+
+We train with PPO2 and change the hyperparameters. The training environment is:
 
 \begin{itemize}
-  \item Algorithms: PPO2
   \item Environment: widowx-reacher-v5
   \item 6 joints
   \item Fixed goal
@@ -33,8 +46,6 @@ This is a benchmark on the reaching WidowX arm. We vary the hyperparameters and 
 \end{itemize}
 
 
-
-\section{Results}
 
 
 \begin{figure}[H]
@@ -107,8 +118,6 @@ This is a benchmark on the reaching WidowX arm. We vary the hyperparameters and 
 \end{figure}
 
 
-\section{Findings summary}
-
 
 \begin{itemize}
   \item 200,000 timesteps are enough for the return to reach a plateau, however 500, 000 timesteps are required to reach the highest success ratio at 5mm. This means that the reward may not describe sufficiently well the objective we want to achieve.
@@ -140,6 +149,18 @@ These parameters take too long to train. The best trained agent has the followin
   \item normalize: True
   \item nsteps: 128
 \end{itemize} 
+
+
+\section{Environment tuning}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../reward_dist.png}
+\caption{Reward as a function of the distance}
+\end{figure}
+
+
 
 
 \end{document}

@@ -469,6 +469,58 @@ widowx_reacher-v5:
   cliprange: 0.2
   policy_kwargs: None
 
+
+widowx_reacher-v14:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 20
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v15:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 20
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v16:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 20
+  cliprange: 0.2
+  policy_kwargs: None
+
 # # PAPER
 # widowx_reacher-v5:
 #   normalize: true

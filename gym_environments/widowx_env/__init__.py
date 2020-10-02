@@ -7,13 +7,13 @@ register(id='widowx_reacher-v0',
          max_episode_steps=100
          )
 
-# environment for the physical arm only         
+# environment for the physical arm only
 register(id='widowx_reacher-v1',
          entry_point='widowx_env.envs.v1_widowx_physical_only:WidowxEnv',
          max_episode_steps=100
          )
 
-# environment for the physical arm only + no start_rospy method 
+# environment for the physical arm only + no start_rospy method
 register(id='widowx_reacher-v2',
          entry_point='widowx_env.envs.v2_widowx_physical_env_fixedGoal:WidowxEnv',
          max_episode_steps=100
@@ -63,10 +63,28 @@ register(id='widowx_reacher-v12',
          entry_point='widowx_env.envs.v12_widowx_physical_env_randomGoal:WidowxEnv',
          max_episode_steps=100
          )
-         
+
 # environment for the physical arm only + no start_rospy method + goal environment + random goal
 register(id='widowx_reacher-v13',
          entry_point='widowx_env.envs.v13_widowx_physical_goalEnv_randomGoal:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + reward = -dist**3
+register(id='widowx_reacher-v14',
+         entry_point='widowx_env.envs.v14_widowx_pybullet_env_fixedGoal_dist3:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + reward = -dist**4
+register(id='widowx_reacher-v15',
+         entry_point='widowx_env.envs.v15_widowx_pybullet_env_fixedGoal_dist4:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + reward = -dist
+register(id='widowx_reacher-v16',
+         entry_point='widowx_env.envs.v16_widowx_pybullet_env_fixedGoal_dist:WidowxEnv',
          max_episode_steps=100
          )
 

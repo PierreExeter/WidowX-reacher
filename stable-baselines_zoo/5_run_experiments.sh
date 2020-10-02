@@ -4,9 +4,9 @@
 
 # nsteps=10000     # NEW: don't specify explicitely the number of training steps, rather use the value in hyperparams/algo.yml (easier to log the hyperparameters afterwards)
 nsteps_rand=500000
-log_dir="logs/benchmark/train_widowx_reacher-v5_test"
+log_dir="logs/benchmark/train_widowx_reacher-v16_noptepochs20"
 # log_dir_rand="logs/train_0.5M_widowx_reacher-v5_random"
-env="widowx_reacher-v5"
+env="widowx_reacher-v16"
 env_her="widowx_reacher-v6"
 nseeds=2
 

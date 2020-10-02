@@ -6,19 +6,19 @@ from stable_baselines.common.vec_env import DummyVecEnv, VecNormalize
 from stable_baselines.common.env_checker import check_env
 
 
-
 # env = gym.make('widowx_reacher-v0').start_sim(goal_oriented=False, render_bool=True)   # or .start_rospy(goal_oriented=False)
 # env = gym.make('widowx_reacher-v1').start_rospy(goal_oriented=False)                   # requires a roscore to be running
 # env = gym.make('widowx_reacher-v2')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v3')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v4').start_sim(goal_oriented=False, render_bool=True)
-env = gym.make('widowx_reacher-v5')
-# env = gym.make('widowx_reacher-v6')  
-# env = gym.make('widowx_reacher-v7')  
-# env = gym.make('widowx_reacher-v8')  
-# env = gym.make('widowx_reacher-v12')  
-# env = gym.make('widowx_reacher-v13')  
-
+# env = gym.make('widowx_reacher-v5')
+# env = gym.make('widowx_reacher-v6')
+# env = gym.make('widowx_reacher-v7')
+# env = gym.make('widowx_reacher-v8')
+# env = gym.make('widowx_reacher-v12')
+# env = gym.make('widowx_reacher-v13')
+env = gym.make('widowx_reacher-v14')
+# env = gym.make('widowx_reacher-v15')
 
 print("isinstance(env, gym.GoalEnv)", isinstance(env, gym.Env))
 
@@ -52,12 +52,12 @@ print("any warnings?", check_env(env))
 
 
 for episode in range(3):
-    obs = env.reset()             
+    obs = env.reset()
     rewards = []
-    
+
     for t in range(102):
-        action = env.action_space.sample()  
-        obs, reward, done, info = env.step(action) 
+        action = env.action_space.sample()
+        obs, reward, done, info = env.step(action)
 
         print("action: ", action)
         print("obs: ", obs)
@@ -67,9 +67,9 @@ for episode in range(3):
         print("timestep: ", t)
 
         rewards.append(reward)
-        time.sleep(1./30.) 
+        time.sleep(1./30.)
 
     cumulative_reward = sum(rewards)
-    print("episode {} | cumulative reward : {}".format(episode, cumulative_reward))  
-    
+    print("episode {} | cumulative reward : {}".format(episode, cumulative_reward))
+
 env.close()
