@@ -83,7 +83,7 @@ class WidowxEnv(gym.Env):
         # self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_sim(goal_oriented=False, render_bool=False)
+        self.start_sim(goal_oriented=False, render_bool=True)
 
     # re-added by Pierre
     def start_sim(self, goal_oriented=False, render_bool=False):
@@ -128,7 +128,6 @@ class WidowxEnv(gym.Env):
 
     def step(self, action):
         """
-
         Parameters
         ----------
         action : [change in x, change in y, change in z]
@@ -151,10 +150,15 @@ class WidowxEnv(gym.Env):
         """
         action = np.array(action, dtype=np.float32)
 
-        joint_positions = self._get_current_joint_positions()
-        new_joint_positions = joint_positions + action
-        new_joint_positions = np.clip(np.array(new_joint_positions), JOINT_MIN, JOINT_MAX)
-        self._force_joint_positions(new_joint_positions)
+        # modified by Pierre
+        self.joint_positions, self.joint_velocities = self._get_current_joint_positions()
+        self.new_joint_positions = self.joint_positions + action
+        self.new_joint_positions = np.clip(np.array(self.new_joint_positions), JOINT_MIN, JOINT_MAX)
+        self._force_joint_positions(self.new_joint_positions)
+        # joint_positions = self._get_current_joint_positions()
+        # new_joint_positions = joint_positions + action
+        # new_joint_positions = np.clip(np.array(new_joint_positions), JOINT_MIN, JOINT_MAX)
+        # self._force_joint_positions(new_joint_positions)
 
         end_effector_pos = self._get_current_end_effector_position()
         x, y, z = end_effector_pos[0], end_effector_pos[1], end_effector_pos[2]
@@ -172,7 +176,7 @@ class WidowxEnv(gym.Env):
                 violated_boundary = True
                 break
         if violated_boundary:
-            self._force_joint_positions(joint_positions)
+            self._force_joint_positions(self.joint_positions)  # if out of boundarie, don't update joint position
         self.current_pos = self._get_current_state()
 
         return self._generate_step_tuple()
@@ -181,17 +185,25 @@ class WidowxEnv(gym.Env):
         reward = self._get_reward(self.goal)
 
         episode_over = False
-        total_distance_from_goal = np.sqrt(-reward)
+        total_distance_from_goal = np.linalg.norm(
+            self.current_pos[:3] - self.goal)  # np.sqrt(-reward)
 
+        # self.tip_vel = self._get_current_end_effector_velocity()
+
+        # added by Pierre
         info = {}
         info['total_distance'] = total_distance_from_goal
-        info['goal position'] = self.goal              # added by Pierre
-        info['tip position'] = self.current_pos[:3]    # added by Pierre
-        info['joint position'] = self.current_pos[3:]  # added by Pierre
+        info['goal position'] = self.goal
+        info['tip position'] = self.current_pos[:3]
+        info['joint position'] = self.current_pos[3:]
+        info['current_joint_pos'] = self.joint_positions
+        info['new_joint_pos'] = self.new_joint_positions
+        info['joint_vel'] = self.joint_velocities
+        # info['tip_vel'] = self.tip_vel
 
         # if reward > -0.0001:
-        if total_distance_from_goal < 0.0005:  # added by Pierre
-            episode_over = True
+        # if total_distance_from_goal < 0.0005:  # added by Pierre
+        #     episode_over = True
 
         if self.goal_oriented:
             obs = self._get_obs()
@@ -305,15 +317,22 @@ class WidowxEnv(gym.Env):
     # Functions only for sim mode
     def _get_current_joint_positions(self):
         joint_positions = []
+        joint_velocities = []   # added by Pierre
         for i in range(6):
-            joint_positions.append(p.getJointState(self.arm, i)[0])
-        return np.array(joint_positions, dtype=np.float32)
+            joint_positions.append(p.getJointState(self.arm, i)[0])  # check that's the joint angle
+            joint_velocities.append(p.getJointState(self.arm, i)[1])  # added by Pierre
+        return np.array(joint_positions, dtype=np.float32), np.array(joint_velocities, dtype=np.float32)
 
     def _get_current_end_effector_position(self):
         real_position = np.array(list(p.getLinkState(self.arm, 5, computeForwardKinematics=1)[4]))
         # real_position[2] = -real_position[2] #SIM z coordinates are reversed
-        #adjusted_position = real_position + SIM_START_POSITION
+        # adjusted_position = real_position + SIM_START_POSITION
         return real_position
+
+    # added by Pierre
+    def _get_current_end_effector_velocity(self):
+        real_vel = np.array(list(p.getLinkState(self.arm, 5, computeLinkVelocity=1, computeForwardKinematics=1)[6]))
+        return real_vel
 
     def _set_joint_positions(self, joint_positions):
         # In SIM, gripper halves are controlled separately
@@ -342,7 +361,7 @@ class WidowxEnv(gym.Env):
     def _get_current_state(self):
         return np.concatenate(
             [self._get_current_end_effector_position(),
-             self._get_current_joint_positions()],
+             self._get_current_joint_positions()[0]],
             axis=0)
 
     # Functions for pickling

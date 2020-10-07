@@ -16,6 +16,7 @@ import importlib
 import warnings
 import pandas as pd
 import time
+from collections import OrderedDict
 
 # added by Pierre
 import matplotlib as mpl
@@ -68,7 +69,7 @@ def main():
 
     plot_bool = False
     plot_dim = 2
-    log_bool = False
+    log_bool = True
 
     if plot_bool:
 
@@ -79,7 +80,8 @@ def main():
             ax = fig.gca(projection='3d')
 
     if log_bool:
-        output_df = pd.DataFrame()
+        log_df = pd.DataFrame()
+        log_dict = OrderedDict()
 
     # Going through custom gym packages to let them register in the global registory
     for env_module in args.gym_packages:
@@ -193,7 +195,7 @@ def main():
         return reachtime_list
     ##############
 
-    for _ in range(args.n_timesteps):
+    for t in range(args.n_timesteps):
         if args.random_pol:
             # Random Agent
             action = [env.action_space.sample()]
@@ -216,6 +218,9 @@ def main():
         episode_success_list_2 = calc_ep_success(success_threshold_2, episode_success_list_2)
         episode_success_list_1 = calc_ep_success(success_threshold_1, episode_success_list_1)
         episode_success_list_05 = calc_ep_success(success_threshold_05, episode_success_list_05)
+
+        episode_reward += reward[0]
+        ep_len += 1
 
         if plot_bool:
             goal = infos[0]['goal position']
@@ -289,20 +294,76 @@ def main():
             # plt.show()
 
         if log_bool:
-            dict_log = infos[0]
-            dict_log['action'] = action[0]
-            dict_log['obs'] = obs[0]
-            dict_log['reward'] = reward[0]
-            dict_log['done'] = done[0]
-            dict_log['timestep'] = ep_len
-            dict_log['episode'] = episode
-            output_df = output_df.append(dict_log, ignore_index=True)
+
+            log_dict['episode'] = episode
+            log_dict['timestep'] = t
+            log_dict['action_1'] = action[0][0]
+            log_dict['action_2'] = action[0][1]
+            log_dict['action_3'] = action[0][2]
+            log_dict['action_4'] = action[0][3]
+            log_dict['action_5'] = action[0][4]
+            log_dict['action_6'] = action[0][5]
+            log_dict['current_joint_pos_1'] = infos[0]['current_joint_pos'][0]
+            log_dict['current_joint_pos_2'] = infos[0]['current_joint_pos'][1]
+            log_dict['current_joint_pos_3'] = infos[0]['current_joint_pos'][2]
+            log_dict['current_joint_pos_4'] = infos[0]['current_joint_pos'][3]
+            log_dict['current_joint_pos_5'] = infos[0]['current_joint_pos'][4]
+            log_dict['current_joint_pos_6'] = infos[0]['current_joint_pos'][5]
+            log_dict['new_joint_pos_1'] = infos[0]['new_joint_pos'][0]
+            log_dict['new_joint_pos_2'] = infos[0]['new_joint_pos'][1]
+            log_dict['new_joint_pos_3'] = infos[0]['new_joint_pos'][2]
+            log_dict['new_joint_pos_4'] = infos[0]['new_joint_pos'][3]
+            log_dict['new_joint_pos_5'] = infos[0]['new_joint_pos'][4]
+            log_dict['new_joint_pos_6'] = infos[0]['new_joint_pos'][5]
+            log_dict['joint_vel_1'] = infos[0]['joint_vel'][0]
+            log_dict['joint_vel_2'] = infos[0]['joint_vel'][1]
+            log_dict['joint_vel_3'] = infos[0]['joint_vel'][2]
+            log_dict['joint_vel_4'] = infos[0]['joint_vel'][3]
+            log_dict['joint_vel_5'] = infos[0]['joint_vel'][4]
+            log_dict['joint_vel_6'] = infos[0]['joint_vel'][5]
+            log_dict['joint1_min'] = -3.1
+            log_dict['joint1_max'] = 3.1
+            log_dict['joint2_min'] = -1.571
+            log_dict['joint2_max'] = 1.571
+            log_dict['joint3_min'] = -1.571
+            log_dict['joint3_max'] = 1.571
+            log_dict['joint4_min'] = -1.745
+            log_dict['joint4_max'] = 1.745
+            log_dict['joint5_min'] = -2.617
+            log_dict['joint5_max'] = 2.617
+            log_dict['joint6_min'] = 0.003
+            log_dict['joint6_max'] = 0.03
+            log_dict['action_low1'] = env.action_space.low[0]
+            log_dict['action_low2'] = env.action_space.low[1]
+            log_dict['action_low3'] = env.action_space.low[2]
+            log_dict['action_low4'] = env.action_space.low[3]
+            log_dict['action_low5'] = env.action_space.low[4]
+            log_dict['action_low6'] = env.action_space.low[5]
+            log_dict['action_high1'] = env.action_space.high[0]
+            log_dict['action_high2'] = env.action_space.high[1]
+            log_dict['action_high3'] = env.action_space.high[2]
+            log_dict['action_high4'] = env.action_space.high[3]
+            log_dict['action_high5'] = env.action_space.high[4]
+            log_dict['action_high6'] = env.action_space.high[5]
+            log_dict['reward'] = reward[0]
+            log_dict['return'] = episode_reward
+            log_dict['dist'] = infos[0]['total_distance']
+            log_dict['target_x'] = infos[0]['goal position'][0]
+            log_dict['target_y'] = infos[0]['goal position'][1]
+            log_dict['target_z'] = infos[0]['goal position'][2]
+            log_dict['tip_y'] = infos[0]['tip position'][1]
+            log_dict['tip_x'] = infos[0]['tip position'][0]
+            log_dict['tip_z'] = infos[0]['tip position'][2]
+            log_dict['done'] = done[0]
+            # log_dict['obs'] = obs
+            # log_dict['obs_space_low'] = env.observation_space.low
+            # log_dict['obs_space_high'] = env.observation_space.high
+
+            log_df = log_df.append(log_dict, ignore_index=True)
+
 
         # if not args.no_render:
         #     env.render('human')
-
-        episode_reward += reward[0]
-        ep_len += 1
 
         if args.n_envs == 1:
             # For atari the return reward is not the atari score
@@ -342,8 +403,13 @@ def main():
                 reachtime_list_05 = calc_reach_time(episode_success_list_05)
 
                 if log_bool:
-                    # output_df.to_csv(log_path+"/res_episode_"+str(episode)+".csv", index=False)  # slow
-                    output_df.to_pickle(log_path+"/res_episode_"+str(episode)+".pkl")
+                    log_df = log_df[log_dict.keys()]  # sort columns
+
+                    # add estimated tip velocity (according to the documentation, 1 timestep = 240 Hz)
+                    log_df['est_vel'] = log_df['dist'].diff()*240
+
+                    log_df.to_csv(log_path+"/res_episode_"+str(episode)+".csv", index=False)  # slow
+                    # log_df.to_pickle(log_path+"/res_episode_"+str(episode)+".pkl")  # fast
 
                 # reset for new episode
                 episode_reward = 0.0

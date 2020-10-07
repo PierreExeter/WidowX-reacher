@@ -11,13 +11,13 @@ from stable_baselines.common.env_checker import check_env
 # env = gym.make('widowx_reacher-v2')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v3')                                              # requires a roscore to be running
 # env = gym.make('widowx_reacher-v4').start_sim(goal_oriented=False, render_bool=True)
-# env = gym.make('widowx_reacher-v5')
+env = gym.make('widowx_reacher-v5')
 # env = gym.make('widowx_reacher-v6')
 # env = gym.make('widowx_reacher-v7')
 # env = gym.make('widowx_reacher-v8')
 # env = gym.make('widowx_reacher-v12')
 # env = gym.make('widowx_reacher-v13')
-env = gym.make('widowx_reacher-v14')
+# env = gym.make('widowx_reacher-v14')
 # env = gym.make('widowx_reacher-v15')
 
 print("isinstance(env, gym.GoalEnv)", isinstance(env, gym.Env))
@@ -51,11 +51,11 @@ print("any warnings?", check_env(env))
 # print(env.observation_space.low)
 
 
-for episode in range(3):
+for episode in range(1):
     obs = env.reset()
     rewards = []
 
-    for t in range(102):
+    for t in range(100):
         action = env.action_space.sample()
         obs, reward, done, info = env.step(action)
 
