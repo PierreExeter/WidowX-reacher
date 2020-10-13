@@ -4,9 +4,9 @@
 
 # nsteps=10000     # NEW: don't specify explicitely the number of training steps, rather use the value in hyperparams/algo.yml (easier to log the hyperparameters afterwards)
 nsteps_rand=500000
-log_dir="logs/benchmark/train_widowx_reacher-v5_noptepochs70"
+log_dir="logs/benchmark/train_widowx_reacher-v22_noptepochs50"
 # log_dir_rand="logs/train_0.5M_widowx_reacher-v5_random"
-env="widowx_reacher-v5"
+env="widowx_reacher-v22"
 env_her="widowx_reacher-v6"
 nseeds=2
 
@@ -40,3 +40,33 @@ do
 done
 
 # python 7_run_random_policy.py --env ${env} -n ${nsteps_rand} --folder ${log_dir_rand} --nb-seeds ${nseeds}
+
+
+
+
+log_dir="logs/benchmark/train_widowx_reacher-v23_noptepochs50"
+env="widowx_reacher-v23"
+
+for ((i=0;i<${nseeds};i+=1))
+do
+    echo "PPO2 $i"
+    python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
+done
+
+log_dir="logs/benchmark/train_widowx_reacher-v24_noptepochs50"
+env="widowx_reacher-v24"
+
+for ((i=0;i<${nseeds};i+=1))
+do
+    echo "PPO2 $i"
+    python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
+done
+
+log_dir="logs/benchmark/train_widowx_reacher-v25_noptepochs50"
+env="widowx_reacher-v25"
+
+for ((i=0;i<${nseeds};i+=1))
+do
+    echo "PPO2 $i"
+    python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
+done

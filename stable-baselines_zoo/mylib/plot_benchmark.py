@@ -268,22 +268,22 @@ print("best config:", df["mean_SR_5"].argmax())
 # x_variable(df, mask, 'nminibatches')
 #
 # NOPTEPOCHS
-
-mask = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['cliprange'] == 0.2) & \
-    (df['env_id'] == 'widowx_reacher-v5')
-
-x_variable(df, mask, 'noptepochs')
+#
+# mask = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['env_id'] == 'widowx_reacher-v5')
+#
+# x_variable(df, mask, 'noptepochs')
 
 #
 # # ALGO
@@ -361,3 +361,166 @@ x_variable(df, mask, 'noptepochs')
 # print(df_reward_dist)
 #
 # plot_df(df_reward_dist, 'reward', "results/plots/reward_dist.png")
+
+
+
+# actionStepCoeff: 1, 10, 100, 1000
+
+mask1 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v5')
+
+mask2 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v17')
+
+mask3 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v18')
+
+mask4 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v19')
+
+mask5 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v20')
+
+mask6 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v21')
+
+mask7 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v22')
+
+mask8 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v23')
+
+mask9 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v24')
+
+mask10 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v25')
+
+
+df_actionStepCoeff = pd.concat([df[mask1], df[mask2], df[mask3], df[mask4], df[mask5], df[mask6], df[mask7], df[mask8], df[mask9], df[mask10]])
+
+# df_actionStepCoeff = df_actionStepCoeff.reindex([78, 81, 64, 80, 77, 79])
+df_actionStepCoeff = df_actionStepCoeff.reindex([78, 81, 64, 80, 82, 83, 84, 85, 77])  # removed actionStepCoeff=1000
+print(df_actionStepCoeff)
+
+plot_df(df_actionStepCoeff, 'actionStepCoeff', "results/plots/actionStepCoeff.png")

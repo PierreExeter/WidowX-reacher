@@ -69,7 +69,7 @@ def main():
 
     plot_bool = False
     plot_dim = 2
-    log_bool = True
+    log_bool = False
 
     if plot_bool:
 
