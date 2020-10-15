@@ -142,6 +142,19 @@ register(id='widowx_reacher-v25',
          max_episode_steps=100
          )
 
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25
+register(id='widowx_reacher-v26',
+         entry_point='widowx_env.envs.v26_widowx_pybullet_env_fixedGoal_actionStepCoeff25:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 35
+register(id='widowx_reacher-v27',
+         entry_point='widowx_env.envs.v27_widowx_pybullet_env_fixedGoal_actionStepCoeff35:WidowxEnv',
+         max_episode_steps=100
+         )
+
+
 # test gym.GoalEnv
 register(id='my_goal_env-v0',
          entry_point='widowx_env.envs.my_goal_env:MyGoalEnv',

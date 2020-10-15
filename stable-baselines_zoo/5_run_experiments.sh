@@ -42,31 +42,11 @@ done
 # python 7_run_random_policy.py --env ${env} -n ${nsteps_rand} --folder ${log_dir_rand} --nb-seeds ${nseeds}
 
 
-
-
-log_dir="logs/benchmark/train_widowx_reacher-v23_noptepochs50"
-env="widowx_reacher-v23"
-
-for ((i=0;i<${nseeds};i+=1))
-do
-    echo "PPO2 $i"
-    python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
-done
-
-log_dir="logs/benchmark/train_widowx_reacher-v24_noptepochs50"
-env="widowx_reacher-v24"
-
-for ((i=0;i<${nseeds};i+=1))
-do
-    echo "PPO2 $i"
-    python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
-done
-
-log_dir="logs/benchmark/train_widowx_reacher-v25_noptepochs50"
-env="widowx_reacher-v25"
-
-for ((i=0;i<${nseeds};i+=1))
-do
-    echo "PPO2 $i"
-    python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
-done
+# log_dir="logs/benchmark/train_widowx_reacher-v27_noptepochs50"
+# env="widowx_reacher-v27"
+#
+# for ((i=0;i<${nseeds};i+=1))
+# do
+#     echo "PPO2 $i"
+#     python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
+# done

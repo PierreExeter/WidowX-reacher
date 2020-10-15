@@ -71,8 +71,8 @@ class WidowxEnv(gym.Env):
         self.observation_space = observation_space
 
         # added by Pierre, normalize action space, cf https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html
-        self.action_space = spaces.Box(low=np.array([-0.5, -0.25, -0.25, -0.25, -0.5, -0.005]) / 20,
-                                       high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 20, dtype=np.float32)
+        self.action_space = spaces.Box(low=np.array([-0.5, -0.25, -0.25, -0.25, -0.5, -0.005]) / 50,
+                                       high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 50, dtype=np.float32)
         # PB: actions are too big and the robot moves too much
         # self.action_space = spaces.Box(low=np.array([-1, -1, -1, -1, -1, -1]),
         #                                high=np.array([1, 1, 1, 1, 1, 1]), dtype=np.float32)
@@ -83,7 +83,7 @@ class WidowxEnv(gym.Env):
         # self.set_goal(self.sample_goal_for_rollout())
         # print("********goal is : ***********", self.goal)
 
-        self.start_sim(goal_oriented=False, render_bool=True)
+        self.start_sim(goal_oriented=False, render_bool=False)
 
     # re-added by Pierre
     def start_sim(self, goal_oriented=False, render_bool=False):

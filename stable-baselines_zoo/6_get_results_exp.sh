@@ -7,12 +7,12 @@
 nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=2
 # opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
-log_dir="logs/benchmark/train_widowx_reacher-v24_noptepochs50/"
+log_dir="logs/benchmark/train_widowx_reacher-v27_noptepochs50/"
 # log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 # log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
 # save_dir="experiment_reports/train_10K_widowx_reacher-v5/"
 # save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
-env="widowx_reacher-v24"
+env="widowx_reacher-v27"
 env_her="widowx_reacher-v6"
 # appendix="_env2"
 random_log_folder="logs/train_10K_widowx_reacher-v5_random/"
@@ -23,8 +23,8 @@ echo "ENV: ${env}"
 # + plot
 
 
-# for ((i=1;i<${nb_seeds}+1;i+=1))
-# do
+for ((i=1;i<${nb_seeds}+1;i+=1))
+do
     # echo "A2C $i"
     # python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
     # python3 mylib/plot_1seed.py -f ${log_dir}a2c/${env}_$i/
@@ -37,9 +37,9 @@ echo "ENV: ${env}"
     # python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
     # python3 mylib/plot_1seed.py -f ${log_dir}ddpg/${env}_$i/
 
-    # echo "PPO2 $i"
-    # python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
-    # python3 mylib/plot_1seed.py -f ${log_dir}ppo2/${env}_$i/
+    echo "PPO2 $i"
+    python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
+    python3 mylib/plot_1seed.py -f ${log_dir}ppo2/${env}_$i/
 
     # echo "SAC $i"
     # python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
@@ -53,11 +53,11 @@ echo "ENV: ${env}"
     # python3 3_enjoy.py --algo trpo --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
     # python3 mylib/plot_1seed.py -f ${log_dir}trpo/${env}_$i/
 
-#     echo "HER $i"
-#     python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
-#     python3 mylib/plot_1seed.py -f ${log_dir}her/${env_her}_$i/
-#
-# done
+    # echo "HER $i"
+    # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
+    # python3 mylib/plot_1seed.py -f ${log_dir}her/${env_her}_$i/
+
+done
 
 
 # STEP1 BIS: EVALUATE ON PHYSICAL ROBOT
@@ -103,7 +103,7 @@ echo "ENV: ${env}"
 # python3 mylib/plot_experiment.py -f ${log_dir}a2c/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}acktr/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}ddpg/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
-# python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}sac/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}td3/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}trpo/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
@@ -131,7 +131,7 @@ echo "ENV: ${env}"
 
 
 # STEP 4: view trained agent
-python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
 
 

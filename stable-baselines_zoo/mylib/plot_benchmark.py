@@ -38,7 +38,11 @@ def plot_df(dff, col, filename):
     ax3.set_ylabel("Success ratio")
     ax4.set_ylabel("Reach time")
 
-    # ax1.set_yscale('symlog')  # doesn't help
+    ## uncomment if var = n_timesteps (clearer plot)
+    ## ax3.set_xscale('symlog', linthreshy=1e-1)
+    ## ax3.set_yscale('symlog', linthreshy=1e-1)
+    # ax3.set_xscale('log')
+    # ax3.set_yscale('log')
 
     ax3.legend(bbox_to_anchor=(1, 1.05))
     ax4.legend(bbox_to_anchor=(1.2, 1.05))
@@ -83,7 +87,7 @@ print("best config:", df["mean_SR_5"].argmax())
 # (df['cliprange']==0.2)& \
 # (df['env_id'] == 'widowx_reacher-v5')
 
-# #
+#
 # # TIMESTEPS
 # mask = (df['algo'] == 'ppo2') & \
 #     (df['normalize'] == True) & \
@@ -364,7 +368,7 @@ print("best config:", df["mean_SR_5"].argmax())
 
 
 
-# actionStepCoeff: 1, 10, 100, 1000
+# actionStepCoeff: 1, 5, 10, 20, 30, 40, 50, 60 100, 1000
 
 mask1 = (df['algo'] == 'ppo2') & \
     (df['normalize'] == True) & \
@@ -516,11 +520,41 @@ mask10 = (df['algo'] == 'ppo2') & \
     (df['cliprange'] == 0.2) & \
     (df['env_id'] == 'widowx_reacher-v25')
 
+mask11 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v26')
 
-df_actionStepCoeff = pd.concat([df[mask1], df[mask2], df[mask3], df[mask4], df[mask5], df[mask6], df[mask7], df[mask8], df[mask9], df[mask10]])
+mask12 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['noptepochs'] == 50) & \
+    (df['cliprange'] == 0.2) & \
+    (df['env_id'] == 'widowx_reacher-v27')
+
+
+df_actionStepCoeff = pd.concat([df[mask1], df[mask2], df[mask3], df[mask4], df[mask5], df[mask6], df[mask7], df[mask8], df[mask9], df[mask10], df[mask11], df[mask12]])
 
 # df_actionStepCoeff = df_actionStepCoeff.reindex([78, 81, 64, 80, 77, 79])
-df_actionStepCoeff = df_actionStepCoeff.reindex([78, 81, 64, 80, 82, 83, 84, 85, 77])  # removed actionStepCoeff=1000
+df_actionStepCoeff = df_actionStepCoeff.reindex([78, 81, 64, 80, 86, 82, 87, 83, 84, 85, 77])  # removed actionStepCoeff=1000
 print(df_actionStepCoeff)
 
 plot_df(df_actionStepCoeff, 'actionStepCoeff', "results/plots/actionStepCoeff.png")
