@@ -75,8 +75,8 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
         self.reset()
         return self
 
-    #shared functions between both sim and robot mode   
-    
+    #shared functions between both sim and robot mode
+
     def sample_goal_for_rollout(self):
         return np.random.uniform(low=np.array([-.14, -.13, 0.26]), high=np.array([.14, .13, .39]))
 
@@ -97,7 +97,7 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
                 either current position or an observation object, depending on
                 the type of environment this is representing
             reward (float) :
-                negative, squared, l2 distance between current position and 
+                negative, squared, l2 distance between current position and
                 goal position
             episode_over (bool) :
                 Whether or not we have reached the goal
@@ -111,7 +111,7 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
         # ROS specific here
         self.action_publisher.publish(action)
         self.current_pos = np.array(rospy.wait_for_message("/replab/action/observation", numpy_msg(Floats)).data)
-        
+
         return self._generate_step_tuple()
 
     def _generate_step_tuple(self):
@@ -127,8 +127,8 @@ class WidowxEnv(gym.GoalEnv):   # added by Pierre
         info['joint position'] = self.current_pos[3:]  # added by Pierre
 
         # if reward > -0.0001:
-        if total_distance_from_goal < 0.0005:  # added by Pierre
-            episode_over = True
+        # if total_distance_from_goal < 0.0005:  # added by Pierre
+        #     episode_over = True
 
         if self.goal_oriented:
             obs = self._get_obs()

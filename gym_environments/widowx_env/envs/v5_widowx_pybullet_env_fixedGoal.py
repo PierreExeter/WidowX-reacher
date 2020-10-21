@@ -23,6 +23,20 @@ BOUNDS_RIGHTWALL = -.14
 BOUNDS_FRONTWALL = -.13
 BOUNDS_BACKWALL = .13
 
+# BOUNDS_XMIN = -100
+# BOUNDS_XMAX = 100
+# BOUNDS_YMIN = -100
+# BOUNDS_YMAX = 100
+# BOUNDS_ZMIN = -100
+# BOUNDS_ZMAX = 100
+
+#
+# BOUNDS_FLOOR = 100
+# BOUNDS_LEFTWALL = 100
+# BOUNDS_RIGHTWALL = -100
+# BOUNDS_FRONTWALL = -100
+# BOUNDS_BACKWALL = 100
+
 JOINT_MIN = np.array([
     -3.1,
     -1.571,
@@ -170,13 +184,15 @@ class WidowxEnv(gym.Env):
             z <= BOUNDS_FLOOR,
             z >= 0.15
         ]
+
         violated_boundary = False
         for condition in conditions:
             if not condition:
                 violated_boundary = True
                 break
         if violated_boundary:
-            self._force_joint_positions(self.joint_positions)  # if out of boundarie, don't update joint position
+            # if out of boundarie, don't update joint position
+            self._force_joint_positions(self.joint_positions)
         self.current_pos = self._get_current_state()
 
         return self._generate_step_tuple()
@@ -331,7 +347,8 @@ class WidowxEnv(gym.Env):
 
     # added by Pierre
     def _get_current_end_effector_velocity(self):
-        real_vel = np.array(list(p.getLinkState(self.arm, 5, computeLinkVelocity=1, computeForwardKinematics=1)[6]))
+        real_vel = np.array(
+            list(p.getLinkState(self.arm, 5, computeLinkVelocity=1, computeForwardKinematics=1)[6]))
         return real_vel
 
     def _set_joint_positions(self, joint_positions):

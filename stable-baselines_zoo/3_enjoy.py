@@ -361,7 +361,6 @@ def main():
 
             log_df = log_df.append(log_dict, ignore_index=True)
 
-
         # if not args.no_render:
         #     env.render('human')
 
@@ -405,8 +404,11 @@ def main():
                 if log_bool:
                     log_df = log_df[log_dict.keys()]  # sort columns
 
-                    # add estimated tip velocity (according to the documentation, 1 timestep = 240 Hz)
+                    # add estimated tip velocity and acceleration (according to the documentation, 1 timestep = 240 Hz)
                     log_df['est_vel'] = log_df['dist'].diff()*240
+                    log_df['est_vel'].loc[0] = 0    # initial velocity is 0
+                    log_df['est_acc'] = log_df['est_vel'].diff()*240
+                    log_df['est_acc'].loc[0] = 0    # initial acceleration is 0
 
                     log_df.to_csv(log_path+"/res_episode_"+str(episode)+".csv", index=False)  # slow
                     # log_df.to_pickle(log_path+"/res_episode_"+str(episode)+".pkl")  # fast

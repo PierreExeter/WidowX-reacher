@@ -7,13 +7,14 @@
 nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
 nb_seeds=2
 # opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
-log_dir="logs/benchmark/train_widowx_reacher-v27_noptepochs50/"
+log_dir="logs/benchmark/train_widowx_reacher-v34_sparseDense_noptepochs4_10M/"
 # log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
 # log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
 # save_dir="experiment_reports/train_10K_widowx_reacher-v5/"
 # save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
-env="widowx_reacher-v27"
+env="widowx_reacher-v34"
 env_her="widowx_reacher-v6"
+deterministic_flag=1
 # appendix="_env2"
 random_log_folder="logs/train_10K_widowx_reacher-v5_random/"
 echo "ENV: ${env}"
@@ -37,9 +38,15 @@ do
     # python3 3_enjoy.py --algo ddpg --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
     # python3 mylib/plot_1seed.py -f ${log_dir}ddpg/${env}_$i/
 
+    if [ ${deterministic_flag} -eq 1 ]; then
+    echo "PPO2 DETERMINISTIC $i"
+    python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps} --deterministic
+    python3 mylib/plot_1seed.py -f ${log_dir}ppo2/${env}_$i/
+    else
     echo "PPO2 $i"
     python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
     python3 mylib/plot_1seed.py -f ${log_dir}ppo2/${env}_$i/
+    fi
 
     # echo "SAC $i"
     # python3 3_enjoy.py --algo sac --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
@@ -103,7 +110,7 @@ done
 # python3 mylib/plot_experiment.py -f ${log_dir}a2c/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}acktr/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}ddpg/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
-python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
+python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps} --deterministic ${deterministic_flag}
 # python3 mylib/plot_experiment.py -f ${log_dir}sac/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}td3/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}trpo/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
@@ -131,8 +138,8 @@ python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb
 
 
 # STEP 4: view trained agent
-# python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
-# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True
+# python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 2 -n ${nsteps} --render-pybullet True --deterministic
+# python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True --deterministic
 
 
 # best seeds in Env 5

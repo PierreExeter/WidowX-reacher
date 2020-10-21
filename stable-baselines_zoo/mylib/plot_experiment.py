@@ -22,12 +22,14 @@ if __name__ == '__main__':
     parser.add_argument('-e', '--env', help='env name', type=str)
     parser.add_argument('-ns', '--nb-seeds', help='number of seeds', type=int)
     parser.add_argument('-n', help='number of eval steps', type=int)
+    parser.add_argument('-d', '--deterministic', help='deterministic_flag', type=int)
     args = parser.parse_args()
 
     nb_eval_timesteps = args.n
     nb_seeds = args.nb_seeds
     env_id = args.env
     log_dir = args.folder
+    deterministic = args.deterministic
     print(log_dir)
 
     ###############
@@ -117,6 +119,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 10
+        bounds = "small"
 
     elif env_id == "widowx_reacher-v6":
         nb_joints = 6
@@ -127,6 +130,7 @@ if __name__ == '__main__':
         goal_env = 1
         ep_len = 100
         actionStepCoeff = 10
+        bounds = "small"
 
     elif env_id == "widowx_reacher-v14":
         nb_joints = 6
@@ -137,6 +141,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 10
+        bounds = "small"
 
     elif env_id == "widowx_reacher-v15":
         nb_joints = 6
@@ -147,6 +152,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 10
+        bounds = "small"
 
     elif env_id == "widowx_reacher-v16":
         nb_joints = 6
@@ -157,6 +163,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 10
+        bounds = "small"
 
     if env_id == "widowx_reacher-v17":
         nb_joints = 6
@@ -167,6 +174,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 100
+        bounds = "small"
 
     if env_id == "widowx_reacher-v18":
         nb_joints = 6
@@ -177,6 +185,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 1
+        bounds = "small"
 
     if env_id == "widowx_reacher-v19":
         nb_joints = 6
@@ -187,6 +196,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 1000
+        bounds = "small"
 
     if env_id == "widowx_reacher-v20":
         nb_joints = 6
@@ -197,6 +207,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 20
+        bounds = "small"
 
     if env_id == "widowx_reacher-v21":
         nb_joints = 6
@@ -207,6 +218,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 5
+        bounds = "small"
 
     if env_id == "widowx_reacher-v22":
         nb_joints = 6
@@ -217,6 +229,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 30
+        bounds = "small"
 
     if env_id == "widowx_reacher-v23":
         nb_joints = 6
@@ -227,6 +240,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 40
+        bounds = "small"
 
     if env_id == "widowx_reacher-v24":
         nb_joints = 6
@@ -237,6 +251,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 50
+        bounds = "small"
 
     if env_id == "widowx_reacher-v25":
         nb_joints = 6
@@ -247,6 +262,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 60
+        bounds = "small"
 
     if env_id == "widowx_reacher-v26":
         nb_joints = 6
@@ -257,6 +273,7 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 25
+        bounds = "small"
 
     if env_id == "widowx_reacher-v27":
         nb_joints = 6
@@ -267,7 +284,84 @@ if __name__ == '__main__':
         goal_env = 0
         ep_len = 100
         actionStepCoeff = 35
+        bounds = "small"
 
+    if env_id == "widowx_reacher-v28":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 10
+        bounds = "large"
+
+    if env_id == "widowx_reacher-v29":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 20
+        bounds = "large"
+
+    if env_id == "widowx_reacher-v30":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 25
+        bounds = "large"
+
+    if env_id == "widowx_reacher-v31":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 30
+        bounds = "large"
+
+    if env_id == "widowx_reacher-v32":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 35
+        bounds = "large"
+
+    if env_id == "widowx_reacher-v33":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 40
+        bounds = "large"
+
+    if env_id == "widowx_reacher-v34":
+        nb_joints = 6
+        action = "[Rel_A1, Rel_A2, Rel_A3, Rel_A4, Rel_A5, Rel_A6]"
+        obs = "[target_x, target_y, target_z, A1, A2, A3, A4, A5, A6]"
+        reward = "[-distance_to_target**2 + 1*(SR 0.5mm)]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 25
+        bounds = "large"
 
     # I need to add forward slashes because reacher contains "her"...
     if "/a2c/" in log_dir:
@@ -320,7 +414,9 @@ if __name__ == '__main__':
         'algo': algo,
         'nb_seeds': nb_seeds,
         'nb_eval_timesteps': nb_eval_timesteps,
-        'actionStepCoeff': actionStepCoeff
+        'actionStepCoeff': actionStepCoeff,
+        'deterministic': deterministic,
+        'bounds': bounds
     }
 
     metrics_dict = {

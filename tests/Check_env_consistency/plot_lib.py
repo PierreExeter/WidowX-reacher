@@ -2,6 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
+def make_patch_spines_invisible(ax):
+    ax.set_frame_on(True)
+    ax.patch.set_visible(False)
+    for sp in ax.spines.values():
+        sp.set_visible(False)
+
+
 def plot_df(log_df, filename):
     """ plot episode logs stored in the dataframe log_df and save it under filename """
 
@@ -61,13 +68,15 @@ def plot_df(log_df, filename):
     log_df.plot(x='timestep', y='action_low6', ax=axs[1, 3], style="r--")
     log_df.plot(x='timestep', y='action_high6', ax=axs[1, 3], style="r--")
 
-    log_df.plot(x='timestep', y='reward', ax=axs[2, 2])
+    lns11 = log_df.plot(x='timestep', y='reward', ax=axs[2, 2], color="b")
+    ax22 = axs[2, 2].twinx()
+    lns22 = log_df.plot(x='timestep', y='return', ax=ax22, color="r")
 
-    log_df.plot(x='timestep', y='return', ax=axs[2, 3])
-
-    lns1 = log_df.plot(x='timestep', y='dist', ax=axs[3, 2], color="b", marker="x")
-    ax2 = axs[3, 2].twinx()
+    lns1 = log_df.plot(x='timestep', y='dist', ax=axs[2, 3], color="b", marker="x")
+    ax2 = axs[2, 3].twinx()
     lns2 = log_df.plot(x='timestep', y='est_vel', ax=ax2, color="r", marker="+")
+
+    log_df.plot(x='timestep', y='est_acc', ax=axs[3, 2], color="g", marker="*")
 
     log_df.plot(x='timestep', y='target_x', ax=axs[3, 3], style='or')
     log_df.plot(x='timestep', y='target_y', ax=axs[3, 3], style='ob')
@@ -92,16 +101,23 @@ def plot_df(log_df, filename):
 
     axs[2, 2].set_ylabel("m^2")
 
+    axs[2, 2].set_ylabel("reward (m**2)", color="b")
+    ax22.set_ylabel("return (m**2)", color="r")
+    axs[2, 2].tick_params(axis='y', labelcolor="b")
+    ax22.tick_params(axis='y', labelcolor="r")
+
     axs[2, 3].set_ylabel("m^2")
 
-    axs[3, 2].set_ylabel("distance (m)", color="b")
-    ax2.set_ylabel("velocity (m/s)", color="r")
-    axs[3, 2].tick_params(axis='y', labelcolor="b")
+    axs[2, 3].set_ylabel("dist (m)", color="b")
+    ax2.set_ylabel("vel (m/s)", color="r")
+    axs[2, 3].tick_params(axis='y', labelcolor="b")
     ax2.tick_params(axis='y', labelcolor="r")
-    axs[3, 2].legend(loc="upper left")
+    axs[2, 3].legend(loc="upper left")
     ax2.legend(loc="upper right")
 
-    axs[3, 3].set_ylabel("m")
+    axs[3, 2].set_ylabel("acc (m/s**2)")
+
+    axs[3, 3].set_ylabel("coordinates (m)")
 
     axs[3, 3].legend(loc="upper right")
     # ax3.legend(bbox_to_anchor=(1, 1.05))

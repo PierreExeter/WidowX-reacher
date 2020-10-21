@@ -104,7 +104,6 @@ for episode in range(1):
         # log_dict['obs_space_low'] = env.observation_space.low
         # log_dict['obs_space_high'] = env.observation_space.high
 
-
         log_df = log_df.append(log_dict, ignore_index=True)
 
         # time.sleep(1./30.)
@@ -114,9 +113,12 @@ log_df = log_df[log_dict.keys()]  # sort columns
 
 # add estimated tip velocity (according to the documentation, 1 timestep = 240 Hz)
 log_df['est_vel'] = log_df['dist'].diff()*240
+log_df['est_vel'].loc[0] = 0    # initial velocity is 0
+log_df['est_acc'] = log_df['est_vel'].diff()*240
+log_df['est_acc'].loc[0] = 0    # initial acceleration is 0
 
 log_df.to_csv("logs/"+filename+".csv", index=False)
 
 env.close()
 
-plot_df(log_df, "plots/"+filename+".png")
+plot_df(log_df, "plots/"+filename+"_bigbounds.png")

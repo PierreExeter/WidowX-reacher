@@ -54,6 +54,7 @@ We train with PPO2 and change the hyperparameters. The training environment is:
 \caption{Number of training steps}
 \end{figure}
 
+200,000 timesteps are enough for the return to reach a plateau, however 500, 000 timesteps are required to reach the highest success ratio at 5mm. This means that the reward may not describe sufficiently well the objective we want to achieve.
 
 \begin{figure}[H]
     \centering
@@ -119,36 +120,7 @@ We train with PPO2 and change the hyperparameters. The training environment is:
 
 
 
-\begin{itemize}
-  \item 200,000 timesteps are enough for the return to reach a plateau, however 500, 000 timesteps are required to reach the highest success ratio at 5mm. This means that the reward may not describe sufficiently well the objective we want to achieve.
-  \item Best cliprange: 0.2
-  \item Best ent coef: 0.01
-  \item Best gamma: 0.95
-  \item Best lam: 0.95 (note that the best return is not the same as the best success ration @ 5mm)
-  \item Best learning rate: 0.01
-  \item Best nb envs: 1 (but try also 8 since many hyperparams are fitted to this value)
-  \item Best nminibatches: 8
-  \item Best noptepochs: 50
-  \item Best normalize: True
-  \item Best nsteps: 16
-\end{itemize} 
 
-
-These parameters take too long to train. The best trained agent has the following parameters:
-
-\begin{itemize}
-  \item Timesteps: 500, 000
-  \item cliprange: 0.2
-  \item ent coef: 0.01
-  \item gamma: 0.99
-  \item lam: 0.95
-  \item learning rate: 0.00025
-  \item nb envs: 8
-  \item nminibatches: 4
-  \item noptepochs: 50
-  \item normalize: True
-  \item nsteps: 128
-\end{itemize} 
 
 
 \section{Environment tuning}
@@ -167,6 +139,43 @@ These parameters take too long to train. The best trained agent has the followin
     \includegraphics[width=\textwidth]{../actionStepCoeff.png}
 \caption{Metrics vs actionStepCoeff (higher = smaller steps).}
 \end{figure}
+
+
+Best success ratio @1mm achieved: 0.55!
+
+The best trained agent has the following parameters:
+
+\begin{itemize}
+  \item Timesteps: 500, 000
+  \item cliprange: 0.2
+  \item ent coef: 0.01
+  \item gamma: 0.99
+  \item lam: 0.95
+  \item learning rate: 0.00025
+  \item nb envs: 8
+  \item nminibatches: 4
+  \item noptepochs: 50
+  \item normalize: True
+  \item nsteps: 128
+  \item actionStepCoeff: 30
+\end{itemize} 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../n_timesteps_env22.png}
+\caption{Metrics vs timesteps for env-v22 (actionStepCoeff=30, noptepoch = 50).}
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{../reward_vs_timesteps_smoothed_env22.png}
+\caption{Reward vs timesteps for Env-v22 after 20M timesteps.}
+\end{figure}
+
+The training becomes unstable after 3M timesteps.
 
 
 

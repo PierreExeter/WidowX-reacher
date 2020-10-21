@@ -154,6 +154,47 @@ register(id='widowx_reacher-v27',
          max_episode_steps=100
          )
 
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 10 + no bounds
+register(id='widowx_reacher-v28',
+         entry_point='widowx_env.envs.v28_widowx_pybullet_env_fixedGoal_actionStepCoeff10_nobounds:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 20 + no bounds
+register(id='widowx_reacher-v29',
+         entry_point='widowx_env.envs.v29_widowx_pybullet_env_fixedGoal_actionStepCoeff20_nobounds:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds
+register(id='widowx_reacher-v30',
+         entry_point='widowx_env.envs.v30_widowx_pybullet_env_fixedGoal_actionStepCoeff25_nobounds:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 30 + no bounds
+register(id='widowx_reacher-v31',
+         entry_point='widowx_env.envs.v31_widowx_pybullet_env_fixedGoal_actionStepCoeff30_nobounds:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 35 + no bounds
+register(id='widowx_reacher-v32',
+         entry_point='widowx_env.envs.v32_widowx_pybullet_env_fixedGoal_actionStepCoeff35_nobounds:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 40 + no bounds
+register(id='widowx_reacher-v33',
+         entry_point='widowx_env.envs.v33_widowx_pybullet_env_fixedGoal_actionStepCoeff40_nobounds:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + dense and sparse reward
+register(id='widowx_reacher-v34',
+         entry_point='widowx_env.envs.v34_widowx_pybullet_env_fixedGoal_actionStepCoeff25_nobounds_sparseDense:WidowxEnv',
+         max_episode_steps=100
+         )
 
 # test gym.GoalEnv
 register(id='my_goal_env-v0',

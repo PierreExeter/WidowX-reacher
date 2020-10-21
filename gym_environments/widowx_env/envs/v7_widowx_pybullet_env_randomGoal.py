@@ -70,7 +70,7 @@ class WidowxEnv(gym.Env):
         observation_space = spaces.Box(
             low=self.obs_space_low, high=self.obs_space_high, dtype=np.float32)
         self.observation_space = observation_space
-        
+
         # added by Pierre, normalize action space, cf https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html
         self.action_space = spaces.Box(low=np.array([-0.5, -0.25, -0.25, -0.25, -0.5, -0.005]) / 10,
                                        high=np.array([0.5, 0.25, 0.25, 0.25, 0.5, 0.005]) / 10, dtype=np.float32)
@@ -117,8 +117,8 @@ class WidowxEnv(gym.Env):
         return self
 
 
-    #shared functions between both sim and robot mode   
-    
+    #shared functions between both sim and robot mode
+
     def sample_goal_for_rollout(self):
         return np.random.uniform(low=np.array([-.14, -.13, 0.26]), high=np.array([.14, .13, .39]))
 
@@ -139,7 +139,7 @@ class WidowxEnv(gym.Env):
                 either current position or an observation object, depending on
                 the type of environment this is representing
             reward (float) :
-                negative, squared, l2 distance between current position and 
+                negative, squared, l2 distance between current position and
                 goal position
             episode_over (bool) :
                 Whether or not we have reached the goal
@@ -154,7 +154,7 @@ class WidowxEnv(gym.Env):
         new_joint_positions = joint_positions + action
         new_joint_positions = np.clip(np.array(new_joint_positions), JOINT_MIN, JOINT_MAX)
         self._force_joint_positions(new_joint_positions)
-        
+
         end_effector_pos = self._get_current_end_effector_position()
         x, y, z = end_effector_pos[0], end_effector_pos[1], end_effector_pos[2]
         conditions = [
@@ -189,8 +189,8 @@ class WidowxEnv(gym.Env):
         info['joint position'] = self.current_pos[3:]  # added by Pierre
 
         # if reward > -0.0001:
-        if total_distance_from_goal < 0.0005:  # added by Pierre
-            episode_over = True
+        # if total_distance_from_goal < 0.0005:  # added by Pierre
+        #     episode_over = True
 
         if self.goal_oriented:
             obs = self._get_obs()
@@ -305,7 +305,7 @@ class WidowxEnv(gym.Env):
         for i in range(6):
             joint_positions.append(p.getJointState(self.arm, i)[0])
         return np.array(joint_positions, dtype=np.float32)
-        
+
     def _get_current_end_effector_position(self):
         real_position = np.array(list(p.getLinkState(self.arm, 5, computeForwardKinematics=1)[4]))
         #real_position[2] = -real_position[2] #SIM z coordinates are reversed
