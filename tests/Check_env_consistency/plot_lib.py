@@ -126,3 +126,130 @@ def plot_df(log_df, filename):
     plt.tight_layout()
     # plt.show()
     plt.savefig(filename)
+
+
+def plot_df_1joint(log_df, filename):
+    """ plot episode logs stored in the dataframe log_df and save it under filename """
+
+    fig, axs = plt.subplots(3, 2, figsize=(20, 10), dpi=300, sharex=True)
+
+    log_df.plot(x='timestep', y='current_joint_pos', ax=axs[0, 0])
+    log_df.plot(x='timestep', y='new_joint_pos', ax=axs[0, 0])
+    log_df.plot(x='timestep', y='joint_min', ax=axs[0, 0], style="r--")
+    log_df.plot(x='timestep', y='joint_max', ax=axs[0, 0], style="r--")
+
+    log_df.plot(x='timestep', y='action', ax=axs[0, 1])
+    log_df.plot(x='timestep', y='action_low', ax=axs[0, 1], style="r--")
+    log_df.plot(x='timestep', y='action_high', ax=axs[0, 1], style="r--")
+
+    lns11 = log_df.plot(x='timestep', y='reward', ax=axs[1, 0], color="b")
+    ax22 = axs[1, 0].twinx()
+    lns22 = log_df.plot(x='timestep', y='return', ax=ax22, color="r")
+
+    lns1 = log_df.plot(x='timestep', y='dist', ax=axs[1, 1], color="b", marker="x")
+    ax2 = axs[1, 1].twinx()
+    lns2 = log_df.plot(x='timestep', y='est_vel', ax=ax2, color="r", marker="+")
+
+    log_df.plot(x='timestep', y='est_acc', ax=axs[2, 0], color="g", marker="*")
+
+    log_df.plot(x='timestep', y='target_x', ax=axs[2, 1], style='or')
+    log_df.plot(x='timestep', y='target_y', ax=axs[2, 1], style='ob')
+    log_df.plot(x='timestep', y='target_z', ax=axs[2, 1], style='og')
+    log_df.plot(x='timestep', y='tip_x', ax=axs[2, 1], style='xr')
+    log_df.plot(x='timestep', y='tip_y', ax=axs[2, 1], style='xb')
+    log_df.plot(x='timestep', y='tip_z', ax=axs[2, 1], style='xg')
+
+    axs[0, 0].set_ylabel("rad")
+    axs[0, 1].set_ylabel("rad")
+
+    axs[1, 0].set_ylabel("reward (m**2)", color="b")
+    ax22.set_ylabel("return (m**2)", color="r")
+    axs[1, 0].tick_params(axis='y', labelcolor="b")
+    ax22.tick_params(axis='y', labelcolor="r")
+
+    axs[1, 1].set_ylabel("dist (m)", color="b")
+    ax2.set_ylabel("vel (m/s)", color="r")
+    axs[1, 1].tick_params(axis='y', labelcolor="b")
+    ax2.tick_params(axis='y', labelcolor="r")
+    axs[1, 1].legend(loc="upper left")
+    ax2.legend(loc="upper right")
+
+    axs[2, 0].set_ylabel("acc (m/s**2)")
+
+    axs[2, 1].set_ylabel("coordinates (m)")
+
+    axs[2, 1].legend(loc="upper right")
+    # ax3.legend(bbox_to_anchor=(1, 1.05))
+    # ax4.legend(bbox_to_anchor=(1.2, 1.05))
+
+    plt.tight_layout()
+    # plt.show()
+    plt.savefig(filename)
+
+
+
+def plot_df_1joint_env37(log_df, filename):
+    """ plot episode logs stored in the dataframe log_df and save it under filename """
+
+    fig, axs = plt.subplots(4, 2, figsize=(20, 10), dpi=300, sharex=True)
+
+    log_df.plot(x='timestep', y='current_joint_pos', ax=axs[0, 0])
+    log_df.plot(x='timestep', y='new_joint_pos', ax=axs[0, 0])
+    log_df.plot(x='timestep', y='joint_min', ax=axs[0, 0], style="r--")
+    log_df.plot(x='timestep', y='joint_max', ax=axs[0, 0], style="r--")
+
+    log_df.plot(x='timestep', y='action', ax=axs[0, 1])
+    log_df.plot(x='timestep', y='action_low', ax=axs[0, 1], style="r--")
+    log_df.plot(x='timestep', y='action_high', ax=axs[0, 1], style="r--")
+
+    lns11 = log_df.plot(x='timestep', y='reward', ax=axs[1, 0], color="b")
+    ax22 = axs[1, 0].twinx()
+    lns22 = log_df.plot(x='timestep', y='return', ax=ax22, color="r")
+
+    lns1 = log_df.plot(x='timestep', y='new_dist', ax=axs[1, 1], color="b", marker="x")
+    ax2 = axs[1, 1].twinx()
+    lns2 = log_df.plot(x='timestep', y='est_vel', ax=ax2, color="r", marker="+")
+
+    log_df.plot(x='timestep', y='est_acc', ax=axs[2, 0], color="g", marker="*")
+
+    log_df.plot(x='timestep', y='target_x', ax=axs[2, 1], style='or')
+    log_df.plot(x='timestep', y='target_y', ax=axs[2, 1], style='ob')
+    log_df.plot(x='timestep', y='target_z', ax=axs[2, 1], style='og')
+    log_df.plot(x='timestep', y='tip_x', ax=axs[2, 1], style='xr')
+    log_df.plot(x='timestep', y='tip_y', ax=axs[2, 1], style='xb')
+    log_df.plot(x='timestep', y='tip_z', ax=axs[2, 1], style='xg')
+
+
+    log_df['1st_term'] = -log_df['new_dist']** 2
+    log_df['2nd_term'] = (log_df['old_dist']-log_df['new_dist'])/log_df['new_dist']
+
+    log_df.plot(x='timestep', y='1st_term', ax=axs[3, 0], style="b-")
+    log_df.plot(x='timestep', y='2nd_term', ax=axs[3, 1], style="b-")
+
+
+    axs[0, 0].set_ylabel("rad")
+    axs[0, 1].set_ylabel("rad")
+
+    axs[1, 0].set_ylabel("reward (m**2)", color="b")
+    ax22.set_ylabel("return (m**2)", color="r")
+    axs[1, 0].tick_params(axis='y', labelcolor="b")
+    ax22.tick_params(axis='y', labelcolor="r")
+
+    axs[1, 1].set_ylabel("dist (m)", color="b")
+    ax2.set_ylabel("vel (m/s)", color="r")
+    axs[1, 1].tick_params(axis='y', labelcolor="b")
+    ax2.tick_params(axis='y', labelcolor="r")
+    axs[1, 1].legend(loc="upper left")
+    ax2.legend(loc="upper right")
+
+    axs[2, 0].set_ylabel("acc (m/s**2)")
+
+    axs[2, 1].set_ylabel("coordinates (m)")
+
+    axs[2, 1].legend(loc="upper right")
+    # ax3.legend(bbox_to_anchor=(1, 1.05))
+    # ax4.legend(bbox_to_anchor=(1.2, 1.05))
+
+    plt.tight_layout()
+    # plt.show()
+    plt.savefig(filename)

@@ -195,6 +195,8 @@ def main():
         return reachtime_list
     ##############
 
+    env.render("human")  # to delete after test!
+
     for t in range(args.n_timesteps):
         if args.random_pol:
             # Random Agent

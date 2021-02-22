@@ -1,8 +1,23 @@
 # WidowX reacher
 Training the WidowX robotic arm to reach a target position with reinforcement learning.
+
+
+# Deprecation notice
+
+This repository has been deprecated in favor the [rl_reach](https://github.com/PierreExeter/rl_reach) toolbox.
+
+
+## Gym Environments
+
 The Gym environments are adapted from [Replab](https://github.com/bhyang/replab).
 
 ![Alt text](/docs/images/widowx_pybullet.gif?raw=true "The Widowx Gym environment in Pybullet")
+
+## Publication
+
+Please read the associated publication:
+[Reinforcement Learning Experiments and Benchmark for Solving Robotic Reaching Tasks](https://link.springer.com/chapter/10.1007/978-3-030-62579-5_22)
+or [ArXiv e-print](https://arxiv.org/abs/2011.05782).
 
 ## Installation
 
@@ -250,3 +265,20 @@ python examples/td3.py
 - Ubuntu 16.04
 - Python 3.6.10
 - Conda 4.8.0
+
+# Citation
+
+Please cite this work as follows,
+
+```bash
+@book{Aumjaud2021,
+author = {Aumjaud, Pierre and McAuliffe, David and Rodr{\'{i}}guez-Lera, Francisco Javier and Cardiff, Philip},
+booktitle = {Advances in Intelligent Systems and Computing, Advances in Physical Agents II},
+doi = {https://doi.org/10.1007/978-3-030-62579-5_22},
+isbn = {978-3-030-62579-5},
+pages = {318--331},
+title = {{Reinforcement Learning Experiments and Benchmark for Solving Robotic Reaching Tasks}},
+volume = {1285},
+year = {2021}
+}
+```

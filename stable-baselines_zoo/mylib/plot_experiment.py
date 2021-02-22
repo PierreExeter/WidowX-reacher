@@ -363,6 +363,18 @@ if __name__ == '__main__':
         actionStepCoeff = 25
         bounds = "large"
 
+    if env_id == "widowx_reacher-v35":
+        nb_joints = 1
+        action = "[Rel_A2]"
+        obs = "[target_x, target_y, target_z, A2]"
+        reward = "[-distance_to_target**2]"
+        random_goal = 0
+        goal_env = 0
+        ep_len = 100
+        actionStepCoeff = 25
+        bounds = "large"
+
+
     # I need to add forward slashes because reacher contains "her"...
     if "/a2c/" in log_dir:
         algo = "a2c"

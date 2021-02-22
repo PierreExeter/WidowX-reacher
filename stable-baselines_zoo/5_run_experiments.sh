@@ -4,11 +4,11 @@
 
 # nsteps=10000     # NEW: don't specify explicitely the number of training steps, rather use the value in hyperparams/algo.yml (easier to log the hyperparameters afterwards)
 nsteps_rand=500000
-log_dir="logs/benchmark/train_widowx_reacher-v34_sparseDense_noptepochs4_100M"
+log_dir="logs/benchmark/train_widowx_reacher-v45"
 # log_dir_rand="logs/train_0.5M_widowx_reacher-v5_random"
-env="widowx_reacher-v34"
+env="widowx_reacher-v45"
 env_her="widowx_reacher-v6"
-nseeds=2
+nseeds=1
 
 
 
@@ -24,6 +24,7 @@ do
     # python3 2_train.py --algo ddpg --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ddpg_0$i.run
 
     echo "PPO2 $i"
+    # python3 2_train.py --algo ppo2 --env ${env} --seed $i  --tensorboard-log ${log_dir} --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
     python3 2_train.py --algo ppo2 --env ${env} --seed $i --log-folder ${log_dir} &> submission_log/log_ppo2_0$i.run
 
     # echo "SAC $i"

@@ -827,6 +827,201 @@ widowx_reacher-v34:
   cliprange: 0.2
   policy_kwargs: None
 
+widowx_reacher-v35:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v36:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v37:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v38:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v39:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v40:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v41:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v42:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 100000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+widowx_reacher-v43:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 100000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+  
+widowx_reacher-v44:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 500000
+  policy: 'MlpPolicy'
+  gamma: 0.99
+  n_steps: 128
+  ent_coef: 0.01
+  learning_rate: 0.00025
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  lam: 0.95
+  nminibatches: 4
+  noptepochs: 10
+  cliprange: 0.2
+  policy_kwargs: None
+
+# widowx_reacher-v45:
+#   normalize: True
+#   n_envs: 8
+#   n_timesteps: 200000
+#   policy: 'MlpPolicy'
+#   gamma: 0.99
+#   n_steps: 128
+#   ent_coef: 0.01
+#   learning_rate: 0.00025
+#   vf_coef: 0.5
+#   max_grad_norm: 0.5
+#   lam: 0.95
+#   nminibatches: 4
+#   noptepochs: 10
+#   cliprange: 0.2
+#   policy_kwargs: None
+
+widowx_reacher-v45:
+  normalize: True
+  n_envs: 8
+  n_timesteps: 100000
+  policy: 'MlpPolicy'
+
+
+
 
 # # PAPER
 # widowx_reacher-v5:

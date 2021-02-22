@@ -17,6 +17,7 @@ def plot_df(dff, col, filename):
     col: column name to plot on x axis
     filename: name of output png file
     """
+
     fig, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, figsize=(10, 10), dpi=300)
 
     dff.plot(x=col, y='mean_return', yerr='std_return', capsize=4, ax=ax1)
@@ -591,123 +592,119 @@ print("best config:", df["mean_SR_5"].argmax())
 #
 
 
-
-
 # ---------------
-# actionStepCoeff + large bounds
-
-mask1 = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['noptepochs'] == 30) & \
-    (df['cliprange'] == 0.2) & \
-    (df['deterministic'] == 1) & \
-    (df['bounds'] == 'large') & \
-    (df['env_id'] == 'widowx_reacher-v28')
-
-mask2 = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['noptepochs'] == 30) & \
-    (df['cliprange'] == 0.2) & \
-    (df['deterministic'] == 1) & \
-    (df['bounds'] == 'large') & \
-    (df['env_id'] == 'widowx_reacher-v29')
-
-mask3 = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['noptepochs'] == 30) & \
-    (df['cliprange'] == 0.2) & \
-    (df['deterministic'] == 1) & \
-    (df['bounds'] == 'large') & \
-    (df['env_id'] == 'widowx_reacher-v30')
-
-mask4 = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['noptepochs'] == 30) & \
-    (df['cliprange'] == 0.2) & \
-    (df['deterministic'] == 1) & \
-    (df['bounds'] == 'large') & \
-    (df['env_id'] == 'widowx_reacher-v31')
-
-mask5 = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['noptepochs'] == 30) & \
-    (df['cliprange'] == 0.2) & \
-    (df['deterministic'] == 1) & \
-    (df['bounds'] == 'large') & \
-    (df['env_id'] == 'widowx_reacher-v32')
-
-mask6 = (df['algo'] == 'ppo2') & \
-    (df['normalize'] == True) & \
-    (df['n_envs'] == 8) & \
-    (df['n_timesteps'] == 500000) & \
-    (df['gamma'] == 0.99) & \
-    (df['n_steps'] == 128) & \
-    (df['ent_coef'] == '0.01') & \
-    (df['learning_rate'] == 0.00025) & \
-    (df['vf_coef'] == 0.5) & \
-    (df['lam'] == 0.95) & \
-    (df['nminibatches'] == 4) & \
-    (df['noptepochs'] == 30) & \
-    (df['cliprange'] == 0.2) & \
-    (df['deterministic'] == 1) & \
-    (df['bounds'] == 'large') & \
-    (df['env_id'] == 'widowx_reacher-v33')
-
-
-df_actionStepCoeff = pd.concat([df[mask1], df[mask2], df[mask3], df[mask4], df[mask5], df[mask6]])
-
-df_actionStepCoeff = df_actionStepCoeff.sort_values(by=['actionStepCoeff'])
-print(df_actionStepCoeff['actionStepCoeff'])
-
-plot_df(df_actionStepCoeff, 'actionStepCoeff', "results/plots/actionStepCoeff_deterministic_largeBounds.png")
+# # actionStepCoeff + large bounds
 #
-
-
+# mask1 = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['noptepochs'] == 30) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['deterministic'] == 1) & \
+#     (df['bounds'] == 'large') & \
+#     (df['env_id'] == 'widowx_reacher-v28')
+#
+# mask2 = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['noptepochs'] == 30) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['deterministic'] == 1) & \
+#     (df['bounds'] == 'large') & \
+#     (df['env_id'] == 'widowx_reacher-v29')
+#
+# mask3 = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['noptepochs'] == 30) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['deterministic'] == 1) & \
+#     (df['bounds'] == 'large') & \
+#     (df['env_id'] == 'widowx_reacher-v30')
+#
+# mask4 = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['noptepochs'] == 30) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['deterministic'] == 1) & \
+#     (df['bounds'] == 'large') & \
+#     (df['env_id'] == 'widowx_reacher-v31')
+#
+# mask5 = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['noptepochs'] == 30) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['deterministic'] == 1) & \
+#     (df['bounds'] == 'large') & \
+#     (df['env_id'] == 'widowx_reacher-v32')
+#
+# mask6 = (df['algo'] == 'ppo2') & \
+#     (df['normalize'] == True) & \
+#     (df['n_envs'] == 8) & \
+#     (df['n_timesteps'] == 500000) & \
+#     (df['gamma'] == 0.99) & \
+#     (df['n_steps'] == 128) & \
+#     (df['ent_coef'] == '0.01') & \
+#     (df['learning_rate'] == 0.00025) & \
+#     (df['vf_coef'] == 0.5) & \
+#     (df['lam'] == 0.95) & \
+#     (df['nminibatches'] == 4) & \
+#     (df['noptepochs'] == 30) & \
+#     (df['cliprange'] == 0.2) & \
+#     (df['deterministic'] == 1) & \
+#     (df['bounds'] == 'large') & \
+#     (df['env_id'] == 'widowx_reacher-v33')
+#
+#
+# df_actionStepCoeff = pd.concat([df[mask1], df[mask2], df[mask3], df[mask4], df[mask5], df[mask6]])
+#
+# df_actionStepCoeff = df_actionStepCoeff.sort_values(by=['actionStepCoeff'])
+# print(df_actionStepCoeff['actionStepCoeff'])
+#
+# plot_df(df_actionStepCoeff, 'actionStepCoeff', "results/plots/actionStepCoeff_deterministic_largeBounds.png")
+#
 
 
 # ------------- noptepoch50 at 0.5M and 20M timeteps + v22 (actionStepCoeff = 30)
@@ -748,3 +745,48 @@ plot_df(df_actionStepCoeff, 'actionStepCoeff', "results/plots/actionStepCoeff_de
 # print(df_env22)
 #
 # plot_df(df_env22, 'n_timesteps', "results/plots/n_timesteps_env22_deterministic.png")
+
+
+# ------------- dense reward vs sparse dense
+
+mask1 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['cliprange'] == 0.2) & \
+    (df['deterministic'] == 1) & \
+    (df['bounds'] == 'large') & \
+    (df['actionStepCoeff'] == 25) & \
+    (df['reward'] == '[-distance_to_target**2]') & \
+    (df['env_id'] == 'widowx_reacher-v30')
+
+mask2 = (df['algo'] == 'ppo2') & \
+    (df['normalize'] == True) & \
+    (df['n_envs'] == 8) & \
+    (df['n_timesteps'] == 500000) & \
+    (df['gamma'] == 0.99) & \
+    (df['n_steps'] == 128) & \
+    (df['ent_coef'] == '0.01') & \
+    (df['learning_rate'] == 0.00025) & \
+    (df['vf_coef'] == 0.5) & \
+    (df['lam'] == 0.95) & \
+    (df['nminibatches'] == 4) & \
+    (df['cliprange'] == 0.2) & \
+    (df['deterministic'] == 1) & \
+    (df['bounds'] == 'large') & \
+    (df['actionStepCoeff'] == 25) & \
+    (df['reward'] == '[-distance_to_target**2 + 1*(SR 0.5mm)]') & \
+    (df['env_id'] == 'widowx_reacher-v34')
+
+
+df_env34 = pd.concat([df[mask1], df[mask2]])
+
+print(df_env34)
+plot_df(df_env34, 'reward', "results/plots/denseVSsparse_dense_env34_deterministic.png")

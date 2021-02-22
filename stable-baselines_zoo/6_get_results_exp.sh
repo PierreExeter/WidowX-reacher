@@ -4,15 +4,15 @@
 
 
 
-nsteps=2000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
-nb_seeds=2
+nsteps=1000     # each episode last 100 timesteps, so evaluating for 2000 timeteps = 20 episodes
+nb_seeds=1
 # opti_dir="logs/opti100t_0.1M_widowx_reacher-v7_HER_SAC_SONIC/"
-log_dir="logs/benchmark/train_widowx_reacher-v34_sparseDense_noptepochs4_10M/"
+log_dir="logs/benchmark/train_widowx_reacher-v45/"
 # log_dir_real="logs/widowx_reacher-v2_copyOfV5_0.2M/"
-# log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
+log_dir2="logs/train_0.2M_widowx_reacher-v7_SONIC/"
 # save_dir="experiment_reports/train_10K_widowx_reacher-v5/"
-# save_dir2="experiment_reports/comp_0.2M_widowx_reacher-v5-v7_SONIC/"
-env="widowx_reacher-v34"
+save_dir2="experiment_reports/plots_for_presentation_WAF/"
+env="widowx_reacher-v45"
 env_her="widowx_reacher-v6"
 deterministic_flag=1
 # appendix="_env2"
@@ -26,7 +26,7 @@ echo "ENV: ${env}"
 
 for ((i=1;i<${nb_seeds}+1;i+=1))
 do
-    # echo "A2C $i"
+#     echo "A2C $i"
     # python3 3_enjoy.py --algo a2c --env ${env} -f ${log_dir} --exp-id $i --no-render -n ${nsteps}
     # python3 mylib/plot_1seed.py -f ${log_dir}a2c/${env}_$i/
     #
@@ -110,7 +110,7 @@ done
 # python3 mylib/plot_experiment.py -f ${log_dir}a2c/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}acktr/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}ddpg/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
-python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps} --deterministic ${deterministic_flag}
+# python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps} --deterministic ${deterministic_flag}
 # python3 mylib/plot_experiment.py -f ${log_dir}sac/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}td3/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
 # python3 mylib/plot_experiment.py -f ${log_dir}trpo/ --env ${env} --nb-seeds ${nb_seeds} -n ${nsteps}
@@ -123,6 +123,7 @@ python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb
 
 ## STEP 4: compare learning curves between 2 envs
 # python3 mylib/plot_comp_envs_learning_curves.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
+# python3 mylib/plot_comp_envs_learning_curves_slide_WAF.py -f1 ${log_dir} -f2 ${log_dir2} -s ${save_dir2}
 
 # # IF OPTIMISATION
 # # python3 mylib/plot_opti_report.py
@@ -140,6 +141,9 @@ python3 mylib/plot_experiment.py -f ${log_dir}ppo2/ --env ${env} --nb-seeds ${nb
 # STEP 4: view trained agent
 # python3 3_enjoy.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 2 -n ${nsteps} --render-pybullet True --deterministic
 # python3 3_enjoy.py --algo her --env ${env_her} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True --deterministic
+
+# log for the 1 joint env (special logging)
+# python3 4_enjoy_1joint.py --algo ppo2 --env ${env} -f ${log_dir} --exp-id 1 -n ${nsteps} --render-pybullet True --deterministic
 
 
 # best seeds in Env 5

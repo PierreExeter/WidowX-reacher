@@ -196,6 +196,74 @@ register(id='widowx_reacher-v34',
          max_episode_steps=100
          )
 
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only
+register(id='widowx_reacher-v35',
+         entry_point='widowx_env.envs.v35_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 5
+register(id='widowx_reacher-v36',
+         entry_point='widowx_env.envs.v36_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward5:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 6
+register(id='widowx_reacher-v37',
+         entry_point='widowx_env.envs.v37_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward6:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 10
+register(id='widowx_reacher-v38',
+         entry_point='widowx_env.envs.v38_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward10:WidowxEnv',
+         max_episode_steps=100
+         )
+         
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + target initialised closed to tip
+register(id='widowx_reacher-v39',
+         entry_point='widowx_env.envs.v39_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_closeTarget:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + target initialised on the tip
+register(id='widowx_reacher-v40',
+         entry_point='widowx_env.envs.v40_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_onTarget:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 16
+register(id='widowx_reacher-v41',
+         entry_point='widowx_env.envs.v41_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward16:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 16 + beta = zero
+register(id='widowx_reacher-v42',
+         entry_point='widowx_env.envs.v42_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward16_beta0:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 1 (from env 42: don't work!)
+register(id='widowx_reacher-v43',
+         entry_point='widowx_env.envs.v43_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward1:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + actionStepCoeff = 25 + no bounds + 1 joint moving only + reward shape: equation 17 (from env 35)
+register(id='widowx_reacher-v44',
+         entry_point='widowx_env.envs.v44_widowx_pybullet_env_fixedGoal_actionStepCoeff25_noBounds_1joint_reward17:WidowxEnv',
+         max_episode_steps=100
+         )
+
+# environment for the pybullet simulation + fixed goal + cleaned software Impact env
+register(id='widowx_reacher-v45',
+         entry_point='widowx_env.envs.v45_widowx_pybullet_fixed_gymEnv_softwareImpact:WidowxEnv',
+         max_episode_steps=100
+         )
+
+
+
 # test gym.GoalEnv
 register(id='my_goal_env-v0',
          entry_point='widowx_env.envs.my_goal_env:MyGoalEnv',

@@ -46,24 +46,24 @@ if __name__ == '__main__':
     env2_df9 = pd.read_csv(path_base2+"her_td3/all_rewards_smooth.csv")
 
     df_list = [
-        df1, 
-        df2, 
-        df3, 
+        df1,
+        df2,
+        df3,
         df4,
-        df5, 
-        df6, 
+        df5,
+        df6,
         df7,
         df8,
         df9
     ]
 
     df_list2 = [
-        env2_df1, 
-        env2_df2, 
-        env2_df3, 
+        env2_df1,
+        env2_df2,
+        env2_df3,
         env2_df4,
-        env2_df5, 
-        env2_df6, 
+        env2_df5,
+        env2_df6,
         env2_df7,
         env2_df8,
         env2_df9
@@ -134,14 +134,14 @@ if __name__ == '__main__':
     ff2 = pd.concat(ff_list2, axis=0)
     ff2['exp type'] = df_label
 
-    
+
 
     ### PLOT LEARNING CURVES ###
 
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
-    plt.rc('xtick', labelsize=20) 
-    plt.rc('ytick', labelsize=20) 
+    plt.rc('xtick', labelsize=20)
+    plt.rc('ytick', labelsize=20)
 
 
     def plot_shaded(df, ax, lab):
@@ -167,8 +167,8 @@ if __name__ == '__main__':
 
 
     ### PLOT TRAINING STATS ###
-    
-    
+
+
     ff['mean train walltime (min)'] = ff['mean train walltime (s)'] / 60
     ff['std train walltime (min)'] = ff['std train walltime (s)'] / 60
     ff2['mean train walltime (min)'] = ff2['mean train walltime (s)'] / 60
@@ -180,7 +180,7 @@ if __name__ == '__main__':
     # set column algo as index for bar plotting
     ff.set_index('exp type', inplace=True)
     ff2.set_index('exp type', inplace=True)
-    
+
     print(ff)
     print(ff2)
 
