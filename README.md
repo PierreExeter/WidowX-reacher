@@ -2,7 +2,7 @@
 Training the WidowX robotic arm to reach a target position with reinforcement learning.
 
 
-# Deprecation notice
+# ********** Deprecation notice !!! **********
 
 This repository has been deprecated in favor the [rl_reach](https://github.com/PierreExeter/rl_reach) toolbox.
 
